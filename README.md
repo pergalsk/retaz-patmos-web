@@ -2,6 +2,14 @@
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 11.1.4.
 
+## TODO
+* better responsive layout (margins, padding font size for smaller devices)
+* connect to local proxy (https://www.freecodecamp.org/news/the-best-ways-to-connect-to-the-server-using-angular-cli-b0c6b699716c/)
+* sass variables for calendar component
+* Prettier
+* GIT
+* CI/CD setup
+
 ## Development server
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.

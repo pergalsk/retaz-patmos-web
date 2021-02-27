@@ -1,0 +1,25 @@
+<div class="panel-menu mb-3">
+
+  <div class="menu-button mb-3">
+    <button (click)="togglePanelMenu()" type="button" class="btn btn-outline-primary btn-block btn-smaller">
+      {{ menuOpened ? 'Skryť staršie podnety' : 'Zobraziť staršie podnety' }}
+    </button>
+  </div>
+
+  <div class="menu-list" *ngIf="menuOpened && items.length">
+    <ul>
+      <li *ngFor="let item of items; index as id"
+          [ngClass]="[ id === activeIndex ? 'disabled' : '']"
+          (click)="selectPanelContent(id)"
+      >
+        <div class="sub-title">
+          {{ id === items.length - 1 ? 'Modlitebná téma pre tento týždeň' : (id + 1) + '. ' + item.subtitle }}
+        </div>
+        <div class="title">
+          {{ item.title }}
+        </div>
+      </li>
+    </ul>
+  </div>
+
+</div>

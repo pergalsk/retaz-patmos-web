@@ -1,0 +1,26 @@
+<div class="calendar">
+
+  <div class="calendar-header">
+    <div *ngFor="let dayName of dayNames">{{ dayName }}</div>
+  </div>
+
+  <div class="calendar-week">
+    <div class="cell-inactive"></div>
+    <div class="cell-inactive"></div>
+
+    <!--<div *ngFor="let date of dates">{{ date.type }}</div>-->
+
+    <!--<div *ngFor="let date of objectKeys(dates) | keyvalue: keepOriginalOrder"
+         [ngClass]="[date.type, (date.namesLength ? 'filled' : '')]"
+         (click)="onDateClick(date)"
+         data-date="XY">
+      <div class="name" *ngFor="let name of date.names">
+        <span>{{ name }}</span>
+      </div>
+    </div>-->
+  </div>
+
+</div>
+
+
+<pre>{{dates | json}}</pre>

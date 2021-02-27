@@ -1,0 +1,33 @@
+<div class="with-padding">
+  <h4 class="mb-1" *ngIf="content[contentIndex].title">
+    {{ content[contentIndex].title }}
+  </h4>
+
+  <p class="mb-4" *ngIf="content[contentIndex].subtitle">
+    <strong>{{ content[contentIndex].subtitle }}</strong>
+  </p>
+</div>
+
+
+<app-panel-menu
+    [items]="content"
+    [activeIndex]="contentIndex"
+    (selection)="selectContent($event)">
+</app-panel-menu>
+
+
+<ng-container *ngTemplateOutlet="liveTemplate || topic2"></ng-container>
+
+
+<ng-template #topic1>
+  <app-content01></app-content01>
+</ng-template>
+
+<ng-template #topic2>
+  <app-content02></app-content02>
+</ng-template>
+
+<ng-template #topic3>
+  <app-content03></app-content03>
+</ng-template>
+
