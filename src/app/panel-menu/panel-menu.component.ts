@@ -18,7 +18,7 @@ export class PanelMenuComponent implements OnInit {
   }
 
   selectPanelContent(id: number): void {
-    console.log('panel-menu-c = ' + id);
+    console.log('Selected content-id = ' + id);
     if (id === this.activeIndex) {
       return;
     }

@@ -14,6 +14,10 @@ import { SelectiveContentComponent } from './selective-content/selective-content
 import { Content01Component } from './contents/content01/content01.component';
 import { Content02Component } from './contents/content02/content02.component';
 import { Content03Component } from './contents/content03/content03.component';
+import { SvgWorldComponent } from './svg/svg-world/svg-world.component';
+import { SvgDiaryComponent } from './svg/svg-diary/svg-diary.component';
+import { SvgPrayComponent } from './svg/svg-pray/svg-pray.component';
+import { SvgConnectComponent } from './svg/svg-connect/svg-connect.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +28,11 @@ import { Content03Component } from './contents/content03/content03.component';
     SelectiveContentComponent,
     Content01Component,
     Content02Component,
-    Content03Component
+    Content03Component,
+    SvgWorldComponent,
+    SvgDiaryComponent,
+    SvgPrayComponent,
+    SvgConnectComponent
   ],
   imports: [
     BrowserModule,
