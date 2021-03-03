@@ -1,147 +1,127 @@
-import {Component, Input, OnInit} from '@angular/core';
-import {parse, getDay, compareAsc, differenceInDays} from 'date-fns';
+import {ChangeDetectionStrategy, Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges} from '@angular/core';
+import {
+  parse,
+  getDay,
+  compareAsc,
+  eachDayOfInterval,
+  startOfISOWeek,
+  endOfISOWeek,
+  eachWeekOfInterval,
+  format, getMonth, isWeekend, getISOWeek
+} from 'date-fns';
+import {sk} from 'date-fns/locale';
 
 @Component({
   selector: 'app-calendar',
   templateUrl: './calendar.component.html',
-  styleUrls: ['./calendar.component.scss']
+  styleUrls: ['./calendar.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class CalendarComponent implements OnInit {
+export class CalendarComponent implements OnInit, OnChanges {
   @Input() data: any;
   @Input() options: any;
-  // @Input() sysDate: string;
-  // @Input() sysTime: string;
+  @Output() cellAction: EventEmitter<any> = new EventEmitter<any>();
 
+  calendar: any = null;
   dates: any = null;
-  sysDate = '';
+  sysDate: Date = null;
   sysTime = '';
 
   dayNames = ['Pondelok', 'Utorok', 'Streda', 'Štvrtok', 'Piatok', 'Sobota', 'Nedeľa'];
 
-  private dateFormat = 'yyyy-MM-dd';
+  private rawDateFormat = 'yyyy-MM-dd';
+  private titleDateFormat = 'LLLL d';
 
   constructor() { }
 
   ngOnInit(): void {
+    if (!this.data) {
+      return;
+    }
 
-    this.sysDate = this.options?.sysDate;
+    this.build();
+  }
+
+  private build(): void {
+    const referenceDate = new Date();
+    this.sysDate = parse(this.options?.sysDate, this.rawDateFormat, referenceDate);
     this.sysTime = this.options?.sysTime;
 
-    if (Array.isArray(this.data)) {
-      this.dates = {};
-
-      this.data.sort(this.sortByDates);
-
-      const referenceDate = new Date();
-
-      const sysDate = parse(this.sysDate, this.dateFormat, referenceDate);
-      // const firstDate = parse(this.data[0].date, this.dateFormat, referenceDate);
-      // const lastDate = parse(this.data[this.data.length - 1].date, this.dateFormat, referenceDate);
-      const firstDate = parse('2021-02-01', this.dateFormat, referenceDate);
-      const lastDate = parse('2021-02-10', this.dateFormat, referenceDate);
-
-      const daysCount = differenceInDays(lastDate, firstDate);
-
-      this.data.forEach((item) => {
-        const { date, names } = item;
-
-        if (date) {
-          const namesLength = Array.isArray(names) ? names.length : 0;
-
-          const jsDate = parse(date, this.dateFormat, referenceDate);
-
-          const weekDay = getDay(jsDate) || 7; // 0 - sunday
-          const month = parseInt(date.substring(5, 7) || 0, 10); // parse month number
-
-          const comparisonResult = compareAsc(jsDate, sysDate);
-          const today = comparisonResult === 0;
-          const past = comparisonResult < 0;
-          const future = comparisonResult > 0;
-          const type = today ? 'today' : (past ? 'past' : 'future');
-
-          this.dates[item.date] = {
-            names: names || [],
-            namesLength,
-            weekDay,
-            month,
-            past,
-            today,
-            future,
-            type
-          };
-        }
-      });
-    }
-
-    /*const weekDayName = ['Nedeľa', 'Pondelok',      'Utorok',      'Streda',      'Štvrtok',       'Piatok',      'Sobota'];
-   const monthName = [
-     'Január',
-     'Február',
-     'Marec',
-     'Apríl',
-     'Máj',
-     'Jún',
-     'Júl',
-     'August',
-     'September',
-     'Október',
-     'November',
-     'December',
-   ];
-
-   const numDays = 47;
-   const startDateRaw = '2021-02-17';
-   const startDate = new Date(startDateRaw);
-
-   // const endDateRaw = '2021-04-02';
-
-   for (let i = 0; i < numDays - 1; i++) {
-
-     const date = new Date(startDate.valueOf());
-     date.setDate(date.getDate() + i);
-     const dateDayIndex = date.getDay(); // which day of week
-     const dateMonthIndex = date.getMonth(); // which day of week
-     const dateISO = date.toISOString().slice(0, 10); // only date
-
-
-
-     this.calendarStructure.push({
-       dateMonthIndex,
-       dateMonthFormatted: monthName[dateMonthIndex],
-       dateISO,
-       dateDayIndex,
-       dateDayFormatted: weekDayName[dateDayIndex],
-       names: this.dates[dateISO] || [],
-     });
-
-     // {
-     //   dateISO,
-     //   dateDayIndex,
-     //   names: this.dates[dateISO] || [],
-     // }
-   }*/
-
+    this.calendar = this.generateCalendarData(this.data?.start, this.data?.end, referenceDate);
   }
 
-  onDateClick = (date) => {
-    alert(date.date);
-  }
-
-  keepOriginalOrder = (a) => a.key;
-
-  private sortByDates = (a, b) => {
-    const dateA = a.date;
-    const dateB = b.date;
-
-    if (dateA < dateB) {
-      return -1;
+  private generateCalendarData(startDate, endDate, referenceDate): any {
+    if (!startDate || !endDate || !referenceDate) {
+      return [];
     }
 
-    if (dateA > dateB) {
-      return 1;
-    }
+    const firstDate = parse(startDate, this.rawDateFormat, referenceDate);
+    const lastDate = parse(endDate, this.rawDateFormat, referenceDate);
 
-    return 0;
+    const weekStartDates = eachWeekOfInterval({
+      start: startOfISOWeek(firstDate),
+      end: endOfISOWeek(lastDate)
+    }, { weekStartsOn: 1 });
+
+    return weekStartDates.map(
+      weekStartDate => eachDayOfInterval({
+        start: startOfISOWeek(weekStartDate),
+        end: endOfISOWeek(weekStartDate)
+      }).map(this.mapDays)
+    );
   }
 
+  ngOnChanges(changes: SimpleChanges): void {
+    this.build();
+  }
+
+  getDayNum(date: Date): number {
+    return getDay(date) || 7;
+  }
+
+  onDateClick = (weekIndex, dayIndex, day, week, calendar) => {
+    console.log(`CLick on date ${day.date} fired! [weekIndex=${weekIndex}, dayIndex=${dayIndex}, visible=${day.visible}, disabled=${day.disabled}, type="${day.type}"]`);
+
+    if (!day.visible || day.disabled) {
+      return;
+    }
+
+    this.cellAction.emit({ weekIndex, dayIndex, day, week, calendar });
+  }
+
+  private mapDays = (day): object => {
+    const date = format(day, this.rawDateFormat);
+    const title = format(day, this.titleDateFormat, { locale: sk });
+    const weekDay = getDay(day) || 7; // with sunday correction 0 -> 7
+    const month = getMonth(day) + 1; // counting from zero correction
+    const weekend = isWeekend(day);
+    const week = getISOWeek(day);
+
+    const comparisonResult = compareAsc(day, this.sysDate);
+    const today = comparisonResult === 0;
+    const past = comparisonResult < 0;
+    const future = comparisonResult > 0;
+    const type = today ? 'today' : (past ? 'past' : 'future');
+
+    const disabled = Number.isNaN(comparisonResult);
+    const visible = !!this.data[date];
+
+    const names = this.data[date] || [];
+
+    return {
+      date,
+      title,
+      visible,
+      disabled,
+      weekDay,
+      month,
+      week,
+      weekend,
+      past,
+      today,
+      future,
+      type,
+      names
+    };
+  }
 }

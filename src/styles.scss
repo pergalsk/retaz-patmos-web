@@ -240,7 +240,7 @@ $jumbotron-equal-padding-sm: 2rem; // padding the same on all sides
     flex: 30px 1 0;
 
     & > div {
-      position: relative; // allows ::after pseudo element absolute positioning
+      position: relative;
       padding: 1.6em 0.5em 0.6em 0.6em;
       min-height: 7.2em;
       background-color: #f7f8fa;
@@ -275,16 +275,16 @@ $jumbotron-equal-padding-sm: 2rem; // padding the same on all sides
       &.today {
         border: 1px solid #553e77;
 
-        &::after {
+        .title {
           color: #553e77;
         }
       }
 
-      &:hover:not(.cell-inactive, .disabled):not(.past, .today) {
+      &:hover:not(.invisible, .disabled):not(.past, .today) {
         background-color: #553e77 !important;
         cursor: pointer;
 
-        &::after {
+        .title {
           color: #fff;
         }
 
@@ -293,7 +293,7 @@ $jumbotron-equal-padding-sm: 2rem; // padding the same on all sides
         }
       }
 
-      &::after {
+      .title {
         content: attr(data-date);
         display: block;
         position: absolute;
@@ -328,7 +328,7 @@ $jumbotron-equal-padding-sm: 2rem; // padding the same on all sides
       margin-right: 0;
     }
 
-    &.cell-inactive {
+    &.invisible {
       background-color: #fff !important;
     }
 
@@ -565,7 +565,7 @@ ul > li {
           margin-bottom: 0;
         }
 
-        &::after {
+        .title {
           right: auto;
           left: 0
         }
@@ -577,7 +577,7 @@ ul > li {
       display: block;
       margin-bottom: 10px;
 
-      &.cell-inactive {
+      &.invisible {
         display: none;
       }
 

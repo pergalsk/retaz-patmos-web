@@ -1,26 +1,26 @@
-<div class="calendar">
+<div class="calendar" *ngIf="calendar">
 
-  <div class="calendar-header">
+  <div class="calendar-header" *ngIf="dayNames">
     <div *ngFor="let dayName of dayNames">{{ dayName }}</div>
   </div>
 
-  <div class="calendar-week">
-    <div class="cell-inactive"></div>
-    <div class="cell-inactive"></div>
+  <div class="calendar-week" *ngFor="let week of calendar; index as weekIndex">
+    <div *ngFor="let day of week; index as dayIndex"
+         (click)="onDateClick(weekIndex, dayIndex, day, week, calendar)"
+         [class.filled]="day.names.length"
+         [class.invisible]="!day.visible"
+         [class.disabled]="day.disabled"
+         [ngClass]="day.type"
+         [attr.data-date]="day.visible ? day.title : ''">
 
-    <!--<div *ngFor="let date of dates">{{ date.type }}</div>-->
+      <div class="title">{{ day.title }}</div>
 
-    <!--<div *ngFor="let date of objectKeys(dates) | keyvalue: keepOriginalOrder"
-         [ngClass]="[date.type, (date.namesLength ? 'filled' : '')]"
-         (click)="onDateClick(date)"
-         data-date="XY">
-      <div class="name" *ngFor="let name of date.names">
-        <span>{{ name }}</span>
+      <div class="name" *ngFor="let name of day.names">
+        <span *ngIf="day.visible">{{ name }}</span>
       </div>
-    </div>-->
+    </div>
   </div>
 
 </div>
 
-
-<pre>{{dates | json}}</pre>
+<!--<pre>{{calendar | json}}</pre>-->

@@ -13,16 +13,15 @@ import { ModalContentComponent } from './modal-content/modal-content.component';
 })
 export class AppComponent implements OnInit {
 
-  datesRaw: Array<any> = [];
-  calendarStructure: Array<any> = [];
-  dates: any = null;
-  calendarOpt: any = null;
-  modalRef = null;
+  rawDates: Array<any> = [];
   sysDate: string = null;
   sysTime: string = null;
+  calendarData: any = null;
+  calendarOptions: any = null;
+  modalRef = null;
   getCalendarError = false;
   submitError = false;
-  panelContent = 0;
+  panelContentIndex = 0;
 
   panelMenuItems = [{
     title: 'Návrat k Bohu celým srdcom',
@@ -41,92 +40,52 @@ export class AppComponent implements OnInit {
   ) {}
 
   private handleSuccess = (data) => {
-
     this.getCalendarError = false;
 
-    this.datesRaw = data?.dates;
+    this.rawDates = data?.rawDates;
     this.sysDate = data?.sysDateTime?.sysdate;
     this.sysTime = data?.sysDateTime?.systime;
 
-    if (Array.isArray(this.datesRaw)) {
-      this.dates = {};
-
-      this.datesRaw.sort(this.sortString);
-
-      this.datesRaw.forEach((item) => {
-        const { date, names } = item;
-
-        if (date) {
-          const namesLength = Array.isArray(names) ? names.length : 0;
-
-          const sysDate = new Date(this.sysDate + 'T00:00:00');
-          const jsDate = new Date(date + 'T00:00:00'); // appendix maybe not necessary
-          const weekDay = jsDate.getDay() || 7; // 0 - sunday
-          const month = parseInt(date.substring(5, 7) || 0, 10); // parse month number
-
-          const today = date === this.sysDate;
-          const past = sysDate.getTime() > jsDate.getTime();
-          const future = sysDate.getTime() < jsDate.getTime();
-          const type = today ? 'today' : (past ? 'past' : 'future');
-
-          this.dates[item.date] = {
-            names: names || [],
-            namesLength,
-            weekDay,
-            month,
-            past,
-            today,
-            future,
-            type
-          };
-        }
-      });
-    }
-
-    /* comp */
-    this.calendarOpt =  {
+    this.calendarOptions =  {
       separateMonths: false,
       header: true,
       sysDate: this.sysDate,
       sysTime: this.sysTime
     };
-    /* .comp */
 
+    this.calendarData = this.generateCalendarData(this.rawDates);
   }
 
-  private handleError = (error) => {
-    this.getCalendarError = true;
-    console.log(error);
-  }
+  private generateCalendarData(rawDates): any {
+    const calendarData: any = {};
 
-  private getDates = () => {
-    return this.loadDates()/*.pipe(
-      // map((formSchema) => this.processFormSchema(formSchema)),
-      // catchError(this.handleError('Formulár sa nepodarilo načítať.'))
-    )*/;
-  }
-
-  private sortString = (a, b) => {
-    const dateA = a.date;
-    const dateB = b.date;
-
-    if (dateA < dateB) {
-      return -1;
+    if (Array.isArray(rawDates) && rawDates.length > 0) {
+      rawDates
+        .sort(this.sortString)
+        .forEach((item) => {
+          if (item.date) {
+            calendarData[item.date] = item.names || [];
+          }
+        });
+      calendarData.start = rawDates[0]?.date;
+      calendarData.end = rawDates[rawDates.length - 1]?.date;
     }
 
-    if (dateA > dateB) {
-      return 1;
-    }
-
-    return 0;
+    return calendarData;
   }
 
-  onDateClick(date): void {
-    const dateObj = { ...this.dates[date] };
-
-    if (this.modalRef || !date || ! dateObj || !dateObj.future) {
+  onDateClick(event): void {
+    if (this.modalRef || !event) {
       return;
     }
+
+    const { weekIndex, dayIndex, day, week, calendar } = event;
+
+    if (!day || !day.date || !day.future) {
+      return;
+    }
+
+    const { date } = day;
 
     this.modalRef = this.modalService.open(ModalContentComponent, {
       centered: true,
@@ -157,9 +116,10 @@ export class AppComponent implements OnInit {
         (resp) => {
 
           if (Array.isArray(resp)) {
-            const names = [...resp];
-            this.dates[date].names = names;
-            this.dates[date].namesLength = names.length;
+            this.calendarData = {
+              ...this.calendarData,
+              [date]: [...resp]
+            };
           }
 
           this.submitError = false;
@@ -177,39 +137,57 @@ export class AppComponent implements OnInit {
   }
 
   selectPanelContent(menuItemSelectedId: number): void {
-    this.panelContent = menuItemSelectedId;
+    this.panelContentIndex = menuItemSelectedId;
   }
 
   ngOnInit(): void {
     this.getCalendarError = false;
-
-    this.panelContent = this.panelMenuItems.length - 1;
-    // this.markedId = this.panelMenuItems.length - 1;
-
-
-    // const markedItem = this.panelMenuItems.find(item => item.marked);
-    // if (markedItem) {
-    //   this.panelContent = markedItem.id;
-    //   this.markedId = markedItem.id;
-    // }
+    this.panelContentIndex = this.panelMenuItems.length - 1;
 
     zip(this.getDates(), this.getSysDateTime()).pipe(
-      map(([dates, sysDateTime]) => ({dates, sysDateTime}))
-    ).subscribe(this.handleSuccess, this.handleError);
+      map(([rawDates, sysDateTime]) => ({rawDates, sysDateTime}))
+    ).subscribe(this.handleSuccess, this.handleError); // todo: unsubscribe
+  }
+
+  private sortString = (a, b) => {
+    const dateA = a.date;
+    const dateB = b.date;
+
+    if (dateA < dateB) {
+      return -1;
+    }
+
+    if (dateA > dateB) {
+      return 1;
+    }
+
+    return 0;
+  }
+
+  private handleError = (error) => {
+    this.getCalendarError = true;
+    console.log(error);
+  }
+
+  private getDates = () => {
+    return this.loadDates()/*.pipe(
+      // map((formSchema) => this.processFormSchema(formSchema)),
+      // catchError(this.handleError('Formulár sa nepodarilo načítať.'))
+    )*/;
   }
 
   private getSysDateTime(): Observable<any> {
-    return this.httpClient.get('/api/sysdate');
-    // return this.httpClient.get('http://localhost:4004/retaz-patmos-be/public/api/sysdate');
+    // return this.httpClient.get('/api/sysdate');
+    return this.httpClient.get('http://localhost:4004/retaz-patmos-be/public/api/sysdate');
   }
 
   private loadDates(): Observable<any> {
-    return this.httpClient.get('/api/dates');
-    // return this.httpClient.get('http://localhost:4004/retaz-patmos-be/public/api/dates');
+    // return this.httpClient.get('/api/dates');
+    return this.httpClient.get('http://localhost:4004/retaz-patmos-be/public/api/dates');
   }
 
   private submitAnswers(submitData): Observable<any> {
-    return this.httpClient.put('/api/dates', submitData);
-    // return this.httpClient.put('http://localhost:4004/retaz-patmos-be/public/api/dates?XDEBUG_SESSION_START=PHPSTORM', submitData);
+    // return this.httpClient.put('/api/dates', submitData);
+    return this.httpClient.put('http://localhost:4004/retaz-patmos-be/public/api/dates?XDEBUG_SESSION_START=PHPSTORM', submitData);
   }
 }
