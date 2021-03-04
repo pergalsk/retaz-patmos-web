@@ -29,8 +29,16 @@ export class CalendarComponent implements OnInit, OnChanges {
 
   dayNames = ['Pondelok', 'Utorok', 'Streda', 'Štvrtok', 'Piatok', 'Sobota', 'Nedeľa'];
 
-  private rawDateFormat = 'yyyy-MM-dd';
-  private titleDateFormat = 'LLLL d';
+  calendarOptions: any = {};
+  defaultOptions = {
+    header: true,
+    separateMonths: true,
+    sysDate: new Date(),
+    sysTime: new Date(),
+    rawDateFormat: 'yyyy-MM-dd',
+    titleDateFormat: 'LLLL d',
+    overrides: null
+  }
 
   constructor() { }
 
@@ -42,10 +50,29 @@ export class CalendarComponent implements OnInit, OnChanges {
     this.build();
   }
 
+  ngOnChanges(changes: SimpleChanges): void {
+    this.build();
+  }
+
+  onDateClick = (weekIndex, dayIndex, day, week, calendar) => {
+    console.log(`CLick on date ${day.date} fired! [weekIndex=${weekIndex}, dayIndex=${dayIndex}, visible=${day.visible}, disabled=${day.disabled}, type="${day.type}"]`);
+
+    if (!day.visible || day.disabled) {
+      return;
+    }
+
+    this.cellAction.emit({ weekIndex, dayIndex, day, week, calendar });
+  }
+
   private build(): void {
     const referenceDate = new Date();
-    this.sysDate = parse(this.options?.sysDate, this.rawDateFormat, referenceDate);
-    this.sysTime = this.options?.sysTime;
+
+    if (this.options) {
+      Object.assign(this.calendarOptions, this.defaultOptions, this.options);
+    }
+
+    this.sysDate = parse(this.calendarOptions?.sysDate, this.calendarOptions.rawDateFormat, referenceDate);
+    this.sysTime = this.calendarOptions?.sysTime;
 
     this.calendar = this.generateCalendarData(this.data?.start, this.data?.end, referenceDate);
   }
@@ -55,8 +82,8 @@ export class CalendarComponent implements OnInit, OnChanges {
       return [];
     }
 
-    const firstDate = parse(startDate, this.rawDateFormat, referenceDate);
-    const lastDate = parse(endDate, this.rawDateFormat, referenceDate);
+    const firstDate = parse(startDate, this.calendarOptions.rawDateFormat, referenceDate);
+    const lastDate = parse(endDate, this.calendarOptions.rawDateFormat, referenceDate);
 
     const weekStartDates = eachWeekOfInterval({
       start: startOfISOWeek(firstDate),
@@ -71,27 +98,9 @@ export class CalendarComponent implements OnInit, OnChanges {
     );
   }
 
-  ngOnChanges(changes: SimpleChanges): void {
-    this.build();
-  }
-
-  getDayNum(date: Date): number {
-    return getDay(date) || 7;
-  }
-
-  onDateClick = (weekIndex, dayIndex, day, week, calendar) => {
-    console.log(`CLick on date ${day.date} fired! [weekIndex=${weekIndex}, dayIndex=${dayIndex}, visible=${day.visible}, disabled=${day.disabled}, type="${day.type}"]`);
-
-    if (!day.visible || day.disabled) {
-      return;
-    }
-
-    this.cellAction.emit({ weekIndex, dayIndex, day, week, calendar });
-  }
-
   private mapDays = (day): object => {
-    const date = format(day, this.rawDateFormat);
-    const title = format(day, this.titleDateFormat, { locale: sk });
+    const date = format(day, this.calendarOptions.rawDateFormat);
+    const title = format(day, this.calendarOptions.titleDateFormat, { locale: sk });
     const weekDay = getDay(day) || 7; // with sunday correction 0 -> 7
     const month = getMonth(day) + 1; // counting from zero correction
     const weekend = isWeekend(day);
@@ -108,7 +117,7 @@ export class CalendarComponent implements OnInit, OnChanges {
 
     const names = this.data[date] || [];
 
-    return {
+    let resultObj = {
       date,
       title,
       visible,
@@ -123,5 +132,11 @@ export class CalendarComponent implements OnInit, OnChanges {
       type,
       names
     };
+
+    if (this.calendarOptions?.overrides?.[date]) {
+      Object.assign(resultObj, this.calendarOptions.overrides[date]);
+    }
+
+    return resultObj;
   }
 }

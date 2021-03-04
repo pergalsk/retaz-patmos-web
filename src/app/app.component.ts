@@ -47,10 +47,17 @@ export class AppComponent implements OnInit {
     this.sysTime = data?.sysDateTime?.systime;
 
     this.calendarOptions =  {
-      separateMonths: false,
       header: true,
+      separateMonths: false,
       sysDate: this.sysDate,
-      sysTime: this.sysTime
+      sysTime: this.sysTime,
+      // rawDateFormat: '',
+      // titleDateFormat: '',
+      overrides: {
+        '2021-04-02': {
+          title: 'Veľký piatok'
+        }
+      }
     };
 
     this.calendarData = this.generateCalendarData(this.rawDates);

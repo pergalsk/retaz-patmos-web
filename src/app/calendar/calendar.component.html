@@ -1,6 +1,6 @@
 <div class="calendar" *ngIf="calendar">
 
-  <div class="calendar-header" *ngIf="dayNames">
+  <div class="calendar-header" *ngIf="calendarOptions.header && dayNames">
     <div *ngFor="let dayName of dayNames">{{ dayName }}</div>
   </div>
 
