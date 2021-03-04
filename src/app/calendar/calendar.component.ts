@@ -10,7 +10,6 @@ import {
   eachWeekOfInterval,
   format, getMonth, isWeekend, getISOWeek
 } from 'date-fns';
-import {sk} from 'date-fns/locale';
 
 @Component({
   selector: 'app-calendar',
