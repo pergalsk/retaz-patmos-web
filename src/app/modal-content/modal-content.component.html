@@ -6,34 +6,50 @@
 
 <div class="modal-body">
   <div class="mb-3">
-    <strong class="unselectable " id="modal-basic-title">Zapísať na{{' ' + weekDay}} {{ date.date | date: 'd.M.YYYY' }}</strong>
+    <strong class="unselectable" id="modal-basic-title"
+      >Zapísať na{{ ' ' + weekDay }} {{ date.date | date: 'd.M.YYYY' }}</strong
+    >
   </div>
 
   <form name="registrationForm">
-
     <div class="mb-3">
-      <input [(ngModel)]="name"
-             type="text"
-             placeholder="Meno"
-             class="form-control"
-             name="regName"
-             #regName="ngModel"
-             required
-             autocomplete="off"
-             maxlength="25"
-             pattern="[a-zA-ZáäčďéíĺľňóôŕšťúýžřÁÄČĎÉÍĹĽŇÓÔŔŠŤÚÝŽŘÖöÜüß\-\. ]*">
+      <input
+        [(ngModel)]="name"
+        type="text"
+        placeholder="Meno"
+        class="form-control"
+        name="regName"
+        #regName="ngModel"
+        required
+        autocomplete="off"
+        maxlength="25"
+        pattern="[a-zA-ZáäčďéíĺľňóôŕšťúýžřÁÄČĎÉÍĹĽŇÓÔŔŠŤÚÝŽŘÖöÜüß\-\. ]*"
+      />
 
-      <div style="height: 1em;" class="small text-right mt-1">
+      <div style="height: 1em" class="small text-right mt-1">
         <span *ngIf="regName.invalid && regName.errors.pattern">Nepovolený znak.</span>
-        <span *ngIf="regName.invalid && regName.errors.maxLength">Môžete zadať max. 25 znakov.</span>
+        <span *ngIf="regName.invalid && regName.errors.maxLength"
+          >Môžete zadať max. 25 znakov.</span
+        >
       </div>
     </div>
 
     <div class="clearfix">
-      <button (click)="activeModal.dismiss('Cancel!')" type="button" class="btn btn-light float-left mr-2">Späť</button>
-      <button (click)="passBack()" [disabled]="regName.invalid" type="submit" class="btn btn-primary float-right">Záväzne zapísať</button>
+      <button
+        (click)="activeModal.dismiss('Cancel!')"
+        type="button"
+        class="btn btn-light float-left mr-2"
+      >
+        Späť
+      </button>
+      <button
+        (click)="passBack()"
+        [disabled]="regName.invalid"
+        type="submit"
+        class="btn btn-primary float-right"
+      >
+        Záväzne zapísať
+      </button>
     </div>
   </form>
-
 </div>
-

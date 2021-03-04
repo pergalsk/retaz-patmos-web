@@ -4,7 +4,7 @@ import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 @Component({
   selector: 'app-modal-content',
   templateUrl: './modal-content.component.html',
-  styleUrls: ['./modal-content.component.scss']
+  styleUrls: ['./modal-content.component.scss'],
 })
 export class ModalContentComponent implements OnInit {
   @Input() public date;
@@ -13,12 +13,10 @@ export class ModalContentComponent implements OnInit {
   name: '';
   weekDay = '';
 
-  constructor(
-    public activeModal: NgbActiveModal
-  ) { }
+  constructor(public activeModal: NgbActiveModal) {}
 
   ngOnInit(): void {
-    const weekDayNames = ['nedeľu', 'pondelok', 'utorok', 'stredu', 'štvrtok',  'piatok', 'sobotu'];
+    const weekDayNames = ['nedeľu', 'pondelok', 'utorok', 'stredu', 'štvrtok', 'piatok', 'sobotu'];
 
     if (this.date?.date) {
       const date = new Date(this.date.date.valueOf());

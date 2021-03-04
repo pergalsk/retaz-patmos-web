@@ -1,9 +1,9 @@
-import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 
 @Component({
   selector: 'app-panel-menu',
   templateUrl: './panel-menu.component.html',
-  styleUrls: ['./panel-menu.component.scss']
+  styleUrls: ['./panel-menu.component.scss'],
 })
 export class PanelMenuComponent implements OnInit {
   @Input() items: any[];
@@ -12,10 +12,9 @@ export class PanelMenuComponent implements OnInit {
 
   menuOpened = false;
 
-  constructor() { }
+  constructor() {}
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void {}
 
   selectPanelContent(id: number): void {
     console.log('Selected content-id = ' + id);

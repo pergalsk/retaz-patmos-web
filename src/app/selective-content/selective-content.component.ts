@@ -1,9 +1,18 @@
-import { Component, OnInit, AfterViewInit, Input, Output, ViewChild, TemplateRef, EventEmitter } from '@angular/core';
+import {
+  Component,
+  OnInit,
+  AfterViewInit,
+  Input,
+  Output,
+  ViewChild,
+  TemplateRef,
+  EventEmitter,
+} from '@angular/core';
 
 @Component({
   selector: 'app-selective-content',
   templateUrl: './selective-content.component.html',
-  styleUrls: ['./selective-content.component.scss']
+  styleUrls: ['./selective-content.component.scss'],
 })
 export class SelectiveContentComponent implements OnInit, AfterViewInit {
   @Input() contentIndex: any;
@@ -17,17 +26,12 @@ export class SelectiveContentComponent implements OnInit, AfterViewInit {
   liveTemplate: TemplateRef<any>;
   templates: any[];
 
-  constructor() { }
+  constructor() {}
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void {}
 
   ngAfterViewInit(): void {
-    this.templates = [
-      this.topic1,
-      this.topic2,
-      this.topic3,
-    ];
+    this.templates = [this.topic1, this.topic2, this.topic3];
   }
 
   selectContent(itemId: number): void {

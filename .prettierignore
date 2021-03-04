@@ -1,0 +1,11 @@
+.idea
+node_modules
+_stuff
+
+dist
+e2e
+build
+yarn.lock
+
+src/assets
+src/favicon.ico

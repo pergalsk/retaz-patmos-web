@@ -1,18 +1,18 @@
 <div class="calendar" *ngIf="calendar">
-
   <div class="calendar-header" *ngIf="calendarOptions.header && dayNames">
     <div *ngFor="let dayName of dayNames">{{ dayName }}</div>
   </div>
 
   <div class="calendar-week" *ngFor="let week of calendar; index as weekIndex">
-    <div *ngFor="let day of week; index as dayIndex"
-         (click)="onDateClick(weekIndex, dayIndex, day, week, calendar)"
-         [class.filled]="day.names.length"
-         [class.invisible]="!day.visible"
-         [class.disabled]="day.disabled"
-         [ngClass]="day.type"
-         [attr.data-date]="day.visible ? day.title : ''">
-
+    <div
+      *ngFor="let day of week; index as dayIndex"
+      (click)="onDateClick(weekIndex, dayIndex, day, week, calendar)"
+      [class.filled]="day.names.length"
+      [class.invisible]="!day.visible"
+      [class.disabled]="day.disabled"
+      [ngClass]="day.type"
+      [attr.data-date]="day.visible ? day.title : ''"
+    >
       <div class="title">{{ day.title }}</div>
 
       <div class="name" *ngFor="let name of day.names">
@@ -20,7 +20,6 @@
       </div>
     </div>
   </div>
-
 </div>
 
 <!--<pre>{{calendar | json}}</pre>-->

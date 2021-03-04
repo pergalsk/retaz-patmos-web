@@ -1,4 +1,13 @@
-import {ChangeDetectionStrategy, Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges} from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  EventEmitter,
+  Input,
+  OnChanges,
+  OnInit,
+  Output,
+  SimpleChanges,
+} from '@angular/core';
 import {
   parse,
   getDay,
@@ -8,7 +17,10 @@ import {
   startOfISOWeek,
   endOfISOWeek,
   eachWeekOfInterval,
-  format, getMonth, isWeekend, getISOWeek
+  format,
+  getMonth,
+  isWeekend,
+  getISOWeek,
 } from 'date-fns';
 
 @Component({
@@ -28,7 +40,20 @@ export class CalendarComponent implements OnInit, OnChanges {
   sysTime = '';
 
   dayNames = ['Pondelok', 'Utorok', 'Streda', 'Štvrtok', 'Piatok', 'Sobota', 'Nedeľa'];
-  monthNames = ['Január', 'Február', 'Marec', 'Apríl', 'Máj', 'Jún', 'Júl', 'August', 'September', 'Október', 'November', 'December'];
+  monthNames = [
+    'Január',
+    'Február',
+    'Marec',
+    'Apríl',
+    'Máj',
+    'Jún',
+    'Júl',
+    'August',
+    'September',
+    'Október',
+    'November',
+    'December',
+  ];
 
   calendarOptions: any = {};
   defaultOptions = {
@@ -38,10 +63,10 @@ export class CalendarComponent implements OnInit, OnChanges {
     sysTime: new Date(),
     rawDateFormat: 'yyyy-MM-dd',
     titleDateFormat: 'LLLL d',
-    overrides: null
-  }
+    overrides: null,
+  };
 
-  constructor() { }
+  constructor() {}
 
   ngOnInit(): void {
     if (!this.data) {
@@ -56,14 +81,16 @@ export class CalendarComponent implements OnInit, OnChanges {
   }
 
   onDateClick = (weekIndex, dayIndex, day, week, calendar) => {
-    console.log(`CLick on date ${day.date} fired! [weekIndex=${weekIndex}, dayIndex=${dayIndex}, visible=${day.visible}, disabled=${day.disabled}, type="${day.type}"]`);
+    console.log(
+      `CLick on date ${day.date} fired! [weekIndex=${weekIndex}, dayIndex=${dayIndex}, visible=${day.visible}, disabled=${day.disabled}, type="${day.type}"]`
+    );
 
     if (!day.visible || day.disabled) {
       return;
     }
 
     this.cellAction.emit({ weekIndex, dayIndex, day, week, calendar });
-  }
+  };
 
   private build(): void {
     const referenceDate = new Date();
@@ -72,7 +99,11 @@ export class CalendarComponent implements OnInit, OnChanges {
       Object.assign(this.calendarOptions, this.defaultOptions, this.options);
     }
 
-    this.sysDate = parse(this.calendarOptions?.sysDate, this.calendarOptions.rawDateFormat, referenceDate);
+    this.sysDate = parse(
+      this.calendarOptions?.sysDate,
+      this.calendarOptions.rawDateFormat,
+      referenceDate
+    );
     this.sysTime = this.calendarOptions?.sysTime;
 
     this.calendar = this.generateCalendarData(this.data?.start, this.data?.end, referenceDate);
@@ -86,22 +117,25 @@ export class CalendarComponent implements OnInit, OnChanges {
     const firstDate = parse(startDate, this.calendarOptions.rawDateFormat, referenceDate);
     const lastDate = parse(endDate, this.calendarOptions.rawDateFormat, referenceDate);
 
-    const weekStartDates = eachWeekOfInterval({
-      start: startOfISOWeek(firstDate),
-      end: endOfISOWeek(lastDate)
-    }, { weekStartsOn: 1 });
+    const weekStartDates = eachWeekOfInterval(
+      {
+        start: startOfISOWeek(firstDate),
+        end: endOfISOWeek(lastDate),
+      },
+      { weekStartsOn: 1 }
+    );
 
-    return weekStartDates.map(
-      weekStartDate => eachDayOfInterval({
+    return weekStartDates.map((weekStartDate) =>
+      eachDayOfInterval({
         start: startOfISOWeek(weekStartDate),
-        end: endOfISOWeek(weekStartDate)
+        end: endOfISOWeek(weekStartDate),
       }).map(this.mapDays)
     );
   }
 
   private mapDays = (day): object => {
     const date = format(day, this.calendarOptions.rawDateFormat);
-    const monthDay = getDate(day)
+    const monthDay = getDate(day);
     const weekDay = getDay(day) || 7; // with sunday correction 0 -> 7
     const month = getMonth(day) + 1; // counting from zero correction
     const weekend = isWeekend(day);
@@ -112,7 +146,7 @@ export class CalendarComponent implements OnInit, OnChanges {
     const today = comparisonResult === 0;
     const past = comparisonResult < 0;
     const future = comparisonResult > 0;
-    const type = today ? 'today' : (past ? 'past' : 'future');
+    const type = today ? 'today' : past ? 'past' : 'future';
 
     const disabled = Number.isNaN(comparisonResult);
     const visible = !!this.data[date];
@@ -133,7 +167,7 @@ export class CalendarComponent implements OnInit, OnChanges {
       today,
       future,
       type,
-      names
+      names,
     };
 
     if (this.calendarOptions?.overrides?.[date]) {
@@ -141,5 +175,5 @@ export class CalendarComponent implements OnInit, OnChanges {
     }
 
     return resultObj;
-  }
+  };
 }

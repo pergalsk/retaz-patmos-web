@@ -32,17 +32,10 @@ import { SvgConnectComponent } from './svg/svg-connect/svg-connect.component';
     SvgWorldComponent,
     SvgDiaryComponent,
     SvgPrayComponent,
-    SvgConnectComponent
+    SvgConnectComponent,
   ],
-  imports: [
-    BrowserModule,
-    HttpClientModule,
-    NgbModule,
-    FormsModule
-  ],
-  providers: [
-    interceptorProviders
-  ],
-  bootstrap: [AppComponent]
+  imports: [BrowserModule, HttpClientModule, NgbModule, FormsModule],
+  providers: [interceptorProviders],
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

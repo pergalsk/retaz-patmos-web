@@ -1,9 +1,9 @@
-import {Component, Input, OnInit} from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-svg-diary',
   templateUrl: './svg-diary.component.svg',
-  styleUrls: ['./svg-diary.component.scss']
+  styleUrls: ['./svg-diary.component.scss'],
 })
 export class SvgDiaryComponent implements OnInit {
   @Input() color = '#7A478C';
@@ -11,5 +11,4 @@ export class SvgDiaryComponent implements OnInit {
   constructor() {}
 
   ngOnInit(): void {}
-
 }
