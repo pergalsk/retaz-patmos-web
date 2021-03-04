@@ -2,6 +2,7 @@ import {ChangeDetectionStrategy, Component, EventEmitter, Input, OnChanges, OnIn
 import {
   parse,
   getDay,
+  getDate,
   compareAsc,
   eachDayOfInterval,
   startOfISOWeek,
@@ -28,6 +29,7 @@ export class CalendarComponent implements OnInit, OnChanges {
   sysTime = '';
 
   dayNames = ['Pondelok', 'Utorok', 'Streda', 'Štvrtok', 'Piatok', 'Sobota', 'Nedeľa'];
+  monthNames = ['Január', 'Február', 'Marec', 'Apríl', 'Máj', 'Jún', 'Júl', 'August', 'September', 'Október', 'November', 'December'];
 
   calendarOptions: any = {};
   defaultOptions = {
@@ -100,11 +102,12 @@ export class CalendarComponent implements OnInit, OnChanges {
 
   private mapDays = (day): object => {
     const date = format(day, this.calendarOptions.rawDateFormat);
-    const title = format(day, this.calendarOptions.titleDateFormat, { locale: sk });
+    const monthDay = getDate(day)
     const weekDay = getDay(day) || 7; // with sunday correction 0 -> 7
     const month = getMonth(day) + 1; // counting from zero correction
     const weekend = isWeekend(day);
     const week = getISOWeek(day);
+    const title = this.monthNames[month - 1] + ' ' + monthDay; //format(day, this.calendarOptions.titleDateFormat);
 
     const comparisonResult = compareAsc(day, this.sysDate);
     const today = comparisonResult === 0;
@@ -123,6 +126,7 @@ export class CalendarComponent implements OnInit, OnChanges {
       visible,
       disabled,
       weekDay,
+      monthDay,
       month,
       week,
       weekend,
