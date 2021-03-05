@@ -5,11 +5,9 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 ## TODO
 
 - better responsive layout (margins, padding font size for smaller devices)
-- connect to local proxy (https://www.freecodecamp.org/news/the-best-ways-to-connect-to-the-server-using-angular-cli-b0c6b699716c/)
 - sass variables for calendar component
-- Prettier
-- GIT
 - CI/CD setup
+- log viewer (kibana)
 
 ## Development server
 
