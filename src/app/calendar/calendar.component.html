@@ -7,16 +7,15 @@
     <div
       *ngFor="let day of week; index as dayIndex"
       (click)="onDateClick(weekIndex, dayIndex, day, week, calendar)"
-      [class.filled]="day.names.length"
-      [class.invisible]="!day.visible"
-      [class.disabled]="day.disabled"
-      [ngClass]="day.type"
-      [attr.data-date]="day.visible ? day.title : ''"
+      [ngClass]="day.classList"
+      [id]="'date-' + day.date"
     >
       <div class="title">{{ day.title }}</div>
 
-      <div class="name" *ngFor="let name of day.names">
-        <span *ngIf="day.visible">{{ name }}</span>
+      <div class="entries">
+        <div class="entry" *ngFor="let name of day.names">
+          <span *ngIf="day.visible">{{ name }}</span>
+        </div>
       </div>
     </div>
   </div>

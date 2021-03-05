@@ -153,6 +153,25 @@ export class CalendarComponent implements OnInit, OnChanges {
 
     const names = this.data[date] || [];
 
+    const monthName = format(day, 'LLLL').toLowerCase(); // only month name
+    const dayName = format(day, 'iiii').toLowerCase(); // only day name
+
+    const classList = [
+      type,
+      names.length ? 'filled' : null,
+      weekend ? 'weekend' : null,
+      disabled ? 'disabled' : null,
+      weekDay === 7 ? 'highlighted' : null,
+      visible ? null : 'invisible',
+      dayName,
+      monthName,
+      'date-' + date,
+      'week-' + week,
+      'month-' + month,
+      'week-day-' + weekDay,
+      'month-day-' + monthDay,
+    ].filter(Boolean);
+
     let resultObj = {
       date,
       title,
@@ -168,10 +187,15 @@ export class CalendarComponent implements OnInit, OnChanges {
       future,
       type,
       names,
+      classList,
     };
 
     if (this.calendarOptions?.overrides?.[date]) {
       Object.assign(resultObj, this.calendarOptions.overrides[date]);
+      // todo refactor:
+      resultObj.classList = resultObj.classList.concat(
+        this.calendarOptions?.overrides?.[date]?.classes
+      );
     }
 
     return resultObj;
