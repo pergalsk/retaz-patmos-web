@@ -8,6 +8,7 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 - sass variables for calendar component
 - CI/CD setup
 - log viewer (kibana)
+- TS types
 
 ## Development server
 
