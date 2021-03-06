@@ -184,16 +184,13 @@ export class AppComponent implements OnInit {
 
   private getSysDateTime(): Observable<any> {
     return this.httpClient.get('/api/sysdate');
-    // return this.httpClient.get('http://localhost:4004/retaz-patmos-be/public/api/sysdate');
   }
 
   private loadDates(): Observable<any> {
     return this.httpClient.get('/api/dates');
-    // return this.httpClient.get('http://localhost:4004/retaz-patmos-be/public/api/dates');
   }
 
   private submitAnswers(submitData): Observable<any> {
     return this.httpClient.put('/api/dates', submitData);
-    // return this.httpClient.put('http://localhost:4004/retaz-patmos-be/public/api/dates?XDEBUG_SESSION_START=PHPSTORM', submitData);
   }
 }
