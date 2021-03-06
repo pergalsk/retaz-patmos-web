@@ -238,6 +238,22 @@ $jumbotron-equal-padding-sm: 2rem; // padding the same on all sides
       border-radius: 0.6em;
       margin-bottom: 0.4em;
 
+      &.today {
+        border: 1px solid #553e77;
+
+        .title {
+          color: #553e77 !important;
+        }
+      }
+
+      &.filled {
+        background-color: #e9ecf7;
+      }
+
+      &.past {
+        opacity: 0.5;
+      }
+
       &.weekend {
         background-color: #f1f4fb;
 
@@ -267,22 +283,6 @@ $jumbotron-equal-padding-sm: 2rem; // padding the same on all sides
           .title {
             color: #846f9d;
           }
-        }
-      }
-
-      &.filled {
-        background-color: #e9ecf7;
-      }
-
-      &.past {
-        opacity: 0.5;
-      }
-
-      &.today {
-        border: 1px solid #553e77;
-
-        .title {
-          color: #553e77;
         }
       }
 
