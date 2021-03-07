@@ -35,7 +35,7 @@ export class AppComponent implements OnInit {
       subtitle: 'Modlitebná téma | 1.3. - 7.3.',
     },
     {
-      title: 'Time management',
+      title: 'Vykupujte čas!',
       subtitle: 'Modlitebná téma | 8.3. - 14.3.',
     },
   ];
