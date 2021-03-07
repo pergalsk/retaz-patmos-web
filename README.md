@@ -5,10 +5,15 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 ## TODO
 
 - better responsive layout (margins, padding font size for smaller devices)
+- separate months in calendar UI  
+- styles in multiple files  
+- px|em -> rem
 - sass variables for calendar component
+- hsl colors scheme
+- animations
 - CI/CD setup
-- log viewer (kibana)
 - TS types
+- log viewer (kibana)
 
 ## Development server
 

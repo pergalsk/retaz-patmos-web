@@ -1,0 +1,85 @@
+////////////////
+// COMMON
+//
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  background-image: linear-gradient(137deg, #181024, #5a1770);
+  background-size: 100%;
+  -webkit-background-clip: text;
+  -moz-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  -moz-text-fill-color: transparent;
+}
+
+.bible-verse {
+  margin-top: 0.5rem;
+  font-weight: 700;
+  color: #793cd7;
+  transition: color 0.8s;
+
+  &.verse-small {
+    font-size: 0.95rem;
+    line-height: 1.4rem;
+  }
+}
+
+.video-container {
+  width: 80%;
+  margin: 3rem auto 5rem auto;
+
+  &.iframe {
+    position: relative;
+    padding-bottom: 45%; // aspect ratio
+    height: 0;
+    border-radius: $border-radius-lg;
+    box-shadow: $jumbotron-box-shadow;
+
+    iframe {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      border-radius: $border-radius-lg;
+    }
+  }
+
+  video {
+    width: 100%;
+    height: auto;
+    max-width: 100%;
+    border-radius: $border-radius-lg;
+    box-shadow: $jumbotron-box-shadow;
+  }
+}
+
+ul > li {
+  padding-bottom: 0.55rem !important;
+
+  .bible-verse {
+    display: block;
+    font-size: 0.95rem;
+    line-height: 1.4rem;
+  }
+}
+
+.btn {
+  &.btn-outline-primary:hover {
+    &:hover {
+      //background: linear-gradient(168deg, #553e77 0%, #553e77 35%, #6e2b84 100%);
+    }
+  }
+
+  &.btn-smaller {
+    font-size: 0.65em;
+    text-transform: uppercase;
+    font-weight: 700;
+    padding: 1.05em 1em 0.9em;
+    letter-spacing: 0.05em;
+  }
+}
