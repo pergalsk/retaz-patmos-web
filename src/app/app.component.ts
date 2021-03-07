@@ -34,6 +34,10 @@ export class AppComponent implements OnInit {
       title: 'Misijné zameranie',
       subtitle: 'Modlitebná téma | 1.3. - 7.3.',
     },
+    {
+      title: 'Time management',
+      subtitle: 'Modlitebná téma | 8.3. - 14.3.',
+    },
   ];
 
   constructor(private httpClient: HttpClient, private modalService: NgbModal) {}

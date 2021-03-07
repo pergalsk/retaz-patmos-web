@@ -11,7 +11,7 @@
 <app-panel-menu [items]="content" [activeIndex]="contentIndex" (selection)="selectContent($event)">
 </app-panel-menu>
 
-<ng-container *ngTemplateOutlet="liveTemplate || topic3"></ng-container>
+<ng-container *ngTemplateOutlet="liveTemplate || topic4"></ng-container>
 
 <ng-template #topic1>
   <app-content01></app-content01>
@@ -23,4 +23,8 @@
 
 <ng-template #topic3>
   <app-content03></app-content03>
+</ng-template>
+
+<ng-template #topic4>
+  <app-content04></app-content04>
 </ng-template>

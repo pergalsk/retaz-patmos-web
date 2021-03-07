@@ -18,6 +18,8 @@ import { SvgWorldComponent } from './svg/svg-world/svg-world.component';
 import { SvgDiaryComponent } from './svg/svg-diary/svg-diary.component';
 import { SvgPrayComponent } from './svg/svg-pray/svg-pray.component';
 import { SvgConnectComponent } from './svg/svg-connect/svg-connect.component';
+import { SvgTimeComponent } from './svg/svg-time/svg-time.component';
+import { Content04Component } from './contents/content04/content04.component';
 
 @NgModule({
   declarations: [
@@ -33,6 +35,8 @@ import { SvgConnectComponent } from './svg/svg-connect/svg-connect.component';
     SvgDiaryComponent,
     SvgPrayComponent,
     SvgConnectComponent,
+    SvgTimeComponent,
+    Content04Component,
   ],
   imports: [BrowserModule, HttpClientModule, NgbModule, FormsModule],
   providers: [interceptorProviders],

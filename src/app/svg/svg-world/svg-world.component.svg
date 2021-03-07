@@ -1,18 +1,18 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 500">
   <g id="freepik--Floor--inject-2">
     <ellipse id="freepik--floor--inject-2" cx="249.37" cy="342.74" rx="240.37" ry="140.29"
-             style="fill:#f0f0f0"></ellipse>
+             style="fill:#000; opacity: 0.1"></ellipse>
   </g>
   <g id="freepik--Shadows--inject-2">
     <path id="freepik--Shadow--inject-2"
           d="M187,325.32C149.6,346.94,149.6,382,187,403.6s98.14,21.61,135.58,0,37.44-56.66,0-78.28S224.48,303.71,187,325.32Z"
-          style="fill:#e0e0e0"></path>
+          style="fill:#000; opacity: 0.1"></path>
     <path id="freepik--shadow--inject-2"
           d="M390.8,349.33c-19.23,11.1-19.23,29.1,0,40.2s50.41,11.1,69.64,0,19.23-29.1,0-40.2S410,338.22,390.8,349.33Z"
-          style="fill:#e0e0e0"></path>
+          style="fill:#000; opacity: 0.1"></path>
     <path id="freepik--shadow--inject-2"
           d="M38,353.55c-17.54,10.12-17.54,26.54,0,36.67s46,10.13,63.53,0,17.54-26.55,0-36.67S55.51,343.42,38,353.55Z"
-          style="fill:#e0e0e0"></path>
+          style="fill:#000; opacity: 0.1"></path>
   </g>
   <g id="freepik--Clouds--inject-2">
     <g id="freepik--clouds--inject-2">
