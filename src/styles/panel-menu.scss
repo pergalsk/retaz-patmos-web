@@ -5,6 +5,10 @@
 .panel-menu {
   .menu-button {
     padding: 0 $jumbotron-equal-padding;
+
+    @include media-breakpoint-down(sm) {
+      padding: 0 $jumbotron-equal-padding-sm;
+    }
   }
 
   .menu-list {
@@ -28,6 +32,10 @@
         padding: 1.5rem $jumbotron-equal-padding !important;
         text-align: center;
         transition: background-color 0.3s;
+
+        @include media-breakpoint-down(sm) {
+          padding: 1.5rem $jumbotron-equal-padding-sm !important;
+        }
 
         &:last-child {
           border-bottom: 0;

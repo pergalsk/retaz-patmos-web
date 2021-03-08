@@ -11,9 +11,20 @@ h6 {
   background-image: linear-gradient(137deg, #181024, #5a1770);
   background-size: 100%;
   -webkit-background-clip: text;
-  -moz-background-clip: text;
+  //-moz-background-clip: text;
   -webkit-text-fill-color: transparent;
-  -moz-text-fill-color: transparent;
+  //-moz-text-fill-color: transparent;
+}
+
+.container {
+  &.app-main {
+    margin-top: 3rem;
+    margin-bottom: 3rem;
+
+    @include media-breakpoint-down(xs) {
+      margin-top: $grid-gutter-width / 2;
+    }
+  }
 }
 
 .bible-verse {
@@ -32,12 +43,20 @@ h6 {
   width: 80%;
   margin: 3rem auto 5rem auto;
 
+  @include media-breakpoint-down(md) {
+    width: 100%;
+  }
+
   &.iframe {
     position: relative;
     padding-bottom: 45%; // aspect ratio
     height: 0;
     border-radius: $border-radius-lg;
     box-shadow: $jumbotron-box-shadow;
+
+    @include media-breakpoint-down(md) {
+      padding-bottom: 56%; // aspect ratio
+    }
 
     iframe {
       position: absolute;
