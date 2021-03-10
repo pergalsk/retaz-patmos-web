@@ -34,6 +34,7 @@ h6 {
   transition: color 0.8s;
 
   &.verse-small {
+    display: block;
     font-size: 0.95rem;
     line-height: 1.4rem;
   }

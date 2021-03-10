@@ -1,24 +1,40 @@
 <div class="calendar" *ngIf="calendar">
   <div class="calendar-header" *ngIf="calendarOptions.header && dayNames">
-    <div *ngFor="let dayName of dayNames">{{ dayName }}</div>
+    <ng-container *ngFor="let dayName of dayNames">
+      <div class="header-cell">{{ dayName }}</div>
+    </ng-container>
   </div>
 
-  <div class="calendar-week" *ngFor="let week of calendar; index as weekIndex">
+  <div class="calendar-week-collapse" *ngIf="calendar.pastWeeksCount > 1">
+    <button class="btn btn-outline-primary btn-block btn-smaller" (click)="toggleWeeks()">
+      {{ collapsedWeeks ? 'Zobraziť staršie dátumy' : 'Skryť staršie dátumy' }}
+    </button>
+  </div>
+
+  <ng-container *ngFor="let week of calendar.weeks; index as weekIndex">
     <div
-      *ngFor="let day of week; index as dayIndex"
-      (click)="onDateClick(weekIndex, dayIndex, day, week, calendar)"
-      [ngClass]="day.classList"
-      [id]="'date-' + day.date"
+      class="calendar-week"
+      [ngClass]="week.classList"
+      [class.collapsed]="week.past && collapsedWeeks"
     >
-      <div class="title">{{ day.title }}</div>
+      <ng-container *ngFor="let day of week.days; index as dayIndex">
+        <div
+          class="week-cell"
+          (click)="onDateClick(weekIndex, dayIndex, day, week, calendar)"
+          [ngClass]="day.classList"
+          [id]="'date-' + day.date"
+        >
+          <div class="title">{{ day.title }}</div>
 
-      <div class="entries">
-        <div class="entry" *ngFor="let name of day.names">
-          <span *ngIf="day.visible">{{ name }}</span>
+          <div class="entries">
+            <div class="entry" *ngFor="let name of day.names">
+              <span *ngIf="day.visible">{{ name }}</span>
+            </div>
+          </div>
         </div>
-      </div>
+      </ng-container>
     </div>
-  </div>
+  </ng-container>
 </div>
 
 <!--<pre>{{calendar | json}}</pre>-->

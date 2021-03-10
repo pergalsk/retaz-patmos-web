@@ -4,17 +4,18 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 
 ## TODO
 
-- fix color transitions on selectable content component  
-- collapsible past dates
+- fix color transitions on selectable content component
 - separate months in calendar UI  
 - px|em -> rem
 - better responsive layout (margins, font size for smaller devices)
 - sass variables for calendar component
+- include only necessary SCSS bootstrap files
 - hsl colors scheme
 - animations
 - CI/CD setup
 - TS types
-- log viewer (kibana)
+- TS tests
+- log viewer (like kibana)
 
 ## Development server
 

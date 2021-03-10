@@ -35,6 +35,15 @@
     }
   }
 
+  .calendar-week-collapse {
+    display: none;
+
+    @include media-breakpoint-down(md) {
+      display: inherit;
+      margin-bottom: $jumbotron-equal-padding-sm;
+    }
+  }
+
   .calendar-week {
     display: flex;
     flex: 30px 1 0;
@@ -42,6 +51,12 @@
     @include media-breakpoint-down(md) {
       flex-direction: column;
       margin-bottom: 3rem;
+    }
+
+    &.collapsed {
+      @include media-breakpoint-down(md) {
+        display: none;
+      }
     }
 
     &:last-child {

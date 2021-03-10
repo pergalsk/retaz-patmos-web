@@ -50,10 +50,11 @@ export class AppComponent implements OnInit {
     this.sysTime = data?.sysDateTime?.systime;
 
     this.calendarOptions = {
-      header: true,
-      separateMonths: false,
       sysDate: this.sysDate,
       sysTime: this.sysTime,
+      header: true,
+      separateMonths: false,
+      collapsedWeeks: true,
       // rawDateFormat: '',
       // titleDateFormat: '',
       overrides: {
@@ -66,22 +67,6 @@ export class AppComponent implements OnInit {
 
     this.calendarData = this.generateCalendarData(this.rawDates);
   };
-
-  private generateCalendarData(rawDates): any {
-    const calendarData: any = {};
-
-    if (Array.isArray(rawDates) && rawDates.length > 0) {
-      rawDates.sort(this.sortString).forEach((item) => {
-        if (item.date) {
-          calendarData[item.date] = item.names || [];
-        }
-      });
-      calendarData.start = rawDates[0]?.date;
-      calendarData.end = rawDates[rawDates.length - 1]?.date;
-    }
-
-    return calendarData;
-  }
 
   onDateClick(event): void {
     if (this.modalRef || !event) {
@@ -157,6 +142,22 @@ export class AppComponent implements OnInit {
     zip(this.getDates(), this.getSysDateTime())
       .pipe(map(([rawDates, sysDateTime]) => ({ rawDates, sysDateTime })))
       .subscribe(this.handleSuccess, this.handleError); // todo: unsubscribe
+  }
+
+  private generateCalendarData(rawDates): any {
+    const calendarData: any = {};
+
+    if (Array.isArray(rawDates) && rawDates.length > 0) {
+      rawDates.sort(this.sortString).forEach((item) => {
+        if (item.date) {
+          calendarData[item.date] = item.names || [];
+        }
+      });
+      calendarData.start = rawDates[0]?.date;
+      calendarData.end = rawDates[rawDates.length - 1]?.date;
+    }
+
+    return calendarData;
   }
 
   private sortString = (a, b) => {

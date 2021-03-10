@@ -21,6 +21,7 @@ import {
   getMonth,
   isWeekend,
   getISOWeek,
+  isSameWeek,
 } from 'date-fns';
 
 @Component({
@@ -38,6 +39,7 @@ export class CalendarComponent implements OnInit, OnChanges {
   dates: any = null;
   sysDate: Date = null;
   sysTime = '';
+  collapsedWeeks = false;
 
   dayNames = ['Pondelok', 'Utorok', 'Streda', 'Štvrtok', 'Piatok', 'Sobota', 'Nedeľa'];
   monthNames = [
@@ -64,6 +66,7 @@ export class CalendarComponent implements OnInit, OnChanges {
     rawDateFormat: 'yyyy-MM-dd',
     titleDateFormat: 'LLLL d',
     overrides: null,
+    collapsedWeeks: false,
   };
 
   constructor() {}
@@ -80,7 +83,7 @@ export class CalendarComponent implements OnInit, OnChanges {
     this.build();
   }
 
-  onDateClick = (weekIndex, dayIndex, day, week, calendar) => {
+  onDateClick(weekIndex, dayIndex, day, week, calendar): void {
     console.log(
       `CLick on date ${day.date} fired! [weekIndex=${weekIndex}, dayIndex=${dayIndex}, visible=${day.visible}, disabled=${day.disabled}, type="${day.type}"]`
     );
@@ -90,7 +93,11 @@ export class CalendarComponent implements OnInit, OnChanges {
     }
 
     this.cellAction.emit({ weekIndex, dayIndex, day, week, calendar });
-  };
+  }
+
+  toggleWeeks(): void {
+    this.collapsedWeeks = !this.collapsedWeeks;
+  }
 
   private build(): void {
     const referenceDate = new Date();
@@ -106,6 +113,8 @@ export class CalendarComponent implements OnInit, OnChanges {
     );
     this.sysTime = this.calendarOptions?.sysTime;
 
+    this.collapsedWeeks = this.calendarOptions.collapsedWeeks;
+
     this.calendar = this.generateCalendarData(this.data?.start, this.data?.end, referenceDate);
   }
 
@@ -116,22 +125,46 @@ export class CalendarComponent implements OnInit, OnChanges {
 
     const firstDate = parse(startDate, this.calendarOptions.rawDateFormat, referenceDate);
     const lastDate = parse(endDate, this.calendarOptions.rawDateFormat, referenceDate);
+    const start = startOfISOWeek(firstDate);
+    const end = endOfISOWeek(lastDate);
 
-    const weekStartDates = eachWeekOfInterval(
-      {
-        start: startOfISOWeek(firstDate),
-        end: endOfISOWeek(lastDate),
-      },
-      { weekStartsOn: 1 }
-    );
+    const weekStartDates = eachWeekOfInterval({ start, end }, { weekStartsOn: 1 });
+    const weeks = weekStartDates.map(this.mapWeeks);
 
-    return weekStartDates.map((weekStartDate) =>
-      eachDayOfInterval({
-        start: startOfISOWeek(weekStartDate),
-        end: endOfISOWeek(weekStartDate),
-      }).map(this.mapDays)
-    );
+    const pastWeeksCount = weeks.reduce((acc, week) => acc + (week.past ? 1 : 0), 0);
+
+    return {
+      pastWeeksCount,
+      weeks,
+    };
   }
+
+  private mapWeeks = (weekStartDate): any => {
+    const start = startOfISOWeek(weekStartDate);
+    const end = endOfISOWeek(weekStartDate);
+    const days = eachDayOfInterval({ start, end }).map(this.mapDays);
+    const month = getMonth(weekStartDate) + 1; // counting from zero correction
+    const monthName = format(weekStartDate, 'LLLL').toLowerCase(); // only month name
+    const week = getISOWeek(weekStartDate);
+
+    const comparisonResult = compareAsc(weekStartDate, this.sysDate);
+    const past = comparisonResult < 0 && !isSameWeek(weekStartDate, this.sysDate);
+    const actual = isSameWeek(weekStartDate, this.sysDate);
+    const future = comparisonResult > 0 && !isSameWeek(weekStartDate, this.sysDate);
+    const type = actual ? 'actual' : past ? 'past' : 'future';
+
+    const classList = [type, monthName, 'month-' + month, 'week-' + week].filter(Boolean);
+
+    return {
+      week,
+      past,
+      actual,
+      future,
+      type,
+      days,
+      classList,
+    };
+  };
 
   private mapDays = (day): object => {
     const date = format(day, this.calendarOptions.rawDateFormat);
@@ -140,11 +173,11 @@ export class CalendarComponent implements OnInit, OnChanges {
     const month = getMonth(day) + 1; // counting from zero correction
     const weekend = isWeekend(day);
     const week = getISOWeek(day);
-    const title = this.monthNames[month - 1] + ' ' + monthDay; //format(day, this.calendarOptions.titleDateFormat);
+    const title = this.monthNames[month - 1] + ' ' + monthDay; // format(day, this.calendarOptions.titleDateFormat);
 
     const comparisonResult = compareAsc(day, this.sysDate);
-    const today = comparisonResult === 0;
     const past = comparisonResult < 0;
+    const today = comparisonResult === 0;
     const future = comparisonResult > 0;
     const type = today ? 'today' : past ? 'past' : 'future';
 
@@ -172,7 +205,7 @@ export class CalendarComponent implements OnInit, OnChanges {
       'month-day-' + monthDay,
     ].filter(Boolean);
 
-    let resultObj = {
+    const resultObj = {
       date,
       title,
       visible,
