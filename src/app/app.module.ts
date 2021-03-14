@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { interceptorProviders } from './interceptors';
 
@@ -38,7 +39,7 @@ import { Content04Component } from './contents/content04/content04.component';
     SvgTimeComponent,
     Content04Component,
   ],
-  imports: [BrowserModule, HttpClientModule, NgbModule, FormsModule],
+  imports: [BrowserModule, HttpClientModule, NgbModule, FormsModule, BrowserAnimationsModule],
   providers: [interceptorProviders],
   bootstrap: [AppComponent],
 })

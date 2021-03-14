@@ -25,13 +25,12 @@
       display: none;
     }
 
-    > div {
-      padding-left: 8px;
+    > .header-cell {
+      margin-bottom: 0.5rem;
       padding-bottom: 1em;
       align-items: center;
       font-style: italic;
       color: #999 !important;
-      margin-bottom: 0.5rem;
     }
   }
 
@@ -65,17 +64,17 @@
       }
     }
 
-    & > div {
+    > .week-cell {
       position: relative;
-      padding: 1.6em 0.5em 0.6em 0.6em;
-      min-height: 7.2em;
+      padding: 0.4rem 0.6rem 0.4rem 0.5rem;
+      min-height: 7.2rem;
       background-color: #f7f8fa;
-      border-radius: 0.6em;
-      margin-bottom: 0.4em;
+      border-radius: 0.6rem;
+      margin-bottom: 0.4rem;
 
       @include media-breakpoint-down(md) {
-        min-height: 4.5em;
-        padding-top: 2em;
+        min-height: 4.5rem;
+        padding: 0.4rem 0.6rem;
       }
 
       &:last-child {
@@ -148,14 +147,10 @@
       .title {
         //content: attr(data-date);
         display: block;
-        position: absolute;
-        top: 0;
-        right: 0;
-        padding: 6px 12px;
         color: #aaa;
         transition: color 0.3s;
         font-weight: bold;
-        font-size: 0.8em;
+        font-size: 0.8rem;
         text-transform: uppercase;
         text-align: right;
         white-space: nowrap;
@@ -164,19 +159,18 @@
         width: 100%;
 
         @include media-breakpoint-down(md) {
-          right: auto;
-          left: 0;
+          margin-bottom: 0.5rem;
         }
       }
     }
   }
 
-  .calendar-header > div,
-  .calendar-week > div {
+  .calendar-header > .header-cell,
+  .calendar-week > .week-cell {
     display: flex;
     flex-direction: column;
     width: 100%;
-    margin-right: 5px;
+    margin-right: 0.4rem;
     color: #333;
     transition: background-color 0.3s, color 0.3s;
     overflow-x: hidden;
@@ -202,7 +196,7 @@
       overflow-x: hidden;
       text-overflow: ellipsis;
       transition: color 0.3s;
-      font-size: 0.85em;
+      font-size: 0.8rem;
 
       @include media-breakpoint-down(md) {
         display: inline;

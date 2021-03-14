@@ -11,7 +11,39 @@
 <app-panel-menu [items]="content" [activeIndex]="contentIndex" (selection)="selectContent($event)">
 </app-panel-menu>
 
-<ng-container *ngTemplateOutlet="liveTemplate || topic4"></ng-container>
+<div
+  *ngIf="visible && contentIndex === 0"
+  @enterLeaveTrigger
+  (@enterLeaveTrigger.done)="animDone($event)"
+>
+  <app-content01></app-content01>
+</div>
+
+<div
+  *ngIf="visible && contentIndex === 1"
+  @enterLeaveTrigger
+  (@enterLeaveTrigger.done)="animDone($event)"
+>
+  <app-content02></app-content02>
+</div>
+
+<div
+  *ngIf="visible && contentIndex === 2"
+  @enterLeaveTrigger
+  (@enterLeaveTrigger.done)="animDone($event)"
+>
+  <app-content03></app-content03>
+</div>
+
+<div
+  *ngIf="visible && contentIndex === 3"
+  @enterLeaveTrigger
+  (@enterLeaveTrigger.done)="animDone($event)"
+>
+  <app-content04></app-content04>
+</div>
+
+<!--<ng-container *ngTemplateOutlet="liveTemplate || topic4"></ng-container>
 
 <ng-template #topic1>
   <app-content01></app-content01>
@@ -28,3 +60,4 @@
 <ng-template #topic4>
   <app-content04></app-content04>
 </ng-template>
+-->

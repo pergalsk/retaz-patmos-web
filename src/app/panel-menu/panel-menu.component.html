@@ -1,5 +1,5 @@
-<div class="panel-menu mb-3">
-  <div class="menu-button mb-3">
+<div class="panel-menu">
+  <div class="menu-button">
     <button
       (click)="togglePanelMenu()"
       type="button"
@@ -9,7 +9,12 @@
     </button>
   </div>
 
-  <div class="menu-list" *ngIf="menuOpened && items.length">
+  <div
+    class="menu-list"
+    *ngIf="menuOpened && items.length"
+    @openCloseTrigger
+    (@openCloseTrigger.done)="leaveAnimEnd($event)"
+  >
     <ul>
       <li
         *ngFor="let item of items; index as id"

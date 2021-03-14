@@ -1,15 +1,18 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { animations } from './panel-menu.animations';
 
 @Component({
   selector: 'app-panel-menu',
   templateUrl: './panel-menu.component.html',
   styleUrls: ['./panel-menu.component.scss'],
+  animations,
 })
 export class PanelMenuComponent implements OnInit {
   @Input() items: any[];
   @Input() activeIndex: number;
   @Output() selection: EventEmitter<number> = new EventEmitter<number>();
 
+  selectedIdTmp: number;
   menuOpened = false;
 
   constructor() {}
@@ -17,16 +20,27 @@ export class PanelMenuComponent implements OnInit {
   ngOnInit(): void {}
 
   selectPanelContent(id: number): void {
-    console.log('Selected content-id = ' + id);
     if (id === this.activeIndex) {
       return;
     }
 
     this.togglePanelMenu(false);
-    this.selection.emit(id);
+    // store selected ID and wait for animation finish
+    this.selectedIdTmp = id;
+
+    console.log(`Stored selected content-id = ${id}`);
   }
 
   togglePanelMenu(opened?: boolean): void {
     this.menuOpened = typeof opened !== 'undefined' ? opened : !this.menuOpened;
+  }
+
+  leaveAnimEnd(event): void {
+    if (event.toState === 'void' && this.selectedIdTmp != null) {
+      // get last selected ID and destroy
+      this.selection.emit(this.selectedIdTmp);
+      console.log(`Emitted content-id = ${this.selectedIdTmp}`);
+      this.selectedIdTmp = null;
+    }
   }
 }
