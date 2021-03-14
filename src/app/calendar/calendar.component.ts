@@ -147,10 +147,10 @@ export class CalendarComponent implements OnInit, OnChanges {
     const monthName = format(weekStartDate, 'LLLL').toLowerCase(); // only month name
     const week = getISOWeek(weekStartDate);
 
-    const comparisonResult = compareAsc(weekStartDate, this.sysDate);
-    const past = comparisonResult < 0 && !isSameWeek(weekStartDate, this.sysDate);
-    const actual = isSameWeek(weekStartDate, this.sysDate);
-    const future = comparisonResult > 0 && !isSameWeek(weekStartDate, this.sysDate);
+    const comparison = compareAsc(weekStartDate, this.sysDate);
+    const past = comparison < 0 && !isSameWeek(weekStartDate, this.sysDate, { weekStartsOn: 1 });
+    const actual = isSameWeek(weekStartDate, this.sysDate, { weekStartsOn: 1 });
+    const future = comparison > 0 && !isSameWeek(weekStartDate, this.sysDate, { weekStartsOn: 1 });
     const type = actual ? 'actual' : past ? 'past' : 'future';
 
     const classList = [type, monthName, 'month-' + month, 'week-' + week].filter(Boolean);
