@@ -1,5 +1,5 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 500">
-  <g id="freepik--background-complete--inject-2">
+  <g id="freepik--background-complete--inject-2" [attr.opacity]="theme.backgroundOpacity">
     <rect y="382.4" width="500" height="0.25" style="fill:#ebebeb"/>
     <rect x="416.78" y="398.49" width="33.12" height="0.25" style="fill:#ebebeb"/>
     <rect x="322.53" y="401.21" width="8.69" height="0.25" style="fill:#ebebeb"/>
@@ -72,28 +72,31 @@
     <path d="M397.47,223.34s-1,23.33-39.18,23.33-39.18-23.33-39.18-23.33Z" style="fill:#f0f0f0"/>
   </g>
   <g id="freepik--Shadow--inject-2">
-    <ellipse id="freepik--path--inject-2" cx="250" cy="416.24" rx="193.89" ry="11.32" style="fill:#000; opacity: 0.075"/>
+    <ellipse id="freepik--path--inject-2" cx="250" cy="416.24" rx="193.89" ry="11.32"
+             style="fill:#000; opacity: 0.075"/>
   </g>
   <g id="freepik--Hourglass--inject-2">
-    <g style="opacity:0.2">
-      <polygon points="360.73 407.87 297.04 290.15 233.35 407.87 360.73 407.87" [attr.fill]="color"/>
-      <polygon points="360.73 208.72 297.04 326.43 233.35 208.72 360.73 208.72" [attr.fill]="color"/>
+    <g [attr.opacity]="theme.hoursGlassOpacity">
+      <polygon points="360.73 407.87 297.04 290.15 233.35 407.87 360.73 407.87" [attr.fill]="theme.hoursColor"
+      />
+      <polygon points="360.73 208.72 297.04 326.43 233.35 208.72 360.73 208.72" [attr.fill]="theme.hoursColor"
+      />
     </g>
     <path
         d="M308.71,278.22l-9.32,17.22a2.67,2.67,0,0,1-4.7,0l-9.32-17.22a10.21,10.21,0,0,1,9-15.06h5.39A10.21,10.21,0,0,1,308.71,278.22Z"
-        [attr.fill]="color"/>
+        [attr.fill]="theme.hoursColor" [attr.opacity]="theme.hoursItemsOpacity"/>
     <path
         d="M298.05,378.15,327,390.05a2.67,2.67,0,0,1-1,5.13H268.13a2.67,2.67,0,0,1-1-5.13L296,378.15A2.65,2.65,0,0,1,298.05,378.15Z"
-        [attr.fill]="color"/>
-    <circle cx="297.04" cy="351.8" r="3.71" [attr.fill]="color"/>
-    <circle cx="297.04" cy="313.05" r="1.91" [attr.fill]="color"/>
-    <circle cx="297.04" cy="331.52" r="2.17" [attr.fill]="color"/>
+        [attr.fill]="theme.hoursColor" [attr.opacity]="theme.hoursItemsOpacity"/>
+    <circle cx="297.04" cy="351.8" r="3.71" [attr.fill]="theme.hoursColor" [attr.opacity]="theme.hoursItemsOpacity"/>
+    <circle cx="297.04" cy="313.05" r="1.91" [attr.fill]="theme.hoursColor" [attr.opacity]="theme.hoursItemsOpacity"/>
+    <circle cx="297.04" cy="331.52" r="2.17" [attr.fill]="theme.hoursColor" [attr.opacity]="theme.hoursItemsOpacity"/>
     <path
         d="M360.41,402.06H233.67a5.82,5.82,0,0,0-5.8,5.81h0a5.82,5.82,0,0,0,5.8,5.8H360.41a5.82,5.82,0,0,0,5.8-5.8h0A5.82,5.82,0,0,0,360.41,402.06Z"
-        [attr.fill]="color"/>
+        [attr.fill]="theme.hoursColor"/>
     <path
         d="M360.41,202.92H233.67a5.82,5.82,0,0,0-5.8,5.8h0a5.82,5.82,0,0,0,5.8,5.8H360.41a5.82,5.82,0,0,0,5.8-5.8h0A5.82,5.82,0,0,0,360.41,202.92Z"
-        [attr.fill]="color"/>
+        [attr.fill]="theme.hoursColor"/>
   </g>
   <g id="freepik--Character--inject-2">
     <polygon points="194.63 405.68 187.58 403.39 191.96 386.76 199.01 389.05 194.63 405.68" style="fill:#ff8b7b"/>
@@ -202,7 +205,7 @@
     <path d="M153.06,96.34l-.51-.86a35.39,35.39,0,0,1,4.57-2.28l.38.93A33.38,33.38,0,0,0,153.06,96.34Z"
           [attr.fill]="color"/>
     <path d="M138.46,114l-1-.34A34.81,34.81,0,0,1,149.77,97.3l.59.81A33.7,33.7,0,0,0,138.46,114Z" [attr.fill]="color"/>
-    <circle cx="170.2" cy="125.39" r="30.78" [attr.fill]="color"/>
+    <circle cx="170.2" cy="125.39" r="30.78" [attr.fill]="theme.hoursCircle"/>
     <path d="M195.91,125.39a25.71,25.71,0,1,1-6.72-17.34.06.06,0,0,1,.05,0A25.66,25.66,0,0,1,195.91,125.39Z"
           style="fill:#fff;opacity:0.6000000000000001"/>
     <path

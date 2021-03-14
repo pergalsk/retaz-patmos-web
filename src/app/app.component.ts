@@ -38,6 +38,10 @@ export class AppComponent implements OnInit {
       title: 'Vykupujte čas!',
       subtitle: 'Modlitebná téma | 8.3. - 14.3.',
     },
+    {
+      title: 'Vrchnosti',
+      subtitle: 'Modlitebná téma | 15.3. - 21.3.',
+    },
   ];
 
   constructor(private httpClient: HttpClient, private modalService: NgbModal) {}
