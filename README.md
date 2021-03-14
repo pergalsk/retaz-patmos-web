@@ -6,6 +6,7 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 
 - fix color transitions on selectable content component
 - separate months in calendar UI  
+- work with a keyboard (calendar, selective content menu)  
 - px|em -> rem
 - better responsive layout (margins, font size for smaller devices)
 - sass variables for calendar component
