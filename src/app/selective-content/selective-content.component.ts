@@ -10,8 +10,9 @@ import {
   EventEmitter,
   SimpleChanges,
 } from '@angular/core';
-import { transition, trigger, useAnimation } from '@angular/animations';
+import { transition, trigger, useAnimation, AnimationEvent } from '@angular/animations';
 import { contentEnterAnim, contentLeaveAnim } from '../animations/contentAnimations';
+import { PanelMenuItem } from '../app.component';
 
 @Component({
   selector: 'app-selective-content',
@@ -25,8 +26,8 @@ import { contentEnterAnim, contentLeaveAnim } from '../animations/contentAnimati
   ],
 })
 export class SelectiveContentComponent implements OnInit, AfterViewInit, OnChanges {
-  @Input() contentIndex: any;
-  @Input() content: any;
+  @Input() content: PanelMenuItem[];
+  @Input() contentIndex: number;
   @Output() selection: EventEmitter<any> = new EventEmitter();
 
   // @ViewChild('topic1') topic1: TemplateRef<any>;
@@ -63,7 +64,7 @@ export class SelectiveContentComponent implements OnInit, AfterViewInit, OnChang
     this.selection.emit(itemId);
   }
 
-  animDone($event: any) {
+  animDone(event: AnimationEvent) {
     this.visible = true;
   }
 }

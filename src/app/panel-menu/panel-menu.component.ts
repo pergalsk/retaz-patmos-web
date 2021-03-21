@@ -1,5 +1,7 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { AnimationEvent } from '@angular/animations';
 import { animations } from './panel-menu.animations';
+import { PanelMenuItem } from '../app.component';
 
 @Component({
   selector: 'app-panel-menu',
@@ -8,7 +10,7 @@ import { animations } from './panel-menu.animations';
   animations,
 })
 export class PanelMenuComponent implements OnInit {
-  @Input() items: any[];
+  @Input() items: PanelMenuItem[];
   @Input() activeIndex: number;
   @Output() selection: EventEmitter<number> = new EventEmitter<number>();
 
@@ -35,7 +37,7 @@ export class PanelMenuComponent implements OnInit {
     this.menuOpened = typeof opened !== 'undefined' ? opened : !this.menuOpened;
   }
 
-  leaveAnimEnd(event): void {
+  leaveAnimEnd(event: AnimationEvent): void {
     if (event.toState === 'void' && this.selectedIdTmp != null) {
       // get last selected ID and destroy
       this.selection.emit(this.selectedIdTmp);

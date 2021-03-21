@@ -1,9 +1,57 @@
 import { Component, OnInit } from '@angular/core';
-import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse, HttpHeaders, HttpResponse } from '@angular/common/http';
 import { Observable, zip, throwError } from 'rxjs';
 import { catchError, delay, map } from 'rxjs/operators';
 import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
 import { ModalContentComponent } from './modal-content/modal-content.component';
+
+export interface SysdateResponse {
+  rfc822: string;
+  sysdate: string;
+  systime: string;
+  timestamp: number;
+}
+
+export interface DatesResponse {
+  id: number;
+  date: string;
+  names: string[];
+  timestamp: string;
+}
+
+export interface PutNameRequest {
+  date: string;
+  name: string;
+}
+
+export interface CalendarDataProps {
+  start: string;
+  end: string;
+}
+
+export type CalendarData<T> = ({ [Key: string]: T } & CalendarDataProps) | CalendarDataProps;
+
+export interface PanelMenuItem {
+  title: string;
+  subtitle: string;
+}
+
+export interface CalendarOptions {
+  sysDate: string;
+  sysTime: string;
+  header: true;
+  separateMonths: boolean;
+  collapsedWeeks: boolean;
+  // multiselect: true;
+  // rawDateFormat: string,
+  // titleDateFormat: string,
+  overrides: {
+    '2021-04-02': {
+      title: string;
+      classes: string[];
+    };
+  };
+}
 
 @Component({
   selector: 'app-root',
@@ -11,17 +59,17 @@ import { ModalContentComponent } from './modal-content/modal-content.component';
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent implements OnInit {
-  rawDates: Array<any> = [];
+  rawDates: DatesResponse[] = [];
   sysDate: string = null;
   sysTime: string = null;
-  calendarData: any = null;
+  calendarData: CalendarData<string[]> = null;
   calendarOptions: any = null;
-  modalRef = null;
+  modalRef: any = null;
   getCalendarError = false;
   submitError = false;
   panelContentIndex = 0;
 
-  panelMenuItems = [
+  panelMenuItems: PanelMenuItem[] = [
     {
       title: 'Návrat k Bohu celým srdcom',
       subtitle: 'Modlitebná téma | 17.2. - 21.2.',
@@ -46,7 +94,7 @@ export class AppComponent implements OnInit {
 
   constructor(private httpClient: HttpClient, private modalService: NgbModal) {}
 
-  private handleSuccess = (data) => {
+  private handleSuccess = (data: { rawDates: DatesResponse[]; sysDateTime: SysdateResponse }) => {
     this.getCalendarError = false;
 
     this.rawDates = data?.rawDates;
@@ -72,14 +120,14 @@ export class AppComponent implements OnInit {
     this.calendarData = this.generateCalendarData(this.rawDates);
   };
 
-  onDateClick(event): void {
+  onDateClick(event: any): void {
     if (this.modalRef || !event) {
       return;
     }
 
     const { weekIndex, dayIndex, day, week, calendar } = event;
 
-    if (!day || !day.date || !day.future) {
+    if (!day?.date || !day?.future) {
       return;
     }
 
@@ -94,46 +142,51 @@ export class AppComponent implements OnInit {
       date,
     };
 
-    this.modalRef.result
-      .then((result) => {
-        this.modalRef = null;
-        console.log(result);
-
-        if (!result || typeof result !== 'string') {
-          return;
-        }
-
-        const name = result.trim().substring(0, 25);
-
-        const submitData = {
-          date,
-          name,
-        };
-
-        this.submitError = false;
-        this.submitAnswers(submitData).subscribe(
-          (resp) => {
-            if (Array.isArray(resp)) {
-              this.calendarData = {
-                ...this.calendarData,
-                [date]: [...resp],
-              };
-            }
-
-            this.submitError = false;
-            console.log(resp);
-          },
-          (error) => {
-            this.submitError = true;
-            console.log(error);
-          }
-        );
-      })
-      .catch((dismiss) => {
-        this.modalRef = null;
-        console.log(dismiss);
-      });
+    this.modalRef.result.then(this.onClickModalResult(date)).catch(this.onClickModalCatch);
   }
+
+  onClickModalResult(date): (result: string) => void {
+    return (result: string) => {
+      this.modalRef = null;
+
+      console.log('Entered text: ', result);
+
+      if (!result || typeof result !== 'string') {
+        return;
+      }
+
+      const name: string = result.trim().substring(0, 25);
+
+      const submitData: PutNameRequest = {
+        date,
+        name,
+      };
+
+      this.submitError = false;
+      this.submitAnswers(submitData).subscribe(
+        (resp: string[]) => {
+          if (Array.isArray(resp)) {
+            this.calendarData = {
+              ...this.calendarData,
+              [date]: [...resp],
+            };
+          }
+
+          this.submitError = false;
+          console.log(resp);
+        },
+        (error: any) => {
+          this.submitError = true;
+          console.log(error);
+        }
+      );
+    };
+  }
+
+  onClickModalCatch = (dismiss: any): void => {
+    this.modalRef = null;
+    console.log(dismiss);
+  };
 
   selectPanelContent(menuItemSelectedId: number): void {
     this.panelContentIndex = menuItemSelectedId;
@@ -148,11 +201,14 @@ export class AppComponent implements OnInit {
       .subscribe(this.handleSuccess, this.handleError); // todo: unsubscribe
   }
 
-  private generateCalendarData(rawDates): any {
-    const calendarData: any = {};
+  private generateCalendarData(rawDates: DatesResponse[]): any {
+    const calendarData: CalendarData<string[]> = {
+      start: null,
+      end: null,
+    };
 
     if (Array.isArray(rawDates) && rawDates.length > 0) {
-      rawDates.sort(this.sortString).forEach((item) => {
+      rawDates.sort(this.sortString).forEach((item: DatesResponse) => {
         if (item.date) {
           calendarData[item.date] = item.names || [];
         }
@@ -164,7 +220,7 @@ export class AppComponent implements OnInit {
     return calendarData;
   }
 
-  private sortString = (a, b) => {
+  private sortString(a: DatesResponse, b: DatesResponse): number {
     const dateA = a.date;
     const dateB = b.date;
 
@@ -177,29 +233,29 @@ export class AppComponent implements OnInit {
     }
 
     return 0;
-  };
+  }
 
-  private handleError = (error) => {
+  private handleError(error: any): void {
     this.getCalendarError = true;
     console.log(error);
-  };
+  }
 
-  private getDates = () => {
+  private getDates(): any {
     return this.loadDates() /*.pipe(
       // map((formSchema) => this.processFormSchema(formSchema)),
       // catchError(this.handleError('Formulár sa nepodarilo načítať.'))
     )*/;
-  };
-
-  private getSysDateTime(): Observable<any> {
-    return this.httpClient.get('/api/sysdate');
   }
 
-  private loadDates(): Observable<any> {
-    return this.httpClient.get('/api/dates');
+  private getSysDateTime(): Observable<SysdateResponse> {
+    return this.httpClient.get<SysdateResponse>('/api/sysdate');
   }
 
-  private submitAnswers(submitData): Observable<any> {
-    return this.httpClient.put('/api/dates', submitData);
+  private loadDates(): Observable<DatesResponse[]> {
+    return this.httpClient.get<DatesResponse[]>('/api/dates');
+  }
+
+  private submitAnswers(submitData: PutNameRequest): Observable<string[]> {
+    return this.httpClient.put<string[]>('/api/dates', submitData);
   }
 }

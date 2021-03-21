@@ -16,10 +16,18 @@ export class ModalContentComponent implements OnInit {
   constructor(public activeModal: NgbActiveModal) {}
 
   ngOnInit(): void {
-    const weekDayNames = ['nedeľu', 'pondelok', 'utorok', 'stredu', 'štvrtok', 'piatok', 'sobotu'];
+    const weekDayNames: string[] = [
+      'nedeľu',
+      'pondelok',
+      'utorok',
+      'stredu',
+      'štvrtok',
+      'piatok',
+      'sobotu',
+    ];
 
     if (this.date?.date) {
-      const date = new Date(this.date.date.valueOf());
+      const date: Date = new Date(this.date.date.valueOf());
       this.weekDay = weekDayNames[date.getDay()];
     }
 
