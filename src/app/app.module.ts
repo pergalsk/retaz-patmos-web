@@ -18,6 +18,7 @@ import { Content02Component } from './contents/content02/content02.component';
 import { Content03Component } from './contents/content03/content03.component';
 import { Content04Component } from './contents/content04/content04.component';
 import { Content05Component } from './contents/content05/content05.component';
+import { Content06Component } from './contents/content06/content06.component';
 
 import { SvgWorldComponent } from './svg/svg-world/svg-world.component';
 import { SvgDiaryComponent } from './svg/svg-diary/svg-diary.component';
@@ -25,6 +26,7 @@ import { SvgPrayComponent } from './svg/svg-pray/svg-pray.component';
 import { SvgPresidentComponent } from './svg/svg-president/svg-president.component';
 import { SvgConnectComponent } from './svg/svg-connect/svg-connect.component';
 import { SvgTimeComponent } from './svg/svg-time/svg-time.component';
+import { SvgAppreciationComponent } from './svg/svg-appreciation/svg-appreciation.component';
 
 @NgModule({
   declarations: [
@@ -44,6 +46,8 @@ import { SvgTimeComponent } from './svg/svg-time/svg-time.component';
     Content04Component,
     Content05Component,
     SvgPresidentComponent,
+    SvgAppreciationComponent,
+    Content06Component,
   ],
   imports: [BrowserModule, HttpClientModule, NgbModule, FormsModule, BrowserAnimationsModule],
   providers: [interceptorProviders],

@@ -1,5 +1,5 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 500">
-  <g id="freepik--background-complete--inject-2">
+  <g id="freepik--background-complete--inject-2" [attr.opacity]="theme.backgroundOpacity">
     <polygon points="255.16 244.11 255.16 244.12 255.19 244.12 255.16 244.11" style="fill:#f5f5f5"></polygon>
     <polygon points="255.06 244.12 255.14 244.12 255.09 244.09 255.06 244.12" style="fill:#f5f5f5"></polygon>
     <polygon points="254.97 244.06 254.92 244.12 255.05 244.12 254.97 244.06" style="fill:#f5f5f5"></polygon>

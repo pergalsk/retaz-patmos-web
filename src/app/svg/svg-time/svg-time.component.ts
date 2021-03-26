@@ -7,7 +7,7 @@ import { Component, Input, OnInit } from '@angular/core';
 })
 export class SvgTimeComponent implements OnInit {
   @Input() color = '#7A478C';
-  @Input() variant = 'light';
+  @Input() variant = 'dark';
 
   theme: any;
 

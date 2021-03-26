@@ -51,6 +51,14 @@
   <app-content05></app-content05>
 </div>
 
+<div
+  *ngIf="visible && contentIndex === 5"
+  @enterLeaveTrigger
+  (@enterLeaveTrigger.done)="animDone($event)"
+>
+  <app-content06></app-content06>
+</div>
+
 <!--<ng-container *ngTemplateOutlet="liveTemplate || topic4"></ng-container>
 
 <ng-template #topic1>
