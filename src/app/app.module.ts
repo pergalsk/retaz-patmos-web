@@ -19,35 +19,39 @@ import { Content03Component } from './contents/content03/content03.component';
 import { Content04Component } from './contents/content04/content04.component';
 import { Content05Component } from './contents/content05/content05.component';
 import { Content06Component } from './contents/content06/content06.component';
+import { Content07Component } from './contents/content07/content07.component';
 
-import { SvgWorldComponent } from './svg/svg-world/svg-world.component';
+import { SvgAppreciationComponent } from './svg/svg-appreciation/svg-appreciation.component';
+import { SvgConnectComponent } from './svg/svg-connect/svg-connect.component';
 import { SvgDiaryComponent } from './svg/svg-diary/svg-diary.component';
+import { SvgNatureComponent } from './svg/svg-nature/svg-nature.component';
 import { SvgPrayComponent } from './svg/svg-pray/svg-pray.component';
 import { SvgPresidentComponent } from './svg/svg-president/svg-president.component';
-import { SvgConnectComponent } from './svg/svg-connect/svg-connect.component';
 import { SvgTimeComponent } from './svg/svg-time/svg-time.component';
-import { SvgAppreciationComponent } from './svg/svg-appreciation/svg-appreciation.component';
+import { SvgWorldComponent } from './svg/svg-world/svg-world.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    ModalContentComponent,
-    PanelMenuComponent,
     CalendarComponent,
-    SelectiveContentComponent,
     Content01Component,
     Content02Component,
     Content03Component,
-    SvgWorldComponent,
-    SvgDiaryComponent,
-    SvgPrayComponent,
-    SvgConnectComponent,
-    SvgTimeComponent,
     Content04Component,
     Content05Component,
-    SvgPresidentComponent,
-    SvgAppreciationComponent,
     Content06Component,
+    Content07Component,
+    ModalContentComponent,
+    PanelMenuComponent,
+    SelectiveContentComponent,
+    SvgAppreciationComponent,
+    SvgConnectComponent,
+    SvgDiaryComponent,
+    SvgNatureComponent,
+    SvgPrayComponent,
+    SvgPresidentComponent,
+    SvgTimeComponent,
+    SvgWorldComponent,
   ],
   imports: [BrowserModule, HttpClientModule, NgbModule, FormsModule, BrowserAnimationsModule],
   providers: [interceptorProviders],
