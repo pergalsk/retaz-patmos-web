@@ -1,4 +1,4 @@
-<div class="container app-main">
+<div *ngIf="showContent" class="container app-main">
   <div class="jumbotron">
     <h1 class="display-4 mb-4">Pôstna reťaz</h1>
 
@@ -59,7 +59,7 @@
     </div>
   </div>
 
-  <div class="jumbotron negative gradient-a">
+  <!--<div class="jumbotron negative gradient-a">
     <div class="row">
       <div class="col-md">
         <h5 class="text-center mb-3">
@@ -80,17 +80,17 @@
         </p>
       </div>
     </div>
-  </div>
+  </div>-->
 
   <div class="mb-4">
     <h1 class="text-center mt-4">Modlitebné podnety</h1>
-    <p class="text-center">
+    <!--<p class="text-center">
       Nech sú pre vás inšpiráciou počas celého pôstneho obdobia, aj keď práve nie ste zapísaní v
       kalendári.
-    </p>
+    </p>-->
   </div>
 
-  <div class="row">
+  <!--<div class="row">
     <div class="col-lg">
       <div class="jumbotron">
         <p>
@@ -123,7 +123,7 @@
         </p>
       </div>
     </div>
-  </div>
+  </div>-->
 
   <!--<div class="video-container iframe">
     <iframe
@@ -137,18 +137,18 @@
     </iframe>
   </div>-->
 
-  <div class="video-container">
+  <!--<div class="video-container">
     <video width="auto" height="auto" controls controlslist="nodownload" class="video-elem">
       <source src="assets/pozdrav-chalupka.mp4" type="video/mp4" />
       Váš prehliadač nepodporuje HTML kontajner pre prehliadanie videa.
     </video>
-  </div>
+  </div>-->
 
   <div class="row mb-4">
     <div class="col-lg">
       <div
         class="jumbotron no-padding"
-        [ngClass]="{ 'negative gradient-b': panelContentIndex !== panelMenuItems.length - 1 }"
+        [ngClass]="{ '': panelContentIndex !== panelMenuItems.length - 1 }"
       >
         <app-selective-content
           [contentIndex]="panelContentIndex"
@@ -246,7 +246,7 @@
     </div>
   </div>
 
-  <h1 class="text-center">Pôstna reťaz</h1>
+  <!--<h1 class="text-center">Pôstna reťaz</h1>
 
   <p class="text-center small">
     <strong>Na jeden deň sa môžu zapísať aj viacerí</strong>, zároveň sa jeden človek môže
@@ -272,7 +272,7 @@
       [options]="calendarOptions"
       (cellAction)="onDateClick($event)"
     ></app-calendar>
-  </div>
+  </div>-->
 
   <p class="text-center small">
     © 2021 <a href="https://patmos.sk">Evanjelcký a. v. cirkevný zbor na Slovensku, Prešov</a> | PG
