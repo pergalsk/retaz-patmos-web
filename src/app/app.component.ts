@@ -5,6 +5,8 @@ import { catchError, delay, map } from 'rxjs/operators';
 import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
 import { ModalContentComponent } from './modal-content/modal-content.component';
 import { InfoModalComponent } from './info-modal/info-modal.component';
+import { transition, trigger, useAnimation } from '@angular/animations';
+import { mainPageEnter } from './animations/contentAnimations';
 
 export interface SysdateResponse {
   rfc822: string;
@@ -58,6 +60,7 @@ export interface CalendarOptions {
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
+  animations: [trigger('enterTrigger', [transition(':enter', [useAnimation(mainPageEnter)])])],
 })
 export class AppComponent implements OnInit {
   rawDates: DatesResponse[] = [];

@@ -11,3 +11,8 @@ export const contentEnterAnim = animation([
 export const contentLeaveAnim = animation([
   animate(timings, style({ opacity: 0, transform: `translateX(${position})` })),
 ]);
+
+export const mainPageEnter = animation([
+  style({ opacity: 0 }),
+  animate('600ms', style({ opacity: 1 })),
+]);

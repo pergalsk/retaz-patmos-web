@@ -1,8 +1,8 @@
-<div class="modal-body">
-  <div class="mb-3">
-    <strong class="unselectable" id="modal-basic-title">Drahí modlitebníci,</strong>
-  </div>
+<div class="modal-header">
+  <strong class="unselectable" id="modal-basic-title">Drahí modlitebníci,</strong>
+</div>
 
+<div class="modal-body">
   <p>
     Veľká noc je za nami a to znamená, že aj naša Pôstna reťaz sa skončila. Ďakujeme všetkým vám,
     ktorí ste sa zapojili pôstom aj modlitbami, či už ste boli zapísaní v kalendári alebo nie.
@@ -21,16 +21,14 @@
   <p>Nech vás Pán Boh žehná!</p>
 
   <p>Vlado Gál</p>
+</div>
 
-  <form name="modalButtons">
-    <div class="clearfix">
-      <button
-        (click)="passBack()"
-        type="submit"
-        class="btn btn-outline-primary btn-smaller float-right"
-      >
-        Zobraziť modlitebné podnety
-      </button>
-    </div>
-  </form>
+<div class="modal-footer">
+  <button
+    (click)="passBack()"
+    type="submit"
+    class="btn btn-outline-primary btn-smaller float-right btn-block-md"
+  >
+    Zobraziť modlitebné podnety
+  </button>
 </div>
