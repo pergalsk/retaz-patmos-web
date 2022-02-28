@@ -4,7 +4,6 @@ import { Observable, zip, throwError } from 'rxjs';
 import { catchError, delay, map } from 'rxjs/operators';
 import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
 import { ModalContentComponent } from './modal-content/modal-content.component';
-import { InfoModalComponent } from './info-modal/info-modal.component';
 
 export interface SysdateResponse {
   rfc822: string;
@@ -69,8 +68,6 @@ export class AppComponent implements OnInit {
   getCalendarError = false;
   submitError = false;
   panelContentIndex = 0;
-
-  showContent = false;
 
   panelMenuItems: PanelMenuItem[] = [
     {
@@ -205,24 +202,11 @@ export class AppComponent implements OnInit {
 
   ngOnInit(): void {
     this.getCalendarError = false;
-    // this.panelContentIndex = this.panelMenuItems.length - 1;
+    this.panelContentIndex = this.panelMenuItems.length - 1;
 
     zip(this.getDates(), this.getSysDateTime())
       .pipe(map(([rawDates, sysDateTime]) => ({ rawDates, sysDateTime })))
       .subscribe(this.handleSuccess, this.handleError); // todo: unsubscribe
-
-    const infoModalRef = this.modalService.open(InfoModalComponent, {
-      size: 'lg',
-      centered: true,
-      scrollable: true,
-      backdrop: 'static',
-      windowClass: 'negative gradient-a',
-      backdropClass: 'backdrop-light',
-    });
-
-    infoModalRef.shown.subscribe(() => {
-      this.showContent = true;
-    });
   }
 
   private generateCalendarData(rawDates: DatesResponse[]): any {

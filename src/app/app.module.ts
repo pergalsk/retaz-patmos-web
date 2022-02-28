@@ -29,7 +29,6 @@ import { SvgPrayComponent } from './svg/svg-pray/svg-pray.component';
 import { SvgPresidentComponent } from './svg/svg-president/svg-president.component';
 import { SvgTimeComponent } from './svg/svg-time/svg-time.component';
 import { SvgWorldComponent } from './svg/svg-world/svg-world.component';
-import { InfoModalComponent } from './info-modal/info-modal.component';
 
 @NgModule({
   declarations: [
@@ -53,7 +52,6 @@ import { InfoModalComponent } from './info-modal/info-modal.component';
     SvgPresidentComponent,
     SvgTimeComponent,
     SvgWorldComponent,
-    InfoModalComponent,
   ],
   imports: [BrowserModule, HttpClientModule, NgbModule, FormsModule, BrowserAnimationsModule],
   providers: [interceptorProviders],
