@@ -23,7 +23,15 @@ import {
   getISOWeek,
   isSameWeek,
 } from 'date-fns';
-import { CalendarData } from '../app.component';
+
+// import { CalendarData } from '../app.component';
+
+export interface CalendarDataProps {
+  start: string;
+  end: string;
+}
+
+export type CalendarData<T> = ({ [Key: string]: T } & CalendarDataProps) | CalendarDataProps;
 
 export type WeekType = 'actual' | 'past' | 'future';
 export type DayType = 'today' | 'past' | 'future';

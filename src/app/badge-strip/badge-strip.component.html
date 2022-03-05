@@ -1,0 +1,13 @@
+<div class="date-strip mb-3">
+  <ng-container *ngFor="let item of list">
+    <div
+      *ngIf="item.actual || item.past"
+      (click)="onDateClick(item.id)"
+      [class.actual]="actual === item.id"
+      [class.weekend]="item.day === 6 || item.day === 7"
+      class="date-badge"
+    >
+      {{ item.format_B }}
+    </div>
+  </ng-container>
+</div>

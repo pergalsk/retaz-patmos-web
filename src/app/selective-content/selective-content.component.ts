@@ -12,7 +12,7 @@ import {
 } from '@angular/core';
 import { transition, trigger, useAnimation, AnimationEvent } from '@angular/animations';
 import { contentEnterAnim, contentLeaveAnim } from '../animations/contentAnimations';
-import { PanelMenuItem } from '../app.component';
+import { PanelMenuItem } from '../panel-menu/panel-menu.component';
 
 @Component({
   selector: 'app-selective-content',

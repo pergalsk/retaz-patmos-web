@@ -29,6 +29,19 @@ import { SvgPrayComponent } from './svg/svg-pray/svg-pray.component';
 import { SvgPresidentComponent } from './svg/svg-president/svg-president.component';
 import { SvgTimeComponent } from './svg/svg-time/svg-time.component';
 import { SvgWorldComponent } from './svg/svg-world/svg-world.component';
+import { SvgManPrayComponent } from './svg/svg-man-pray/svg-man-pray.component';
+
+import { PageYear2021Component } from './pages/page-year2021/page-year2021.component';
+import { PageYear2022Component } from './pages/page-year2022/page-year2022.component';
+
+import { AppRoutingModule } from './app-routing.module';
+import { BadgeStripComponent } from './badge-strip/badge-strip.component';
+import { DayContentPanelComponent } from './day-content-panel/day-content-panel.component';
+import { YoutubeEmbeddedComponent } from './components/youtube-embedded/youtube-embedded.component';
+
+import { SafePipe } from './pipes/safe.pipe';
+import { ContentBoxComponent } from './components/content-box/content-box.component';
+import { TwoSplitComponent } from './components/two-split/two-split.component';
 
 @NgModule({
   declarations: [
@@ -52,8 +65,24 @@ import { SvgWorldComponent } from './svg/svg-world/svg-world.component';
     SvgPresidentComponent,
     SvgTimeComponent,
     SvgWorldComponent,
+    PageYear2021Component,
+    PageYear2022Component,
+    SvgManPrayComponent,
+    BadgeStripComponent,
+    DayContentPanelComponent,
+    YoutubeEmbeddedComponent,
+    SafePipe,
+    ContentBoxComponent,
+    TwoSplitComponent,
   ],
-  imports: [BrowserModule, HttpClientModule, NgbModule, FormsModule, BrowserAnimationsModule],
+  imports: [
+    BrowserModule,
+    HttpClientModule,
+    NgbModule,
+    FormsModule,
+    BrowserAnimationsModule,
+    AppRoutingModule,
+  ],
   providers: [interceptorProviders],
   bootstrap: [AppComponent],
 })

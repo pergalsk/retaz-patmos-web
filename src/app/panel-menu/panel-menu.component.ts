@@ -1,7 +1,11 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { AnimationEvent } from '@angular/animations';
 import { animations } from './panel-menu.animations';
-import { PanelMenuItem } from '../app.component';
+
+export interface PanelMenuItem {
+  title: string;
+  subtitle: string;
+}
 
 @Component({
   selector: 'app-panel-menu',
