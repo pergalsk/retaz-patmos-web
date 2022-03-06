@@ -1,3 +1,49 @@
+<ng-container *ngIf="date === '2022-03-07'">
+  <app-content-box [classList]="'gradient-c text-white'" [negative]="true" [biggerText]="true">
+    <app-two-split
+      [firstTitle]="firstTitle"
+      [secondTitle]="secondTitle"
+      [badgeText]="'Pondelok 7.3.'"
+    >
+      <ng-container first-slot>
+        <p>
+          <em
+            >Pred Bohom a pred Kristom Ježišom, ktorý bude súdiť živých a mŕtvych, zaväzujem ťa na
+            Jeho zjavenie a kráľovstvo: zvestuj slovo, buď pohotový vhod-nevhod, presviedčaj,
+            karhaj, napomínaj so všetkou trpezlivosťou a poučovaním. Lebo príde čas, keď (ľudia)
+            neznesú zdravé učenie, ale pretože chcú počúvať len to, čo sa im páči, budú si podľa
+            svojich žiadostí zháňať učiteľov, odvrátia sluch od pravdy a obrátia sa k bájkam. Ty
+            však buď vo všetkom striezlivý, znášaj protivenstvá, plň povolanie evanjelistu, konaj si
+            službu.
+          </em>
+        </p>
+
+        <p>Druhý Timotejovi 4,1-5</p>
+      </ng-container>
+
+      <ng-container second-slot>
+        <ul class="mb-0">
+          <li>
+            aby naše uši neboli "svrbľavé", ale boli stále pripravené počuť Božiu pravdu, aj keď sa
+            nám nebude páčiť. Aby sme si nehľadali učiteľov podľa toho, čo sa nám páči.
+          </li>
+          <li>
+            za všetkých, ktorí kážu slovo v našom zbore (na službách Božích, mládežiach,
+            skupinkách), aby boli poslušní vedeniu Ducha Svätého, boli nekompromisní a odvážni
+            hlásať Božie Slovo, Jeho pravdu, vhod-nevhod. Aby pri kázaní nepodliehali módnym
+            trendom.
+          </li>
+
+          <li>
+            aby sme vedeli rozpoznať zdravé učenie. (Ak počúvame online kázne z rôznych zdrojov,
+            čítame knihy, počúvame podcasty...)
+          </li>
+        </ul>
+      </ng-container>
+    </app-two-split>
+  </app-content-box>
+</ng-container>
+
 <ng-container *ngIf="date === '2022-03-06'">
   <app-content-box [classList]="'gradient-c text-white'" [negative]="true" [biggerText]="true">
     <app-two-split
