@@ -29,6 +29,34 @@ h6 {
   }
 }
 
+footer {
+  display: flex;
+  flex-direction: row;
+  gap: 1em;
+  align-items: center;
+  justify-content: center;
+  margin-top: 3.5rem;
+  margin-bottom: 5rem;
+
+  a {
+    color: $body-color;
+  }
+
+  .logo {
+  }
+  .info {
+    text-align: left;
+  }
+
+  @include media-breakpoint-down(md) {
+    flex-direction: column;
+
+    .info {
+      text-align: center;
+    }
+  }
+}
+
 .container {
   &.app-main {
     margin-top: 3rem;

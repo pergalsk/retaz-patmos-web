@@ -49,6 +49,10 @@
     border-top-right-radius: 0;
   }
 
+  &.no-shadow {
+    box-shadow: none;
+  }
+
   &.no-padding {
     padding: 0;
 
