@@ -1,3 +1,46 @@
+<ng-container *ngIf="date === '2022-03-13'">
+  <app-content-box [classList]="'gradient-c text-white'" [negative]="true" [biggerText]="true">
+    <app-two-split
+      [firstTitle]="firstTitle"
+      [secondTitle]="secondTitle"
+      [badgeText]="'Nedeľa 13.3.'"
+    >
+      <ng-container first-slot>
+        <p>
+          <em
+            >A toto je zvesť, ktorú sme počuli od Neho, a zvestujeme vám, že Boh je svetlo a nieto v
+            Ňom nijakej tmy. Ak hovoríme, že máme spoločenstvo s Ním a chodíme v tme, klameme a
+            nerobíme, čo je pravda. Ale ak chodíme vo svetle, ako On je vo svetle, máme spoločenstvo
+            medzi sebou a krv Ježiša, Jeho Syna, nás očisťuje od každého hriechu.
+          </em>
+        </p>
+
+        <p>
+          <em
+            >Ak hovoríme, že nemáme hriech, sami seba klameme a nie je v nás pravda. Ak vyznávame
+            svoje hriechy, On je verný a spravodlivý, aby nám odpustil hriechy a očistil nás od
+            všetkej neprávosti. Ak hovoríme, že sme nezhrešili, Jeho robíme klamárom, a Jeho slovo v
+            nás neprebýva.
+          </em>
+        </p>
+
+        <p>Prvý list Jánov 1,5-10</p>
+      </ng-container>
+
+      <ng-container second-slot>
+        <ul class="mb-0">
+          <li>modlime sa, aby sme boli spoločenstvo ľudí, ktoré kráča vo svetle a nie v tme</li>
+
+          <li>
+            upriam pozornosť na moc Ježiša, ktorý nás svojou krvou očisťuje od KAŽDÉHO HRIECHU a
+            prijmi Jeho obeť za tvoje hriechy
+          </li>
+        </ul>
+      </ng-container>
+    </app-two-split>
+  </app-content-box>
+</ng-container>
+
 <ng-container *ngIf="date === '2022-03-12'">
   <app-content-box [classList]="'gradient-c text-white'" [negative]="true" [biggerText]="true">
     <app-two-split
