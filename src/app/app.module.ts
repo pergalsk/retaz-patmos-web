@@ -35,8 +35,8 @@ import { PageYear2021Component } from './pages/page-year2021/page-year2021.compo
 import { PageYear2022Component } from './pages/page-year2022/page-year2022.component';
 
 import { AppRoutingModule } from './app-routing.module';
-import { BadgeStripComponent } from './badge-strip/badge-strip.component';
-import { DayContentPanelComponent } from './day-content-panel/day-content-panel.component';
+import { BadgeStripComponent } from './components/badge-strip/badge-strip.component';
+import { DayContentPanelComponent } from './components/day-content-panel/day-content-panel.component';
 import { YoutubeEmbeddedComponent } from './components/youtube-embedded/youtube-embedded.component';
 
 import { SafePipe } from './pipes/safe.pipe';

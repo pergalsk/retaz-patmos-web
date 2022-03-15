@@ -1,3 +1,42 @@
+<ng-container *ngIf="date === '2022-03-16'">
+  <app-content-box [classList]="'gradient-c text-white'" [negative]="true" [biggerText]="true">
+    <app-two-split
+      [firstTitle]="firstTitle"
+      [secondTitle]="secondTitle"
+      [badgeText]="'Streda 16.3.'"
+    >
+      <ng-container first-slot>
+        <p>
+          <em
+            >On však povedal: Napísané je: Nie samým chlebom bude človek žiť, ale každým slovom,
+            ktoré vychádza z úst Božích.</em
+          >
+        </p>
+
+        <p>Matúš 4,4</p>
+
+        <p>
+          <em
+            >Ako kresťania už nedokážeme „prežiť“ len na fyzickom pokrme, ale potrebujeme sa
+            duchovne sýtiť. Božie slovo je týmto pokrmom. Zamysli sa dnes, aký máš vzťah k čítaniu
+            Božieho Slova – Biblie.</em
+          >
+        </p>
+      </ng-container>
+
+      <ng-container second-slot>
+        <ul class="mb-0">
+          <li>chváľ Pána Boha, vzdávaj Mu vďaky za Jeho slovo, ktoré nám dal</li>
+
+          <li>nech Pán Boh spôsobí v tvojom srdci väčší hlad po čítaní Biblie</li>
+
+          <li>nech je Božie slovo naozajstným, živým pokrmom pre tvoj život</li>
+        </ul>
+      </ng-container>
+    </app-two-split>
+  </app-content-box>
+</ng-container>
+
 <ng-container *ngIf="date === '2022-03-15'">
   <app-content-box [classList]="'gradient-c text-white'" [negative]="true" [biggerText]="true">
     <app-two-split

@@ -6,13 +6,7 @@ import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
 import { ModalContentComponent } from '../../modal-content/modal-content.component';
 import { CalendarData } from '../../calendar/calendar.component';
 import { PanelMenuItem } from '../../panel-menu/panel-menu.component';
-
-export interface SysdateResponse {
-  rfc822: string;
-  sysdate: string;
-  systime: string;
-  timestamp: number;
-}
+import { SysdateResponse, CommonApiService } from '../../services/common-api.service';
 
 export interface DatesResponse {
   id: number;
@@ -90,7 +84,11 @@ export class PageYear2021Component implements OnInit {
     },
   ];
 
-  constructor(private httpClient: HttpClient, private modalService: NgbModal) {}
+  constructor(
+    private httpClient: HttpClient,
+    private modalService: NgbModal,
+    private commonApiService: CommonApiService
+  ) {}
 
   private handleSuccess = (data: { rawDates: DatesResponse[]; sysDateTime: SysdateResponse }) => {
     this.getCalendarError = false;
@@ -194,7 +192,7 @@ export class PageYear2021Component implements OnInit {
     this.getCalendarError = false;
     this.panelContentIndex = this.panelMenuItems.length - 1;
 
-    zip(this.getDates(), this.getSysDateTime())
+    zip(this.getDates(), this.commonApiService.getSysDateTime())
       .pipe(map(([rawDates, sysDateTime]) => ({ rawDates, sysDateTime })))
       .subscribe(this.handleSuccess, this.handleError); // todo: unsubscribe
   }
@@ -243,10 +241,6 @@ export class PageYear2021Component implements OnInit {
       // map((formSchema) => this.processFormSchema(formSchema)),
       // catchError(this.handleError('Formulár sa nepodarilo načítať.'))
     )*/;
-  }
-
-  private getSysDateTime(): Observable<SysdateResponse> {
-    return this.httpClient.get<SysdateResponse>('/api/sysdate');
   }
 
   private loadDates(): Observable<DatesResponse[]> {

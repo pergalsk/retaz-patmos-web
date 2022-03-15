@@ -11,6 +11,9 @@ import {
   setMilliseconds,
 } from 'date-fns';
 import { sk } from 'date-fns/locale';
+import { Observable } from 'rxjs';
+import { HttpClient } from '@angular/common/http';
+import { CommonApiService, SysdateResponse } from 'src/app/services/common-api.service';
 
 interface DateBadge {
   id: string;
@@ -38,10 +41,21 @@ export class PageYear2022Component implements OnInit {
   startDateRaw = '2022-03-02';
   endDateRaw = '2022-04-15';
   changeHour = 1; // at 1 AM content will change
+  getDateError = false;
 
-  constructor() {}
+  constructor(private commonApiService: CommonApiService) {}
 
   ngOnInit(): void {
+    // this.loadDate();
+    this.successHandler();
+  }
+
+  loadDate() {
+    this.commonApiService.getSysDateTime().subscribe(this.successHandler, this.errorHandler);
+  }
+
+  successHandler() {
+    this.getDateError = false;
     this.now = new Date();
 
     const startDate: Date = this.parseDate(this.startDateRaw);
@@ -52,6 +66,10 @@ export class PageYear2022Component implements OnInit {
 
     this.displayDateId = format(displayDate, this.dateFormat);
     this.datesList = this.generateDatesList(startDate, endDate, displayDate);
+  }
+
+  errorHandler() {
+    this.getDateError = true;
   }
 
   dateClickHandler(dateId: string) {
