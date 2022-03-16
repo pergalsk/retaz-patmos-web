@@ -190,12 +190,45 @@ ul > li {
   text-transform: uppercase;
 }
 
+.badge-strip-handle {
+  display: flex;
+  justify-content: center;
+
+  button {
+    color: #c7c7c7;
+    outline: none;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    font-size: 0.65em;
+    font-weight: bold;
+    background-color: transparent;
+    padding: 0.6em 1em;
+    border: none;
+
+    &:hover,
+    &:active,
+    &:focus {
+      box-shadow: none !important;
+      color: #17375f;
+      background-color: #eeeeee;
+    }
+  }
+}
+
 .date-strip {
   display: flex;
   gap: 1em;
   margin-left: 1em;
+  margin-right: 1em;
   overflow: auto;
   flex-wrap: wrap;
+  max-height: 2.5em;
+  justify-content: center;
+  transition: max-height 0.7s;
+
+  &.opened {
+    max-height: none;
+  }
 
   &::-webkit-scrollbar {
     display: none;

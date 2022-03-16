@@ -10,7 +10,13 @@ export class BadgeStripComponent {
   @Input() actual: string;
   @Output() dateClick: EventEmitter<string> = new EventEmitter<string>();
 
+  opened = false;
+
   onDateClick(dateId: string) {
     return this.dateClick.emit(dateId);
+  }
+
+  showMore() {
+    this.opened = !this.opened;
   }
 }

@@ -1,4 +1,10 @@
-<div class="date-strip mb-3">
+<div class="badge-strip-handle mb-2">
+  <button class="btn btn-light btn-sm" (click)="showMore()">
+    {{ opened ? 'Zobraziť menej dátumov' : 'Zobraziť viac dátumov' }}
+  </button>
+</div>
+
+<div class="date-strip mb-3" [class.opened]="opened">
   <ng-container *ngFor="let item of list">
     <div
       *ngIf="item.actual || item.past"
