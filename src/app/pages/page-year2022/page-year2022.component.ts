@@ -10,10 +10,8 @@ import {
   eachDayOfInterval,
   setMilliseconds,
 } from 'date-fns';
-import { sk } from 'date-fns/locale';
-import { Observable } from 'rxjs';
-import { HttpClient } from '@angular/common/http';
-import { CommonApiService, SysdateResponse } from 'src/app/services/common-api.service';
+import sk from 'date-fns/locale/sk';
+import { CommonApiService } from 'src/app/services/common-api.service';
 
 interface DateBadge {
   id: string;

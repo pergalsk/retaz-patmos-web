@@ -3,10 +3,10 @@ import { HttpClient, HttpErrorResponse, HttpHeaders, HttpResponse } from '@angul
 import { Observable, zip, throwError } from 'rxjs';
 import { catchError, delay, map } from 'rxjs/operators';
 import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
-import { ModalContentComponent } from '../../modal-content/modal-content.component';
-import { CalendarData } from '../../calendar/calendar.component';
-import { PanelMenuItem } from '../../panel-menu/panel-menu.component';
-import { SysdateResponse, CommonApiService } from '../../services/common-api.service';
+import { ModalContentComponent } from '../../../../modal-content/modal-content.component';
+import { CalendarData } from '../../../shared/components/calendar/calendar.component';
+import { PanelMenuItem } from '../../components/panel-menu/panel-menu.component';
+import { SysdateResponse, CommonApiService } from '../../../../services/common-api.service';
 
 export interface DatesResponse {
   id: number;

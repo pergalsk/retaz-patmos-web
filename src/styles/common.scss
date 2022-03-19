@@ -196,21 +196,26 @@ ul > li {
 
   button {
     color: #c7c7c7;
+    background-color: transparent;
     outline: none;
     text-transform: uppercase;
     letter-spacing: 0.1em;
     font-size: 0.65em;
     font-weight: bold;
-    background-color: transparent;
     padding: 0.6em 1em;
     border: none;
 
-    &:hover,
+    &:hover {
+      color: #17375f !important;
+      background-color: #eeeeee !important;
+      box-shadow: none !important;
+    }
+
     &:active,
     &:focus {
+      color: #c7c7c7;
+      background-color: transparent;
       box-shadow: none !important;
-      color: #17375f;
-      background-color: #eeeeee;
     }
   }
 }
@@ -242,7 +247,7 @@ ul > li {
     border-color: silver;
     top: 0;
     font-size: 1em;
-    padding: 0.3em 0.6em;
+    padding: 0.3em 0.6em 0.2em 0.6em;
     cursor: pointer;
     transition: 0.3s color, 0.3s border-color, 0.3s background-color;
     white-space: nowrap;

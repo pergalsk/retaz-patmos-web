@@ -8,8 +8,11 @@
   </p>
 </div>
 
-<app-panel-menu [items]="content" [activeIndex]="contentIndex" (selection)="selectContent($event)">
-</app-panel-menu>
+<app-panel-menu
+  [items]="content"
+  [activeIndex]="contentIndex"
+  (selection)="selectContent($event)"
+></app-panel-menu>
 
 <div
   *ngIf="visible && contentIndex === 0"
