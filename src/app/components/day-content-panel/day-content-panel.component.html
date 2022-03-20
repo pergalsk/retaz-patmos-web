@@ -1,3 +1,52 @@
+<ng-container *ngIf="date === '2022-03-21'">
+  <app-content-box [classList]="'gradient-c text-white'" [negative]="true" [biggerText]="true">
+    <app-two-split
+      [firstTitle]="firstTitle"
+      [secondTitle]="secondTitle"
+      [badgeText]="'Pondelok 21.3.'"
+    >
+      <ng-container first-slot>
+        <p>
+          <em
+            >Hospodine, Ty si ma preskúmal a poznal. Ty vieš, či sadám, či vstávam; i moju myšlienku
+            chápeš zďaleka. Ty pozoruješ, či chodím, či ležím, o všetkých mojich cestách vieš. Ešte
+            nemám slovo na jazyku, a Ty, Hospodine, už ho celkom vieš.
+          </em>
+        </p>
+
+        <p>
+          <em
+            >Obkľučuješ ma zôkol-vôkol, svoju dlaň kladieš na mňa. Preskúmaj ma, ó Bože, poznaj moje
+            srdce; skúmaj ma a poznaj moje myšlienky! Viď, či som na ceste do trápenia, a veď ma
+            cestou večnosti!
+          </em>
+        </p>
+
+        <p>Žalm 139</p>
+
+        <p>
+          <em>Pán Boh nás pozná lepšie ako my sami seba, vidí do nášho srdca a vie...</em>
+        </p>
+      </ng-container>
+
+      <ng-container second-slot>
+        <ul class="mb-0">
+          <li>
+            odovzdaj v modlitbe Pánu Bohu svoje srdce, so všetkými emóciami, túžbami, myšlienkami
+          </li>
+
+          <li>
+            modli sa, aby ťa Pán Boh preskúmal a aby ti ukázal, ktoré veci z tvojho vnútra, ťa môžu
+            časom doviesť do trápenia a vyznaj ich v modlitbe
+          </li>
+
+          <li>modli sa, aby ťa viedol cestou večnosti</li>
+        </ul>
+      </ng-container>
+    </app-two-split>
+  </app-content-box>
+</ng-container>
+
 <ng-container *ngIf="date === '2022-03-20'">
   <app-content-box [classList]="'gradient-c text-white'" [negative]="true" [biggerText]="true">
     <app-two-split
