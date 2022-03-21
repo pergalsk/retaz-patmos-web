@@ -38,12 +38,12 @@
               ],
               "outputHashing": "all",
               "optimization": true,
-              "sourceMap": true,
               "namedChunks": true,
-              "extractLicenses": true,
               "vendorChunk": true,
               "buildOptimizer": true,
-              "statsJson": true,
+              "extractLicenses": false,
+              "sourceMap": false,
+              "statsJson": false,
               "budgets": [
                 {
                   "type": "initial",
