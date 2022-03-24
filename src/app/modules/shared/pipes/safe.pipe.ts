@@ -1,4 +1,4 @@
-import { Pipe, PipeTransform, SecurityContext } from '@angular/core';
+import { Pipe, PipeTransform } from '@angular/core';
 import {
   DomSanitizer,
   SafeHtml,
@@ -17,8 +17,6 @@ export class SafePipe implements PipeTransform {
   constructor(private domSanitizer: DomSanitizer) {}
 
   transform(str: string, type: string): Sanitized {
-    // let context: SecurityContext;
-
     switch (type) {
       case 'style':
         return this.domSanitizer.bypassSecurityTrustStyle(str);
@@ -32,7 +30,5 @@ export class SafePipe implements PipeTransform {
       default:
         return this.domSanitizer.bypassSecurityTrustHtml(str);
     }
-
-    // return this.domSanitizer.sanitize(context, str);
   }
 }

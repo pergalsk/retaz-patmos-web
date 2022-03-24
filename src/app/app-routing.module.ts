@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { PageYear2022Component } from './pages/page-year2022/page-year2022.component';
+import { PageYear2022Component } from './modules/year2022/pages/page-year2022/page-year2022.component';
 
 const routes: Routes = [
   {
