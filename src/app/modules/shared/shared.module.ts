@@ -8,6 +8,7 @@ import { FooterComponent } from './components/footer/footer.component';
 import { YoutubeEmbeddedComponent } from './components/youtube-embedded/youtube-embedded.component';
 import { TwoSplitComponent } from './components/two-split/two-split.component';
 import { ContentBoxComponent } from './components/content-box/content-box.component';
+import { SmoothHeightComponent } from './smooth-height/smooth-height.component';
 
 @NgModule({
   declarations: [
@@ -17,6 +18,7 @@ import { ContentBoxComponent } from './components/content-box/content-box.compon
     TwoSplitComponent,
     YoutubeEmbeddedComponent,
     SafePipe,
+    SmoothHeightComponent,
   ],
   imports: [CommonModule, RouterModule],
   exports: [
@@ -26,6 +28,7 @@ import { ContentBoxComponent } from './components/content-box/content-box.compon
     TwoSplitComponent,
     YoutubeEmbeddedComponent,
     SafePipe,
+    SmoothHeightComponent,
   ],
 })
 export class SharedModule {}
