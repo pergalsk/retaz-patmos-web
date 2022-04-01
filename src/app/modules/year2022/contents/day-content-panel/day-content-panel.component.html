@@ -1,5 +1,43 @@
 <app-content-box [classList]="'gradient-c text-white'" [negative]="true" [biggerText]="true">
   <app-smooth-height [trigger]="date">
+    <ng-container *ngIf="date === '2022-04-01'">
+      <app-two-split
+        [firstTitle]="firstTitle"
+        [secondTitle]="secondTitle"
+        [badgeText]="'Piatok 1.4.'"
+      >
+        <ng-container first-slot>
+          <p>
+            <em>
+              Lebo ja poznám úmysly, ktoré mám s vami - znie výrok Hospodinov - úmysly smerujúce k
+              blahu, a nie k nešťastiu: dať vám budúcnosť a nádej. Keď budete volať ku mne, keď
+              prídete a budete sa modliť ku mne, vypočujem vás. Budete ma hľadať, a nájdete ma; keď
+              ma budete hľadať celým srdcom, dám sa vám nájsť - znie výrok Hospodinov - zmením váš
+              údel a zhromaždím vás spomedzi všetkých národov, zo všetkých miest, na ktoré som vás
+              rozohnal - znie výrok Hospodinov - a navrátim vás na miesto, z ktorého som vás dal
+              odviesť.
+            </em>
+          </p>
+
+          <p>Jeremiáš 29,11-14</p>
+        </ng-container>
+
+        <ng-container second-slot>
+          <ul class="mb-3">
+            <li>
+              pozorne a pomaly si čítaj túto stať z Biblie. Sú oblasti v tvojom živote, v ktorých
+              nevidíš nádej a budúcnosť? Prehlasuj nad nimi tieto verše.
+            </li>
+
+            <li>
+              modli sa, aby ti Duch Svätý pomáhal hľadať Ho a aby ti naplnil srdce nádejou, že On má
+              moc pomôcť ti
+            </li>
+          </ul>
+        </ng-container>
+      </app-two-split>
+    </ng-container>
+
     <ng-container *ngIf="date === '2022-03-31'">
       <app-two-split
         [firstTitle]="firstTitle"
