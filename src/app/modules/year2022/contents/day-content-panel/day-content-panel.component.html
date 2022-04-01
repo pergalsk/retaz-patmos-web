@@ -1,5 +1,257 @@
 <app-content-box [classList]="'gradient-c text-white'" [negative]="true" [biggerText]="true">
   <app-smooth-height [trigger]="date">
+    <ng-container *ngIf="date === '2022-04-07'">
+      <app-two-split
+        [firstTitle]="firstTitle"
+        [secondTitle]="secondTitle"
+        [badgeText]="'Štvrtok 7.4.'"
+      >
+        <ng-container first-slot>
+          <p>
+            <em>
+              Nemilujte svet, ani to, čo je vo svete. Ak niekto miluje svet, nieto v ňom lásky k
+              Otcovi. Lebo čokoľvek je vo svete, žiadosť tela, žiadosť očí a pýcha života, nie je z
+              Otca, ale je zo sveta. Svet však hynie, aj jeho žiadosť (hynie), ale ten, kto koná
+              Božiu vôľu, zostáva naveky.
+            </em>
+          </p>
+
+          <p>Prvý list Jánov 2,15-17</p>
+        </ng-container>
+
+        <ng-container second-slot>
+          <ul class="mb-0">
+            <li>aby sme si nezamilovali svet</li>
+
+            <li>aby sme sa nenechali pohltiť všetkým, čo ponúka</li>
+
+            <li>aby sme poznávali a konali Božiu vôľu</li>
+          </ul>
+        </ng-container>
+      </app-two-split>
+    </ng-container>
+
+    <ng-container *ngIf="date === '2022-04-06'">
+      <app-two-split
+        [firstTitle]="firstTitle"
+        [secondTitle]="secondTitle"
+        [badgeText]="'Streda 6.4.'"
+      >
+        <ng-container first-slot>
+          <p>
+            <em>
+              Bolo pred veľkonočnými slávnosťami. Ježiš vedel, že prišla Jeho hodina odísť z tohto
+              sveta k Otcovi, a keďže miloval svojich, ktorí boli na svete, dokonale im preukázal
+              lásku. Keď totiž večerali, diabol už vnukol do srdca Judášovi, synovi Šimona
+              Iškariotského, aby Ho zradil. (Ježiš) vediac, že Mu Otec všetko dal do rúk a že od
+              Boha vyšiel a k Bohu ide, vstal od večere, zložil rúcho a vezmúc zásteru, opásal sa.
+              Potom nalial vodu do umývadla, začal umývať učeníkom nohy a utierať zásterou, ktorou
+              bol opásaný.
+            </em>
+          </p>
+
+          <p>
+            <em>
+              Tak prišiel až k Šimonovi Petrovi, ale ten Mu povedal: Pane, Ty mi umývaš nohy? Ježiš
+              mu riekol: Čo ja robím, to teraz nechápeš, ale potom pochopíš. Povedal Mu Peter: Pane,
+              nikdy mi nebudeš umývať nohy! Odpovedal mu Ježiš: Ak ťa neumyjem, nemáš so mnou
+              podiel. Tu Mu povedal Šimon Peter: Pane, nielen nohy, ale aj ruky a hlavu (mi umy)!
+              Ježiš mu riekol: Kto sa okúpal, nepotrebuje sa umývať - iba ak nohy - a celý je čistý;
+              aj vy ste čistí, ale nie všetci. Poznal totiž svojho zradcu, preto povedal: Nie všetci
+              ste čistí.
+            </em>
+          </p>
+
+          <p>
+            <em>
+              Keď im umyl nohy a obliekol si rúcho a znovu si sadol, riekol im: Či viete, čo som vám
+              učinil? Vy ma nazývate Majstrom a Pánom, a dobre hovoríte, lebo tým som. Keď teda ja,
+              Pán a Majster, umyl som vám nohy, aj vy ste povinní navzájom si umývať nohy; dal som
+              vám totiž príklad, aby ste aj vy činili tak, ako som vám ja učinil. Veru, veru,
+              hovorím vám: Nie je sluha väčší ako pán, ani posol nie je väčší ako ten, kto ho
+              poslal. Keď to viete, blahoslavení ste, ak podľa toho aj konáte.
+            </em>
+          </p>
+
+          <p>Ján 13,1-17</p>
+        </ng-container>
+
+        <ng-container second-slot>
+          <ul class="mb-0">
+            <li>
+              nech sme spoločenstvo, ktoré si navzájom nepoukazuje na hriechy, ale sa očisťuje,
+              odpúšťa si
+            </li>
+
+            <li>aby sme nasledovali Ježišov príklad a navzájom si slúžili</li>
+          </ul>
+        </ng-container>
+      </app-two-split>
+    </ng-container>
+
+    <ng-container *ngIf="date === '2022-04-05'">
+      <app-two-split
+        [firstTitle]="firstTitle"
+        [secondTitle]="secondTitle"
+        [badgeText]="'Utorok 5.4.'"
+      >
+        <ng-container first-slot>
+          <p>
+            <em>
+              Preto vám hovorím: Nebuďte ustarostení o svoj život, čo budete jesť alebo piť, ani o
+              telo, čím sa budete odievať. Či život nie je viac ako pokrm a telo viac než odev?
+              Pozrite vtákov nebeských: ani nesejú, ani nežnú, ani nezhromažďujú do stodôl, a váš
+              Otec nebeský ich živí. Či vy nie ste omnoho viac ako oni? A tým, že ste ustarostení,
+              kto z vás môže predĺžiť svoj vek čo aj len o lakeť? A o odev prečo ste ustarostení?
+              Pozorujte poľné ľalie, ako rastú, nenamáhajú sa a nepradú; hovorím vám: Ani Šalamún v
+              celej svojej sláve neobliekal sa tak ako jedna z nich.
+            </em>
+          </p>
+
+          <p>
+            <em>
+              Keď teda poľnú trávu, ktorá dnes je a zajtra ju do pece hodia, Boh tak zaodieva, či
+              nie skôr vás, ľudia malej viery? Nebuďte teda ustarostení a nehovorte: Čo budeme jesť?
+              alebo: Čo budeme piť? alebo: Čím sa budeme odievať? Lebo všetko toto pohania hľadajú.
+              Veď váš Otec nebeský vie, že to všetko potrebujete. Ale hľadajte najprv kráľovstvo
+              Božie a Jeho spravodlivosť a všetko toto bude vám pridané. Nebuďte teda ustarostení o
+              zajtrajší deň, lebo zajtrajší deň postará sa o seba. Dosť má deň svojho trápenia.
+            </em>
+          </p>
+
+          <p>Matúš 6,25-34</p>
+        </ng-container>
+
+        <ng-container second-slot>
+          <ul class="mb-0">
+            <li>
+              odovzdaj dnes Pánu Bohu všetky svoje starosti, ...s dôverou, že je dobrý Otec a vie
+              všetko, čo potrebuješ
+            </li>
+
+            <li>modli sa, aby Pán Boh v tebe budoval veľkú vieru</li>
+
+            <li>prosme Pána Boha, aby nám záležalo na Božom kráľovstve a Jeho spravodlivosti</li>
+          </ul>
+        </ng-container>
+      </app-two-split>
+    </ng-container>
+
+    <ng-container *ngIf="date === '2022-04-04'">
+      <app-two-split
+        [firstTitle]="firstTitle"
+        [secondTitle]="secondTitle"
+        [badgeText]="'Pondelok 4.4.'"
+      >
+        <ng-container first-slot>
+          <p>
+            <em>
+              Napokon posilňujte sa v Pánovi a v moci Jeho sily. Oblečte sa do celej výzbroje Božej,
+              aby ste mohli obstáť proti úkladom diabla. Veď náš boj nie je proti krvi a telu, ale
+              proti kniežatstvám a mocnostiam, proti pánom sveta tejto temnosti, proti zlým duchom v
+              nebesiach. Preto vezmite na seba celú výzbroj Božiu, aby ste mohli odolať v zlý deň,
+              všetko prekonať a obstáť.
+            </em>
+          </p>
+
+          <p>
+            <em>
+              Stojte teda: bedrá si opášte pravdou, oblečte si pancier spravodlivosti a obujte si
+              pohotovosť k evanjeliu pokoja. Nadovšetko vezmite si štít viery, aby ste ním mohli
+              uhasiť všetky ohnivé šípy tohto nešľachetníka. Vezmite si aj prilbu spasenia a meč
+              Ducha, ktorým je slovo Božie.
+            </em>
+          </p>
+
+          <p>Matúš 6,19-21</p>
+        </ng-container>
+
+        <ng-container second-slot>
+          <ul class="mb-0">
+            <li>
+              modlime sa, aby sme boli ľudia, ktorí nie sú vyzbrojení ľudskými argumentami, ale
+              Božím slovom
+            </li>
+
+            <li>
+              aby viera, spravodlivosť a všetky Pavlom spomenuté časti „Božej výzbroje“ tvorili
+              základ nášho života
+            </li>
+
+            <li>
+              nech nám Duch Svätý pomôže uvedomiť si, že duchovný boj prebieha okolo nás neustále
+            </li>
+
+            <li>nech sme v bojovej pohotovosti</li>
+          </ul>
+        </ng-container>
+      </app-two-split>
+    </ng-container>
+
+    <ng-container *ngIf="date === '2022-04-03'">
+      <app-two-split
+        [firstTitle]="firstTitle"
+        [secondTitle]="secondTitle"
+        [badgeText]="'Nedeľa 3.4.'"
+      >
+        <ng-container first-slot>
+          <p>
+            <em>
+              Nezhromažďujte si poklady na zemi, kde ich moľ a hrdza ničí a kde sa zlodeji vlamujú a
+              kradnú. Ale zhromažďujte si poklady v nebi, kde ich ani moľ ani hrdza neničí a kde sa
+              zlodeji nevlamujú a nekradnú. Lebo kde je tvoj poklad, tam bude aj tvoje srdce.
+            </em>
+          </p>
+
+          <p>Matúš 6,19-21</p>
+        </ng-container>
+
+        <ng-container second-slot>
+          <ul class="mb-0">
+            <li>
+              nech sú pre nás Božie hodnoty viac ako majetky (náš domov je v nebi, nie na zemi)
+            </li>
+
+            <li>nech naše srdcia, myseľ, túžby nie sú pripútané k tomuto svetu</li>
+
+            <li>nech je Ježiš našim najväčším pokladom</li>
+          </ul>
+        </ng-container>
+      </app-two-split>
+    </ng-container>
+
+    <ng-container *ngIf="date === '2022-04-02'">
+      <app-two-split
+        [firstTitle]="firstTitle"
+        [secondTitle]="secondTitle"
+        [badgeText]="'Sobota 2.4.'"
+      >
+        <ng-container first-slot>
+          <p>
+            <em>
+              Hospodin je môj pastier, nebudem mať nedostatku. Na pastvách zelených ma pasie a k
+              vodám osviežujúcim ma privádza. Dušu mi občerstvuje, po spravodlivých cestách vodí ma
+              pre svoje meno. Keby som kráčal hoci temným údolím, nebojím sa zlého, lebo Ty si so
+              mnou; Tvoj prút a Tvoja palica ma potešujú. Stôl mi prestieraš pred mojimi
+              protivníkmi, hlavu mi pomazávaš olejom, je preplnený kalich môj. Len dobrota a milosť
+              bude ma sprevádzať po všetky dni môjho života a bývať budem v dome Hospodinovom dlhé
+              časy.
+            </em>
+          </p>
+
+          <p>Žalm 23</p>
+        </ng-container>
+
+        <ng-container second-slot>
+          <ul class="mb-0">
+            <li>nech sa učíme dôverovať Hospodinovi, že On je naším Pastierom</li>
+
+            <li>nech nám Duch Svätý pomôže zveriť Mu celý svoj život</li>
+          </ul>
+        </ng-container>
+      </app-two-split>
+    </ng-container>
+
     <ng-container *ngIf="date === '2022-04-01'">
       <app-two-split
         [firstTitle]="firstTitle"
