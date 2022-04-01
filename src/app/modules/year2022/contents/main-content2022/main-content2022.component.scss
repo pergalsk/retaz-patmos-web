@@ -1,0 +1,23 @@
+@import '../../../../../styles.scss';
+
+.title-with-picture {
+  display: block;
+
+  .svg-pct {
+    float: right;
+    width: 35%;
+  }
+
+  @include media-breakpoint-down(sm) {
+    display: flex;
+    flex-direction: column-reverse;
+
+    .svg-pct {
+      float: none;
+      width: 80%;
+      align-self: center;
+      margin-top: -55px;
+      margin-bottom: 15px;
+    }
+  }
+}

@@ -7,12 +7,14 @@ import { PageYear2022Component } from './pages/page-year2022/page-year2022.compo
 import { DayContentPanelComponent } from './contents/day-content-panel/day-content-panel.component';
 import { BadgeStripComponent } from './components/badge-strip/badge-strip.component';
 import { SvgManPrayComponent } from './svg/svg-man-pray/svg-man-pray.component';
+import { SvgManPrayPlaceholderComponent } from './svg/svg-man-pray-placeholder/svg-man-pray-placeholder.component';
 import { MainContent2022Component } from './contents/main-content2022/main-content2022.component';
 import { UkraineContent2022Component } from './contents/ukraine-content2022/ukraine-content2022.component';
 
 @NgModule({
   declarations: [
     SvgManPrayComponent,
+    SvgManPrayPlaceholderComponent,
     DayContentPanelComponent,
     PageYear2022Component,
     BadgeStripComponent,
