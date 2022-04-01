@@ -17,7 +17,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/retaz-patmos-sk",
+            "outputPath": "dist/retaz-patmos-sk/browser",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -92,7 +92,12 @@
         "lint": {
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
-            "tsConfig": ["tsconfig.app.json", "tsconfig.spec.json", "e2e/tsconfig.json"],
+            "tsConfig": [
+              "tsconfig.app.json",
+              "tsconfig.spec.json",
+              "e2e/tsconfig.json",
+              "tsconfig.server.json"
+            ],
             "exclude": ["**/node_modules/**"]
           }
         },
@@ -105,6 +110,41 @@
           "configurations": {
             "production": {
               "devServerTarget": "retaz-patmos-sk:serve:production"
+            }
+          }
+        },
+        "server": {
+          "builder": "@angular-devkit/build-angular:server",
+          "options": {
+            "outputPath": "dist/retaz-patmos-sk/server",
+            "main": "src/main.server.ts",
+            "tsConfig": "tsconfig.server.json"
+          },
+          "configurations": {
+            "production": {
+              "outputHashing": "media",
+              "fileReplacements": [
+                {
+                  "replace": "src/environments/environment.ts",
+                  "with": "src/environments/environment.prod.ts"
+                }
+              ],
+              "sourceMap": true,
+              "optimization": true
+            }
+          }
+        },
+        "app-shell": {
+          "builder": "@angular-devkit/build-angular:app-shell",
+          "options": {
+            "browserTarget": "retaz-patmos-sk:build",
+            "serverTarget": "retaz-patmos-sk:server",
+            "route": "app-shell--preload"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "retaz-patmos-sk:build:production",
+              "serverTarget": "retaz-patmos-sk:server:production"
             }
           }
         }

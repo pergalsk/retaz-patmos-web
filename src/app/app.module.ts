@@ -12,11 +12,13 @@ import { AppRoutingModule } from './app-routing.module';
 import { SharedModule } from './modules/shared/shared.module';
 
 import { Year2022Module } from './modules/year2022/year2022.module';
+import { RouterModule } from '@angular/router';
+import { AppShellComponent } from './app-shell/app-shell.component';
 
 @NgModule({
-  declarations: [AppComponent, ModalContentComponent],
+  declarations: [AppComponent, ModalContentComponent, AppShellComponent],
   imports: [
-    BrowserModule,
+    BrowserModule.withServerTransition({ appId: 'serverApp' }),
     HttpClientModule,
     NgbModule,
     FormsModule,
@@ -24,6 +26,7 @@ import { Year2022Module } from './modules/year2022/year2022.module';
     AppRoutingModule,
     SharedModule,
     Year2022Module,
+    RouterModule,
   ],
   providers: [interceptorProviders],
   bootstrap: [AppComponent],
