@@ -5,12 +5,12 @@
   <!-- Buttons for each day -->
   <app-badge-strip
     [list]="datesList"
-    [actual]="displayDateId"
-    (dateClick)="dateClickHandler($event)"
+    [actual]="selectedDateISO"
+    (itemClick)="dateClickHandler($event)"
   ></app-badge-strip>
 
   <!-- Dynamic content for each day -->
-  <app-day-content-panel [date]="displayDateId"></app-day-content-panel>
+  <app-day-content-panel [date]="selectedDateISO"></app-day-content-panel>
 
   <!-- Prayers for Ukraine -->
   <app-ukraine-content2022></app-ukraine-content2022>

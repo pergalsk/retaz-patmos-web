@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { RouterModule } from '@angular/router';
 import { SharedModule } from '../shared/shared.module';
 
 import { SafePipe } from '../shared/pipes/safe.pipe';
@@ -21,7 +22,7 @@ import { UkraineContent2022Component } from './contents/ukraine-content2022/ukra
     MainContent2022Component,
     UkraineContent2022Component,
   ],
-  imports: [CommonModule, SharedModule],
+  imports: [CommonModule, SharedModule, RouterModule],
   providers: [SafePipe],
   exports: [PageYear2022Component, MainContent2022Component, UkraineContent2022Component],
 })

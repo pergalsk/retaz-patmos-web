@@ -1,22 +1,34 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 
+export interface DateBadge {
+  id: string;
+  date: Date;
+  past: boolean;
+  actual: boolean;
+  future: boolean;
+  comparisonResult: number;
+  day: number;
+  format_A: string;
+  format_B: string;
+}
+
 @Component({
   selector: 'app-badge-strip',
   templateUrl: './badge-strip.component.html',
   styleUrls: ['./badge-strip.component.scss'],
 })
 export class BadgeStripComponent {
-  @Input() list: any[];
+  @Input() list: DateBadge[];
   @Input() actual: string;
-  @Output() dateClick: EventEmitter<string> = new EventEmitter<string>();
+  @Output() itemClick: EventEmitter<DateBadge> = new EventEmitter<DateBadge>();
 
   opened = false;
 
-  onDateClick(dateId: string) {
-    return this.dateClick.emit(dateId);
+  onItemClick(dateId: DateBadge): void {
+    this.itemClick.emit(dateId);
   }
 
-  showMore() {
+  showMore(): void {
     this.opened = !this.opened;
   }
 }

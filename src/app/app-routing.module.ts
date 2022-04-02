@@ -3,13 +3,14 @@ import { RouterModule, Routes } from '@angular/router';
 import { PageYear2022Component } from './modules/year2022/pages/page-year2022/page-year2022.component';
 import { AppShellComponent } from './app-shell/app-shell.component';
 
+const import2021Module = () =>
+  import('./modules/year2021/year2021.module').then((m) => m.Year2021Module);
+
 const routes: Routes = [
   { path: 'app-shell--preload', component: AppShellComponent },
-  {
-    path: '2021',
-    loadChildren: () => import('./modules/year2021/year2021.module').then((m) => m.Year2021Module),
-  },
+  { path: '2021', loadChildren: import2021Module },
   { path: '', component: PageYear2022Component },
+  { path: ':date', component: PageYear2022Component },
   { path: '**', redirectTo: '', pathMatch: 'full' },
 ];
 

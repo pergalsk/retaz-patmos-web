@@ -242,7 +242,7 @@ ul > li {
   -ms-overflow-style: none; /* IE and Edge */
   scrollbar-width: none; /* Firefox */
 
-  .date-badge {
+  a.date-badge {
     color: silver;
     border-color: silver;
     top: 0;
@@ -254,6 +254,7 @@ ul > li {
     margin-top: 0;
     user-select: none;
     background-color: transparent;
+    text-decoration: none;
 
     &:hover {
       color: #3e4777;

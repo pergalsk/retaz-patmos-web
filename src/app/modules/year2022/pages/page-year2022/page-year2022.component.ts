@@ -1,29 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import {
-  parse,
-  format,
-  setHours,
-  setMinutes,
-  setSeconds,
-  compareAsc,
-  addDays,
-  eachDayOfInterval,
-  setMilliseconds,
-} from 'date-fns';
+import { ActivatedRoute, Params, Router } from '@angular/router';
+import { Location } from '@angular/common';
+import { format, compareAsc, addDays, eachDayOfInterval } from 'date-fns';
 import sk from 'date-fns/locale/sk';
-import { CommonApiService } from 'src/app/services/common-api.service';
-
-interface DateBadge {
-  id: string;
-  date: Date;
-  past: boolean;
-  actual: boolean;
-  future: boolean;
-  comparisonResult: number;
-  day: number;
-  format_A: string;
-  format_B: string;
-}
+import { DatesService } from '../../../../services/dates.service';
+import { DateBadge } from '../../components/badge-strip/badge-strip.component';
 
 @Component({
   selector: 'app-page-year2022',
@@ -31,74 +12,84 @@ interface DateBadge {
   styleUrls: ['./page-year2022.component.scss'],
 })
 export class PageYear2022Component implements OnInit {
-  now: Date;
+  refDate = new Date();
+  startDate = new Date(2022, 2, 2); // 2022-03-02
+  endDate = new Date(2022, 3, 15); // 2022-04-15
+
+  todayDate: Date;
   datesList: DateBadge[];
-  displayDateId: string;
+  selectedDateISO: string;
 
-  dateFormat = 'yyyy-MM-dd';
-  startDateRaw = '2022-03-02';
-  endDateRaw = '2022-04-15';
+  dateFormatISO = 'yyyy-MM-dd';
   changeHour = 1; // at 1 AM content will change
-  getDateError = false;
 
-  constructor(private commonApiService: CommonApiService) {}
+  constructor(
+    private datesService: DatesService,
+    private activatedRoute: ActivatedRoute,
+    private router: Router,
+    private location: Location
+  ) {}
 
   ngOnInit(): void {
-    // this.loadDate();
-    this.successHandler();
+    this.todayDate = this.calculateSelectedDate(this.refDate);
+    this.selectedDateISO = this.calculateSelectedDateISO(this.refDate);
+    this.datesList = this.generateDatesList(this.startDate, this.endDate, this.todayDate);
+
+    this.activatedRoute.params.subscribe(this.handleRouteParams.bind(this));
   }
 
-  loadDate() {
-    this.commonApiService.getSysDateTime().subscribe(this.successHandler, this.errorHandler);
+  dateClickHandler(dateBadge: DateBadge): void {
+    if (this.selectedDateISO === dateBadge.id) {
+      return;
+    }
+    this.selectedDateISO = dateBadge.id;
+    this.replaceLocation([this.selectedDateISO]);
   }
 
-  successHandler() {
-    this.getDateError = false;
-    this.now = new Date();
+  private handleRouteParams(params: Params): void {
+    const parsedDate = this.datesService.parseISODateBetween(
+      params.date,
+      {
+        start: this.startDate,
+        end: this.todayDate,
+      },
+      this.refDate
+    );
 
-    const startDate: Date = this.parseDate(this.startDateRaw);
-    const endDate: Date = this.parseDate(this.endDateRaw);
-    const refTime: Date = this.resetTime(this.now, this.changeHour);
-    const afterChangeHour: boolean = compareAsc(this.now, refTime) >= 0;
-    const displayDate: Date = addDays(this.now, afterChangeHour ? 0 : -1);
-
-    this.displayDateId = format(displayDate, this.dateFormat);
-    this.datesList = this.generateDatesList(startDate, endDate, displayDate);
+    if (parsedDate) {
+      this.selectedDateISO = params.date;
+    } else {
+      this.selectedDateISO = this.calculateSelectedDateISO(this.refDate);
+      this.replaceLocation(['']);
+    }
   }
 
-  errorHandler() {
-    this.getDateError = true;
+  private replaceLocation(commands: any[]): void {
+    const url: string = this.router.createUrlTree(commands).toString();
+    this.location.replaceState(url);
   }
 
-  dateClickHandler(dateId: string) {
-    this.displayDateId = dateId;
+  private calculateSelectedDateISO(refDate: Date): string {
+    return format(this.calculateSelectedDate(refDate), this.dateFormatISO);
+  }
+
+  private calculateSelectedDate(refDate: Date): Date {
+    const refTime: Date = this.datesService.resetTime(refDate, this.changeHour);
+    const afterChangeHour: boolean = compareAsc(refDate, refTime) >= 0;
+    return addDays(refDate, afterChangeHour ? 0 : -1);
   }
 
   private generateDatesList(start: Date, end: Date, displayDate: Date): DateBadge[] {
     return eachDayOfInterval({ start, end })
       .reverse()
-      .map((date: Date) => this.createDate(date, this.resetTime(displayDate)));
-  }
-
-  private parseDate(date: string): Date {
-    return parse(date, this.dateFormat, this.now);
-  }
-
-  private resetTime(
-    dateTime: Date,
-    hours: number = 0,
-    minutes: number = 0,
-    seconds: number = 0,
-    ms: number = 0
-  ): Date {
-    return setMilliseconds(setSeconds(setMinutes(setHours(dateTime, hours), minutes), seconds), ms);
+      .map((date: Date) => this.createDate(date, this.datesService.resetTime(displayDate)));
   }
 
   private createDate(date: Date, displayDate: Date): DateBadge {
     const comparisonResult: number = compareAsc(date, displayDate);
 
     return {
-      id: format(date, this.dateFormat),
+      id: format(date, this.dateFormatISO),
       date,
       past: comparisonResult === -1,
       actual: comparisonResult === 0,
