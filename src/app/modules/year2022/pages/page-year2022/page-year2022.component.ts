@@ -39,11 +39,15 @@ export class PageYear2022Component implements OnInit {
   }
 
   dateClickHandler(dateBadge: DateBadge): void {
+    // clicked on the same (already selected) date
     if (this.selectedDateISO === dateBadge.id) {
       return;
     }
+
+    const isToday = this.todayDate.getTime() === dateBadge.date.getTime();
+
     this.selectedDateISO = dateBadge.id;
-    this.replaceLocation([this.selectedDateISO]);
+    this.replaceLocation([isToday ? '' : this.selectedDateISO]);
   }
 
   private handleRouteParams(params: Params): void {
@@ -74,9 +78,10 @@ export class PageYear2022Component implements OnInit {
   }
 
   private calculateSelectedDate(refDate: Date): Date {
-    const refTime: Date = this.datesService.resetTime(refDate, this.changeHour);
-    const afterChangeHour: boolean = compareAsc(refDate, refTime) >= 0;
-    return addDays(refDate, afterChangeHour ? 0 : -1);
+    const refDateNoTime: Date = this.datesService.resetTime(refDate, this.changeHour);
+    const afterChangeHour: boolean = compareAsc(refDate, refDateNoTime) >= 0;
+    const shiftedDate = addDays(refDate, afterChangeHour ? 0 : -1);
+    return this.datesService.resetTime(shiftedDate);
   }
 
   private generateDatesList(start: Date, end: Date, displayDate: Date): DateBadge[] {
