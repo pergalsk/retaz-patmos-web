@@ -1,5 +1,112 @@
 <app-content-box [classList]="'gradient-c text-white'" [negative]="true" [biggerText]="true">
   <app-smooth-height [trigger]="date">
+    <ng-container *ngIf="date === '2022-04-10'">
+      <app-two-split
+        [firstTitle]="firstTitle"
+        [secondTitle]="secondTitle"
+        [badgeText]="'Nedeľa 10.4.'"
+      >
+        <ng-container first-slot>
+          <p>
+            <em>
+              Ajhľa, tvorím nové; už teraz to raší. Nebadáte to? Veru, robím cestu na púšti, rieky v
+              pustatine.
+            </em>
+          </p>
+
+          <p>Izaiáš 43,19</p>
+        </ng-container>
+
+        <ng-container second-slot>
+          <ul class="mb-0">
+            <li>
+              aby Pán Boh obživil všetko, čo je vyprahnuté, suché v našich životoch a našom
+              spoločenstve, oživil čo je mŕtve, dal nám nový vietor do plachiet, novú víziu,
+              perspektívu, novú nádej, vieru...
+            </li>
+          </ul>
+        </ng-container>
+      </app-two-split>
+    </ng-container>
+
+    <ng-container *ngIf="date === '2022-04-09'">
+      <app-two-split
+        [firstTitle]="firstTitle"
+        [secondTitle]="secondTitle"
+        [badgeText]="'Sobota 9.4.'"
+      >
+        <ng-container first-slot>
+          <p>
+            <em>
+              A to množstvo veriacich bolo jedno srdce a jedna duša: a nikto z toho, čo mal, nič
+              nepokladal za svoje, ale všetko im bolo spoločné. Apoštolovia však veľmi mocne
+              vydávali svedectvo o vzkriesení Pána Ježiša a veľká milosť spočinula na nich na
+              všetkých; medzi nimi totiž nikto nebol núdzny, lebo všetci, ktorí mali polia alebo
+              domy, predávali ich, a čo utŕžili, prinášali, skladali apoštolom k nohám a každému
+              nadelili, koľko potreboval.
+            </em>
+          </p>
+
+          <p>Skutky apoštolov 4,32-35</p>
+        </ng-container>
+
+        <ng-container second-slot>
+          <ul class="mb-0">
+            <li>
+              nech sme ako kresťania zjednotení v tom, čo v našom zbore, v našich domovoch Kristus
+              zamýšľa robiť
+            </li>
+
+            <li>
+              nech máme srdce zapálené jeden pre druhého a nech je táto nezištnosť svedectvom pre
+              ľudí okolo nás, ktorí ešte Ježiša nepoznajú
+            </li>
+          </ul>
+        </ng-container>
+      </app-two-split>
+    </ng-container>
+
+    <ng-container *ngIf="date === '2022-04-08'">
+      <app-two-split
+        [firstTitle]="firstTitle"
+        [secondTitle]="secondTitle"
+        [badgeText]="'Piatok 8.4.'"
+      >
+        <ng-container first-slot>
+          <p>
+            <em>
+              Prísna kázeň patrí tomu, kto opúšťa chodník, a ten, čo nenávidí karhanie, zomrie.
+            </em>
+          </p>
+
+          <p>
+            <em>
+              Ucho, čo počúva životodarné karhanie, pobudne medzi múdrymi. Kto zavrhuje napomenutia,
+              pohŕda vlastným životom, kto si všíma karhanie, zmúdrie.
+            </em>
+          </p>
+
+          <p>Príslovia 15:5, 31-32</p>
+        </ng-container>
+
+        <ng-container second-slot>
+          <ul class="mb-0">
+            <li>aby sme boli múdri ľudia, ktorí dokážu prijať aj kritiku a nezavrhovali ju</li>
+
+            <li>
+              aby nám Pán Boh posielal do života bratov a sestry, cez ktorých nás On bude napomínať
+              a viesť
+            </li>
+
+            <li>
+              aby sme aj my mali odvahu, múdrosť a vedenie Duchom Svätým, keď bude potrebné niekoho
+              pokarhať
+            </li>
+          </ul>
+        </ng-container>
+      </app-two-split>
+    </ng-container>
+
     <ng-container *ngIf="date === '2022-04-07'">
       <app-two-split
         [firstTitle]="firstTitle"
