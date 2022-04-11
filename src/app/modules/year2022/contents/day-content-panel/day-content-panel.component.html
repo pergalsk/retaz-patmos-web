@@ -1,5 +1,55 @@
 <app-content-box [classList]="'gradient-c text-white'" [negative]="true" [biggerText]="true">
   <app-smooth-height [trigger]="date">
+    <ng-container *ngIf="date === '2022-04-11'">
+      <app-two-split
+        [firstTitle]="firstTitle"
+        [secondTitle]="secondTitle"
+        [badgeText]="'Pondelok 11.4.'"
+      >
+        <ng-container first-slot>
+          <p>
+            <em>
+              Ja som pravý vínny kmeň a môj Otec je vinohradník. Každú ratolesť na mne, ktorá
+              neprináša ovocie, odrezáva, a každú, ktorá prináša ovocie, čistí, aby prinášala viac
+              ovocia. Vy ste už čistí pre slovo, ktoré som vám hovoril. Zostaňte vo mne a ja vo vás.
+              Ako ani ratolesť nemôže prinášať ovocie sama zo seba, len ak ostáva na vínnom kmeni,
+              tak ani vy, len ak zostávate vo mne. Ja som vínny kmeň a vy ste ratolesti. Kto zostáva
+              vo mne a ja v ňom, ten prináša veľa ovocia, pretože bezo mňa nič nemôžete činiť. Ak
+              niekto nezostáva vo mne, vyhodia ho ako (odlomenú) ratolesť, a uschne; také
+              zozbierajú, uvrhnú na oheň a zhoria; ak zostávate vo mne a moje slová zostávajú vo
+              vás, proste, čo chcete, a stane sa vám. Tým sa oslavuje môj Otec, keď prinášate veľa
+              ovocia a stanete sa mi učeníkmi. Ako mňa miloval Otec, aj ja som miloval vás; zostaňte
+              v mojej láske.
+            </em>
+          </p>
+
+          <p>
+            <em>
+              Ak zachováte moje prikázania, zostanete v mojej láske, ako ja som zachoval prikázania
+              svojho Otca a zostávam v Jeho láske. Toto som vám hovoril, aby moja radosť bola vo vás
+              a vaša radosť aby bola úplná. To je moje prikázanie, aby ste sa vzájomne milovali, ako
+              som vás ja miloval. Nikto nemôže väčšmi milovať, ako keď život položí za svojich
+              priateľov. Vy ste moji priatelia, ak konáte, čo vám prikazujem; nenazývam vás viac
+              sluhami, pretože sluha nevie, čo robí jeho pán. Nazval som vás priateľmi, pretože
+              všetko som vám oznámil, čo som počul od svojho Otca. Nie vy ste si mňa vyvolili, ale
+              ja som si vyvolil vás a ustanovil som vás, aby ste šli a prinášali ovocie a vaše
+              ovocie aby zostávalo, tak, aby vám Otec dal, čokoľvek by ste v mojom mene prosili od
+              Neho. Prikazujem vám, aby ste sa milovali.
+            </em>
+          </p>
+
+          <p>Ján 15,1-17</p>
+        </ng-container>
+
+        <ng-container second-slot>
+          <ul class="mb-0">
+            <li>aby sme ostávali v Ježišovi, (napojení na vínny kmeň)</li>
+            <li>nech je pre nás zdroj života</li>
+          </ul>
+        </ng-container>
+      </app-two-split>
+    </ng-container>
+
     <ng-container *ngIf="date === '2022-04-10'">
       <app-two-split
         [firstTitle]="firstTitle"
