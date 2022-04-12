@@ -1,5 +1,40 @@
 <app-content-box [classList]="'gradient-c text-white'" [negative]="true" [biggerText]="true">
   <app-smooth-height [trigger]="date">
+    <ng-container *ngIf="date === '2022-04-12'">
+      <app-two-split
+        [firstTitle]="firstTitle"
+        [secondTitle]="secondTitle"
+        [badgeText]="'Utorok 12.4.'"
+      >
+        <ng-container first-slot>
+          <p>
+            <em> A neopíjajte sa vínom, v ktorom je roztopašnosť, ale buďte naplnení Duchom. </em>
+          </p>
+
+          <p>List Efezkým 5,18</p>
+
+          <p>
+            <em>
+              Usilujte sa o lásku a horlite za duchovné dary, najmä však, aby ste prorokovali.
+            </em>
+          </p>
+
+          <p>Prvý list Korintským 14,1</p>
+        </ng-container>
+
+        <ng-container second-slot>
+          <ul class="mb-0">
+            <li>
+              prosme o naplnenie Duchom Svätým a obdarovanie Jeho darmi, aby sme ako Kristove telo
+              mohli fungovať podľa Jeho vôle a slúžili si navzájom
+            </li>
+
+            <li>prosme o dar proroctva - múdrosť od Pána vidieť veci Jeho očami</li>
+          </ul>
+        </ng-container>
+      </app-two-split>
+    </ng-container>
+
     <ng-container *ngIf="date === '2022-04-11'">
       <app-two-split
         [firstTitle]="firstTitle"
