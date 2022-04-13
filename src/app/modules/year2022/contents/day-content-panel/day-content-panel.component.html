@@ -1,5 +1,39 @@
 <app-content-box [classList]="'gradient-c text-white'" [negative]="true" [biggerText]="true">
   <app-smooth-height [trigger]="date">
+    <ng-container *ngIf="date === '2022-04-13'">
+      <app-two-split
+        [firstTitle]="firstTitle"
+        [secondTitle]="secondTitle"
+        [badgeText]="'Streda 13.4.'"
+      >
+        <ng-container first-slot>
+          <p>
+            <em>
+              Bože, Ty si môj Boh, ja Teba hľadám; po Tebe žízni moja duša. Po Tebe prahne moje telo
+              ako zem suchá a bez vody, vyprahnutá. Tak som Ťa vyzeral vo svätyni, aby som videl
+              Tvoju moc a slávu. Lebo Tvoja milosť je lepšia ako život; a moje pery velebiť Ťa budú.
+              Tak Ťa budem žehnať za svojho života a v Tvojom mene budem dvíhať dlane. Ako tukom a
+              olejom sa sýti moja duša, jasajúcimi perami Ťa chvália moje ústa, keď si na lôžku
+              spomínam na Teba a v nočných bdeniach rozjímam o Tebe. Lebo Ty si mi býval na pomoci a
+              v tôni Tvojich krídel plesám. Duša mi k Tebe priľnula a Tvoja pravica ma podopiera.
+            </em>
+          </p>
+
+          <p>Žalm 63,2-9</p>
+        </ng-container>
+
+        <ng-container second-slot>
+          <ul class="mb-0">
+            <li>vyznávaj svoju závislosť na Bohu a hlad po Ňom</li>
+
+            <li>
+              chváľ Hospodina - nech Ho tvoje "pery velebia" ...za Jeho moc, slávu, milosť, pomoc...
+            </li>
+          </ul>
+        </ng-container>
+      </app-two-split>
+    </ng-container>
+
     <ng-container *ngIf="date === '2022-04-12'">
       <app-two-split
         [firstTitle]="firstTitle"
