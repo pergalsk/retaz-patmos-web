@@ -1,5 +1,43 @@
 <app-content-box [classList]="'gradient-c text-white'" [negative]="true" [biggerText]="true">
   <app-smooth-height [trigger]="date">
+    <ng-container *ngIf="date === '2022-04-14'">
+      <app-two-split
+        [firstTitle]="firstTitle"
+        [secondTitle]="secondTitle"
+        [badgeText]="'Štvrtok 14.4.'"
+      >
+        <ng-container first-slot>
+          <p>
+            <em>
+              Prečo hovoríš, Jákob, a vravíš, Izrael: Skrytá je moja cesta pred Hospodinom a moje
+              právo uniká môjmu Bohu? Nevieš to? Nepočul si? Hospodin je večný Boh, ktorý stvoril
+              končiny zeme; neustáva a neumdlieva, Jeho múdrosť nemožno vystihnúť. Ustatému dáva
+              silu a rozhojňuje moc bezvládneho. Mládenci ustávajú a slabnú, junáci sa potkýnajú a
+              klesajú. Ale tí, čo očakávajú Hospodina, dostávajú novú silu, vznášajú sa na krídlach
+              ako orly, bežia, a neslabnú, chodia, a neustávajú.
+            </em>
+          </p>
+
+          <p>Izaiáš 40,27-31</p>
+        </ng-container>
+
+        <ng-container second-slot>
+          <ul class="mb-0">
+            <li>
+              utíšme sa a očakávajme na Hospodina (na Jeho zásah, Jeho pomoc, Jeho vedenie v
+              situáciách ktorým čelíme)
+            </li>
+
+            <li>prosme si nové sily, nové nadšenie, Božiu moc do vecí, ktoré robíme</li>
+
+            <li>
+              prosme za unavených, bezmocných, biednych... nech očakávajú na Hospodina a Jeho silu
+            </li>
+          </ul>
+        </ng-container>
+      </app-two-split>
+    </ng-container>
+
     <ng-container *ngIf="date === '2022-04-13'">
       <app-two-split
         [firstTitle]="firstTitle"
