@@ -1,5 +1,45 @@
 <app-content-box [classList]="'gradient-c text-white'" [negative]="true" [biggerText]="true">
   <app-smooth-height [trigger]="date">
+    <ng-container *ngIf="date === '2022-04-15'">
+      <app-two-split
+        [firstTitle]="firstTitle"
+        [secondTitle]="secondTitle"
+        [badgeText]="'Piatok 15.4.'"
+      >
+        <ng-container first-slot>
+          <p>
+            <em>
+              V Ňom máme vykúpenie, odpustenie hriechov. On je obrazom neviditeľného Boha,
+              prvorodený pred všetkým stvorením, lebo v Ňom bolo stvorené všetko, čo je na nebesiach
+              aj na zemi, viditeľné aj neviditeľné: tróny, panstvá, kniežatstvá, mocnárstva, všetko
+              je stvorené skrze Neho a pre Neho. On je pred všetkým, a všetko spolu má v Ňom svoje
+              bytie. On je hlavou tela, cirkvi, On počiatok, prvorodený z mŕtvych, aby Jeho bolo
+              prvenstvo vo všetkom. Lebo Boh za dobré uznal, aby v Ňom prebývala všetka plnosť a aby
+              Ním zmieril so sebou všetko, aj čo je na zemi aj čo je v nebesiach, a priniesol pokoj
+              v krvi Jeho kríža.
+            </em>
+          </p>
+
+          <p>List Kolosenským 1,14-20</p>
+        </ng-container>
+
+        <ng-container second-slot>
+          <ul class="mb-0">
+            <li>
+              utíšme a pokloňme sa pred Ježišom, zahľaďme sa na Neho a vyvyšujme Ho za to, kým je
+              (aj prostredníctvom tohto biblického textu)
+            </li>
+
+            <li>ďakujme za Jeho kríž, za to, čo pre nás urobil</li>
+
+            <li>ďakujme, že v Ňom máme vykúpenie, odpustenie hriechov</li>
+
+            <li>ďakujme, že máme zmierenie a pokoj s Bohom</li>
+          </ul>
+        </ng-container>
+      </app-two-split>
+    </ng-container>
+
     <ng-container *ngIf="date === '2022-04-14'">
       <app-two-split
         [firstTitle]="firstTitle"
