@@ -78,6 +78,13 @@ export class PageYear2022Component implements OnInit {
   }
 
   private calculateSelectedDate(refDate: Date): Date {
+    // Check if today's date is after last day of interval. If it's so, set actual date to end date.
+    const today: Date = this.datesService.resetTime(refDate);
+    if (compareAsc(today, this.endDate) > 0) {
+      return this.endDate;
+    }
+
+    // Calculation of actual date.
     const refDateNoTime: Date = this.datesService.resetTime(refDate, this.changeHour);
     const afterChangeHour: boolean = compareAsc(refDate, refDateNoTime) >= 0;
     const shiftedDate = addDays(refDate, afterChangeHour ? 0 : -1);
