@@ -6,7 +6,7 @@
   box-shadow: 0 0 53px 20px rgba(0, 0, 0, 0.05);
   padding: $jumbotron-equal-padding;
   margin-bottom: 3rem;
-  transition: background-color 0.8s, color 0.8s;
+  transition: background-color 0.8s;
 
   @include media-breakpoint-down(sm) {
     padding: $jumbotron-equal-padding-sm;
