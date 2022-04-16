@@ -229,7 +229,6 @@ ul > li {
   flex-wrap: wrap;
   max-height: 2.5em;
   justify-content: center;
-  transition: max-height 0.7s;
 
   &.opened {
     max-height: none;
