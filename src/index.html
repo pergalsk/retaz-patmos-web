@@ -6,6 +6,7 @@
     <base href="/" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="description" content="Kalendár s modlitebnými podnetmi na každý deň." />
+    <meta name="color-scheme" content="dark light" />
     <!--<link rel="icon" type="image/x-icon" href="favicon.ico" />-->
     <link
       rel="shortcut icon"
@@ -32,6 +33,16 @@
   </head>
 
   <body>
+    <script type="text/javascript">
+      const usrPref = localStorage.getItem('colorSchemePreference');
+      usrPref &&
+        usrPref !==
+          (window.matchMedia('(prefers-color-scheme: dark)').matches
+            ? 'dark-theme'
+            : 'light-theme') &&
+        document.body.classList.add(usrPref);
+    </script>
+
     <app-root></app-root>
   </body>
 </html>

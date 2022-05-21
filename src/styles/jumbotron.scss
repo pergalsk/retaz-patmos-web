@@ -29,7 +29,7 @@
       z-index: -1;
       margin: -$gradient-border-size;
       border-radius: $border-radius-lg;
-      background-image: $gradient-c;
+      background-image: var(--gradient-c);
     }
   }
 
@@ -102,23 +102,23 @@
     }
 
     &.text-white {
-      color: #fff;
+      color: var(--text-white-color) !important;
     }
 
     &.gradient-a {
-      background-image: $gradient-a;
+      background-image: var(--gradient-a);
     }
 
     &.gradient-b {
-      background-image: $gradient-b;
+      background-image: var(--gradient-b);
     }
 
     &.gradient-c {
-      background-image: $gradient-c;
+      background-image: var(--gradient-c);
     }
 
     &.gradient-d {
-      background-image: $gradient-d;
+      background-image: var(--gradient-d);
     }
 
     .bible-verse {

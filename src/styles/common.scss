@@ -2,8 +2,60 @@
 // COMMON
 //
 
+:root {
+  color-scheme: light dark;
+}
+
 html {
   font-size: 16px;
+}
+
+body {
+  transition: background-color 0.8s;
+  @include light-theme();
+
+  &.dark-theme {
+    @include dark-theme();
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  body {
+    @include dark-theme();
+
+    &.light-theme {
+      @include light-theme();
+
+      .hide-dark {
+        display: unset !important;
+      }
+
+      .hide-light {
+        display: none !important;
+      }
+    }
+
+    .hide-dark {
+      display: none !important;
+    }
+  }
+}
+
+@media (prefers-color-scheme: light) {
+  body {
+    &.dark-theme {
+      .hide-light {
+        display: unset !important;
+      }
+      .hide-dark {
+        display: none !important;
+      }
+    }
+
+    .hide-light {
+      display: none !important;
+    }
+  }
 }
 
 h1,
@@ -21,7 +73,7 @@ h6 {
 
   &.no-gradient {
     background: none;
-    color: #181024;
+    color: var(--heading-color);
     -webkit-background-clip: initial;
     //-moz-background-clip: text;
     -webkit-text-fill-color: initial;
@@ -35,15 +87,16 @@ footer {
   gap: 1em;
   align-items: center;
   justify-content: center;
-  background-color: #efefef;
+  background-color: var(--footer-bg-color);
   padding: 5rem;
 
   a {
-    color: $body-color;
+    color: var(--body-color);
   }
 
   .logo {
   }
+
   .info {
     text-align: left;
   }
@@ -81,11 +134,11 @@ footer {
 .bible-verse {
   margin-top: 0.5rem;
   font-weight: 700;
-  color: #793cd7;
+  color: var(--verse-color);
   transition: color 0.8s;
 
   &.text-blue {
-    color: #215996;
+    color: var(--text-blue-color);
   }
 
   &.verse-small {
@@ -182,7 +235,7 @@ ul > li {
   top: -0.3em;
   font-size: 0.5em;
   padding: 0.5em 0.6em;
-  border: 0.15em solid white;
+  border: 0.15em solid var(--badge-border-color);
   border-radius: 0.6em;
   font-weight: normal;
   letter-spacing: 0.085em;
@@ -195,7 +248,7 @@ ul > li {
   justify-content: center;
 
   button {
-    color: #c7c7c7;
+    color: var(--badge-handle-color);
     background-color: transparent;
     outline: none;
     text-transform: uppercase;
@@ -206,14 +259,14 @@ ul > li {
     border: none;
 
     &:hover {
-      color: #17375f !important;
-      background-color: #eeeeee !important;
+      color: var(--badge-handle-color-hover) !important;
+      background-color: var(--badge-handle-bg-color-hover) !important;
       box-shadow: none !important;
     }
 
     &:active,
     &:focus {
-      color: #c7c7c7;
+      color: var(--badge-handle-color);
       background-color: transparent;
       box-shadow: none !important;
     }
@@ -242,8 +295,8 @@ ul > li {
   scrollbar-width: none; /* Firefox */
 
   a.date-badge {
-    color: silver;
-    border-color: silver;
+    color: var(--badge-color);
+    border-color: var(--badge-border-color);
     top: 0;
     font-size: 1em;
     padding: 0.3em 0.6em 0.2em 0.6em;
@@ -256,23 +309,44 @@ ul > li {
     text-decoration: none;
 
     &:hover {
-      color: #3e4777;
-      border-color: #3e4777;
+      color: var(--badge-color-hover);
+      border-color: var(--badge-border-color-hover);
     }
 
     &.actual {
-      color: white;
-      background-color: #3e4777;
-      border-color: #3e4777;
+      color: var(--badge-color-actual);
+      background-color: var(--badge-bg-color-actual);
+      border-color: var(--badge-border-color-actual);
     }
 
     &.weekend:not(.actual) {
-      color: #a9a9a9;
-      background-color: #f2f2f2;
+      color: var(--badge-weekend-color);
+      background-color: var(--badge-weekend-bg-color);
 
       &:hover {
-        color: #3e4777;
+        color: var(--badge-weekend-color-hover);
       }
+    }
+  }
+}
+
+.theme-switcher {
+  display: inline-block;
+  position: absolute;
+  top: -32px;
+  right: -18px;
+
+  .dropdown-toggle {
+    color: var(--theme-switcher-color);
+    background-color: transparent;
+    border-color: transparent;
+  }
+}
+
+.dropdown-toggle {
+  &.no-dropdown-mark {
+    &:after {
+      display: none;
     }
   }
 }

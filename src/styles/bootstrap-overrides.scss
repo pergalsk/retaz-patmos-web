@@ -1,9 +1,9 @@
 // Bootstrap variables overrides
 
-$primary: #553e77;
+$primary: #553e77; //var(--primary-color);
 
-$body-bg: #fcfcfc;
-$body-color: #000;
+$body-bg: var(--body-bg-color);
+$body-color: var(--body-color);
 
 $spacer: 1.5rem;
 
@@ -35,14 +35,27 @@ $display4-weight: 900 !default;
 $lead-font-size: $font-size-base * 1.2 !default;
 $blockquote-font-size: $font-size-base !default;
 
+$border-width: 1px !default;
+$border-color: var(--border-color) !default;
+
 $border-radius-lg: 1.5rem !default;
-$border-radius: 1rem !default;
-$border-radius-sm: 0.5rem !default;
+$border-radius: 0.5rem !default;
+$border-radius-sm: 0.25rem !default;
 
 $btn-border-radius: 0.5em;
 $modal-content-border-radius: 0.5em;
 $input-border-radius: 0.5em;
 $alert-border-radius: 0.5em;
 
-$jumbotron-bg: #fff !default;
+$jumbotron-bg: var(--jumbotron-bg) !default;
 $jumbotron-padding: 2rem;
+
+$dropdown-color: var(--dropdown-color) !default;
+$dropdown-bg: var(--dropdown-bg-color) !default;
+$dropdown-border-color: $border-color !default;
+$dropdown-border-radius: $border-radius !default;
+$dropdown-border-width: $border-width !default;
+$dropdown-link-color: var(--dropdown-link-color) !default;
+$dropdown-link-hover-color: var(--dropdown-link-hover-color) !default;
+$dropdown-link-hover-bg: var(--dropdown-link-hover-bg) !default;
+//$dropdown-box-shadow: 0 0.5rem 1rem rgba(#000, 0.175) !default;
