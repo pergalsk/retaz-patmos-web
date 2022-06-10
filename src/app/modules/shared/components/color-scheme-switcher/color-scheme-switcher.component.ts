@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Theme, ColorSchemeService } from '../../../../services/color-scheme.service';
+import { ColorSchemeService } from '../../../color-scheme/color-scheme.service';
 
 @Component({
   selector: 'app-color-scheme-switcher',
@@ -9,7 +9,21 @@ import { Theme, ColorSchemeService } from '../../../../services/color-scheme.ser
 export class ColorSchemeSwitcherComponent {
   constructor(private colorSchemeService: ColorSchemeService) {}
 
-  setTheme(theme?: Theme): void {
-    this.colorSchemeService.setUserTheme(theme);
+  actualScheme: string;
+
+  setScheme(theme?: string): void {
+    this.actualScheme = theme;
+
+    if (theme === 'dark') {
+      this.colorSchemeService.setDarkScheme();
+      return;
+    }
+
+    if (theme === 'light') {
+      this.colorSchemeService.setLightScheme();
+      return;
+    }
+
+    this.colorSchemeService.setSystemScheme();
   }
 }
