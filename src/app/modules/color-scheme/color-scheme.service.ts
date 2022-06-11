@@ -2,35 +2,42 @@ import { Injectable, Inject, Optional } from '@angular/core';
 import { DOCUMENT } from '@angular/common';
 import { Observable, Observer, Subject, combineLatest, Unsubscribable } from 'rxjs';
 import { distinctUntilChanged, startWith, map, pairwise, filter } from 'rxjs/operators';
-
-export class ColorSchemeConfig {
-  lightSchemeClass: string;
-  darkSchemeClass: string;
-  storageKey: string;
-}
-
-const schemes = ['dark-theme', 'light-theme'] as const;
-export type Scheme = typeof schemes[number];
-export type SchemePair = [Scheme, Scheme];
+import {
+  ColorSchemeClasses,
+  ColorSchemeConfig,
+  SCHEMES,
+  Scheme,
+  UserScheme,
+} from './color-scheme.types';
 
 @Injectable({ providedIn: 'root' })
 export class ColorSchemeService {
-  public systemSchemeChange: Observable<Scheme>;
-  public userSchemeChange: Observable<Scheme>;
-  public schemeChange: Observable<Scheme>;
+  public readonly systemSchemeChange: Observable<Scheme>;
+  public readonly userSchemeChange: Observable<UserScheme>;
+  public readonly schemeChange: Observable<Scheme>;
 
-  private userSchemeSubject = new Subject<Scheme>();
+  public readonly userSchemeSubject = new Subject<UserScheme>();
 
-  private schemesList: Scheme[] = [...schemes];
-  private mediaQuery = '(prefers-color-scheme: dark)';
-  private storageName = 'colorSchemePreference';
+  private readonly storageName: string = 'color-scheme-preference';
+  private readonly mediaQuery: string = '(prefers-color-scheme: dark)';
+
+  private readonly schemeClasses: ColorSchemeClasses = {
+    lightSchemeClass: 'light-scheme',
+    darkSchemeClass: 'dark-scheme',
+  };
 
   constructor(
     @Inject(DOCUMENT) private document: Document,
     @Optional() config?: ColorSchemeConfig
   ) {
-    if (config) {
-      console.log(config);
+    if (config?.lightSchemeClass && config?.darkSchemeClass) {
+      this.schemeClasses = {
+        lightSchemeClass: config.lightSchemeClass,
+        darkSchemeClass: config.darkSchemeClass,
+      };
+    }
+    if (config?.storageKey) {
+      this.storageName = config.storageKey;
     }
 
     this.systemSchemeChange = new Observable<Scheme>(this.systemSchemeObservableFn.bind(this)).pipe(
@@ -43,44 +50,59 @@ export class ColorSchemeService {
       this.systemSchemeChange.pipe(startWith(this.getSystemPreference())),
       this.userSchemeChange.pipe(startWith(this.getStorage())),
     ]).pipe(
-      startWith<SchemePair>([null, null]),
+      startWith<[Scheme, Scheme]>([null, null]),
       distinctUntilChanged(this.distinctArrSchemes),
       pairwise(),
       map(this.chooseSchemeValue),
-      filter((scheme: Scheme): boolean => !!scheme)
+      filter((scheme: Scheme): boolean => scheme === SCHEMES.LIGHT || scheme === SCHEMES.DARK)
     );
-  }
-
-  setDarkScheme(): void {
-    this.setUserScheme('dark-theme');
-  }
-
-  setLightScheme(): void {
-    this.setUserScheme('light-theme');
-  }
-
-  setSystemScheme(): void {
-    this.setUserScheme(null);
   }
 
   getScheme(): Scheme {
     return this.getStorage() || this.getSystemPreference();
   }
 
-  getSystemPreference(): Scheme {
-    return window.matchMedia(this.mediaQuery).matches ? 'dark-theme' : 'light-theme';
+  setLightScheme(): void {
+    this.setUserScheme(SCHEMES.LIGHT);
   }
 
-  private setUserScheme(scheme?: Scheme): void {
-    this.document.body.classList.remove(...this.schemesList);
-    this.document.body.classList.add(scheme);
-    this.setStorage(scheme);
+  setDarkScheme(): void {
+    this.setUserScheme(SCHEMES.DARK);
+  }
+
+  setSystemScheme(): void {
+    this.setUserScheme(SCHEMES.SYSTEM);
+  }
+
+  getSystemPreference(): Scheme {
+    return window.matchMedia(this.mediaQuery).matches ? SCHEMES.DARK : SCHEMES.LIGHT;
+  }
+
+  private get classList(): string[] {
+    return Object.values(this.schemeClasses);
+  }
+
+  private setUserScheme(scheme: UserScheme): void {
+    const className: string | null = this.getClassName(scheme);
+    this.document.body.classList.remove(...this.classList);
+    className && this.document.body.classList.add(className);
+    this.setStorage(className);
     this.userSchemeSubject.next(scheme);
+  }
+
+  private getClassName(scheme: UserScheme): string | null {
+    if (scheme === SCHEMES.LIGHT) {
+      return this.schemeClasses.lightSchemeClass;
+    }
+    if (scheme === SCHEMES.DARK) {
+      return this.schemeClasses.darkSchemeClass;
+    }
+    return null;
   }
 
   private systemSchemeObservableFn(observer: Observer<Scheme>): Unsubscribable {
     const handleChange = (event: MediaQueryListEvent): void => {
-      const scheme: Scheme = event.matches ? 'dark-theme' : 'light-theme';
+      const scheme: Scheme = event.matches ? SCHEMES.DARK : SCHEMES.LIGHT;
       observer.next(scheme);
     };
 
@@ -96,27 +118,27 @@ export class ColorSchemeService {
 
   private getStorage(): Scheme | null {
     const scheme = localStorage.getItem(this.storageName) as Scheme;
-    return this.schemesList.includes(scheme) ? scheme : null;
+    return this.classList.includes(scheme) ? scheme : null;
   }
 
-  private setStorage(scheme?: Scheme): void {
+  private setStorage(scheme?: string): void {
     if (!scheme) {
       localStorage.removeItem(this.storageName);
       return;
     }
-    if (!this.schemesList.includes(scheme)) {
+    if (!this.classList.includes(scheme)) {
       return;
     }
     localStorage.setItem(this.storageName, scheme);
   }
 
-  private distinctArrSchemes(prev: SchemePair, curr: SchemePair): boolean {
+  private distinctArrSchemes(prev: [Scheme, Scheme], curr: [Scheme, Scheme]): boolean {
     return prev[0] === curr[0] && prev[1] === curr[1];
   }
 
   private chooseSchemeValue([[prevSys, prevUsr], [nextSys, nextUsr]]: [
-    SchemePair,
-    SchemePair
+    [Scheme, Scheme],
+    [Scheme, Scheme]
   ]): Scheme {
     if (
       (prevUsr !== nextUsr && prevUsr && nextUsr) ||

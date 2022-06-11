@@ -29,9 +29,9 @@ import { AppShellComponent } from './app-shell/app-shell.component';
     Year2022Module,
     RouterModule,
     ColorSchemeModule.forRoot({
-      darkSchemeClass: 'darkSchemeClass',
-      lightSchemeClass: 'lightSchemeClass',
-      storageKey: 'storageKey',
+      lightSchemeClass: 'light-theme',
+      darkSchemeClass: 'dark-theme',
+      storageKey: 'theme',
     }),
   ],
   providers: [interceptorProviders],

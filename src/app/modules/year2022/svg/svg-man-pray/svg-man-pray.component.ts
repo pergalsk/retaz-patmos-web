@@ -1,12 +1,12 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { Scheme } from 'src/app/modules/color-scheme/color-scheme.service';
+import { Scheme, SCHEMES } from '../../../color-scheme/color-scheme.types';
 
 @Component({
   selector: 'app-svg-man-pray',
   templateUrl: './svg-man-pray.component.html',
 })
 export class SvgManPrayComponent implements OnInit {
-  @Input() scheme: Scheme = 'light-theme';
+  @Input() scheme: Scheme = SCHEMES.LIGHT;
 
   ngOnInit() {}
 }

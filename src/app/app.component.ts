@@ -1,5 +1,7 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { ColorSchemeService, Scheme } from './modules/color-scheme/color-scheme.service';
+import { Observable, Unsubscribable } from 'rxjs';
+import { ColorSchemeService } from './modules/color-scheme/color-scheme.service';
+import { Scheme, UserScheme } from './modules/color-scheme/color-scheme.types';
 
 @Component({
   selector: 'app-root',
@@ -9,9 +11,9 @@ import { ColorSchemeService, Scheme } from './modules/color-scheme/color-scheme.
 export class AppComponent implements OnInit, OnDestroy {
   constructor(private colorSchemeService: ColorSchemeService) {}
 
-  systemSchemeChange$;
-  userSchemeChange$;
-  schemeChange$;
+  systemSchemeChange$: Unsubscribable;
+  userSchemeChange$: Unsubscribable;
+  schemeChange$: Unsubscribable;
 
   ngOnInit(): void {
     this.systemSchemeChange$ = this.colorSchemeService.systemSchemeChange.subscribe(
@@ -20,7 +22,7 @@ export class AppComponent implements OnInit, OnDestroy {
       }
     );
     this.userSchemeChange$ = this.colorSchemeService.userSchemeChange.subscribe(
-      (selectedScheme: Scheme) => {
+      (selectedScheme: UserScheme) => {
         console.log('User scheme preference changed to:', selectedScheme);
       }
     );

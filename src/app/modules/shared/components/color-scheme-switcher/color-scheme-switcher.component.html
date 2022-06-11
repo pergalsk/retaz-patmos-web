@@ -16,15 +16,27 @@
     </button>
 
     <div ngbDropdownMenu aria-labelledby="themeDropdown">
-      <button ngbDropdownItem [disabled]="actualScheme === 'dark'" (click)="setScheme('dark')">
+      <button
+        ngbDropdownItem
+        [disabled]="actualScheme === SCHEMES.DARK"
+        (click)="colorSchemeService.setDarkScheme()"
+      >
         Tmavá téma
       </button>
 
-      <button ngbDropdownItem [disabled]="actualScheme === 'light'" (click)="setScheme('light')">
+      <button
+        ngbDropdownItem
+        [disabled]="actualScheme === SCHEMES.LIGHT"
+        (click)="colorSchemeService.setLightScheme()"
+      >
         Svetlá téma
       </button>
 
-      <button ngbDropdownItem [disabled]="!actualScheme" (click)="setScheme()">
+      <button
+        ngbDropdownItem
+        [disabled]="actualScheme === SCHEMES.SYSTEM"
+        (click)="colorSchemeService.setSystemScheme()"
+      >
         Podľa systému
       </button>
     </div>

@@ -1,6 +1,6 @@
 import { NgModule, Optional, SkipSelf, ModuleWithProviders } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ColorSchemeConfig } from './color-scheme.service';
+import { ColorSchemeConfig } from './color-scheme.types';
 
 @NgModule({
   declarations: [],
