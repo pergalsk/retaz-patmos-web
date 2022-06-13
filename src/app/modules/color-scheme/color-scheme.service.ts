@@ -1,6 +1,13 @@
 import { Injectable, Inject, Optional } from '@angular/core';
 import { DOCUMENT } from '@angular/common';
-import { Observable, Observer, Subject, combineLatest, Unsubscribable } from 'rxjs';
+import {
+  Observable,
+  Observer,
+  Subject,
+  BehaviorSubject,
+  combineLatest,
+  Unsubscribable,
+} from 'rxjs';
 import { distinctUntilChanged, startWith, map, pairwise, filter } from 'rxjs/operators';
 import {
   ColorSchemeClasses,
@@ -18,7 +25,7 @@ export class ColorSchemeService {
 
   public readonly userSchemeSubject = new Subject<UserScheme>();
 
-  private readonly storageName: string = 'color-scheme-preference';
+  private readonly storageKey: string = 'color-scheme-preference';
   private readonly mediaQuery: string = '(prefers-color-scheme: dark)';
 
   private readonly schemeClasses: ColorSchemeClasses = {
@@ -37,20 +44,18 @@ export class ColorSchemeService {
       };
     }
     if (config?.storageKey) {
-      this.storageName = config.storageKey;
+      this.storageKey = config.storageKey;
     }
 
     this.systemSchemeChange = new Observable<Scheme>(this.systemSchemeObservableFn.bind(this)).pipe(
       distinctUntilChanged()
     );
 
+    this.userSchemeSubject = new BehaviorSubject<UserScheme>(this.loadUserScheme());
     this.userSchemeChange = this.userSchemeSubject.pipe(distinctUntilChanged());
 
-    this.schemeChange = combineLatest([
-      this.systemSchemeChange.pipe(startWith(this.getSystemPreference())),
-      this.userSchemeChange.pipe(startWith(this.getStorage())),
-    ]).pipe(
-      startWith<[Scheme, Scheme]>([null, null]),
+    this.schemeChange = combineLatest([this.systemSchemeChange, this.userSchemeChange]).pipe(
+      startWith<[Scheme, UserScheme]>([null, null]),
       distinctUntilChanged(this.distinctArrSchemes),
       pairwise(),
       map(this.chooseSchemeValue),
@@ -58,8 +63,8 @@ export class ColorSchemeService {
     );
   }
 
-  getScheme(): Scheme {
-    return this.getStorage() || this.getSystemPreference();
+  getScheme(): Scheme | UserScheme {
+    return this.loadUserScheme() || this.getSystemPreference();
   }
 
   setLightScheme(): void {
@@ -86,7 +91,7 @@ export class ColorSchemeService {
     const className: string | null = this.getClassName(scheme);
     this.document.body.classList.remove(...this.classList);
     className && this.document.body.classList.add(className);
-    this.setStorage(className);
+    this.storeUserScheme(className);
     this.userSchemeSubject.next(scheme);
   }
 
@@ -100,7 +105,19 @@ export class ColorSchemeService {
     return null;
   }
 
+  private getSchemeName(className?: string): UserScheme {
+    if (className === this.schemeClasses.lightSchemeClass) {
+      return SCHEMES.LIGHT;
+    }
+    if (className === this.schemeClasses.darkSchemeClass) {
+      return SCHEMES.DARK;
+    }
+    return SCHEMES.SYSTEM;
+  }
+
   private systemSchemeObservableFn(observer: Observer<Scheme>): Unsubscribable {
+    observer.next(this.getSystemPreference()); // initial emit
+
     const handleChange = (event: MediaQueryListEvent): void => {
       const scheme: Scheme = event.matches ? SCHEMES.DARK : SCHEMES.LIGHT;
       observer.next(scheme);
@@ -116,61 +133,46 @@ export class ColorSchemeService {
     };
   }
 
-  private getStorage(): Scheme | null {
-    const scheme = localStorage.getItem(this.storageName) as Scheme;
-    return this.classList.includes(scheme) ? scheme : null;
+  private loadUserScheme(): UserScheme {
+    const className: string | null = localStorage.getItem(this.storageKey);
+    return this.getSchemeName(className);
   }
 
-  private setStorage(scheme?: string): void {
+  private storeUserScheme(scheme?: string): void {
     if (!scheme) {
-      localStorage.removeItem(this.storageName);
+      localStorage.removeItem(this.storageKey);
       return;
     }
     if (!this.classList.includes(scheme)) {
       return;
     }
-    localStorage.setItem(this.storageName, scheme);
+    localStorage.setItem(this.storageKey, scheme);
   }
 
-  private distinctArrSchemes(prev: [Scheme, Scheme], curr: [Scheme, Scheme]): boolean {
+  private distinctArrSchemes(prev: [Scheme, UserScheme], curr: [Scheme, UserScheme]): boolean {
     return prev[0] === curr[0] && prev[1] === curr[1];
   }
 
   private chooseSchemeValue([[prevSys, prevUsr], [nextSys, nextUsr]]: [
-    [Scheme, Scheme],
-    [Scheme, Scheme]
+    [Scheme, UserScheme],
+    [Scheme, UserScheme]
   ]): Scheme {
+    // set 'SYSTEM' as null for better handling
+    const _nextUsr = nextUsr === SCHEMES.SYSTEM ? null : nextUsr;
+    const _prevUsr = prevUsr === SCHEMES.SYSTEM ? null : prevUsr;
+
     if (
-      (prevUsr !== nextUsr && prevUsr && nextUsr) ||
-      (prevUsr !== nextUsr && prevSys !== nextUsr && !prevUsr)
+      (_prevUsr !== _nextUsr && _prevUsr && _nextUsr) ||
+      (_prevUsr !== _nextUsr && prevSys !== _nextUsr && !_prevUsr)
     ) {
-      return nextUsr;
+      return _nextUsr;
     }
 
     if (
-      (prevSys !== nextSys && !prevUsr && !nextUsr) ||
-      (prevUsr !== nextUsr && prevUsr !== nextSys && !nextUsr)
+      (prevSys !== nextSys && !_prevUsr && !_nextUsr) ||
+      (_prevUsr !== _nextUsr && _prevUsr !== nextSys && !_nextUsr)
     ) {
       return nextSys;
     }
-
-    // more readable:
-    /*if (prevUsr !== nextUsr) {
-      if (prevUsr && nextUsr) {
-        return nextUsr;
-      }
-      if (!prevUsr && prevSys !== nextUsr) {
-        return nextUsr;
-      }
-      if (!nextUsr && prevUsr !== nextSys) {
-        return nextSys;
-      }
-    }
-
-    if (prevSys !== nextSys) {
-      if (!prevUsr && !nextUsr) {
-        return nextSys;
-      }
-    }*/
   }
 }

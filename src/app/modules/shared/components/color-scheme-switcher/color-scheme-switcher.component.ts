@@ -16,27 +16,14 @@ export class ColorSchemeSwitcherComponent implements OnInit, OnDestroy {
   constructor(public colorSchemeService: ColorSchemeService) {}
 
   ngOnInit() {
-    this.userSchemeChange$ = this.colorSchemeService.schemeChange.subscribe(
+    this.userSchemeChange$ = this.colorSchemeService.userSchemeChange.subscribe(
       (scheme: UserScheme) => {
         this.actualScheme = scheme;
       }
     );
   }
+
   ngOnDestroy() {
     this.userSchemeChange$.unsubscribe();
   }
-
-  /*  setScheme(theme?: string): void {
-    if (theme === 'dark') {
-      this.colorSchemeService.setDarkScheme();
-      return;
-    }
-
-    if (theme === 'light') {
-      this.colorSchemeService.setLightScheme();
-      return;
-    }
-
-    this.colorSchemeService.setSystemScheme();
-  }*/
 }
