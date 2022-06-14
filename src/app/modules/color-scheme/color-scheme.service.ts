@@ -23,7 +23,7 @@ export class ColorSchemeService {
   public readonly userSchemeChange: Observable<UserScheme>;
   public readonly schemeChange: Observable<Scheme>;
 
-  public readonly userSchemeSubject = new Subject<UserScheme>();
+  private readonly userSchemeSubject;
 
   private readonly storageKey: string = 'color-scheme-preference';
   private readonly mediaQuery: string = '(prefers-color-scheme: dark)';

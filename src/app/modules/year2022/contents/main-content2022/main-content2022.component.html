@@ -3,8 +3,11 @@
 
   <div class="title-with-picture">
     <div class="svg-pct">
-      <app-svg-man-pray *ngIf="!placeholder"></app-svg-man-pray>
-      <app-svg-man-pray-placeholder *ngIf="placeholder"></app-svg-man-pray-placeholder>
+      <app-svg-man-pray *ngIf="!placeholder" [scheme]="scheme"></app-svg-man-pray>
+      <app-svg-man-pray-placeholder
+        *ngIf="placeholder"
+        [scheme]="scheme"
+      ></app-svg-man-pray-placeholder>
     </div>
 
     <h1 class="no-gradient display-4 mb-4">Pôstne modlitby 2022</h1>

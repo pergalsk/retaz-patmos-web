@@ -3,6 +3,8 @@ import { ActivatedRoute, Params, Router } from '@angular/router';
 import { Location } from '@angular/common';
 import { format, compareAsc, addDays, eachDayOfInterval } from 'date-fns';
 import sk from 'date-fns/locale/sk';
+import { ColorSchemeService } from '../../../color-scheme/color-scheme.service';
+import { Scheme } from '../../../color-scheme/color-scheme.types';
 import { DatesService } from '../../../../services/dates.service';
 import { DateBadge } from '../../components/badge-strip/badge-strip.component';
 
@@ -23,11 +25,15 @@ export class PageYear2022Component implements OnInit {
   dateFormatISO = 'yyyy-MM-dd';
   changeHour = 1; // at 1 AM content will change
 
+  scheme: Scheme;
+  colorSchemeChange$;
+
   constructor(
     private datesService: DatesService,
     private activatedRoute: ActivatedRoute,
     private router: Router,
-    private location: Location
+    private location: Location,
+    private colorSchemeService: ColorSchemeService
   ) {}
 
   ngOnInit(): void {
@@ -36,6 +42,10 @@ export class PageYear2022Component implements OnInit {
     this.datesList = this.generateDatesList(this.startDate, this.endDate, this.todayDate);
 
     this.activatedRoute.params.subscribe(this.handleRouteParams.bind(this));
+
+    this.colorSchemeChange$ = this.colorSchemeService.schemeChange.subscribe((scheme: Scheme) => {
+      this.scheme = scheme;
+    });
   }
 
   dateClickHandler(dateBadge: DateBadge): void {
