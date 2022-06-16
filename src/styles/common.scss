@@ -1,61 +1,12 @@
 ////////////////
 // COMMON
 //
-
 :root {
-  color-scheme: light dark;
-}
-
-html {
   font-size: 16px;
 }
 
 body {
   transition: background-color 0.8s;
-  @include light-theme();
-
-  &.dark-theme {
-    @include dark-theme();
-  }
-}
-
-@media (prefers-color-scheme: dark) {
-  body {
-    @include dark-theme();
-
-    &.light-theme {
-      @include light-theme();
-
-      .hide-dark {
-        display: unset !important;
-      }
-
-      .hide-light {
-        display: none !important;
-      }
-    }
-
-    .hide-dark {
-      display: none !important;
-    }
-  }
-}
-
-@media (prefers-color-scheme: light) {
-  body {
-    &.dark-theme {
-      .hide-light {
-        display: unset !important;
-      }
-      .hide-dark {
-        display: none !important;
-      }
-    }
-
-    .hide-light {
-      display: none !important;
-    }
-  }
 }
 
 h1,

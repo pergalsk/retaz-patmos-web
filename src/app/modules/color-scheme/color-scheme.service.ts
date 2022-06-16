@@ -89,8 +89,8 @@ export class ColorSchemeService {
 
   private setUserScheme(scheme: UserScheme): void {
     const className: string | null = this.getClassName(scheme);
-    this.document.body.classList.remove(...this.classList);
-    className && this.document.body.classList.add(className);
+    this.document.documentElement.classList.remove(...this.classList);
+    className && this.document.documentElement.classList.add(className);
     this.storeUserScheme(className);
     this.userSchemeSubject.next(scheme);
   }

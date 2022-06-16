@@ -35,7 +35,8 @@
   <body>
     <script type="text/javascript">
       const usrPref = localStorage.getItem('theme');
-      ['light-theme', 'dark-theme'].includes(usrPref) && document.body.classList.add(usrPref);
+      ['light-theme', 'dark-theme'].includes(usrPref) &&
+        document.documentElement.classList.add(usrPref);
     </script>
 
     <app-root></app-root>
