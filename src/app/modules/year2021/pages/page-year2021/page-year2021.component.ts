@@ -1,24 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import { HttpClient, HttpErrorResponse, HttpHeaders, HttpResponse } from '@angular/common/http';
 import { Observable, zip, throwError } from 'rxjs';
 import { catchError, delay, map } from 'rxjs/operators';
 import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
 import { ModalContentComponent } from '../../../../modal-content/modal-content.component';
 import { CalendarData } from '../../../shared/components/calendar/calendar.component';
 import { PanelMenuItem } from '../../components/panel-menu/panel-menu.component';
-import { SysdateResponse, CommonApiService } from '../../../../services/common-api.service';
-
-export interface DatesResponse {
-  id: number;
-  date: string;
-  names: string[];
-  timestamp: string;
-}
-
-export interface PutNameRequest {
-  date: string;
-  name: string;
-}
+import { SysdateResponse, DatesResponse, PutNameRequest, CommonApiService } from '../../../../services/common-api.service';
 
 export interface CalendarOptions {
   sysDate: string;
@@ -85,7 +72,6 @@ export class PageYear2021Component implements OnInit {
   ];
 
   constructor(
-    private httpClient: HttpClient,
     private modalService: NgbModal,
     private commonApiService: CommonApiService
   ) {}
@@ -159,7 +145,7 @@ export class PageYear2021Component implements OnInit {
       };
 
       this.submitError = false;
-      this.submitAnswers(submitData).subscribe(
+      this.commonApiService.submitAnswers(submitData).subscribe(
         (resp: string[]) => {
           if (Array.isArray(resp)) {
             this.calendarData = {
@@ -192,7 +178,7 @@ export class PageYear2021Component implements OnInit {
     this.getCalendarError = false;
     this.panelContentIndex = this.panelMenuItems.length - 1;
 
-    zip(this.getDates(), this.commonApiService.getSysDateTime())
+    zip(this.commonApiService.getDates('2021'), this.commonApiService.getSysDateTime())
       .pipe(map(([rawDates, sysDateTime]) => ({ rawDates, sysDateTime })))
       .subscribe(this.handleSuccess, this.handleError); // todo: unsubscribe
   }
@@ -234,20 +220,5 @@ export class PageYear2021Component implements OnInit {
   private handleError(error: any): void {
     this.getCalendarError = true;
     console.log(error);
-  }
-
-  private getDates(): any {
-    return this.loadDates() /*.pipe(
-      // map((formSchema) => this.processFormSchema(formSchema)),
-      // catchError(this.handleError('Formulár sa nepodarilo načítať.'))
-    )*/;
-  }
-
-  private loadDates(): Observable<DatesResponse[]> {
-    return this.httpClient.get<DatesResponse[]>('/api/dates');
-  }
-
-  private submitAnswers(submitData: PutNameRequest): Observable<string[]> {
-    return this.httpClient.put<string[]>('/api/dates', submitData);
   }
 }

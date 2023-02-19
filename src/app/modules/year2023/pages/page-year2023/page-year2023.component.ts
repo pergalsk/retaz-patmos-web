@@ -1,23 +1,12 @@
 import { Component, OnInit } from '@angular/core';
-import {CalendarData} from '../../../shared/components/calendar/calendar.component';
 import {HttpClient} from '@angular/common/http';
 import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
-import {CommonApiService, SysdateResponse} from '../../../../services/common-api.service';
-import {Observable, zip} from 'rxjs';
+import {zip} from 'rxjs';
 import {map} from 'rxjs/operators';
+import {CommonApiService, SysdateResponse, DatesResponse, PutNameRequest} from '../../../../services/common-api.service';
 import {ModalContentComponent} from '../../../../modal-content/modal-content.component';
+import {CalendarData} from '../../../shared/components/calendar/calendar.component';
 
-export interface DatesResponse {
-  id: number;
-  date: string;
-  names: string[];
-  timestamp: string;
-}
-
-export interface PutNameRequest {
-  date: string;
-  name: string;
-}
 
 @Component({
   selector: 'app-page-year2023',
@@ -43,7 +32,7 @@ export class PageYear2023Component implements OnInit {
   ngOnInit(): void {
     this.getCalendarError = false;
 
-    zip(this.loadDates(), this.commonApiService.getSysDateTime())
+    zip(this.commonApiService.getDates('2023'), this.commonApiService.getSysDateTime())
       .pipe(map(([rawDates, sysDateTime]) => ({ rawDates, sysDateTime })))
       .subscribe(this.handleSuccess, this.handleError); // todo: unsubscribe
   }
@@ -113,14 +102,6 @@ export class PageYear2023Component implements OnInit {
     return 0;
   }
 
-  private loadDates(): Observable<DatesResponse[]> {
-    return this.httpClient.get<DatesResponse[]>('/api/dates');
-  }
-
-  private submitAnswers(submitData: PutNameRequest): Observable<string[]> {
-    return this.httpClient.put<string[]>('/api/dates', submitData);
-  }
-
   onDateClick(event: any): void {
     if (this.modalRef || !event) {
       return;
@@ -164,7 +145,7 @@ export class PageYear2023Component implements OnInit {
       };
 
       this.submitError = false;
-      this.submitAnswers(submitData).subscribe(
+      this.commonApiService.submitAnswers(submitData).subscribe(
         (resp: string[]) => {
           if (Array.isArray(resp)) {
             this.calendarData = {
