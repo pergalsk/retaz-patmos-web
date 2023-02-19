@@ -57,7 +57,7 @@ export class PageYear2022Component implements OnInit {
     const isToday = this.todayDate.getTime() === dateBadge.date.getTime();
 
     this.selectedDateISO = dateBadge.id;
-    this.replaceLocation([isToday ? '' : this.selectedDateISO]);
+    this.replaceLocation(['2022', this.selectedDateISO]);
   }
 
   private handleRouteParams(params: Params): void {
@@ -74,7 +74,7 @@ export class PageYear2022Component implements OnInit {
       this.selectedDateISO = params.date;
     } else {
       this.selectedDateISO = this.calculateSelectedDateISO(this.refDate);
-      this.replaceLocation(['']);
+      this.replaceLocation(['2022']);
     }
   }
 

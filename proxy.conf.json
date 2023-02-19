@@ -1,7 +1,7 @@
 {
   "/api": {
     "changeOrigin": true,
-    "target": "http://localhost:4004/retaz-patmos-be/public",
+    "target": "http://localhost/retaz-patmos-be/public",
     "secure": false,
     "logLevel": "debug"
   }

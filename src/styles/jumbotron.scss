@@ -12,7 +12,7 @@
     padding: $jumbotron-equal-padding-sm;
   }
 
-  &.gradient-border-c {
+  &.gradient-border {
     position: relative;
     margin: $gradient-border-size $gradient-border-size 3rem $gradient-border-size;
     padding: $jumbotron-equal-padding - $gradient-border-size;
@@ -30,6 +30,10 @@
       margin: -$gradient-border-size;
       border-radius: $border-radius-lg;
       background-image: var(--gradient-c);
+    }
+
+    &.border-e:before {
+      background-image: var(--gradient-e);
     }
   }
 
@@ -119,6 +123,10 @@
 
     &.gradient-d {
       background-image: var(--gradient-d);
+    }
+
+    &.gradient-e {
+      background-image: var(--gradient-e);
     }
 
     .bible-verse {

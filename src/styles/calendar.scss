@@ -2,6 +2,15 @@
 // CALENDAR
 //
 
+$selected-color: #404e69;
+$highlighted-color: #e0e9f7;
+$week-cell-padding: 0.4rem 0.6rem 0.4rem 0.5rem;
+
+// today
+$today-border-size: 0.15rem;
+$week-cell-padding-today: (0.4rem - $today-border-size) (0.6rem - $today-border-size) (0.4rem -$today-border-size) (0.5rem - $today-border-size);
+
+
 /* Calendar 100% height */
 .calendar {
   height: 100%;
@@ -30,7 +39,7 @@
       padding-bottom: 1em;
       align-items: center;
       font-style: italic;
-      color: #999 !important;
+      //color: #999 !important;
     }
   }
 
@@ -66,7 +75,7 @@
 
     > .week-cell {
       position: relative;
-      padding: 0.4rem 0.6rem 0.4rem 0.5rem;
+      padding: $week-cell-padding;
       min-height: 7.2rem;
       background-color: #f7f8fa;
       border-radius: 0.6rem;
@@ -84,15 +93,16 @@
       }
 
       &.today {
-        border: 1px solid #553e77;
+        border: $today-border-size solid $selected-color;
+        padding: $week-cell-padding-today;
 
         .title {
-          color: #553e77 !important;
+          color: $selected-color !important;
         }
       }
 
       &.filled {
-        background-color: #e9ecf7;
+        background-color: #e1e8f5;
       }
 
       &.past {
@@ -103,36 +113,37 @@
         background-color: #f1f4fb;
 
         .title {
-          color: #a5afb8;
+          color: #3b4854;
         }
 
         &.filled {
-          background-color: #e1e5f5;
+          background-color: #e1e8f5;
 
           .title {
-            color: #8d99a3;
+            color: #3b4854;
           }
         }
       }
 
       &.highlighted {
-        background-color: #edebff;
+        background-color: $highlighted-color;
 
         .title {
-          color: #a295b2;
+          color: #303848;
         }
 
         &.filled {
-          background-color: #dbd6ff;
+          background-color: #cedaed;
 
           .title {
-            color: #846f9d;
+            color: #303848;
           }
         }
       }
 
       &:hover:not(.invisible, .disabled):not(.past, .today) {
-        background-color: #553e77 !important;
+        background-color: $selected-color !important;
+        background-image: linear-gradient(347deg, #6a4156 0%, #344356 40%, #344662 100%);
         cursor: pointer;
 
         .title {
@@ -147,8 +158,8 @@
       .title {
         //content: attr(data-date);
         display: block;
-        color: #aaa;
-        transition: color 0.3s;
+        color: #555;
+        //transition: color 0.3s;
         font-weight: bold;
         font-size: 0.8rem;
         text-transform: uppercase;
@@ -171,8 +182,8 @@
     flex-direction: column;
     width: 100%;
     margin-right: 0.4rem;
-    color: #333;
-    transition: background-color 0.3s, color 0.3s;
+    color: #555;
+    //transition: background-color 0.3s, color 0.3s;
     overflow-x: hidden;
 
     @include media-breakpoint-down(md) {
@@ -195,8 +206,15 @@
     .entry {
       overflow-x: hidden;
       text-overflow: ellipsis;
-      transition: color 0.3s;
       font-size: 0.8rem;
+      font-weight: 700;
+      margin: 0.5em 0;
+      line-height: 1.2em;
+      //transition: color 0.3s;
+
+      &:last-child {
+        margin-bottom: 0;
+      }
 
       @include media-breakpoint-down(md) {
         display: inline;

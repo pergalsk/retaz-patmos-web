@@ -1,0 +1,20 @@
+<app-main-content2023></app-main-content2023>
+
+<div *ngIf="getCalendarError" class="alert alert-danger" role="alert">
+  Obsah kalendára sa nepodarilo načítať. Ak problém pretrváva, kontaktujte nás na:
+  pergalsk@gmail.com (PG).
+</div>
+
+<div *ngIf="submitError" class="alert alert-warning" role="alert">
+  Chyba pri zapisovaní do kalendára. Ak problém pretrváva, kontaktujte nás na: pergalsk@gmail.com
+  (PG).
+</div>
+
+<div *ngIf="calendarData" class="jumbotron dense mt-4">
+  <app-calendar
+      [data]="calendarData"
+      [options]="calendarOptions"
+      (cellAction)="onDateClick($event)"
+  ></app-calendar>
+</div>
+

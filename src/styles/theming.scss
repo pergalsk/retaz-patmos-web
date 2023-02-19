@@ -41,6 +41,7 @@
   --gradient-b: linear-gradient(120deg, #553e77 0%, #553e77 35%, #6e2b84 100%);
   --gradient-c: linear-gradient(168deg, #3e4777 0%, #0e3359 35%, #2b8467 100%);
   --gradient-d: linear-gradient(347deg, #293344 0%, #0e3359 45%, #723b5a 100%);
+  --gradient-e: linear-gradient(347deg, #4a152f 0%, #3f536e 40%, #07101e 100%);
 }
 
 @mixin dark-theme() {
@@ -53,7 +54,7 @@
   --heading-color: #c3c3c3;
   --verse-color: #ccc;
   --text-white-color: #bbb;
-  --text-blue-color: #5e7db5;
+  --text-blue-color: #3f5da5;
   --jumbotron-bg: #1a1d23;
   --border-color: #454e5e;
 
@@ -86,8 +87,10 @@
   --gradient-b: linear-gradient(120deg, #553e77 0%, #553e77 35%, #6e2b84 100%);
   --gradient-c: linear-gradient(168deg, #20243e 0%, #0a243e 35%, #113227 100%);
   --gradient-d: linear-gradient(347deg, #191e26 0%, #09213a 45%, #522a41 100%);
+  --gradient-e: linear-gradient(347deg, #361626 0%, #0d2442 40%, #051122 100%);
 }
 
+/*
 @media (prefers-color-scheme: dark) {
   :root {
     &:not(.light-theme) {
@@ -112,6 +115,7 @@
   }
 }
 
+
 @media (prefers-color-scheme: light) {
   :root {
     &:not(.dark-theme) {
@@ -135,3 +139,10 @@
     }
   }
 }
+*/
+
+//@media (prefers-color-scheme: light) {
+  :root {
+      @include light-theme();
+  }
+//}

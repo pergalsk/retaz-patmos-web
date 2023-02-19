@@ -12,7 +12,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { SharedModule } from './modules/shared/shared.module';
 import { ColorSchemeModule } from './modules/color-scheme/color-scheme.module';
 
-import { Year2022Module } from './modules/year2022/year2022.module';
+import { Year2023Module } from './modules/year2023/year2023.module';
 import { RouterModule } from '@angular/router';
 import { AppShellComponent } from './app-shell/app-shell.component';
 
@@ -26,7 +26,7 @@ import { AppShellComponent } from './app-shell/app-shell.component';
     BrowserAnimationsModule,
     AppRoutingModule,
     SharedModule,
-    Year2022Module,
+    Year2023Module,
     RouterModule,
     ColorSchemeModule.forRoot({
       lightSchemeClass: 'light-theme',
