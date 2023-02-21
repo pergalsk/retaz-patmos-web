@@ -148,6 +148,10 @@ footer {
 ul > li {
   padding-bottom: 0.55rem !important;
 
+  &:last-child {
+    padding-bottom: 0 !important;
+  }
+
   .bible-verse {
     display: block;
     font-size: 0.95rem;
