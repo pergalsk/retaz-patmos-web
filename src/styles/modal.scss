@@ -1,0 +1,51 @@
+.modal-content {
+  border: 0;
+  box-shadow: 0 0 15px 4px rgb(0 0 0 / 20%), 0 18px 45px 36px rgb(0 0 0 / 11%);
+
+  .modal-header {
+    &.dark {
+      background-color: $primary;
+      background-image: linear-gradient(352deg, hsl(214deg 27% 20%) 0%, hsl(217deg 62% 10%) 100%);
+
+      .modal-title {
+        color: white;
+        user-select: none;
+        background-image: none;
+        -webkit-background-clip: unset;
+        -webkit-text-fill-color: unset;
+      }
+
+      button.close {
+        border: 0;
+        padding: 0.1rem 1.5rem;
+        color: white;
+        background-color: transparent;
+      }
+    }
+
+    button.close {
+      font-size: 2.5rem;
+    }
+  }
+}
+
+#registration-modal-graphic {
+  max-width: 270px;
+  margin: 0 auto;
+  display: none;
+
+  @media (min-height: 600px) {
+    display: block;
+  }
+}
+
+#registration-modal-action-btn {
+  @media (min-width: 401px) {
+    .text-a { display: block; }
+    .text-b { display: none; }
+  }
+  @media (max-width: 400px) {
+    .text-a { display: none; }
+    .text-b { display: block; }
+  }
+}

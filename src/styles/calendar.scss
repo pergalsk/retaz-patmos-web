@@ -143,7 +143,7 @@ $week-cell-padding-today: (0.4rem - $today-border-size) (0.6rem - $today-border-
 
       &:hover:not(.invisible, .disabled):not(.past, .today) {
         background-color: $selected-color !important;
-        background-image: linear-gradient(347deg, #6a4156 0%, #344356 40%, #344662 100%);
+        background-image: linear-gradient(347deg, #6a4156 0%, #344356 40%, #0c1a30 100%);
         cursor: pointer;
 
         .title {

@@ -1,7 +1,10 @@
 // Bootstrap variables overrides
 
-$primary: #404e69; //var(--primary-color);
+$primary: hsl(214deg 27% 26%); //var(--primary-color);
+//$primary: #404e69; //var(--primary-color);
 //$primary: #553e77; //var(--primary-color);  // stará fialová z roku 2021
+$light: #e9ecef; // value from $gray-200;
+
 
 $body-bg: var(--body-bg-color);
 $body-color: var(--body-color);
@@ -12,7 +15,7 @@ $font-family-sans-serif: 'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe
   'Helvetica Neue', Arial, 'Noto Sans', 'Liberation Sans', sans-serif, 'Apple Color Emoji',
   'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji' !default;
 
-$font-size-base: 1.1rem !default; // Assumes the browser default, typically `16px`
+$font-size-base: 1.125rem !default; // Assumes the browser default, typically `16px`
 $font-size-lg: $font-size-base * 1.25 !default;
 $font-size-sm: $font-size-base * 0.875 !default;
 
@@ -43,9 +46,8 @@ $border-radius-lg: 1.5rem !default;
 $border-radius: 0.5rem !default;
 $border-radius-sm: 0.25rem !default;
 
-$btn-border-radius: 0.5em;
-$modal-content-border-radius: 0.5em;
-$input-border-radius: 0.5em;
+$transition-fade: opacity .30s linear !default;
+
 $alert-border-radius: 0.5em;
 
 $jumbotron-bg: var(--jumbotron-bg) !default;
@@ -60,4 +62,28 @@ $dropdown-link-color: var(--dropdown-link-color) !default;
 $dropdown-link-hover-color: var(--dropdown-link-hover-color) !default;
 $dropdown-link-hover-bg: var(--dropdown-link-hover-bg) !default;
 $dropdown-link-disabled-color: var(--dropdown-link-disabled-color);
-//$dropdown-box-shadow: 0 0.5rem 1rem rgba(#000, 0.175) !default;
+// $dropdown-box-shadow: 0 0.5rem 1rem rgba(#000, 0.175) !default;
+
+
+// Buttons + Forms
+$input-btn-padding-y: .85rem !default;
+$input-btn-padding-x: 1.5rem !default;
+$input-btn-border-width: 2px;
+$input-color: #343a40; // $gray-800;
+$input-placeholder-color: #ced4da; // $gray-400;
+
+$btn-font-size: $font-size-sm;
+$btn-font-weight: $font-weight-bolder;
+$btn-border-radius: 0.4em;
+
+$input-border-radius: 0.4em;
+$input-padding-x: 1rem !default;
+$input-font-weight: $font-weight-bolder;
+
+// Modals
+$modal-inner-padding: 1.5rem !default;
+$modal-header-padding-x: 1.5rem !default;
+$modal-content-border-radius: 0.5em !default;
+$modal-backdrop-opacity: .65 !default;
+$modal-transition: transform .25s ease-out !default;
+$modal-fade-transform: scale(.7);

@@ -11,6 +11,7 @@ import { TwoSplitComponent } from './components/two-split/two-split.component';
 import { ContentBoxComponent } from './components/content-box/content-box.component';
 import { SmoothHeightComponent } from './smooth-height/smooth-height.component';
 import { ColorSchemeSwitcherComponent } from './components/color-scheme-switcher/color-scheme-switcher.component';
+import { SvgCalendarManComponent } from './svg/svg-calendar-man/svg-calendar-man.component';
 
 @NgModule({
   declarations: [
@@ -22,6 +23,7 @@ import { ColorSchemeSwitcherComponent } from './components/color-scheme-switcher
     SafePipe,
     SmoothHeightComponent,
     ColorSchemeSwitcherComponent,
+    SvgCalendarManComponent,
   ],
   imports: [CommonModule, RouterModule, NgbModule],
   exports: [
@@ -33,6 +35,7 @@ import { ColorSchemeSwitcherComponent } from './components/color-scheme-switcher
     SafePipe,
     SmoothHeightComponent,
     ColorSchemeSwitcherComponent,
+    SvgCalendarManComponent,
   ],
 })
 export class SharedModule {}

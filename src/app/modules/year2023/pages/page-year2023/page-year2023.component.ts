@@ -107,7 +107,7 @@ export class PageYear2023Component implements OnInit {
       return;
     }
 
-    const { weekIndex, dayIndex, day, week, calendar } = event;
+    const { day } = event;
 
     if (!day?.date || !day?.future) {
       return;
@@ -116,8 +116,8 @@ export class PageYear2023Component implements OnInit {
     const { date } = day;
 
     this.modalRef = this.modalService.open(ModalContentComponent, {
-      centered: true,
-      size: 'sm',
+      animation: true,
+      centered: true
     });
 
     this.modalRef.componentInstance.date = {
