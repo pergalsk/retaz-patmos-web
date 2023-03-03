@@ -8,9 +8,8 @@ describe('SvgPrayKneesComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ SvgPrayKneesComponent ]
-    })
-    .compileComponents();
+      declarations: [SvgPrayKneesComponent],
+    }).compileComponents();
   });
 
   beforeEach(() => {

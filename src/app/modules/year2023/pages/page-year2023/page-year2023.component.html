@@ -12,9 +12,8 @@
 
 <div *ngIf="calendarData" class="jumbotron dense mt-4">
   <app-calendar
-      [data]="calendarData"
-      [options]="calendarOptions"
-      (cellAction)="onDateClick($event)"
+    [data]="calendarData"
+    [options]="calendarOptions"
+    (cellAction)="onDateClick($event)"
   ></app-calendar>
 </div>
-

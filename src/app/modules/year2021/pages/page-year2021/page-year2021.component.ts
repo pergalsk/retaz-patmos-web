@@ -5,7 +5,12 @@ import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
 import { ModalContentComponent } from '../../../../modal-content/modal-content.component';
 import { CalendarData } from '../../../shared/components/calendar/calendar.component';
 import { PanelMenuItem } from '../../components/panel-menu/panel-menu.component';
-import { SysdateResponse, DatesResponse, PutNameRequest, CommonApiService } from '../../../../services/common-api.service';
+import {
+  SysdateResponse,
+  DatesResponse,
+  PutNameRequest,
+  CommonApiService,
+} from '../../../../services/common-api.service';
 
 export interface CalendarOptions {
   sysDate: string;
@@ -71,10 +76,7 @@ export class PageYear2021Component implements OnInit {
     },
   ];
 
-  constructor(
-    private modalService: NgbModal,
-    private commonApiService: CommonApiService
-  ) {}
+  constructor(private modalService: NgbModal, private commonApiService: CommonApiService) {}
 
   private handleSuccess = (data: { rawDates: DatesResponse[]; sysDateTime: SysdateResponse }) => {
     this.getCalendarError = false;

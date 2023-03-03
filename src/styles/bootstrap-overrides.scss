@@ -5,14 +5,14 @@ $primary: hsl(214deg 27% 26%); //var(--primary-color);
 //$primary: #553e77; //var(--primary-color);  // stará fialová z roku 2021
 $light: #e9ecef; // value from $gray-200;
 
-
 $body-bg: white; //var(--body-bg-color);
 $body-color: black; //var(--body-color);
 
 $spacer: 1.5rem;
 
-$font-family-sans-serif: 'Montserrat', system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", "Noto Sans",
-"Liberation Sans", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+$font-family-sans-serif: 'Montserrat', system-ui, -apple-system, 'Segoe UI', Roboto,
+  'Helvetica Neue', 'Noto Sans', 'Liberation Sans', Arial, sans-serif, 'Apple Color Emoji',
+  'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
 
 $font-size-base: 1.125rem; // Assumes the browser default, typically `16px`
 $font-size-sm: $font-size-base * 0.875;
@@ -42,7 +42,7 @@ $border-radius-lg: 1.5rem;
 $border-radius: 0.5rem;
 $border-radius-sm: 0.25rem;
 
-$transition-fade: opacity .30s linear;
+$transition-fade: opacity 0.3s linear;
 
 $alert-border-radius: 0.5em;
 
@@ -60,7 +60,6 @@ $dropdown-link-hover-bg: var(--dropdown-link-hover-bg);
 $dropdown-link-disabled-color: var(--dropdown-link-disabled-color);
 // $dropdown-box-shadow: 0 0.5rem 1rem rgba(#000, 0.175);
 
-
 // Buttons + Forms
 $input-btn-padding-y: 0.85rem;
 $input-btn-padding-x: 1.5rem;
@@ -76,7 +75,6 @@ $input-border-radius: 0.4rem;
 $input-padding-x: 1rem;
 $input-font-weight: $font-weight-bolder;
 
-
 // Modals
 $modal-inner-padding: 1.5rem;
 $modal-header-padding-x: 1.5rem;
@@ -84,4 +82,4 @@ $modal-content-border-radius: 0.5em;
 $modal-backdrop-opacity: 0.7;
 $modal-backdrop-bg: #0b1728;
 $modal-transition: transform 0.25s ease-out;
-$modal-fade-transform: scale(.85);
+$modal-fade-transform: scale(0.85);

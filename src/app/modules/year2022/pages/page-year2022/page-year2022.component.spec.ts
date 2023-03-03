@@ -8,9 +8,8 @@ describe('PageYear2022Component', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ PageYear2022Component ]
-    })
-    .compileComponents();
+      declarations: [PageYear2022Component],
+    }).compileComponents();
   });
 
   beforeEach(() => {

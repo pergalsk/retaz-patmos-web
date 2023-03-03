@@ -4,7 +4,7 @@ import { noWhitespaceValidator } from './no-whitespace.validator';
 
 @Directive({
   selector: '[noWhitespace]',
-  providers: [{ provide: NG_VALIDATORS, useExisting: NoWhitespaceDirective, multi: true }]
+  providers: [{ provide: NG_VALIDATORS, useExisting: NoWhitespaceDirective, multi: true }],
 })
 export class NoWhitespaceDirective implements Validator {
   validate(control: AbstractControl): ValidationErrors | null {

@@ -29,7 +29,7 @@ import {
 export interface CalendarDataProps {
   start: string;
   end: string;
-  [key: string]: any
+  [key: string]: any;
 }
 
 export type CalendarDataEntries<T> = { [Key: string]: T };

@@ -8,9 +8,8 @@ describe('Content07Component', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ Content07Component ]
-    })
-    .compileComponents();
+      declarations: [Content07Component],
+    }).compileComponents();
   });
 
   beforeEach(() => {

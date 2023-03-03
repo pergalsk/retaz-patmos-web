@@ -21,7 +21,6 @@ export interface PutNameRequest {
   name: string;
 }
 
-
 @Injectable({
   providedIn: 'root',
 })
@@ -42,5 +41,4 @@ export class CommonApiService {
   submitAnswers(submitData: PutNameRequest): Observable<string[]> {
     return this.httpClient.put<string[]>('/api/dates', submitData);
   }
-
 }

@@ -12,11 +12,9 @@ import { MainContent2023Component } from './contents/main-content2023/main-conte
     PageYear2023Component,
     SvgCalendarComponent,
     SvgPrayKneesComponent,
-    MainContent2023Component
+    MainContent2023Component,
   ],
-  imports: [
-    CommonModule, SharedModule
-  ],
-  exports: [PageYear2023Component, MainContent2023Component]
+  imports: [CommonModule, SharedModule],
+  exports: [PageYear2023Component, MainContent2023Component],
 })
-export class Year2023Module { }
+export class Year2023Module {}

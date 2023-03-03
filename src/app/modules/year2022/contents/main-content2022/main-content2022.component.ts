@@ -1,7 +1,7 @@
-import {Component, Input, OnDestroy, OnInit} from '@angular/core';
+import { Component, Input, OnDestroy, OnInit } from '@angular/core';
 import { ColorSchemeService } from '../../../color-scheme/color-scheme.service';
 import { Scheme } from '../../../color-scheme/color-scheme.types';
-import {Subscription} from 'rxjs';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-main-content2022',

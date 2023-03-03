@@ -8,9 +8,8 @@ describe('SvgTimeComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ SvgTimeComponent ]
-    })
-    .compileComponents();
+      declarations: [SvgTimeComponent],
+    }).compileComponents();
   });
 
   beforeEach(() => {

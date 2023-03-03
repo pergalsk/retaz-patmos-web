@@ -8,9 +8,8 @@ describe('SvgNatureComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ SvgNatureComponent ]
-    })
-    .compileComponents();
+      declarations: [SvgNatureComponent],
+    }).compileComponents();
   });
 
   beforeEach(() => {

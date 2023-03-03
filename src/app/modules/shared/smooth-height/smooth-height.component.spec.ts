@@ -8,9 +8,8 @@ describe('SmoothHeightComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ SmoothHeightComponent ]
-    })
-    .compileComponents();
+      declarations: [SmoothHeightComponent],
+    }).compileComponents();
   });
 
   beforeEach(() => {

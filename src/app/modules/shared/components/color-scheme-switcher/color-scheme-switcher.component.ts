@@ -1,7 +1,7 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ColorSchemeService } from '../../../color-scheme/color-scheme.service';
 import { SCHEMES, UserScheme } from '../../../color-scheme/color-scheme.types';
-import {Subscription} from 'rxjs';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-color-scheme-switcher',

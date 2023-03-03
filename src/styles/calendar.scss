@@ -8,8 +8,8 @@ $week-cell-padding: 0.4rem 0.6rem 0.4rem 0.5rem;
 
 // today
 $today-border-size: 0.15rem;
-$week-cell-padding-today: subtract(0.4rem, $today-border-size) subtract(0.6rem, $today-border-size) subtract(0.4rem, $today-border-size) subtract(0.5rem, $today-border-size);
-
+$week-cell-padding-today: subtract(0.4rem, $today-border-size) subtract(0.6rem, $today-border-size)
+  subtract(0.4rem, $today-border-size) subtract(0.5rem, $today-border-size);
 
 /* Calendar 100% height */
 .calendar {

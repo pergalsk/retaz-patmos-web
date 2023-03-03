@@ -142,7 +142,7 @@
 */
 
 //@media (prefers-color-scheme: light) {
-  :root {
-      @include light-theme();
-  }
+:root {
+  @include light-theme();
+}
 //}

@@ -1,4 +1,4 @@
-import {Component, OnDestroy, OnInit,} from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { Location } from '@angular/common';
 import { format, compareAsc, addDays, eachDayOfInterval } from 'date-fns';
@@ -7,7 +7,7 @@ import { ColorSchemeService } from '../../../color-scheme/color-scheme.service';
 import { Scheme } from '../../../color-scheme/color-scheme.types';
 import { DatesService } from '../../../../services/dates.service';
 import { DateBadge } from '../../components/badge-strip/badge-strip.component';
-import {Subscription} from 'rxjs';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-page-year2022',
@@ -27,7 +27,7 @@ export class PageYear2022Component implements OnInit, OnDestroy {
   changeHour = 1; // at 1 AM content will change
 
   scheme: Scheme;
-  colorSchemeChange$: Subscription
+  colorSchemeChange$: Subscription;
 
   constructor(
     private datesService: DatesService,

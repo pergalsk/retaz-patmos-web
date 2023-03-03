@@ -8,9 +8,8 @@ describe('ColorSchemeSwitcherComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ ColorSchemeSwitcherComponent ]
-    })
-    .compileComponents();
+      declarations: [ColorSchemeSwitcherComponent],
+    }).compileComponents();
   });
 
   beforeEach(() => {

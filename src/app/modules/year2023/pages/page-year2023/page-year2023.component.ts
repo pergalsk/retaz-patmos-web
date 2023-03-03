@@ -1,16 +1,20 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
-import {zip} from 'rxjs';
-import {map} from 'rxjs/operators';
-import {CommonApiService, SysdateResponse, DatesResponse, PutNameRequest} from '../../../../services/common-api.service';
-import {ModalContentComponent} from '../../../../modal-content/modal-content.component';
-import {CalendarData} from '../../../shared/components/calendar/calendar.component';
-
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { zip } from 'rxjs';
+import { map } from 'rxjs/operators';
+import {
+  CommonApiService,
+  SysdateResponse,
+  DatesResponse,
+  PutNameRequest,
+} from '../../../../services/common-api.service';
+import { ModalContentComponent } from '../../../../modal-content/modal-content.component';
+import { CalendarData } from '../../../shared/components/calendar/calendar.component';
 
 @Component({
   selector: 'app-page-year2023',
   templateUrl: './page-year2023.component.html',
-  styleUrls: ['./page-year2023.component.scss']
+  styleUrls: ['./page-year2023.component.scss'],
 })
 export class PageYear2023Component implements OnInit, OnDestroy {
   rawDates: DatesResponse[] = [];
@@ -23,10 +27,7 @@ export class PageYear2023Component implements OnInit, OnDestroy {
   submitError = false;
   storageKey = 'registration_name';
 
-  constructor(
-    private modalService: NgbModal,
-    private commonApiService: CommonApiService
-  ) { }
+  constructor(private modalService: NgbModal, private commonApiService: CommonApiService) {}
 
   ngOnInit(): void {
     this.getCalendarError = false;
@@ -120,7 +121,7 @@ export class PageYear2023Component implements OnInit, OnDestroy {
 
     this.modalRef = this.modalService.open(ModalContentComponent, {
       animation: true,
-      centered: true
+      centered: true,
     });
 
     const storageData = window.localStorage.getItem(this.storageKey);

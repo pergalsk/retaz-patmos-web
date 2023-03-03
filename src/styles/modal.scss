@@ -52,11 +52,19 @@
 
 #registration-modal-action-btn {
   @media (min-width: 401px) {
-    .text-a { display: block; }
-    .text-b { display: none; }
+    .text-a {
+      display: block;
+    }
+    .text-b {
+      display: none;
+    }
   }
   @media (max-width: 400px) {
-    .text-a { display: none; }
-    .text-b { display: block; }
+    .text-a {
+      display: none;
+    }
+    .text-b {
+      display: block;
+    }
   }
 }

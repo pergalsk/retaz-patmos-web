@@ -15,5 +15,5 @@ export function noWhitespaceValidator(): ValidatorFn {
     }
 
     return { whitespace: true };
-  }
+  };
 }
