@@ -29,9 +29,11 @@ import {
 export interface CalendarDataProps {
   start: string;
   end: string;
+  [key: string]: any
 }
 
-export type CalendarData<T> = ({ [Key: string]: T } & CalendarDataProps) | CalendarDataProps;
+export type CalendarDataEntries<T> = { [Key: string]: T };
+export type CalendarData<T> = (CalendarDataEntries<T> & CalendarDataProps) | CalendarDataProps;
 
 export type WeekType = 'actual' | 'past' | 'future';
 export type DayType = 'today' | 'past' | 'future';
@@ -66,7 +68,7 @@ export interface Day {
   today: boolean;
   future: boolean;
   type: DayType;
-  names: string[];
+  names: string[] | [];
   classList: string[];
 }
 
@@ -130,7 +132,7 @@ export class CalendarComponent implements OnInit, OnChanges {
     sysTime: new Date(),
     rawDateFormat: 'yyyy-MM-dd',
     titleDateFormat: 'LLLL d',
-    overrides: null,
+    overrides: null as any,
     collapsedWeeks: false,
   };
 
@@ -257,10 +259,10 @@ export class CalendarComponent implements OnInit, OnChanges {
     const dayName: string = format(day, 'iiii').toLowerCase(); // only day name
 
     const disabled: boolean = Number.isNaN(comparisonResult);
-    const visible: boolean = !!this.data[date];
+    const visible: boolean = !!this.data[date as keyof CalendarData<string[]>];
     // const selected: boolean = false;
 
-    const names: string[] = this.data[date] || [];
+    const names: any = this.data[date as keyof CalendarData<string[]>] || [];
 
     const classList: string[] = [
       type,

@@ -7,8 +7,10 @@
   padding: $jumbotron-equal-padding;
   margin-bottom: 3rem;
   transition: background-color 0.8s;
+  border-radius: $jumbotron-radius;
+  background-color: $white;
 
-  @include media-breakpoint-down(sm) {
+  @include media-breakpoint-down(md) {
     padding: $jumbotron-equal-padding-sm;
   }
 
@@ -63,14 +65,14 @@
     .with-padding {
       padding: 0 $jumbotron-equal-padding;
 
-      @include media-breakpoint-down(sm) {
+      @include media-breakpoint-down(md) {
         padding: 0 $jumbotron-equal-padding-sm;
       }
 
       &:first-child {
         padding: $jumbotron-equal-padding $jumbotron-equal-padding 0 $jumbotron-equal-padding;
 
-        @include media-breakpoint-down(sm) {
+        @include media-breakpoint-down(md) {
           padding: $jumbotron-equal-padding-sm $jumbotron-equal-padding-sm 0
             $jumbotron-equal-padding-sm;
         }
@@ -79,7 +81,7 @@
       &:last-child {
         padding: 0 $jumbotron-equal-padding $jumbotron-equal-padding $jumbotron-equal-padding;
 
-        @include media-breakpoint-down(sm) {
+        @include media-breakpoint-down(md) {
           padding: 0 $jumbotron-equal-padding-sm $jumbotron-equal-padding-sm
             $jumbotron-equal-padding-sm;
         }

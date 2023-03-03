@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnDestroy, OnInit,} from '@angular/core';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { Location } from '@angular/common';
 import { format, compareAsc, addDays, eachDayOfInterval } from 'date-fns';
@@ -7,13 +7,14 @@ import { ColorSchemeService } from '../../../color-scheme/color-scheme.service';
 import { Scheme } from '../../../color-scheme/color-scheme.types';
 import { DatesService } from '../../../../services/dates.service';
 import { DateBadge } from '../../components/badge-strip/badge-strip.component';
+import {Subscription} from 'rxjs';
 
 @Component({
   selector: 'app-page-year2022',
   templateUrl: './page-year2022.component.html',
   styleUrls: ['./page-year2022.component.scss'],
 })
-export class PageYear2022Component implements OnInit {
+export class PageYear2022Component implements OnInit, OnDestroy {
   refDate = new Date();
   startDate = new Date(2022, 2, 2); // 2022-03-02
   endDate = new Date(2022, 3, 15); // 2022-04-15
@@ -26,7 +27,7 @@ export class PageYear2022Component implements OnInit {
   changeHour = 1; // at 1 AM content will change
 
   scheme: Scheme;
-  colorSchemeChange$;
+  colorSchemeChange$: Subscription
 
   constructor(
     private datesService: DatesService,
@@ -46,6 +47,10 @@ export class PageYear2022Component implements OnInit {
     this.colorSchemeChange$ = this.colorSchemeService.schemeChange.subscribe((scheme: Scheme) => {
       this.scheme = scheme;
     });
+  }
+
+  ngOnDestroy() {
+    this.colorSchemeChange$.unsubscribe();
   }
 
   dateClickHandler(dateBadge: DateBadge): void {

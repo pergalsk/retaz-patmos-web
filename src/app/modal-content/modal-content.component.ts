@@ -7,10 +7,10 @@ import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
   styleUrls: ['./modal-content.component.scss'],
 })
 export class ModalContentComponent implements OnInit {
-  @Input() public date;
+  @Input() public date: any;
+  @Input() public name: string = '';
   @Output() passEntry: EventEmitter<any> = new EventEmitter();
 
-  name: '';
   weekDay = '';
 
   constructor(public activeModal: NgbActiveModal) {}

@@ -11,7 +11,7 @@ export class SvgPresidentComponent implements OnInit {
 
   theme: any;
 
-  themeDefs = {
+  themeDefs: any = {
     dark: {
       backgroundOpacity: 1,
     },

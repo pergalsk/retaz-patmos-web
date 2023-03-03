@@ -6,7 +6,7 @@
   .menu-button {
     padding: 0 $jumbotron-equal-padding 1.5rem;
 
-    @include media-breakpoint-down(sm) {
+    @include media-breakpoint-down(md) {
       padding: 0 $jumbotron-equal-padding-sm 1.5rem;
     }
   }
@@ -34,7 +34,7 @@
         text-align: center;
         transition: background-color 0.3s;
 
-        @include media-breakpoint-down(sm) {
+        @include media-breakpoint-down(md) {
           padding: 1.5rem $jumbotron-equal-padding-sm !important;
         }
 

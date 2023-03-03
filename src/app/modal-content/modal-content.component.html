@@ -1,5 +1,6 @@
 <div class="modal-header dark">
   <h5 class="modal-title">Pridať meno</h5>
+  <!--<button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close" (click)="activeModal.dismiss('Cross click')"></button>-->
   <button type="button" class="close unselectable" aria-label="Close" (click)="activeModal.dismiss('Cross click')">
     <span aria-hidden="true">&times;</span>
   </button>
@@ -18,24 +19,31 @@
 
   <form name="registrationForm">
     <div class="mb-3">
-      <input
-          [(ngModel)]="name"
-          style="width: 100%"
-          type="text"
-          placeholder="Meno"
-          class="form-control"
-          name="regName"
-          #regName="ngModel"
-          maxlength="25"
-          pattern="[a-zA-ZáäčďéíĺľňóôŕšťúýžřÁÄČĎÉÍĹĽŇÓÔŔŠŤÚÝŽŘÖöÜüß\-\. ]*"
-          autocomplete="off"
-          required
-          ngbAutofocus
-      />
+      <div class="input-with-inner-icon">
+        <input
+            [(ngModel)]="name"
+            type="text"
+            placeholder="Meno"
+            class="form-control"
+            name="regName"
+            #nameModelRef="ngModel"
+            #nameElementRef
+            maxlength="25"
+            pattern="[a-zA-ZáäčďéíĺľňóôŕšťúýžřÁÄČĎÉÍĹĽŇÓÔŔŠŤÚÝŽŘÖöÜüß\-\. ]*"
+            autocomplete="off"
+            required
+            ngbAutofocus
+            noWhitespace
+        />
+        <!-- todo: transform to directive -->
+        <button class="inner-icon" aria-hidden="true" type="button"
+             *ngIf="nameModelRef.control.value"
+             (click)="nameModelRef.control.reset(); nameElementRef.focus();">&times;</button>
+      </div>
 
-      <div style="height: 1em" class="small text-right mt-1">
-        <span *ngIf="regName.invalid && regName.errors.pattern">Nepovolený znak.</span>
-        <span *ngIf="regName.invalid && regName.errors.maxLength"
+      <div class="field-errors small text-end mt-1">
+        <span *ngIf="nameModelRef.invalid && nameModelRef.errors.pattern">Nepovolený znak.</span>
+        <span *ngIf="nameModelRef.invalid && nameModelRef.errors.maxLength"
         >Môžete zadať max. 25 znakov.</span
         >
       </div>
@@ -51,9 +59,9 @@
       </button>
       <button
           (click)="passBack()"
-          [disabled]="regName.invalid"
+          [disabled]="nameModelRef.invalid"
           type="submit"
-          class="btn btn-primary float-right"
+          class="btn btn-primary float-end"
           id="registration-modal-action-btn"
       >
         <span class="text-a">Záväzne zapísať</span>

@@ -127,7 +127,7 @@ export class PageYear2021Component implements OnInit {
     this.modalRef.result.then(this.onClickModalResult(date)).catch(this.onClickModalCatch);
   }
 
-  onClickModalResult(date): (result: string) => void {
+  onClickModalResult(date: string): (result: string) => void {
     return (result: string) => {
       this.modalRef = null;
 

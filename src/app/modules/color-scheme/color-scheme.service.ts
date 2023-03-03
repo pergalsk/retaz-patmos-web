@@ -156,7 +156,7 @@ export class ColorSchemeService {
   private chooseSchemeValue([[prevSys, prevUsr], [nextSys, nextUsr]]: [
     [Scheme, UserScheme],
     [Scheme, UserScheme]
-  ]): Scheme {
+  ]): Scheme | any {
     // set 'SYSTEM' as null for better handling
     const _nextUsr = nextUsr === SCHEMES.SYSTEM ? null : nextUsr;
     const _prevUsr = prevUsr === SCHEMES.SYSTEM ? null : prevUsr;

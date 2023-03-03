@@ -1,5 +1,4 @@
-import { Component, OnInit } from '@angular/core';
-import {HttpClient} from '@angular/common/http';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
 import {zip} from 'rxjs';
 import {map} from 'rxjs/operators';
@@ -13,7 +12,7 @@ import {CalendarData} from '../../../shared/components/calendar/calendar.compone
   templateUrl: './page-year2023.component.html',
   styleUrls: ['./page-year2023.component.scss']
 })
-export class PageYear2023Component implements OnInit {
+export class PageYear2023Component implements OnInit, OnDestroy {
   rawDates: DatesResponse[] = [];
   sysDate: string = null;
   sysTime: string = null;
@@ -22,9 +21,9 @@ export class PageYear2023Component implements OnInit {
   modalRef: any = null;
   getCalendarError = false;
   submitError = false;
+  storageKey = 'registration_name';
 
   constructor(
-    private httpClient: HttpClient,
     private modalService: NgbModal,
     private commonApiService: CommonApiService
   ) { }
@@ -35,6 +34,10 @@ export class PageYear2023Component implements OnInit {
     zip(this.commonApiService.getDates('2023'), this.commonApiService.getSysDateTime())
       .pipe(map(([rawDates, sysDateTime]) => ({ rawDates, sysDateTime })))
       .subscribe(this.handleSuccess, this.handleError); // todo: unsubscribe
+  }
+
+  ngOnDestroy() {
+    this.modalService.dismissAll();
   }
 
   private handleSuccess = (data: { rawDates: DatesResponse[]; sysDateTime: SysdateResponse }) => {
@@ -103,7 +106,7 @@ export class PageYear2023Component implements OnInit {
   }
 
   onDateClick(event: any): void {
-    if (this.modalRef || !event) {
+    if (!event) {
       return;
     }
 
@@ -120,6 +123,11 @@ export class PageYear2023Component implements OnInit {
       centered: true
     });
 
+    const storageData = window.localStorage.getItem(this.storageKey);
+    if (storageData && storageData !== '') {
+      this.modalRef.componentInstance.name = storageData;
+    }
+
     this.modalRef.componentInstance.date = {
       date,
     };
@@ -127,9 +135,9 @@ export class PageYear2023Component implements OnInit {
     this.modalRef.result.then(this.onClickModalResult(date)).catch(this.onClickModalCatch);
   }
 
-  onClickModalResult(date): (result: string) => void {
+  onClickModalResult(date: string): (result: string) => void {
     return (result: string) => {
-      this.modalRef = null;
+      this.modalRef.close();
 
       console.log('Entered text: ', result);
 
@@ -143,6 +151,8 @@ export class PageYear2023Component implements OnInit {
         date,
         name,
       };
+
+      window.localStorage.setItem(this.storageKey, name);
 
       this.submitError = false;
       this.commonApiService.submitAnswers(submitData).subscribe(
@@ -166,7 +176,10 @@ export class PageYear2023Component implements OnInit {
   }
 
   onClickModalCatch = (dismiss: any): void => {
-    this.modalRef = null;
+    this.modalRef.close();
+    if (!this.modalRef.componentInstance?.name) {
+      window.localStorage.removeItem('registration_name');
+    }
     console.log(dismiss);
   };
 }

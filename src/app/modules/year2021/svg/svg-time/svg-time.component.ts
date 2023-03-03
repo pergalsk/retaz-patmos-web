@@ -1,5 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 
+type ThemeVariant = 'dark' | 'light';
+
 @Component({
   selector: 'app-svg-time',
   templateUrl: './svg-time.component.svg',
@@ -7,11 +9,11 @@ import { Component, Input, OnInit } from '@angular/core';
 })
 export class SvgTimeComponent implements OnInit {
   @Input() color = '#7A478C';
-  @Input() variant = 'dark';
+  @Input() variant: ThemeVariant = 'dark';
 
   theme: any;
 
-  themeDefs = {
+  themeDefs: any = {
     dark: {
       backgroundOpacity: 1,
       hoursCircle: this.color,

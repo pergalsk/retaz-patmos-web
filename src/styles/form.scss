@@ -3,3 +3,56 @@
   font-size: .9rem;
   letter-spacing: .02em;
 }
+
+.field-errors {
+  height: 1rem;
+  user-select: none;
+}
+
+.input-with-inner-icon {
+  display: flex;
+  position: relative;
+  align-items: center;
+
+  input[type='text'] {
+    padding-right: $input-height-inner;
+
+    &:focus {
+      & + .inner-icon {
+        color: $input-focus-border-color;
+
+        &:hover {
+          color: $input-color;
+        }
+      }
+    }
+  }
+
+  .inner-icon {
+    display: flex;
+    position: absolute;
+    right: $input-btn-border-width;
+    align-items: center;
+    justify-content: center;
+    padding-inline: $input-padding-x;
+    font-size: calc(2 * $input-font-size);
+    height: calc(100% - 2 * $input-btn-border-width);
+    color: $input-border-color;
+    background-color: transparent;
+    border: 0;
+    border-radius: $input-border-radius;
+    cursor: pointer;
+    user-select: none;
+    -webkit-user-select: none;
+    transition: color .2s;
+
+    &:hover,
+    &:focus {
+      color: $input-color;
+    }
+
+    &:focus {
+      outline: 0;
+    }
+  }
+}

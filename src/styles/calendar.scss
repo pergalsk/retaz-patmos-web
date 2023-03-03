@@ -8,7 +8,7 @@ $week-cell-padding: 0.4rem 0.6rem 0.4rem 0.5rem;
 
 // today
 $today-border-size: 0.15rem;
-$week-cell-padding-today: (0.4rem - $today-border-size) (0.6rem - $today-border-size) (0.4rem -$today-border-size) (0.5rem - $today-border-size);
+$week-cell-padding-today: subtract(0.4rem, $today-border-size) subtract(0.6rem, $today-border-size) subtract(0.4rem, $today-border-size) subtract(0.5rem, $today-border-size);
 
 
 /* Calendar 100% height */
@@ -30,7 +30,7 @@ $week-cell-padding-today: (0.4rem - $today-border-size) (0.6rem - $today-border-
     display: flex;
     flex: 30px 0 0;
 
-    @include media-breakpoint-down(md) {
+    @include media-breakpoint-down(lg) {
       display: none;
     }
 
@@ -44,7 +44,7 @@ $week-cell-padding-today: (0.4rem - $today-border-size) (0.6rem - $today-border-
   .calendar-week-collapse {
     display: none;
 
-    @include media-breakpoint-down(md) {
+    @include media-breakpoint-down(lg) {
       display: inherit;
       margin-bottom: $jumbotron-equal-padding-sm;
     }
@@ -54,19 +54,19 @@ $week-cell-padding-today: (0.4rem - $today-border-size) (0.6rem - $today-border-
     display: flex;
     flex: 30px 1 0;
 
-    @include media-breakpoint-down(md) {
+    @include media-breakpoint-down(lg) {
       flex-direction: column;
       margin-bottom: 3rem;
     }
 
     &.collapsed {
-      @include media-breakpoint-down(md) {
+      @include media-breakpoint-down(lg) {
         display: none;
       }
     }
 
     &:last-child {
-      @include media-breakpoint-down(md) {
+      @include media-breakpoint-down(lg) {
         margin-bottom: 0;
       }
     }
@@ -79,13 +79,13 @@ $week-cell-padding-today: (0.4rem - $today-border-size) (0.6rem - $today-border-
       border-radius: 0.6rem;
       margin-bottom: 0.4rem;
 
-      @include media-breakpoint-down(md) {
+      @include media-breakpoint-down(lg) {
         min-height: 4.5rem;
         padding: 0.4rem 0.6rem;
       }
 
       &:last-child {
-        @include media-breakpoint-down(md) {
+        @include media-breakpoint-down(lg) {
           margin-bottom: 0;
         }
       }
@@ -167,7 +167,7 @@ $week-cell-padding-today: (0.4rem - $today-border-size) (0.6rem - $today-border-
         text-overflow: ellipsis;
         width: 100%;
 
-        @include media-breakpoint-down(md) {
+        @include media-breakpoint-down(lg) {
           margin-bottom: 0.5rem;
         }
       }
@@ -184,7 +184,7 @@ $week-cell-padding-today: (0.4rem - $today-border-size) (0.6rem - $today-border-
     //transition: background-color 0.3s, color 0.3s;
     overflow-x: hidden;
 
-    @include media-breakpoint-down(md) {
+    @include media-breakpoint-down(lg) {
       display: block;
       margin-bottom: 10px;
     }
@@ -196,7 +196,7 @@ $week-cell-padding-today: (0.4rem - $today-border-size) (0.6rem - $today-border-
     &.invisible {
       background-color: #fff !important;
 
-      @include media-breakpoint-down(md) {
+      @include media-breakpoint-down(lg) {
         display: none;
       }
     }
@@ -214,14 +214,14 @@ $week-cell-padding-today: (0.4rem - $today-border-size) (0.6rem - $today-border-
         margin-bottom: 0;
       }
 
-      @include media-breakpoint-down(md) {
+      @include media-breakpoint-down(lg) {
         display: inline;
         overflow-x: initial;
         text-overflow: initial;
       }
 
       &:not(.title):not(:first-child)::before {
-        @include media-breakpoint-down(md) {
+        @include media-breakpoint-down(lg) {
           content: '\0020\007C\0020'; // decoded string: " | "
         }
       }

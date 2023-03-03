@@ -12,6 +12,7 @@ import { ContentBoxComponent } from './components/content-box/content-box.compon
 import { SmoothHeightComponent } from './smooth-height/smooth-height.component';
 import { ColorSchemeSwitcherComponent } from './components/color-scheme-switcher/color-scheme-switcher.component';
 import { SvgCalendarManComponent } from './svg/svg-calendar-man/svg-calendar-man.component';
+import { NoWhitespaceDirective } from './validators/no-whitespace/no-whitespace.directive';
 
 @NgModule({
   declarations: [
@@ -24,6 +25,7 @@ import { SvgCalendarManComponent } from './svg/svg-calendar-man/svg-calendar-man
     SmoothHeightComponent,
     ColorSchemeSwitcherComponent,
     SvgCalendarManComponent,
+    NoWhitespaceDirective,
   ],
   imports: [CommonModule, RouterModule, NgbModule],
   exports: [
@@ -36,6 +38,7 @@ import { SvgCalendarManComponent } from './svg/svg-calendar-man/svg-calendar-man
     SmoothHeightComponent,
     ColorSchemeSwitcherComponent,
     SvgCalendarManComponent,
+    NoWhitespaceDirective,
   ],
 })
 export class SharedModule {}
