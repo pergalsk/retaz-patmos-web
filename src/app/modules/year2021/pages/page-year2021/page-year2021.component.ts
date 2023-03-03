@@ -3,14 +3,14 @@ import { Observable, zip, throwError } from 'rxjs';
 import { catchError, delay, map } from 'rxjs/operators';
 import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
 import { ModalContentComponent } from '../../../../modal-content/modal-content.component';
-import { CalendarData } from '../../../shared/components/calendar/calendar.component';
+import { CalendarData } from '@shared/components/calendar/calendar.component';
 import { PanelMenuItem } from '../../components/panel-menu/panel-menu.component';
 import {
   SysdateResponse,
   DatesResponse,
   PutNameRequest,
   CommonApiService,
-} from '../../../../services/common-api.service';
+} from '@services/common-api.service';
 
 export interface CalendarOptions {
   sysDate: string;

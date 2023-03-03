@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { SharedModule } from '../shared/shared.module';
+import { SharedModule } from '@shared/shared.module';
 
 import { PageYear2023Component } from './pages/page-year2023/page-year2023.component';
 import { SvgCalendarComponent } from './svg/svg-calendar/svg-calendar.component';

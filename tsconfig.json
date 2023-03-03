@@ -19,15 +19,18 @@
     "module": "ES2022",
     "useDefineForClassFields": false,
 
-
     "strictNullChecks": false,
     "noPropertyAccessFromIndexSignature": false,
 
-
-    "lib": [
-      "ES2022",
-      "dom"
-    ]
+    "paths": {
+      "@assets/*": ["src/assets/*"],
+      "@modules/*": ["src/app/modules"],
+      "@interceptors/*": ["src/app/interceptors"],
+      "@animations/*": ["src/app/animations"],
+      "@services/*": ["src/app/services/*"],
+      "@shared/*": ["src/app/modules/shared/*"]
+    },
+    "lib": ["ES2022", "dom"]
   },
   "angularCompilerOptions": {
     "enableI18nLegacyMessageIdFormat": false,

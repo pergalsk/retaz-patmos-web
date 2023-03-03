@@ -1,9 +1,9 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Year2022RoutingModule } from './year2022-routing.module';
-import { SharedModule } from '../shared/shared.module';
+import { SharedModule } from '@shared/shared.module';
 
-import { SafePipe } from '../shared/pipes/safe.pipe';
+import { SafePipe } from '@shared/pipes/safe.pipe';
 import { PageYear2022Component } from './pages/page-year2022/page-year2022.component';
 import { DayContentPanelComponent } from './contents/day-content-panel/day-content-panel.component';
 import { BadgeStripComponent } from './components/badge-strip/badge-strip.component';

@@ -7,9 +7,9 @@ import {
   SysdateResponse,
   DatesResponse,
   PutNameRequest,
-} from '../../../../services/common-api.service';
+} from '@services/common-api.service';
 import { ModalContentComponent } from '../../../../modal-content/modal-content.component';
-import { CalendarData } from '../../../shared/components/calendar/calendar.component';
+import { CalendarData } from '@shared/components/calendar/calendar.component';
 
 @Component({
   selector: 'app-page-year2023',

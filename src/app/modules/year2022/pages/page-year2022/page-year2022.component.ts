@@ -1,13 +1,14 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { ActivatedRoute, Params, Router } from '@angular/router';
 import { Location } from '@angular/common';
+import { ActivatedRoute, Params, Router } from '@angular/router';
+import { Subscription } from 'rxjs';
 import { format, compareAsc, addDays, eachDayOfInterval } from 'date-fns';
 import sk from 'date-fns/locale/sk';
+
+import { DatesService } from '@services/dates.service';
 import { ColorSchemeService } from '../../../color-scheme/color-scheme.service';
 import { Scheme } from '../../../color-scheme/color-scheme.types';
-import { DatesService } from '../../../../services/dates.service';
 import { DateBadge } from '../../components/badge-strip/badge-strip.component';
-import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-page-year2022',
