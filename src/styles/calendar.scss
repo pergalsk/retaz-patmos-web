@@ -43,10 +43,10 @@ $week-cell-padding-today: subtract(0.4rem, $today-border-size) subtract(0.6rem, 
 
   .calendar-week-collapse {
     display: none;
+    margin-bottom: $jumbotron-equal-padding-sm;
 
     @include media-breakpoint-down(lg) {
-      display: inherit;
-      margin-bottom: $jumbotron-equal-padding-sm;
+      display: grid;
     }
   }
 
