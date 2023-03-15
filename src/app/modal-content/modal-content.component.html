@@ -16,9 +16,12 @@
     <app-svg-calendar-man></app-svg-calendar-man>
   </div>
 
-  <div class="mb-2 text-center">
-    <strong class="unselectable" id="modal-basic-title"
-      >Záväzne zapísať na{{ ' ' + weekDay }} {{ date.date | date : 'd.M.YYYY' }}</strong
+  <div class="mb-2 text-center unselectable" id="modal-basic-title">
+    <strong *ngIf="data.dates.length === 1"
+      >Záväzne zapísať na{{ ' ' + weekDay }} {{ data.dates[0] | date : 'd.M.YYYY' }}</strong
+    >
+    <strong *ngIf="data.dates.length > 1"
+      >Záväzne zapísať na vyznačených {{ data.dates.length }} dní.</strong
     >
   </div>
 
@@ -42,11 +45,11 @@
         />
         <!-- todo: transform to directive -->
         <button
+          *ngIf="nameModelRef.control.value"
+          (click)="nameModelRef.control.reset(); nameElementRef.focus()"
           class="inner-icon"
           aria-hidden="true"
           type="button"
-          *ngIf="nameModelRef.control.value"
-          (click)="nameModelRef.control.reset(); nameElementRef.focus()"
         >
           &times;
         </button>
@@ -69,7 +72,7 @@
         Späť
       </button>
       <button
-        (click)="passBack()"
+        (click)="confirm()"
         [disabled]="nameModelRef.invalid"
         type="submit"
         class="btn btn-primary float-end"

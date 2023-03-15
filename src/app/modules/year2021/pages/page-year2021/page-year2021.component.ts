@@ -1,15 +1,16 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { Observable, zip, throwError } from 'rxjs';
 import { catchError, delay, map } from 'rxjs/operators';
 import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
 import { ModalContentComponent } from '../../../../modal-content/modal-content.component';
-import { CalendarData } from '@shared/components/calendar/calendar.component';
+import { CalendarComponent, CalendarData } from '@shared/components/calendar/calendar.component';
 import { PanelMenuItem } from '../../components/panel-menu/panel-menu.component';
 import {
   SysdateResponse,
   DatesResponse,
   PutNameRequest,
   CommonApiService,
+  PutNameResponse,
 } from '@services/common-api.service';
 
 export interface CalendarOptions {
@@ -18,7 +19,7 @@ export interface CalendarOptions {
   header: true;
   separateMonths: boolean;
   collapsedWeeks: boolean;
-  // multiselect: true;
+  multiselect: false;
   // rawDateFormat: string,
   // titleDateFormat: string,
   overrides: {
@@ -35,6 +36,8 @@ export interface CalendarOptions {
   styleUrls: ['./page-year2021.component.scss'],
 })
 export class PageYear2021Component implements OnInit {
+  @ViewChild(CalendarComponent) calendarRef: CalendarComponent;
+
   rawDates: DatesResponse[] = [];
   sysDate: string = null;
   sysTime: string = null;
@@ -129,7 +132,7 @@ export class PageYear2021Component implements OnInit {
     this.modalRef.result.then(this.onClickModalResult(date)).catch(this.onClickModalCatch);
   }
 
-  onClickModalResult(date: string): (result: string) => void {
+  onClickModalResult(dates: string[]): (result: string) => void {
     return (result: string) => {
       this.modalRef = null;
 
@@ -142,21 +145,30 @@ export class PageYear2021Component implements OnInit {
       const name: string = result.trim().substring(0, 25);
 
       const submitData: PutNameRequest = {
-        date,
+        dates,
         name,
       };
 
       this.submitError = false;
       this.commonApiService.submitAnswers(submitData).subscribe(
-        (resp: string[]) => {
-          if (Array.isArray(resp)) {
+        (resp: PutNameResponse) => {
+          if (!resp) {
+            return;
+          }
+          if (typeof resp !== 'object' || Array.isArray(resp)) {
+            return;
+          }
+
+          for (const date in resp) {
             this.calendarData = {
               ...this.calendarData,
-              [date]: [...resp],
+              [date]: [...resp[date]],
             };
           }
 
           this.submitError = false;
+          this.calendarRef.clearSelections();
+
           console.log(resp);
         },
         (error: any) => {

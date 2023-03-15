@@ -4,6 +4,12 @@
   letter-spacing: 0.02em;
 }
 
+input[type='text'] {
+  &::placeholder {
+    user-select: none;
+  }
+}
+
 .field-errors {
   height: 1rem;
   user-select: none;
@@ -31,24 +37,29 @@
   .inner-icon {
     display: flex;
     position: absolute;
-    right: $input-btn-border-width;
+    right: calc($input-btn-border-width + $input-inner-btn-gap);
     align-items: center;
     justify-content: center;
-    padding-inline: $input-padding-x;
+    padding-inline: $input-padding-x * 0.75;
     font-size: calc(2 * $input-font-size);
-    height: calc(100% - 2 * $input-btn-border-width);
+    height: calc(100% - 2 * $input-btn-border-width - 2 * $input-inner-btn-gap);
     color: $input-border-color;
     background-color: transparent;
     border: 0;
-    border-radius: $input-border-radius;
+    border-radius: $input-border-radius * 0.75;
     cursor: pointer;
     user-select: none;
     -webkit-user-select: none;
-    transition: color 0.2s;
+    transition: color 0.2s, background-color 0.2s;
 
     &:hover,
     &:focus {
       color: $input-color;
+      background-color: #eee;
+    }
+
+    &:active {
+      background-color: #ddd;
     }
 
     &:focus {

@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, OnDestroy, ViewChild } from '@angular/core';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { zip } from 'rxjs';
 import { map } from 'rxjs/operators';
@@ -7,9 +7,14 @@ import {
   SysdateResponse,
   DatesResponse,
   PutNameRequest,
+  PutNameResponse,
 } from '@services/common-api.service';
 import { ModalContentComponent } from '../../../../modal-content/modal-content.component';
-import { CalendarData } from '@shared/components/calendar/calendar.component';
+import {
+  CalendarComponent,
+  CalendarData,
+  SelectedDate,
+} from '@shared/components/calendar/calendar.component';
 
 @Component({
   selector: 'app-page-year2023',
@@ -17,6 +22,8 @@ import { CalendarData } from '@shared/components/calendar/calendar.component';
   styleUrls: ['./page-year2023.component.scss'],
 })
 export class PageYear2023Component implements OnInit, OnDestroy {
+  @ViewChild(CalendarComponent) calendarRef: CalendarComponent;
+
   rawDates: DatesResponse[] = [];
   sysDate: string = null;
   sysTime: string = null;
@@ -52,10 +59,14 @@ export class PageYear2023Component implements OnInit, OnDestroy {
       sysDate: this.sysDate,
       sysTime: this.sysTime,
       header: true,
-      separateMonths: false,
       collapsedWeeks: true,
+      multiselect: true,
+      disabledPast: true,
+      disabledToday: true,
+      disabledFuture: false,
       // rawDateFormat: '',
       // titleDateFormat: '',
+      // separateMonths: false,
       overrides: {
         '2023-04-07': {
           title: 'Veľký piatok',
@@ -106,37 +117,28 @@ export class PageYear2023Component implements OnInit, OnDestroy {
     return 0;
   }
 
-  onDateClick(event: any): void {
-    if (!event) {
+  onDateClick(selectedDates: SelectedDate[]): void {
+    if (!Array.isArray(selectedDates) || selectedDates.length < 1) {
       return;
     }
 
-    const { day } = event;
-
-    if (!day?.date || !day?.future) {
-      return;
-    }
-
-    const { date } = day;
+    let dates: string[] = selectedDates.map((date) => date.day.date);
+    let name: string = (window.localStorage.getItem(this.storageKey) || '').trim().substring(0, 25);
 
     this.modalRef = this.modalService.open(ModalContentComponent, {
       animation: true,
       centered: true,
     });
 
-    const storageData = window.localStorage.getItem(this.storageKey);
-    if (storageData && storageData !== '') {
-      this.modalRef.componentInstance.name = storageData;
-    }
-
-    this.modalRef.componentInstance.date = {
-      date,
+    this.modalRef.componentInstance.data = {
+      name,
+      dates,
     };
 
-    this.modalRef.result.then(this.onClickModalResult(date)).catch(this.onClickModalCatch);
+    this.modalRef.result.then(this.onClickModalResult(dates)).catch(this.onClickModalCatch);
   }
 
-  onClickModalResult(date: string): (result: string) => void {
+  onClickModalResult(dates: string[]): (result: string) => void {
     return (result: string) => {
       this.modalRef.close();
 
@@ -149,7 +151,7 @@ export class PageYear2023Component implements OnInit, OnDestroy {
       const name: string = result.trim().substring(0, 25);
 
       const submitData: PutNameRequest = {
-        date,
+        dates,
         name,
       };
 
@@ -157,15 +159,24 @@ export class PageYear2023Component implements OnInit, OnDestroy {
 
       this.submitError = false;
       this.commonApiService.submitAnswers(submitData).subscribe(
-        (resp: string[]) => {
-          if (Array.isArray(resp)) {
+        (resp: PutNameResponse) => {
+          if (!resp) {
+            return;
+          }
+          if (typeof resp !== 'object' || Array.isArray(resp)) {
+            return;
+          }
+
+          for (const date in resp) {
             this.calendarData = {
               ...this.calendarData,
-              [date]: [...resp],
+              [date]: [...resp[date]],
             };
           }
 
           this.submitError = false;
+          this.calendarRef.clearSelections();
+
           console.log(resp);
         },
         (error: any) => {

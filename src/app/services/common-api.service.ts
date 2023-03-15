@@ -17,8 +17,12 @@ export interface DatesResponse {
 }
 
 export interface PutNameRequest {
-  date: string;
+  dates: string[];
   name: string;
+}
+
+export interface PutNameResponse {
+  [key: string]: string;
 }
 
 @Injectable({
@@ -38,7 +42,7 @@ export class CommonApiService {
     return this.httpClient.get<DatesResponse[]>('/api/dates', { params });
   }
 
-  submitAnswers(submitData: PutNameRequest): Observable<string[]> {
-    return this.httpClient.put<string[]>('/api/dates', submitData);
+  submitAnswers(submitData: PutNameRequest): Observable<PutNameResponse> {
+    return this.httpClient.put<PutNameResponse>('/api/dates', submitData);
   }
 }

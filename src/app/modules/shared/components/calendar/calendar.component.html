@@ -1,15 +1,17 @@
-<div class="calendar" *ngIf="calendar">
+<div class="calendar" *ngIf="calendar" [ngClass]="calendar.classList">
   <div class="calendar-header" *ngIf="calendarOptions.header && dayNames">
     <ng-container *ngFor="let dayName of dayNames">
       <div class="header-cell">{{ dayName }}</div>
     </ng-container>
   </div>
 
-  <div class="calendar-week-collapse" *ngIf="calendar.pastWeeksCount >= 1">
-    <button class="btn btn-outline-primary btn-block btn-smaller" (click)="toggleWeeks()">
-      {{ collapsedWeeks ? 'Zobraziť staršie dátumy' : 'Skryť staršie dátumy' }}
-    </button>
-  </div>
+  <button
+    class="calendar-week-collapse btn btn-outline-primary btn-block btn-smaller"
+    *ngIf="calendar.pastWeeksCount >= 1"
+    (click)="toggleWeeks()"
+  >
+    {{ collapsedWeeks ? 'Zobraziť staršie dátumy' : 'Skryť staršie dátumy' }}
+  </button>
 
   <ng-container *ngFor="let week of calendar.weeks; index as weekIndex">
     <div
@@ -20,8 +22,9 @@
       <ng-container *ngFor="let day of week.days; index as dayIndex">
         <div
           class="week-cell"
-          (click)="onDateClick(weekIndex, dayIndex, day, week, calendar)"
+          (click)="onDateClick({ weekIndex, dayIndex, day })"
           [ngClass]="day.classList"
+          [class.selected]="day.selected"
           [id]="'date-' + day.date"
         >
           <div class="title">{{ day.title }}</div>
@@ -33,6 +36,30 @@
           </div>
         </div>
       </ng-container>
+    </div>
+  </ng-container>
+
+  <ng-container *ngIf="selectedDates.length > 0">
+    <div class="multiselect-toolbar">
+      <div class="multiselect-toolbar-text">
+        <span class="toolbar-badge">{{ selectedDates.length }}</span> označených dátumov
+      </div>
+      <div class="multiselect-toolbar-buttons">
+        <button
+          type="button"
+          class="btn btn-outline-light btn-cancel"
+          (click)="onMultiselectCancelClick()"
+        >
+          Zrušiť
+        </button>
+        <button
+          type="button"
+          class="btn btn-primary btn-action"
+          (click)="onMultiselectActionClick()"
+        >
+          Zapísať <span class="text-part">na označené dátumy</span>
+        </button>
+      </div>
     </div>
   </ng-container>
 </div>

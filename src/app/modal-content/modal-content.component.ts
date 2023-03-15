@@ -1,41 +1,45 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 
+const weekDayNames: string[] = [
+  'nedeľu',
+  'pondelok',
+  'utorok',
+  'stredu',
+  'štvrtok',
+  'piatok',
+  'sobotu',
+];
+
 @Component({
   selector: 'app-modal-content',
   templateUrl: './modal-content.component.html',
   styleUrls: ['./modal-content.component.scss'],
 })
 export class ModalContentComponent implements OnInit {
-  @Input() public date: any;
-  @Input() public name: string = '';
-  @Output() passEntry: EventEmitter<any> = new EventEmitter();
+  @Input() public data: { dates: string[]; name: string };
 
+  name: string;
   weekDay = '';
 
   constructor(public activeModal: NgbActiveModal) {}
 
   ngOnInit(): void {
-    const weekDayNames: string[] = [
-      'nedeľu',
-      'pondelok',
-      'utorok',
-      'stredu',
-      'štvrtok',
-      'piatok',
-      'sobotu',
-    ];
+    const { name, dates } = this.data;
 
-    if (this.date?.date) {
-      const date: Date = new Date(this.date.date.valueOf());
-      this.weekDay = weekDayNames[date.getDay()];
+    this.name = name || '';
+
+    if (!Array.isArray(dates) || dates.length !== 1) {
+      return;
     }
 
-    console.log('Modal content initialized! Date = ' + this.date.date);
+    const date: Date = new Date(dates[0].valueOf());
+    this.weekDay = weekDayNames[date.getDay()];
+
+    console.log('Modal content initialized! Date = ' + dates[0]);
   }
 
-  passBack(): void {
-    this.passEntry.emit(this.name);
+  confirm(): void {
     this.activeModal.close(this.name);
   }
 }
