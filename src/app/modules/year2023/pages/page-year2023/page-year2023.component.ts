@@ -19,7 +19,6 @@ import {
 @Component({
   selector: 'app-page-year2023',
   templateUrl: './page-year2023.component.html',
-  styleUrls: ['./page-year2023.component.scss'],
 })
 export class PageYear2023Component implements OnInit, OnDestroy {
   @ViewChild(CalendarComponent) calendarRef: CalendarComponent;
