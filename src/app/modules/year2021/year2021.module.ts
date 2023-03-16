@@ -2,7 +2,9 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { SharedModule } from '@shared/shared.module';
+import { CalendarModule } from '../calendar/calendar.module';
 import { Year2021RoutingModule } from './year2021-routing.module';
+
 import { PageYear2021Component } from './pages/page-year2021/page-year2021.component';
 import { SelectiveContentComponent } from './components/selective-content/selective-content.component';
 import { PanelMenuComponent } from './components/panel-menu/panel-menu.component';
@@ -45,6 +47,6 @@ import { SvgWorldComponent } from './svg/svg-world/svg-world.component';
     SelectiveContentComponent,
     PanelMenuComponent,
   ],
-  imports: [CommonModule, Year2021RoutingModule, SharedModule],
+  imports: [CommonModule, Year2021RoutingModule, SharedModule, CalendarModule],
 })
 export class Year2021Module {}

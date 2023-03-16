@@ -4,7 +4,6 @@ import { RouterModule } from '@angular/router';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 import { SafePipe } from './pipes/safe.pipe';
-import { CalendarComponent } from './components/calendar/calendar.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { YoutubeEmbeddedComponent } from './components/youtube-embedded/youtube-embedded.component';
 import { TwoSplitComponent } from './components/two-split/two-split.component';
@@ -16,7 +15,6 @@ import { NoWhitespaceDirective } from './validators/no-whitespace/no-whitespace.
 
 @NgModule({
   declarations: [
-    CalendarComponent,
     ContentBoxComponent,
     FooterComponent,
     TwoSplitComponent,
@@ -29,7 +27,6 @@ import { NoWhitespaceDirective } from './validators/no-whitespace/no-whitespace.
   ],
   imports: [CommonModule, RouterModule, NgbModule],
   exports: [
-    CalendarComponent,
     ContentBoxComponent,
     FooterComponent,
     TwoSplitComponent,

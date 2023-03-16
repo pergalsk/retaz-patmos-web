@@ -10,11 +10,8 @@ import {
   PutNameResponse,
 } from '@services/common-api.service';
 import { ModalContentComponent } from '../../../../modal-content/modal-content.component';
-import {
-  CalendarComponent,
-  CalendarData,
-  SelectedDate,
-} from '@shared/components/calendar/calendar.component';
+import { CalendarData, SelectedDate } from '../../../calendar/calendar.types';
+import { CalendarComponent } from '../../../calendar/calendar.component';
 
 @Component({
   selector: 'app-page-year2023',

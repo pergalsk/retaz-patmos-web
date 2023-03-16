@@ -3,7 +3,8 @@ import { Observable, zip, throwError } from 'rxjs';
 import { catchError, delay, map } from 'rxjs/operators';
 import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
 import { ModalContentComponent } from '../../../../modal-content/modal-content.component';
-import { CalendarComponent, CalendarData } from '@shared/components/calendar/calendar.component';
+import { CalendarComponent } from '../../../calendar/calendar.component';
+import { CalendarData } from '../../../calendar/calendar.types';
 import { PanelMenuItem } from '../../components/panel-menu/panel-menu.component';
 import {
   SysdateResponse,

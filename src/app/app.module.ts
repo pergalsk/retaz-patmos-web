@@ -11,6 +11,7 @@ import { ModalContentComponent } from './modal-content/modal-content.component';
 import { AppRoutingModule } from './app-routing.module';
 import { SharedModule } from '@shared/shared.module';
 import { ColorSchemeModule } from './modules/color-scheme/color-scheme.module';
+import { CalendarModule } from './modules/calendar/calendar.module';
 
 import { Year2023Module } from './modules/year2023/year2023.module';
 import { RouterModule } from '@angular/router';
@@ -28,6 +29,7 @@ import { AppShellComponent } from './app-shell/app-shell.component';
     SharedModule,
     Year2023Module,
     RouterModule,
+    CalendarModule,
     ColorSchemeModule.forRoot({
       lightSchemeClass: 'light-theme',
       darkSchemeClass: 'dark-theme',
