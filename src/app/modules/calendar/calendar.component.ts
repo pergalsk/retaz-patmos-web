@@ -37,8 +37,6 @@ import {
   SelectedDate,
 } from './calendar.types';
 
-// import { CalendarData } from '../app.component';
-
 @Component({
   selector: 'app-calendar',
   templateUrl: './calendar.component.html',
