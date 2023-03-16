@@ -27,8 +27,6 @@ import {
 import sk from 'date-fns/locale/sk';
 import {
   Calendar,
-  CalendarDataProps,
-  CalendarDataEntries,
   CalendarData,
   WeekType,
   DayType,
