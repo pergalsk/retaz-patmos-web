@@ -29,7 +29,9 @@ import {
   Calendar,
   CalendarData,
   WeekType,
+  WeekTypes,
   DayType,
+  DayTypes,
   Week,
   Day,
   SelectedDate,
@@ -256,7 +258,7 @@ export class CalendarComponent implements OnInit, OnChanges {
     const actual: boolean = isSameWeek(weekStartDate, this.sysDate, { weekStartsOn: 1 });
     const future: boolean =
       comparison > 0 && !isSameWeek(weekStartDate, this.sysDate, { weekStartsOn: 1 });
-    const type: WeekType = actual ? 'actual' : past ? 'past' : 'future';
+    const type: WeekType = actual ? WeekTypes.ACTUAL : past ? WeekTypes.PAST : WeekTypes.FUTURE;
 
     const classList: string[] = [type, monthName, 'month-' + month, 'week-' + week].filter(Boolean);
 
@@ -291,9 +293,10 @@ export class CalendarComponent implements OnInit, OnChanges {
     const past: boolean = comparisonResult < 0;
     const today: boolean = comparisonResult === 0;
     const future: boolean = comparisonResult > 0;
-    const type: DayType = today ? 'today' : past ? 'past' : 'future';
+    const type: DayType = today ? DayTypes.TODAY : past ? DayTypes.PAST : DayTypes.FUTURE;
 
     const visible: boolean = !!this.data[date as keyof CalendarData<string[]>];
+    const highlighted: boolean = weekDay === 7;
     const selected: boolean = false;
     const disabled: boolean =
       (this.calendarOptions.disabledPast && past) ||
@@ -301,30 +304,17 @@ export class CalendarComponent implements OnInit, OnChanges {
       (this.calendarOptions.disabledFuture && future) ||
       Number.isNaN(comparisonResult);
 
-    const names: any = this.data[date as keyof CalendarData<string[]>] || [];
+    const classList: string[] = [];
 
-    const classList: string[] = [
-      type,
-      names.length ? 'filled' : null,
-      weekend ? 'weekend' : null,
-      disabled ? 'disabled' : null,
-      weekDay === 7 ? 'highlighted' : null,
-      visible ? null : 'invisible',
-      dayName,
-      monthName,
-      'date-' + date,
-      'week-' + week,
-      'month-' + month,
-      'week-day-' + weekDay,
-      'month-day-' + monthDay,
-    ].filter(Boolean);
+    const names: any = this.data[date as keyof CalendarData<string[]>] || [];
 
     const resultObj: Day = {
       date,
       title,
       visible,
-      disabled,
+      highlighted,
       selected,
+      disabled,
       weekDay,
       monthDay,
       month,

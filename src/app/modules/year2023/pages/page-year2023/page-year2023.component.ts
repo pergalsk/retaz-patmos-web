@@ -66,7 +66,7 @@ export class PageYear2023Component implements OnInit, OnDestroy {
       overrides: {
         '2023-04-07': {
           title: 'Veľký piatok',
-          classes: ['highlighted'],
+          highlighted: true,
         },
       },
     };

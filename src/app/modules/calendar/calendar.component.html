@@ -1,9 +1,5 @@
 <div class="calendar" *ngIf="calendar" [ngClass]="calendar.classList">
-  <div class="calendar-header" *ngIf="calendarOptions.header && dayNames">
-    <ng-container *ngFor="let dayName of dayNames">
-      <div class="header-cell">{{ dayName }}</div>
-    </ng-container>
-  </div>
+  <ngx-cal-header [titles]="dayNames"></ngx-cal-header>
 
   <button
     class="calendar-week-collapse btn btn-outline-primary btn-block btn-smaller"
@@ -19,23 +15,12 @@
       [ngClass]="week.classList"
       [class.collapsed]="week.past && collapsedWeeks"
     >
-      <ng-container *ngFor="let day of week.days; index as dayIndex">
-        <div
-          class="week-cell"
-          (click)="onDateClick({ weekIndex, dayIndex, day })"
-          [ngClass]="day.classList"
-          [class.selected]="day.selected"
-          [id]="'date-' + day.date"
-        >
-          <div class="title">{{ day.title }}</div>
-
-          <div class="entries">
-            <div class="entry" *ngFor="let name of day.names">
-              <span *ngIf="day.visible">{{ name }}</span>
-            </div>
-          </div>
-        </div>
-      </ng-container>
+      <div
+        ngx-cal-day
+        *ngFor="let day of week.days; index as dayIndex"
+        [day]="day"
+        (cellAction)="onDateClick({ day: $event, weekIndex, dayIndex })"
+      ></div>
     </div>
   </ng-container>
 

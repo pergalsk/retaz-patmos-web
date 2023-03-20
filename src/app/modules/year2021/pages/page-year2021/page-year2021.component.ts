@@ -100,7 +100,7 @@ export class PageYear2021Component implements OnInit {
       overrides: {
         '2021-04-02': {
           title: 'Veľký piatok',
-          classes: ['highlighted'],
+          highlighted: true,
         },
       },
     };

@@ -1,20 +1,32 @@
-export interface CalendarDataProps {
-  start: string;
-  end: string;
-  [key: string]: any;
-}
-
-export type CalendarDataEntries<T> = { [Key: string]: T };
-export type CalendarData<T> = (CalendarDataEntries<T> & CalendarDataProps) | CalendarDataProps;
-
-export type WeekType = 'actual' | 'past' | 'future';
-export type DayType = 'today' | 'past' | 'future';
-
 export interface Calendar {
   pastWeeksCount: number;
   classList: string[];
   weeks: Week[];
 }
+
+export interface CalendarDataProps {
+  start: string;
+  end: string;
+  [key: string]: any; // TODO: remove because of CalendarDataEntries<T>
+}
+
+export type CalendarDataEntries<T> = { [Key: string]: T };
+export type CalendarData<T> = (CalendarDataEntries<T> & CalendarDataProps) | CalendarDataProps;
+
+export enum WeekTypes {
+  ACTUAL = 'actual',
+  PAST = 'past',
+  FUTURE = 'future',
+}
+
+export enum DayTypes {
+  TODAY = 'today',
+  PAST = 'past',
+  FUTURE = 'future',
+}
+
+export type WeekType = WeekTypes.ACTUAL | WeekTypes.PAST | WeekTypes.FUTURE;
+export type DayType = DayTypes.TODAY | DayTypes.PAST | DayTypes.FUTURE;
 
 export interface Week {
   week: number;
@@ -30,6 +42,7 @@ export interface Day {
   date: string;
   title: string;
   visible: boolean;
+  highlighted: boolean;
   selected: boolean;
   disabled: boolean;
   weekDay: number;
