@@ -8,6 +8,9 @@ import {
   OnInit,
   Output,
   SimpleChanges,
+  TemplateRef,
+  ViewContainerRef,
+  ViewChild,
 } from '@angular/core';
 import {
   parse,
@@ -36,6 +39,8 @@ import {
   Day,
   SelectedDate,
 } from './calendar.types';
+import { HeaderCellContext, HeaderContext } from './header';
+import { DayTemplateContext } from './day';
 
 @Component({
   selector: 'app-calendar',
@@ -43,15 +48,61 @@ import {
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class CalendarComponent implements OnInit, OnChanges {
-  @Input() data: CalendarData<string[]>;
-  @Input() options: any;
-  @Output() cellAction: EventEmitter<SelectedDate[]> = new EventEmitter<SelectedDate[]>();
+  @Input()
+  data: CalendarData<string[]>;
+
+  @Input()
+  options: any;
+
+  @Input('headerTemplate')
+  headerTpl?: TemplateRef<HeaderContext>;
+
+  @Input('headerCellTemplate')
+  headerCellTpl?: TemplateRef<HeaderCellContext>;
+
+  @Input('dayTemplate')
+  dayTpl?: TemplateRef<DayTemplateContext>;
+
+  @Input('dayTemplateData')
+  dayTplData?: any;
+
+  @Output()
+  cellAction: EventEmitter<SelectedDate[]> = new EventEmitter<SelectedDate[]>();
+
+  @ViewChild('multiToolbarTpl')
+  multiToolbarTplRef!: TemplateRef<any>;
+
+  /**
+   * It has to be setter because of conditional rendering of container ref.
+   * @param value
+   */
+  @ViewChild('multiToolbarPlaceholder', { read: ViewContainerRef })
+  // multiToolbarPlaceholderRef!: ViewContainerRef;
+  set multiToolbarPlaceholderRef(value: ViewContainerRef) {
+    if (!value) {
+      return;
+    }
+    console.log(value);
+    this._multiToolbarPlaceholderRef = value;
+    this._multiToolbarPlaceholderRef.clear();
+    this._multiToolbarPlaceholderRef.createEmbeddedView(this.multiToolbarTplRef, this.context);
+    // this.cdr.markForCheck();
+  }
+  private _multiToolbarPlaceholderRef!: ViewContainerRef;
 
   calendar: any = null;
   sysDate: Date = null;
   sysTime = '';
   collapsedWeeks = false;
   selectedDates: SelectedDate[] = [];
+
+  context = {
+    data: {
+      length: this.selectedDates.length,
+      cancelClick: () => this.onMultiselectCancelClick(),
+      actionClick: () => this.onMultiselectActionClick(),
+    },
+  };
 
   dayNames: string[] = ['Pondelok', 'Utorok', 'Streda', 'Štvrtok', 'Piatok', 'Sobota', 'Nedeľa'];
   monthNames: string[] = [
@@ -153,10 +204,12 @@ export class CalendarComponent implements OnInit, OnChanges {
 
     if (index === -1) {
       this.selectedDates = [...this.selectedDates, selectedDate];
+      this.context.data.length = this.selectedDates.length;
       return;
     }
 
     this.selectedDates.splice(index, 1);
+    this.context.data.length = this.selectedDates.length;
   }
 
   private build(): void {

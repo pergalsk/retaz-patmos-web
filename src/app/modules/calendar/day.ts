@@ -5,15 +5,21 @@ import {
   Input,
   Output,
   OnInit,
+  TemplateRef,
 } from '@angular/core';
-import { NgClass, NgForOf, NgIf } from '@angular/common';
+import { NgClass, NgForOf, NgIf, NgTemplateOutlet } from '@angular/common';
 import { NgxCalDayTitle } from './day-title';
 import { Day } from './calendar.types';
+
+export interface DayTemplateContext {
+  $implicit: Day;
+  data: any;
+}
 
 @Component({
   selector: '[ngx-cal-day]',
   standalone: true,
-  imports: [NgClass, NgForOf, NgIf, NgxCalDayTitle],
+  imports: [NgClass, NgForOf, NgIf, NgTemplateOutlet, NgxCalDayTitle],
   host: {
     '(click)': 'onDateClick(day)',
     '[class.invisible]': '!day.visible',
@@ -28,19 +34,33 @@ import { Day } from './calendar.types';
   template: `
     <div ngx-cal-day-title *ngIf="day.title" [title]="day.title"></div>
 
-    <!-- move into standalone template -->
     <div class="entries">
-      <div class="entry" *ngFor="let name of day.names">
+      <ng-container
+        [ngTemplateOutlet]="dayTpl || dayDefaultTpl"
+        [ngTemplateOutletContext]="{ $implicit: day, data }"
+      ></ng-container>
+    </div>
+
+    <ng-template #dayDefaultTpl let-dayData let-data>
+      <div class="entry" *ngFor="let name of data">
         <span>{{ name }}</span>
       </div>
-    </div>
-    <!-- move into standalone template -->
+    </ng-template>
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class NgxCalDay implements OnInit {
-  @Input() day: Day = null;
-  @Output() cellAction: EventEmitter<Day> = new EventEmitter<Day>();
+  @Input()
+  day: Day = null;
+
+  @Input('dayTemplate')
+  dayTpl: TemplateRef<DayTemplateContext>;
+
+  @Input('dayTemplateData')
+  data: any;
+
+  @Output()
+  cellAction: EventEmitter<Day> = new EventEmitter<Day>();
 
   classes: string = '';
 

@@ -14,6 +14,19 @@
   <app-calendar
     [data]="calendarData"
     [options]="calendarOptions"
+    [headerCellTemplate]="headerCellTpl"
+    [dayTemplate]="dayTpl"
+    [dayTemplateData]="calendarData"
     (cellAction)="onDateClick($event)"
   ></app-calendar>
+
+  <ng-template #headerCellTpl let-dayName>
+    <div class="header-cell">{{ dayName }}</div>
+  </ng-template>
+
+  <ng-template #dayTpl let-day let-data="data">
+    <div class="entry" *ngFor="let name of data[day.date]">
+      <span>{{ name }}</span>
+    </div>
+  </ng-template>
 </div>

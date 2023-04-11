@@ -1,5 +1,9 @@
 <div class="calendar" *ngIf="calendar" [ngClass]="calendar.classList">
-  <ngx-cal-header [titles]="dayNames"></ngx-cal-header>
+  <ngx-cal-header
+    [titles]="dayNames"
+    [headerTemplate]="headerTpl"
+    [headerCellTemplate]="headerCellTpl"
+  ></ngx-cal-header>
 
   <button
     class="calendar-week-collapse btn btn-outline-primary btn-block btn-smaller"
@@ -19,34 +23,32 @@
         ngx-cal-day
         *ngFor="let day of week.days; index as dayIndex"
         [day]="day"
+        [dayTemplate]="dayTpl"
+        [dayTemplateData]="dayTplData"
         (cellAction)="onDateClick({ day: $event, weekIndex, dayIndex })"
       ></div>
     </div>
   </ng-container>
 
   <ng-container *ngIf="selectedDates.length > 0">
-    <div class="multiselect-toolbar">
-      <div class="multiselect-toolbar-text">
-        <span class="toolbar-badge">{{ selectedDates.length }}</span> označených dátumov
-      </div>
-      <div class="multiselect-toolbar-buttons">
-        <button
-          type="button"
-          class="btn btn-outline-light btn-cancel"
-          (click)="onMultiselectCancelClick()"
-        >
-          Zrušiť
-        </button>
-        <button
-          type="button"
-          class="btn btn-primary btn-action"
-          (click)="onMultiselectActionClick()"
-        >
-          Zapísať <span class="text-part">na označené dátumy</span>
-        </button>
-      </div>
-    </div>
+    <ng-container #multiToolbarPlaceholder></ng-container>
   </ng-container>
 </div>
+
+<ng-template #multiToolbarTpl let-data="data">
+  <div class="multiselect-toolbar">
+    <div class="multiselect-toolbar-text">
+      <span class="toolbar-badge">{{ data.length }}</span> označených dátumov
+    </div>
+    <div class="multiselect-toolbar-buttons">
+      <button type="button" class="btn btn-outline-light btn-cancel" (click)="data.cancelClick()">
+        Zrušiť
+      </button>
+      <button type="button" class="btn btn-primary btn-action" (click)="data.actionClick()">
+        Zapísať <span class="text-part">na označené dátumy</span>
+      </button>
+    </div>
+  </div>
+</ng-template>
 
 <!--<pre>{{calendar | json}}</pre>-->
