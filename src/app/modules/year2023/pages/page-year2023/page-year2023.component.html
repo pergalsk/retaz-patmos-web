@@ -24,8 +24,9 @@
     <div class="header-cell">{{ dayName }}</div>
   </ng-template>
 
-  <ng-template #dayTpl let-day let-data="data">
-    <div class="entry" *ngFor="let name of data[day.date]">
+  <ng-template #dayTpl let-dayData let-customData="data">
+    <ngx-cal-day-title [title]="dayData.title"></ngx-cal-day-title>
+    <div class="entry" *ngFor="let name of customData[dayData.date]">
       <span>{{ name }}</span>
     </div>
   </ng-template>

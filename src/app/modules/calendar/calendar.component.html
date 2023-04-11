@@ -31,20 +31,27 @@
   </ng-container>
 
   <ng-container *ngIf="selectedDates.length > 0">
-    <ng-container #multiToolbarPlaceholder></ng-container>
+    <ng-container
+      [ngTemplateOutlet]="multiToolbarTpl || multiToolbarDefaultTpl"
+      [ngTemplateOutletContext]="context"
+    ></ng-container>
   </ng-container>
 </div>
 
-<ng-template #multiToolbarTpl let-data="data">
+<ng-template #multiToolbarDefaultTpl let-length let-actions="actions">
   <div class="multiselect-toolbar">
     <div class="multiselect-toolbar-text">
-      <span class="toolbar-badge">{{ data.length }}</span> označených dátumov
+      <span class="toolbar-badge">{{ length }}</span> označených dátumov
     </div>
     <div class="multiselect-toolbar-buttons">
-      <button type="button" class="btn btn-outline-light btn-cancel" (click)="data.cancelClick()">
+      <button
+        type="button"
+        class="btn btn-outline-light btn-cancel"
+        (click)="actions.cancelClick()"
+      >
         Zrušiť
       </button>
-      <button type="button" class="btn btn-primary btn-action" (click)="data.actionClick()">
+      <button type="button" class="btn btn-primary btn-action" (click)="actions.actionClick()">
         Zapísať <span class="text-part">na označené dátumy</span>
       </button>
     </div>

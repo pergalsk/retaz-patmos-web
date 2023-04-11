@@ -42,6 +42,14 @@ import {
 import { HeaderCellContext, HeaderContext } from './header';
 import { DayTemplateContext } from './day';
 
+export interface MultiToolbarContext {
+  $implicit: number;
+  actions: {
+    cancelClick: () => void;
+    actionClick: () => void;
+  };
+}
+
 @Component({
   selector: 'app-calendar',
   templateUrl: './calendar.component.html',
@@ -65,6 +73,9 @@ export class CalendarComponent implements OnInit, OnChanges {
 
   @Input('dayTemplateData')
   dayTplData?: any;
+
+  @Input('multiToolbarTemplate')
+  multiToolbarTpl: TemplateRef<MultiToolbarContext>;
 
   @Output()
   cellAction: EventEmitter<SelectedDate[]> = new EventEmitter<SelectedDate[]>();
@@ -96,9 +107,9 @@ export class CalendarComponent implements OnInit, OnChanges {
   collapsedWeeks = false;
   selectedDates: SelectedDate[] = [];
 
-  context = {
-    data: {
-      length: this.selectedDates.length,
+  context: MultiToolbarContext = {
+    $implicit: this.selectedDates.length,
+    actions: {
       cancelClick: () => this.onMultiselectCancelClick(),
       actionClick: () => this.onMultiselectActionClick(),
     },
@@ -204,12 +215,12 @@ export class CalendarComponent implements OnInit, OnChanges {
 
     if (index === -1) {
       this.selectedDates = [...this.selectedDates, selectedDate];
-      this.context.data.length = this.selectedDates.length;
+      this.context.$implicit = this.selectedDates.length;
       return;
     }
 
     this.selectedDates.splice(index, 1);
-    this.context.data.length = this.selectedDates.length;
+    this.context.$implicit = this.selectedDates.length;
   }
 
   private build(): void {

@@ -32,18 +32,15 @@ export interface DayTemplateContext {
     '[id]': '"date-" + day.date',
   },
   template: `
-    <div ngx-cal-day-title *ngIf="day.title" [title]="day.title"></div>
+    <ng-container
+      [ngTemplateOutlet]="dayTpl || dayDefaultTpl"
+      [ngTemplateOutletContext]="{ $implicit: day, data }"
+    ></ng-container>
 
-    <div class="entries">
-      <ng-container
-        [ngTemplateOutlet]="dayTpl || dayDefaultTpl"
-        [ngTemplateOutletContext]="{ $implicit: day, data }"
-      ></ng-container>
-    </div>
-
-    <ng-template #dayDefaultTpl let-dayData let-data>
-      <div class="entry" *ngFor="let name of data">
-        <span>{{ name }}</span>
+    <ng-template #dayDefaultTpl let-dayData let-customData="data">
+      <ngx-cal-day-title [title]="dayData.title"></ngx-cal-day-title>
+      <div class="day-content">
+        <span>{{ customData }}</span>
       </div>
     </ng-template>
   `,
