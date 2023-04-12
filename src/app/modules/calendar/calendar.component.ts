@@ -85,24 +85,6 @@ export class CalendarComponent implements OnInit, OnChanges {
   @ViewChild('multiToolbarTpl')
   multiToolbarTplRef!: TemplateRef<any>;
 
-  /**
-   * It has to be setter because of conditional rendering of container ref.
-   * @param value
-   */
-  @ViewChild('multiToolbarPlaceholder', { read: ViewContainerRef })
-  // multiToolbarPlaceholderRef!: ViewContainerRef;
-  set multiToolbarPlaceholderRef(value: ViewContainerRef) {
-    if (!value) {
-      return;
-    }
-    console.log(value);
-    this._multiToolbarPlaceholderRef = value;
-    this._multiToolbarPlaceholderRef.clear();
-    this._multiToolbarPlaceholderRef.createEmbeddedView(this.multiToolbarTplRef, this.context);
-    // this.cdr.markForCheck();
-  }
-  private _multiToolbarPlaceholderRef!: ViewContainerRef;
-
   private cdr = inject(ChangeDetectorRef);
   private i18n = inject(NgxCalI18n);
 
