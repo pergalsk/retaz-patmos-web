@@ -11,6 +11,7 @@ import {
   TemplateRef,
   ViewContainerRef,
   ViewChild,
+  inject,
 } from '@angular/core';
 import {
   parse,
@@ -39,7 +40,7 @@ import {
   Day,
   SelectedDate,
 } from './calendar.types';
-import { I18nEn } from './i18n-en';
+import { NgxCalI18n } from './i18n';
 import { HeaderCellContext, HeaderContext } from './header';
 import { DayTemplateContext } from './day';
 
@@ -102,11 +103,16 @@ export class CalendarComponent implements OnInit, OnChanges {
   }
   private _multiToolbarPlaceholderRef!: ViewContainerRef;
 
+  private cdr = inject(ChangeDetectorRef);
+  private i18n = inject(NgxCalI18n);
+
   calendar: any = null;
   sysDate: Date = null;
   sysTime = '';
   collapsedWeeks = false;
   selectedDates: SelectedDate[] = [];
+  dayNames: string[] = this.i18n.getDayNames();
+  monthNames: string[] = this.i18n.getMonthNames();
 
   context: MultiToolbarContext = {
     $implicit: this.selectedDates.length,
@@ -115,9 +121,6 @@ export class CalendarComponent implements OnInit, OnChanges {
       actionClick: () => this.onMultiselectActionClick(),
     },
   };
-
-  dayNames: string[] = this.i18n.getDayNames();
-  monthNames: string[] = this.i18n.getMonthNames();
 
   calendarOptions: any = {};
   defaultOptions = {
@@ -134,8 +137,6 @@ export class CalendarComponent implements OnInit, OnChanges {
     disabledToday: false,
     disabledFuture: false,
   };
-
-  constructor(private cdr: ChangeDetectorRef, private i18n: I18nEn) {}
 
   ngOnInit(): void {
     if (!this.data) {

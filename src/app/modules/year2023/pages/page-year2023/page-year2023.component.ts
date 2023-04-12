@@ -12,13 +12,13 @@ import {
 import { ModalContentComponent } from '../../../../modal-content/modal-content.component';
 import { CalendarData, SelectedDate } from '../../../calendar/calendar.types';
 import { CalendarComponent } from '../../../calendar/calendar.component';
-import { I18nSk } from '../../../calendar/i18n-sk';
-import { I18nEn } from '../../../calendar/i18n-en';
+import { NgxCalI18nSk } from '../../../calendar/i18n-sk';
+import { NgxCalI18n } from '../../../calendar/i18n';
 
 @Component({
   selector: 'app-page-year2023',
   templateUrl: './page-year2023.component.html',
-  providers: [{ provide: I18nEn, useClass: I18nSk }],
+  providers: [{ provide: NgxCalI18n, useClass: NgxCalI18nSk }],
 })
 export class PageYear2023Component implements OnInit, OnDestroy {
   @ViewChild(CalendarComponent) calendarRef: CalendarComponent;

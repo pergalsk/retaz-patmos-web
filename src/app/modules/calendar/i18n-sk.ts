@@ -1,10 +1,10 @@
 import { Injectable } from '@angular/core';
-import { I18n } from './i18n-abstract';
+import { NgxCalAbstractI18n } from './i18n';
 
 @Injectable({
   providedIn: 'root',
 })
-export class I18nSk implements I18n {
+export class NgxCalI18nSk implements NgxCalAbstractI18n {
   getMonthNames(): string[] {
     return [
       'Január',

@@ -1,10 +1,14 @@
 import { Injectable } from '@angular/core';
-import { I18n } from './i18n-abstract';
+
+export abstract class NgxCalAbstractI18n {
+  getDayNames: () => string[];
+  getMonthNames: () => string[];
+}
 
 @Injectable({
   providedIn: 'root',
 })
-export class I18nEn implements I18n {
+export class NgxCalI18n implements NgxCalAbstractI18n {
   getMonthNames(): string[] {
     return [
       'January',
