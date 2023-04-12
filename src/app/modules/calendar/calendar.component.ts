@@ -39,6 +39,7 @@ import {
   Day,
   SelectedDate,
 } from './calendar.types';
+import { I18nEn } from './i18n-en';
 import { HeaderCellContext, HeaderContext } from './header';
 import { DayTemplateContext } from './day';
 
@@ -115,21 +116,8 @@ export class CalendarComponent implements OnInit, OnChanges {
     },
   };
 
-  dayNames: string[] = ['Pondelok', 'Utorok', 'Streda', 'Štvrtok', 'Piatok', 'Sobota', 'Nedeľa'];
-  monthNames: string[] = [
-    'Január',
-    'Február',
-    'Marec',
-    'Apríl',
-    'Máj',
-    'Jún',
-    'Júl',
-    'August',
-    'September',
-    'Október',
-    'November',
-    'December',
-  ];
+  dayNames: string[] = this.i18n.getDayNames();
+  monthNames: string[] = this.i18n.getMonthNames();
 
   calendarOptions: any = {};
   defaultOptions = {
@@ -147,7 +135,7 @@ export class CalendarComponent implements OnInit, OnChanges {
     disabledFuture: false,
   };
 
-  constructor(private cdr: ChangeDetectorRef) {}
+  constructor(private cdr: ChangeDetectorRef, private i18n: I18nEn) {}
 
   ngOnInit(): void {
     if (!this.data) {
