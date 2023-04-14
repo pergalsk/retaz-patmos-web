@@ -57,7 +57,6 @@ export class PageYear2023Component implements OnInit, OnDestroy {
     this.calendarOptions = {
       sysDate: this.sysDate,
       sysTime: this.sysTime,
-      header: true,
       collapsedWeeks: true,
       multiselect: true,
       disabledPast: true,

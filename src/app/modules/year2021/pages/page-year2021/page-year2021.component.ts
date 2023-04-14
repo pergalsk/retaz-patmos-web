@@ -95,7 +95,6 @@ export class PageYear2021Component implements OnInit {
     this.calendarOptions = {
       sysDate: this.sysDate,
       sysTime: this.sysTime,
-      header: true,
       separateMonths: false,
       collapsedWeeks: true,
       disabledPast: true,
