@@ -71,7 +71,7 @@ export class CalendarComponent implements OnInit, OnChanges {
   multiselect: boolean = false;
 
   @Input()
-  disabledPast: boolean = true;
+  disabledPast: boolean = false;
 
   @Input()
   disabledToday: boolean = false;
