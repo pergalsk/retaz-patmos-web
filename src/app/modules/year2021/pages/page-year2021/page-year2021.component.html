@@ -269,6 +269,7 @@
   <div *ngIf="calendarData" class="jumbotron dense mt-4">
     <app-calendar
       [data]="calendarData"
+      [overrides]="overrides"
       [options]="calendarOptions"
       [header]="true"
       [multiselect]="false"

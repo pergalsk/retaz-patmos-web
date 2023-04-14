@@ -51,6 +51,12 @@ export class PageYear2021Component implements OnInit {
   getCalendarError = false;
   submitError = false;
   panelContentIndex = 0;
+  overrides = {
+    '2021-04-02': {
+      title: 'Veľký piatok',
+      highlighted: true,
+    },
+  };
 
   panelMenuItems: PanelMenuItem[] = [
     {
@@ -99,12 +105,6 @@ export class PageYear2021Component implements OnInit {
       collapsedWeeks: true,
       // rawDateFormat: '',
       // titleDateFormat: '',
-      overrides: {
-        '2021-04-02': {
-          title: 'Veľký piatok',
-          highlighted: true,
-        },
-      },
     };
 
     this.calendarData = this.generateCalendarData(this.rawDates);

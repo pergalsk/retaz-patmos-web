@@ -32,6 +32,12 @@ export class PageYear2023Component implements OnInit, OnDestroy {
   getCalendarError = false;
   submitError = false;
   storageKey = 'registration_name';
+  overrides = {
+    '2023-04-07': {
+      title: 'Veľký piatok',
+      highlighted: true,
+    },
+  };
 
   constructor(private modalService: NgbModal, private commonApiService: CommonApiService) {}
 
@@ -61,12 +67,6 @@ export class PageYear2023Component implements OnInit, OnDestroy {
       // rawDateFormat: '',
       // titleDateFormat: '',
       // separateMonths: false,
-      overrides: {
-        '2023-04-07': {
-          title: 'Veľký piatok',
-          highlighted: true,
-        },
-      },
     };
 
     this.calendarData = this.generateCalendarData(this.rawDates);

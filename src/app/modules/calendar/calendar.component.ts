@@ -62,6 +62,9 @@ export class CalendarComponent implements OnInit, OnChanges {
   data: CalendarData<string[]>;
 
   @Input()
+  overrides: any = null;
+
+  @Input()
   options: any;
 
   @Input()
@@ -126,7 +129,6 @@ export class CalendarComponent implements OnInit, OnChanges {
     rawDateFormat: 'yyyy-MM-dd',
     titleDateFormat: 'd. LLLL',
     separateMonths: false,
-    overrides: null as any,
     collapsedWeeks: false,
   };
 
@@ -373,12 +375,10 @@ export class CalendarComponent implements OnInit, OnChanges {
       names,
     };
 
-    if (this.calendarOptions?.overrides?.[date]) {
-      Object.assign(resultObj, this.calendarOptions.overrides[date]);
-      // todo refactor:
-      resultObj.classList = resultObj.classList.concat(
-        this.calendarOptions?.overrides?.[date]?.classes
-      );
+    // todo refactor:
+    if (this.overrides?.[date]) {
+      Object.assign(resultObj, this.overrides?.[date]);
+      resultObj.classList = resultObj.classList.concat(this.overrides?.[date]?.classes);
     }
 
     return resultObj;
