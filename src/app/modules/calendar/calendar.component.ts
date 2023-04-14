@@ -70,6 +70,15 @@ export class CalendarComponent implements OnInit, OnChanges {
   @Input()
   multiselect: boolean = false;
 
+  @Input()
+  disabledPast: boolean = true;
+
+  @Input()
+  disabledToday: boolean = false;
+
+  @Input()
+  disabledFuture: boolean = false;
+
   @Input('headerTemplate')
   headerTpl?: TemplateRef<HeaderContext>;
 
@@ -119,9 +128,6 @@ export class CalendarComponent implements OnInit, OnChanges {
     separateMonths: false,
     overrides: null as any,
     collapsedWeeks: false,
-    disabledPast: false,
-    disabledToday: false,
-    disabledFuture: false,
   };
 
   ngOnInit(): void {
@@ -271,9 +277,9 @@ export class CalendarComponent implements OnInit, OnChanges {
       this.calendarOptions.separateMonths ? 'separate-months' : null,
       this.multiselect ? 'multiselect' : null,
       // this.calendarOptions.collapsedWeeks ? 'collapsed-weeks' : null, // todo: better choice is new option 'collapsibleWeeks'
-      this.calendarOptions.disabledPast ? 'disabled-past' : null,
-      this.calendarOptions.disabledToday ? 'disabled-today' : null,
-      this.calendarOptions.disabledFuture ? 'disabled-future' : null,
+      this.disabledPast ? 'disabled-past' : null,
+      this.disabledToday ? 'disabled-today' : null,
+      this.disabledFuture ? 'disabled-future' : null,
     ].filter(Boolean);
 
     return {
@@ -338,9 +344,9 @@ export class CalendarComponent implements OnInit, OnChanges {
     const highlighted: boolean = weekDay === 7;
     const selected: boolean = false;
     const disabled: boolean =
-      (this.calendarOptions.disabledPast && past) ||
-      (this.calendarOptions.disabledToday && today) ||
-      (this.calendarOptions.disabledFuture && future) ||
+      (this.disabledPast && past) ||
+      (this.disabledToday && today) ||
+      (this.disabledFuture && future) ||
       Number.isNaN(comparisonResult);
 
     const classList: string[] = [];

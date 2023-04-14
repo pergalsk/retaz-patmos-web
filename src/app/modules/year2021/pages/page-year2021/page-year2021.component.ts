@@ -97,9 +97,6 @@ export class PageYear2021Component implements OnInit {
       sysTime: this.sysTime,
       separateMonths: false,
       collapsedWeeks: true,
-      disabledPast: true,
-      disabledToday: true,
-      disabledFuture: true,
       // rawDateFormat: '',
       // titleDateFormat: '',
       overrides: {
