@@ -1,5 +1,6 @@
 <div class="calendar" *ngIf="calendar" [ngClass]="calendar.classList">
   <ngx-cal-header
+    *ngIf="header"
     [titles]="dayNames"
     [headerTemplate]="headerTpl"
     [headerCellTemplate]="headerCellTpl"

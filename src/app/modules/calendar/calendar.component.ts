@@ -65,6 +65,9 @@ export class CalendarComponent implements OnInit, OnChanges {
   options: any;
 
   @Input()
+  header: boolean = true;
+
+  @Input()
   multiselect: boolean = false;
 
   @Input('headerTemplate')
@@ -113,7 +116,6 @@ export class CalendarComponent implements OnInit, OnChanges {
     sysTime: new Date(),
     rawDateFormat: 'yyyy-MM-dd',
     titleDateFormat: 'd. LLLL',
-    header: true,
     separateMonths: false,
     overrides: null as any,
     collapsedWeeks: false,
@@ -265,7 +267,7 @@ export class CalendarComponent implements OnInit, OnChanges {
     const pastWeeksCount: number = weeks.reduce((acc, week) => acc + (week.past ? 1 : 0), 0);
 
     const classList: string[] = [
-      this.calendarOptions.header ? 'with-header' : null,
+      this.header ? 'with-header' : null,
       this.calendarOptions.separateMonths ? 'separate-months' : null,
       this.multiselect ? 'multiselect' : null,
       // this.calendarOptions.collapsedWeeks ? 'collapsed-weeks' : null, // todo: better choice is new option 'collapsibleWeeks'
