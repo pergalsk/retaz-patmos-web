@@ -117,7 +117,6 @@ export class CalendarComponent implements OnInit, OnChanges {
     separateMonths: false,
     overrides: null as any,
     collapsedWeeks: false,
-    multiselect: false,
     disabledPast: false,
     disabledToday: false,
     disabledFuture: false,
