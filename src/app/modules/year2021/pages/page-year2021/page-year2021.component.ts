@@ -13,6 +13,8 @@ import {
   CommonApiService,
   PutNameResponse,
 } from '@services/common-api.service';
+import { NgxCalI18n } from '../../../calendar/i18n';
+import { NgxCalI18nSk } from '../../../calendar/i18n-sk';
 
 export interface CalendarOptions {
   sysDate: string;
@@ -35,6 +37,7 @@ export interface CalendarOptions {
   selector: 'app-page-year2021',
   templateUrl: './page-year2021.component.html',
   styleUrls: ['./page-year2021.component.scss'],
+  providers: [{ provide: NgxCalI18n, useClass: NgxCalI18nSk }],
 })
 export class PageYear2021Component implements OnInit {
   @ViewChild(CalendarComponent) calendarRef: CalendarComponent;
@@ -95,6 +98,9 @@ export class PageYear2021Component implements OnInit {
       header: true,
       separateMonths: false,
       collapsedWeeks: true,
+      disabledPast: true,
+      disabledToday: true,
+      disabledFuture: true,
       // rawDateFormat: '',
       // titleDateFormat: '',
       overrides: {

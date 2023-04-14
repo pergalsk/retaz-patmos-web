@@ -271,6 +271,20 @@
       [data]="calendarData"
       [options]="calendarOptions"
       (cellAction)="onDateClick($event)"
+      [headerCellTemplate]="headerCellTpl"
+      [dayTemplate]="dayTpl"
+      [dayTemplateData]="calendarData"
     ></app-calendar>
+
+    <ng-template #headerCellTpl let-dayName>
+      <div class="header-cell">{{ dayName }}</div>
+    </ng-template>
+
+    <ng-template #dayTpl let-dayData let-customData="data">
+      <ngx-cal-day-title [title]="dayData.title"></ngx-cal-day-title>
+      <div class="entry" *ngFor="let name of customData[dayData.date]">
+        <span>{{ name }}</span>
+      </div>
+    </ng-template>
   </div>
 </ng-container>
