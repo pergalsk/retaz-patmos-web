@@ -64,6 +64,9 @@ export class CalendarComponent implements OnInit, OnChanges {
   @Input()
   options: any;
 
+  @Input()
+  multiselect: boolean = false;
+
   @Input('headerTemplate')
   headerTpl?: TemplateRef<HeaderContext>;
 
@@ -146,7 +149,7 @@ export class CalendarComponent implements OnInit, OnChanges {
 
     this.addSelectedDate(selectedDate);
 
-    if (this.calendarOptions.multiselect) {
+    if (this.multiselect) {
       this.toggleDateProperty(selectedDate, 'selected');
       return;
     }
@@ -265,7 +268,7 @@ export class CalendarComponent implements OnInit, OnChanges {
     const classList: string[] = [
       this.calendarOptions.header ? 'with-header' : null,
       this.calendarOptions.separateMonths ? 'separate-months' : null,
-      this.calendarOptions.multiselect ? 'multiselect' : null,
+      this.multiselect ? 'multiselect' : null,
       // this.calendarOptions.collapsedWeeks ? 'collapsed-weeks' : null, // todo: better choice is new option 'collapsibleWeeks'
       this.calendarOptions.disabledPast ? 'disabled-past' : null,
       this.calendarOptions.disabledToday ? 'disabled-today' : null,

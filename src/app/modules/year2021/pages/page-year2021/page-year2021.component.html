@@ -270,10 +270,11 @@
     <app-calendar
       [data]="calendarData"
       [options]="calendarOptions"
-      (cellAction)="onDateClick($event)"
+      [multiselect]="false"
       [headerCellTemplate]="headerCellTpl"
       [dayTemplate]="dayTpl"
       [dayTemplateData]="calendarData"
+      (cellAction)="onDateClick($event)"
     ></app-calendar>
 
     <ng-template #headerCellTpl let-dayName>
