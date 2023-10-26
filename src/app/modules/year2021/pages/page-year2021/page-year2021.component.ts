@@ -2,9 +2,9 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { Observable, zip, throwError } from 'rxjs';
 import { catchError, delay, map } from 'rxjs/operators';
 import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
+import { CalendarComponent } from 'projects/ngx-calendar/src/lib/calendar.component';
+import { CalendarData } from 'projects/ngx-calendar/src/lib/calendar.types';
 import { ModalContentComponent } from '../../../../modal-content/modal-content.component';
-import { CalendarComponent } from '../../../calendar/calendar.component';
-import { CalendarData } from '../../../calendar/calendar.types';
 import { PanelMenuItem } from '../../components/panel-menu/panel-menu.component';
 import {
   SysdateResponse,
@@ -13,8 +13,8 @@ import {
   CommonApiService,
   PutNameResponse,
 } from '@services/common-api.service';
-import { NgxCalI18n } from '../../../calendar/i18n';
-import { NgxCalI18nSk } from '../../../calendar/i18n-sk';
+import { NgxCalI18n } from 'projects/ngx-calendar/src/lib/i18n';
+import { NgxCalI18nSk } from 'projects/ngx-calendar/src/lib/i18n-sk';
 
 export interface CalendarOptions {
   sysDate: string;

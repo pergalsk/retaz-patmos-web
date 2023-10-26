@@ -28,7 +28,12 @@
       "@interceptors/*": ["src/app/interceptors"],
       "@animations/*": ["src/app/animations"],
       "@services/*": ["src/app/services/*"],
-      "@shared/*": ["src/app/modules/shared/*"]
+      "@shared/*": [
+        "src/app/modules/shared/*"
+      ],
+      "ngx-calendar": [
+        "dist/ngx-calendar"
+      ]
     },
     "lib": ["ES2022", "dom"]
   },

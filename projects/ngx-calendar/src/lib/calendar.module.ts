@@ -10,4 +10,4 @@ import { NgxCalDayTitle } from './day-title';
   imports: [CommonModule, NgxCalHeader, NgxCalDay, NgxCalDayTitle],
   exports: [CalendarComponent, NgxCalHeader, NgxCalDay, NgxCalDayTitle],
 })
-export class CalendarModule {}
+export class NgxCalendarModule {}

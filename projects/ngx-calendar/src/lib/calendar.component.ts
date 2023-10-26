@@ -103,13 +103,13 @@ export class CalendarComponent implements OnInit, OnChanges {
   @ViewChild('multiToolbarTpl')
   multiToolbarTplRef!: TemplateRef<any>;
 
-  private cdr = inject(ChangeDetectorRef);
-  private i18n = inject(NgxCalI18n);
+  private cdr: ChangeDetectorRef = inject(ChangeDetectorRef);
+  private i18n: NgxCalI18n = inject(NgxCalI18n);
 
   calendar: any = null;
   sysDate: Date = null;
-  sysTime = '';
-  collapsedWeeks = false;
+  sysTime: string = '';
+  collapsedWeeks: boolean = false;
   selectedDates: SelectedDate[] = [];
   dayNames: string[] = this.i18n.getDayNames();
   monthNames: string[] = this.i18n.getMonthNames();

@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { SharedModule } from '@shared/shared.module';
-import { CalendarModule } from '../calendar/calendar.module';
+import { NgxCalendarModule } from 'projects/ngx-calendar/src/lib/calendar.module';
 
 import { PageYear2023Component } from './pages/page-year2023/page-year2023.component';
 import { SvgCalendarComponent } from './svg/svg-calendar/svg-calendar.component';
@@ -15,7 +15,7 @@ import { MainContent2023Component } from './contents/main-content2023/main-conte
     SvgPrayKneesComponent,
     MainContent2023Component,
   ],
-  imports: [CommonModule, SharedModule, CalendarModule],
+  imports: [CommonModule, SharedModule, NgxCalendarModule],
   exports: [PageYear2023Component, MainContent2023Component],
 })
 export class Year2023Module {}

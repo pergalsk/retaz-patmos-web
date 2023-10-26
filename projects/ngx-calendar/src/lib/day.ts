@@ -39,7 +39,7 @@ export interface DayTemplateContext {
 
     <ng-template #dayDefaultTpl let-dayData let-customData="data">
       <ngx-cal-day-title [title]="dayData.title"></ngx-cal-day-title>
-      <div class="day-content">
+      <div class="day-content-XXX">
         <span>{{ customData }}</span>
       </div>
     </ng-template>

@@ -10,10 +10,10 @@ import {
   PutNameResponse,
 } from '@services/common-api.service';
 import { ModalContentComponent } from '../../../../modal-content/modal-content.component';
-import { CalendarData, SelectedDate } from '../../../calendar/calendar.types';
-import { CalendarComponent } from '../../../calendar/calendar.component';
-import { NgxCalI18nSk } from '../../../calendar/i18n-sk';
-import { NgxCalI18n } from '../../../calendar/i18n';
+import { CalendarComponent } from 'projects/ngx-calendar/src/lib/calendar.component';
+import { CalendarData, SelectedDate } from 'projects/ngx-calendar/src/lib/calendar.types';
+import { NgxCalI18n } from 'projects/ngx-calendar/src/lib/i18n';
+import { NgxCalI18nSk } from 'projects/ngx-calendar/src/lib/i18n-sk';
 
 @Component({
   selector: 'app-page-year2023',
