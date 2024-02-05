@@ -10,6 +10,7 @@ import { TwoSplitComponent } from './components/two-split/two-split.component';
 import { ContentBoxComponent } from './components/content-box/content-box.component';
 import { SmoothHeightComponent } from './smooth-height/smooth-height.component';
 import { ColorSchemeSwitcherComponent } from './components/color-scheme-switcher/color-scheme-switcher.component';
+import { SvgCalendarComponent } from './svg/svg-calendar/svg-calendar.component';
 import { SvgCalendarManComponent } from './svg/svg-calendar-man/svg-calendar-man.component';
 import { NoWhitespaceDirective } from './validators/no-whitespace/no-whitespace.directive';
 
@@ -22,6 +23,7 @@ import { NoWhitespaceDirective } from './validators/no-whitespace/no-whitespace.
     SafePipe,
     SmoothHeightComponent,
     ColorSchemeSwitcherComponent,
+    SvgCalendarComponent,
     SvgCalendarManComponent,
     NoWhitespaceDirective,
   ],
@@ -34,6 +36,7 @@ import { NoWhitespaceDirective } from './validators/no-whitespace/no-whitespace.
     SafePipe,
     SmoothHeightComponent,
     ColorSchemeSwitcherComponent,
+    SvgCalendarComponent,
     SvgCalendarManComponent,
     NoWhitespaceDirective,
   ],

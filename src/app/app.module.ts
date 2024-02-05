@@ -13,7 +13,7 @@ import { SharedModule } from '@shared/shared.module';
 import { ColorSchemeModule } from './modules/color-scheme/color-scheme.module';
 import { NgxCalendarModule } from 'projects/ngx-calendar/src/lib/calendar.module';
 
-import { Year2023Module } from './modules/year2023/year2023.module';
+import { Year2024Module } from './modules/year2024/year2024.module';
 import { RouterModule } from '@angular/router';
 import { AppShellComponent } from './app-shell/app-shell.component';
 
@@ -27,7 +27,7 @@ import { AppShellComponent } from './app-shell/app-shell.component';
     BrowserAnimationsModule,
     AppRoutingModule,
     SharedModule,
-    Year2023Module,
+    Year2024Module,
     RouterModule,
     NgxCalendarModule,
     ColorSchemeModule.forRoot({
