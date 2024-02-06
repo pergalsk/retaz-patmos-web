@@ -1,6 +1,6 @@
 import { Component, OnInit, OnDestroy, ViewChild } from '@angular/core';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
-import { zip } from 'rxjs';
+import { Subscription, tap, zip } from 'rxjs';
 import { map } from 'rxjs/operators';
 import {
   CommonApiService,
@@ -40,18 +40,27 @@ export class PageYear2024Component implements OnInit, OnDestroy {
     },
   };
 
+  subscription$: Subscription;
+
   constructor(private modalService: NgbModal, private commonApiService: CommonApiService) {}
 
   ngOnInit(): void {
     this.getCalendarError = false;
 
-    zip(this.commonApiService.getDates('2024'), this.commonApiService.getSysDateTime())
-      .pipe(map(([rawDates, sysDateTime]) => ({ rawDates, sysDateTime })))
-      .subscribe(this.handleSuccess, this.handleError); // todo: unsubscribe
+    this.subscription$ = zip(
+      this.commonApiService.getDates('2024'),
+      this.commonApiService.getSysDateTime()
+    )
+      .pipe(
+        map(([rawDates, sysDateTime]) => ({ rawDates, sysDateTime })),
+        tap({ error: this.handleError })
+      )
+      .subscribe(this.handleSuccess);
   }
 
   ngOnDestroy() {
     this.modalService.dismissAll();
+    this.subscription$?.unsubscribe();
   }
 
   private handleSuccess = (data: { rawDates: DatesResponse[]; sysDateTime: SysdateResponse }) => {
@@ -73,10 +82,10 @@ export class PageYear2024Component implements OnInit, OnDestroy {
     this.calendarData = this.generateCalendarData(this.rawDates);
   };
 
-  private handleError(error: any): void {
+  private handleError = (error: any): void => {
     this.getCalendarError = true;
     console.log(error);
-  }
+  };
 
   private generateCalendarData(rawDates: DatesResponse[]): any {
     const calendarData: CalendarData<string[]> = {
