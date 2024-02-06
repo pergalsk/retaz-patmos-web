@@ -13,6 +13,9 @@ import { ColorSchemeSwitcherComponent } from './components/color-scheme-switcher
 import { SvgCalendarComponent } from './svg/svg-calendar/svg-calendar.component';
 import { SvgCalendarManComponent } from './svg/svg-calendar-man/svg-calendar-man.component';
 import { NoWhitespaceDirective } from './validators/no-whitespace/no-whitespace.directive';
+import { CalendarSignupComponent } from './components/calendar-signup/calendar-signup.component';
+import { NgxCalDayTitle } from 'projects/ngx-calendar/src/lib/day-title';
+import { NgxCalendarModule } from 'projects/ngx-calendar/src/lib/calendar.module';
 
 @NgModule({
   declarations: [
@@ -26,8 +29,9 @@ import { NoWhitespaceDirective } from './validators/no-whitespace/no-whitespace.
     SvgCalendarComponent,
     SvgCalendarManComponent,
     NoWhitespaceDirective,
+    CalendarSignupComponent,
   ],
-  imports: [CommonModule, RouterModule, NgbModule],
+  imports: [CommonModule, RouterModule, NgbModule, NgxCalDayTitle, NgxCalendarModule],
   exports: [
     ContentBoxComponent,
     FooterComponent,
@@ -39,6 +43,7 @@ import { NoWhitespaceDirective } from './validators/no-whitespace/no-whitespace.
     SvgCalendarComponent,
     SvgCalendarManComponent,
     NoWhitespaceDirective,
+    CalendarSignupComponent,
   ],
 })
 export class SharedModule {}

@@ -246,51 +246,5 @@
     </div>
   </div>
 
-  <h1 class="text-center">Pôstna reťaz</h1>
-
-  <p class="text-center small">
-    <strong>Na jeden deň sa môžu zapísať aj viacerí</strong>, zároveň sa jeden človek môže
-    <strong>zapísať aj na viacero dní</strong>.<br />
-    <strong>Kliknutím na dátum</strong> sa môžete zapísať.
-    <strong>Záznam po potvrdení už nie je možné meniť</strong>, ak predsa potrebujete zmenu, napíšte
-    na pergalsk@gmail.com.
-  </p>
-
-  <div *ngIf="getCalendarError" class="alert alert-danger" role="alert">
-    Obsah kalendára sa nepodarilo načítať. Ak problém pretrváva, kontaktujte nás na:
-    pergalsk@gmail.com (PG).
-  </div>
-
-  <div *ngIf="submitError" class="alert alert-warning" role="alert">
-    Chyba pri zapisovaní do kalendára. Ak problém pretrváva, kontaktujte nás na: pergalsk@gmail.com
-    (PG).
-  </div>
-
-  <div *ngIf="calendarData" class="jumbotron dense mt-4">
-    <app-calendar
-      [data]="calendarData"
-      [overrides]="overrides"
-      [options]="calendarOptions"
-      [header]="true"
-      [multiselect]="false"
-      [disabledPast]="true"
-      [disabledToday]="true"
-      [disabledFuture]="false"
-      [headerCellTemplate]="headerCellTpl"
-      [dayTemplate]="dayTpl"
-      [dayTemplateData]="calendarData"
-      (cellAction)="onDateClick($event)"
-    ></app-calendar>
-
-    <ng-template #headerCellTpl let-dayName>
-      <div class="header-cell">{{ dayName }}</div>
-    </ng-template>
-
-    <ng-template #dayTpl let-dayData let-customData="data">
-      <ngx-cal-day-title [title]="dayData.title"></ngx-cal-day-title>
-      <div class="entry" *ngFor="let name of customData[dayData.date]">
-        <span>{{ name }}</span>
-      </div>
-    </ng-template>
-  </div>
+  <app-calendar-signup [year]="year" [overrides]="overrides" />
 </ng-container>
