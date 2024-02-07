@@ -225,6 +225,19 @@ export class CalendarComponent implements OnInit, OnChanges {
     this.calendar = this.generateCalendarData(this.data?.start, this.data?.end, referenceDate);
   }
 
+  getSelectedDatesText(num: number): string {
+    if (!num) {
+      return '';
+    }
+
+    if (num === 1) {
+      return 'označený dátum';
+    } else if (num <= 4) {
+      return 'označené dátumy';
+    }
+    return 'označených dátumov';
+  }
+
   private isDayClickable(day: Day): boolean {
     return day.visible && !day.disabled;
   }

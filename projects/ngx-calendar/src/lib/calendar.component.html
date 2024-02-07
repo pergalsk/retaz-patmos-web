@@ -42,7 +42,7 @@
 <ng-template #multiToolbarDefaultTpl let-length let-actions="actions">
   <div class="multiselect-toolbar">
     <div class="multiselect-toolbar-text">
-      <span class="toolbar-badge">{{ length }}</span> označených dátumov
+      <span class="toolbar-badge">{{ length }}</span> {{ getSelectedDatesText(length) }}
     </div>
     <div class="multiselect-toolbar-buttons">
       <button

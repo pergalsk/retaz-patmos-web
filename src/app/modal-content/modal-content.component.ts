@@ -1,4 +1,5 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+import { DatePipe } from '@angular/common';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 
 const weekDayNames: string[] = [
@@ -15,31 +16,45 @@ const weekDayNames: string[] = [
   selector: 'app-modal-content',
   templateUrl: './modal-content.component.html',
   styleUrls: ['./modal-content.component.scss'],
+  providers: [DatePipe],
 })
 export class ModalContentComponent implements OnInit {
   @Input() public data: { dates: string[]; name: string };
 
   name: string;
-  weekDay = '';
+  selectedDatesText: string = '';
 
-  constructor(public activeModal: NgbActiveModal) {}
+  constructor(public datePipe: DatePipe, public activeModal: NgbActiveModal) {}
 
   ngOnInit(): void {
-    const { name, dates } = this.data;
+    let { name, dates } = this.data;
 
-    this.name = name || '';
-
-    if (!Array.isArray(dates) || dates.length !== 1) {
+    if (!dates) {
       return;
     }
 
-    const date: Date = new Date(dates[0].valueOf());
-    this.weekDay = weekDayNames[date.getDay()];
+    this.name = name || '';
+    this.selectedDatesText = this.getSelectedDatesText(dates);
 
     console.log('Modal content initialized! Date = ' + dates[0]);
   }
 
   confirm(): void {
     this.activeModal.close(this.name);
+  }
+
+  getSelectedDatesText(dates: string[]): string {
+    if (dates.length === 1) {
+      const dateInWeek: Date = new Date(dates[0].valueOf());
+      const weekDay = weekDayNames[dateInWeek.getDay()];
+      const date = this.datePipe.transform(dates[0], 'd.M.YYYY');
+      return `Záväzne zapísať na ${weekDay} ${date}.`;
+    }
+
+    if (dates.length > 1 && dates.length <= 4) {
+      return `Záväzne zapísať na ${dates.length} vyznačené dátumy.`;
+    }
+
+    return `Záväzne zapísať na ${dates.length} vyznačených dátumov.`;
   }
 }

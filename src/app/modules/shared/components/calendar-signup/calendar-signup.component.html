@@ -7,9 +7,10 @@
 
   <div class="small-2" style="font-size: 90%">
     <!--<strong>Kalendár na zapisovanie je v príprave, zverejníme ho čoskoro.</strong><br>-->
-    <strong>Na jeden deň sa&nbsp;môžu zapisovať viacerí</strong>, zároveň sa&nbsp;jeden človek môže
-    <strong>zapísať aj na&nbsp;viacero dní</strong>. Zapisovanie prebieha kliknutím na&nbsp;dátum
-    a&nbsp;uvedením mena.<br /><br />
+    <strong>Na jeden deň sa&nbsp;môžu zapisovať viacerí</strong>, zároveň sa&nbsp;môžete
+    <strong>zapísať aj na&nbsp;viacero dní</strong>. V kalendári si kliknutím označte zvolené dátumy
+    a v spodnej časti stlačte tlačidlo <em>Zapísať na označené dátumy</em>. Zdajte meno a
+    potvrďte.<br /><br />
     <strong>Záznam po potvrdení už nie&nbsp;je možné meniť</strong>, ak&nbsp;predsa potrebujete
     zmenu, napíšte email s&nbsp;požiadavkou na&nbsp;pergalsk@gmail.com.
   </div>
@@ -47,8 +48,10 @@
 
   <ng-template #dayTpl let-dayData let-customData="data">
     <ngx-cal-day-title [title]="dayData.title"></ngx-cal-day-title>
-    <div class="entry" *ngFor="let name of customData[dayData.date]">
-      <span>{{ name }}</span>
+    <div class="entries">
+      <div class="entry" *ngFor="let name of customData[dayData.date]">
+        <span>{{ name }}</span>
+      </div>
     </div>
   </ng-template>
 </div>

@@ -17,12 +17,7 @@
   </div>
 
   <div class="mb-2 text-center unselectable" id="modal-basic-title">
-    <strong *ngIf="data.dates.length === 1"
-      >Záväzne zapísať na{{ ' ' + weekDay }} {{ data.dates[0] | date : 'd.M.YYYY' }}</strong
-    >
-    <strong *ngIf="data.dates.length > 1"
-      >Záväzne zapísať na vyznačených {{ data.dates.length }} dní.</strong
-    >
+    <strong>{{ selectedDatesText }}</strong>
   </div>
 
   <form name="registrationForm">
