@@ -1,0 +1,134 @@
+//$primary: #ff8f7c;
+//var(--secondary-color): black;
+$thickness: 4px;
+$shadow-size: 10px;
+$inset-size: 8px;
+
+.theme2024 {
+  //--primary-color: #ff8f7c;
+  --primary-color: #fbe3b9;
+  --secondary-color: black;
+
+  .multiselect-toolbar {
+    background-color: var(--secondary-color);
+    background-image: unset;
+
+    .multiselect-toolbar-buttons {
+      .btn-primary {
+        background-color: var(--primary-color);
+        border-color: var(--primary-color);
+        color: var(--secondary-color);
+
+        &:hover {
+          background-color: white;
+          border-color: white;
+        }
+      }
+    }
+  }
+
+  .calendar .calendar-week .week-cell.selected {
+    color: white;
+    background-color: var(--secondary-color);
+  }
+  .calendar .calendar-week .week-cell.selected .title {
+    color: white;
+  }
+  .calendar .calendar-week .week-cell.selected.filled {
+    color: white;
+    background-color: var(--secondary-color);
+  }
+  .calendar .calendar-week .week-cell.selected {
+    color: white;
+    background-color: var(--secondary-color) !important;
+  }
+  .calendar .calendar-week .week-cell.highlighted {
+    background-color: #f7f8fa;
+  }
+  .calendar .calendar-header .header-cell,
+  .calendar .calendar-week .week-cell {
+    color: var(--secondary-color);
+  }
+  .calendar .calendar-week .week-cell .title {
+    color: var(--secondary-color);
+  }
+  .calendar .calendar-week .week-cell.weekend {
+    background-color: #f7f8fa;
+  }
+  .calendar .calendar-week .week-cell.filled {
+    color: var(--secondary-color);
+    background-color: var(--primary-color);
+  }
+  .calendar .calendar-week .week-cell {
+    &:hover {
+      //border: 2px solid var(--secondary-color);
+      //background-color: unset;
+    }
+  }
+  .calendar
+    .calendar-week
+    .week-cell.filled:hover:not(.invisible, .disabled, .past, .today, .selected) {
+    background-color: var(--primary-color);
+  }
+  .calendar .calendar-week .week-cell:hover:not(.invisible, .disabled, .past, .today, .selected) {
+    background-color: #f7f8fa;
+  }
+
+  // BACKGROUND
+  .primary-bg {
+    background-color: var(--primary-color);
+  }
+  .secondary-bg {
+    background-color: var(--secondary-color);
+  }
+  .white-bg {
+    background-color: white;
+  }
+  .white-fg {
+    color: white;
+  }
+
+  // FOREGROUND
+  .primary-fg {
+    color: var(--primary-color);
+    -webkit-text-fill-color: unset;
+  }
+  .secondary-fg {
+    color: var(--secondary-color);
+    -webkit-text-fill-color: unset;
+  }
+  .white-fg {
+    color: white;
+    -webkit-text-fill-color: unset;
+  }
+
+  // SHADOWS
+  .primary-shadow {
+    box-shadow: $shadow-size $shadow-size 0 0 var(--primary-color);
+  }
+
+  .secondary-shadow {
+    box-shadow: $shadow-size $shadow-size 0 0 var(--primary-color);
+  }
+
+  .combo1-shadow {
+    box-shadow: inset $inset-size $inset-size 0 0 white,
+      $shadow-size $shadow-size 0 0 var(--primary-color);
+  }
+
+  .combo2-shadow {
+    box-shadow: inset $inset-size $inset-size 0 0 var(--secondary-color),
+      $shadow-size $shadow-size 0 0 var(--primary-color);
+  }
+
+  // BORDERS
+  .primary-border {
+    border: solid $thickness var(--primary-color);
+  }
+  .secondary-border {
+    border: solid $thickness var(--secondary-color);
+  }
+  .white-border {
+    border: solid $thickness white;
+  }
+}
