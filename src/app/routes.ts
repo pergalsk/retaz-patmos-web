@@ -34,6 +34,6 @@ export const routes: Routes = [
     ],
   },
   { path: '2023', loadComponent: import2023Component, title: 'Pôstna reťaz 2023' },
-  { path: '', loadComponent: import2024Component, title: 'Pôstna reťaz 2024' },
+  { path: '', component: PageYear2024Component, title: 'Pôstna reťaz 2024' },
   { path: '**', redirectTo: '', pathMatch: 'full' },
 ];

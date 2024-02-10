@@ -31,7 +31,7 @@
             "production": {
               "outputHashing": "all",
               "optimization": true,
-              "namedChunks": true,
+              "namedChunks": false,
               "vendorChunk": true,
               "buildOptimizer": true,
               "extractLicenses": false,
