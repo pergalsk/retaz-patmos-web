@@ -14,10 +14,10 @@ const import2023Module = () =>
 
 const routes: Routes = [
   // { path: 'app-shell--preload', component: AppShellComponent },
-  { path: '2021', loadChildren: import2021Module },
-  { path: '2022', loadChildren: import2022Module },
-  { path: '2023', loadChildren: import2023Module },
-  { path: '', component: PageYear2024Component },
+  { path: '2021', loadChildren: import2021Module, title: 'Pôstna reťaz 2021' },
+  { path: '2022', loadChildren: import2022Module, title: 'Pôstna reťaz 2022' },
+  { path: '2023', loadChildren: import2023Module, title: 'Pôstna reťaz 2023' },
+  { path: '', component: PageYear2024Component, title: 'Pôstna reťaz 2024' },
   { path: '**', redirectTo: '', pathMatch: 'full' },
 ];
 
