@@ -6,8 +6,7 @@ import { NgxCalDay } from './day';
 import { NgxCalDayTitle } from './day-title';
 
 @NgModule({
-  declarations: [CalendarComponent],
-  imports: [CommonModule, NgxCalHeader, NgxCalDay, NgxCalDayTitle],
-  exports: [CalendarComponent, NgxCalHeader, NgxCalDay, NgxCalDayTitle],
+    imports: [CommonModule, NgxCalHeader, NgxCalDay, NgxCalDayTitle, CalendarComponent],
+    exports: [CalendarComponent, NgxCalHeader, NgxCalDay, NgxCalDayTitle],
 })
 export class NgxCalendarModule {}

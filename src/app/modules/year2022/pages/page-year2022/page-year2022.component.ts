@@ -8,12 +8,22 @@ import sk from 'date-fns/locale/sk';
 import { DatesService } from '@services/dates.service';
 import { ColorSchemeService } from '../../../color-scheme/color-scheme.service';
 import { Scheme } from '../../../color-scheme/color-scheme.types';
-import { DateBadge } from '../../components/badge-strip/badge-strip.component';
+import { DateBadge, BadgeStripComponent } from '../../components/badge-strip/badge-strip.component';
+import { UkraineContent2022Component } from '../../contents/ukraine-content2022/ukraine-content2022.component';
+import { DayContentPanelComponent } from '../../contents/day-content-panel/day-content-panel.component';
+import { MainContent2022Component } from '../../contents/main-content2022/main-content2022.component';
 
 @Component({
-  selector: 'app-page-year2022',
-  templateUrl: './page-year2022.component.html',
-  styleUrls: ['./page-year2022.component.scss'],
+    selector: 'app-page-year2022',
+    templateUrl: './page-year2022.component.html',
+    styleUrls: ['./page-year2022.component.scss'],
+    standalone: true,
+    imports: [
+        MainContent2022Component,
+        BadgeStripComponent,
+        DayContentPanelComponent,
+        UkraineContent2022Component,
+    ],
 })
 export class PageYear2022Component implements OnInit, OnDestroy {
   refDate = new Date();

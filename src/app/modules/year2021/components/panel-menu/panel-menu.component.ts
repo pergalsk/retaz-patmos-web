@@ -1,6 +1,7 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { AnimationEvent } from '@angular/animations';
 import { animations } from './panel-menu.animations';
+import { NgIf, NgFor, NgClass } from '@angular/common';
 
 export interface PanelMenuItem {
   title: string;
@@ -8,10 +9,16 @@ export interface PanelMenuItem {
 }
 
 @Component({
-  selector: 'app-panel-menu',
-  templateUrl: './panel-menu.component.html',
-  styleUrls: ['./panel-menu.component.scss'],
-  animations,
+    selector: 'app-panel-menu',
+    templateUrl: './panel-menu.component.html',
+    styleUrls: ['./panel-menu.component.scss'],
+    animations,
+    standalone: true,
+    imports: [
+        NgIf,
+        NgFor,
+        NgClass,
+    ],
 })
 export class PanelMenuComponent implements OnInit {
   @Input() items: PanelMenuItem[];

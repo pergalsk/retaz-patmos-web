@@ -8,8 +8,8 @@ describe('TwoSplitComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [TwoSplitComponent],
-    }).compileComponents();
+    imports: [TwoSplitComponent],
+}).compileComponents();
   });
 
   beforeEach(() => {

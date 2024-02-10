@@ -8,8 +8,8 @@ describe('SvgCalendarManComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [SvgCalendarManComponent],
-    }).compileComponents();
+    imports: [SvgCalendarManComponent],
+}).compileComponents();
   });
 
   beforeEach(() => {

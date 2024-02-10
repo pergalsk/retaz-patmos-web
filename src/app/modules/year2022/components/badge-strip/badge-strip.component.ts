@@ -1,4 +1,5 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { NgFor, NgIf } from '@angular/common';
 
 export interface DateBadge {
   id: string;
@@ -13,9 +14,11 @@ export interface DateBadge {
 }
 
 @Component({
-  selector: 'app-badge-strip',
-  templateUrl: './badge-strip.component.html',
-  styleUrls: ['./badge-strip.component.scss'],
+    selector: 'app-badge-strip',
+    templateUrl: './badge-strip.component.html',
+    styleUrls: ['./badge-strip.component.scss'],
+    standalone: true,
+    imports: [NgFor, NgIf],
 })
 export class BadgeStripComponent {
   @Input() list: DateBadge[];

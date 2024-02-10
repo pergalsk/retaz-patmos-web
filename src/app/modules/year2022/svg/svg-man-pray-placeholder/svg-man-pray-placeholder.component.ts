@@ -2,8 +2,9 @@ import { Component, OnChanges, SimpleChanges, Input } from '@angular/core';
 import { Scheme, SCHEMES } from '../../../color-scheme/color-scheme.types';
 
 @Component({
-  selector: 'app-svg-man-pray-placeholder',
-  templateUrl: './svg-man-pray-placeholder.component.html',
+    selector: 'app-svg-man-pray-placeholder',
+    templateUrl: './svg-man-pray-placeholder.component.html',
+    standalone: true,
 })
 export class SvgManPrayPlaceholderComponent implements OnChanges {
   @Input() scheme: Scheme = SCHEMES.LIGHT;

@@ -18,25 +18,26 @@ import { RouterModule } from '@angular/router';
 import { AppShellComponent } from './app-shell/app-shell.component';
 
 @NgModule({
-  declarations: [AppComponent, ModalContentComponent, AppShellComponent],
-  imports: [
-    BrowserModule.withServerTransition({ appId: 'serverApp' }),
-    HttpClientModule,
-    NgbModule,
-    FormsModule,
-    BrowserAnimationsModule,
-    AppRoutingModule,
-    SharedModule,
-    Year2024Module,
-    RouterModule,
-    NgxCalendarModule,
-    ColorSchemeModule.forRoot({
-      lightSchemeClass: 'light-theme',
-      darkSchemeClass: 'dark-theme',
-      storageKey: 'theme',
-    }),
-  ],
-  providers: [interceptorProviders],
-  bootstrap: [AppComponent],
+    declarations: [AppComponent],
+    imports: [
+        BrowserModule.withServerTransition({ appId: 'serverApp' }),
+        HttpClientModule,
+        NgbModule,
+        FormsModule,
+        BrowserAnimationsModule,
+        AppRoutingModule,
+        SharedModule,
+        Year2024Module,
+        RouterModule,
+        NgxCalendarModule,
+        ColorSchemeModule.forRoot({
+            lightSchemeClass: 'light-theme',
+            darkSchemeClass: 'dark-theme',
+            storageKey: 'theme',
+        }),
+        ModalContentComponent, AppShellComponent,
+    ],
+    providers: [interceptorProviders],
+    bootstrap: [AppComponent],
 })
 export class AppModule {}

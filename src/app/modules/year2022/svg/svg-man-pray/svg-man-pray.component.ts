@@ -1,9 +1,12 @@
 import { Component, OnChanges, Input, SimpleChanges } from '@angular/core';
 import { Scheme, SCHEMES } from '../../../color-scheme/color-scheme.types';
+import { NgStyle } from '@angular/common';
 
 @Component({
-  selector: 'app-svg-man-pray',
-  templateUrl: './svg-man-pray.component.html',
+    selector: 'app-svg-man-pray',
+    templateUrl: './svg-man-pray.component.html',
+    standalone: true,
+    imports: [NgStyle],
 })
 export class SvgManPrayComponent implements OnChanges {
   @Input() scheme: Scheme = SCHEMES.LIGHT;

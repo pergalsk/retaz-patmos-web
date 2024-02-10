@@ -1,6 +1,9 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { DatePipe } from '@angular/common';
+import { DatePipe, NgIf } from '@angular/common';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
+import { NoWhitespaceDirective } from '../modules/shared/validators/no-whitespace/no-whitespace.directive';
+import { FormsModule } from '@angular/forms';
+import { SvgCalendarManComponent } from '../modules/shared/svg/svg-calendar-man/svg-calendar-man.component';
 
 const weekDayNames: string[] = [
   'nedeľu',
@@ -13,10 +16,17 @@ const weekDayNames: string[] = [
 ];
 
 @Component({
-  selector: 'app-modal-content',
-  templateUrl: './modal-content.component.html',
-  styleUrls: ['./modal-content.component.scss'],
-  providers: [DatePipe],
+    selector: 'app-modal-content',
+    templateUrl: './modal-content.component.html',
+    styleUrls: ['./modal-content.component.scss'],
+    providers: [DatePipe],
+    standalone: true,
+    imports: [
+        SvgCalendarManComponent,
+        FormsModule,
+        NoWhitespaceDirective,
+        NgIf,
+    ],
 })
 export class ModalContentComponent implements OnInit {
   @Input() public data: { dates: string[]; name: string };

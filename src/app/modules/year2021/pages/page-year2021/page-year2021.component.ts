@@ -1,10 +1,19 @@
 import { Component } from '@angular/core';
 import { PanelMenuItem } from '../../components/panel-menu/panel-menu.component';
+import { CalendarSignupComponent } from '../../../shared/components/calendar-signup/calendar-signup.component';
+import { SelectiveContentComponent } from '../../components/selective-content/selective-content.component';
+import { NgClass } from '@angular/common';
 
 @Component({
-  selector: 'app-page-year2021',
-  templateUrl: './page-year2021.component.html',
-  styleUrls: ['./page-year2021.component.scss'],
+    selector: 'app-page-year2021',
+    templateUrl: './page-year2021.component.html',
+    styleUrls: ['./page-year2021.component.scss'],
+    standalone: true,
+    imports: [
+        NgClass,
+        SelectiveContentComponent,
+        CalendarSignupComponent,
+    ],
 })
 export class PageYear2021Component {
   year: string = '2021';

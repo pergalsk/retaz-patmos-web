@@ -11,7 +11,8 @@ import {
 type Sanitized = SafeHtml | SafeStyle | SafeScript | SafeUrl | SafeResourceUrl;
 
 @Pipe({
-  name: 'safe',
+    name: 'safe',
+    standalone: true,
 })
 export class SafePipe implements PipeTransform {
   constructor(private domSanitizer: DomSanitizer) {}

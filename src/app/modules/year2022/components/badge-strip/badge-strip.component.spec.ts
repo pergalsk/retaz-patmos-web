@@ -8,8 +8,8 @@ describe('BadgeStripComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [BadgeStripComponent],
-    }).compileComponents();
+    imports: [BadgeStripComponent],
+}).compileComponents();
   });
 
   beforeEach(() => {

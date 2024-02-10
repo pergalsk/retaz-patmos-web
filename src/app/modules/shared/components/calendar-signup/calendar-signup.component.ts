@@ -15,6 +15,10 @@ import { NgxCalI18nSk } from 'projects/ngx-calendar/src/lib/i18n-sk';
 import { CalendarComponent } from 'projects/ngx-calendar/src/lib/calendar.component';
 import { CalendarData, SelectedDate } from 'projects/ngx-calendar/src/lib/calendar.types';
 import { ModalContentComponent } from '../../../../modal-content/modal-content.component';
+import { NgxCalDayTitle } from '../../../../../../projects/ngx-calendar/src/lib/day-title';
+import { CalendarComponent as CalendarComponent_1 } from '../../../../../../projects/ngx-calendar/src/lib/calendar.component';
+import { NgIf, NgFor } from '@angular/common';
+import { SvgCalendarComponent } from '../../svg/svg-calendar/svg-calendar.component';
 
 export interface CalendarOptions {
   sysDate: string;
@@ -34,10 +38,18 @@ export interface CalendarOptions {
 }
 
 @Component({
-  selector: 'app-calendar-signup',
-  templateUrl: './calendar-signup.component.html',
-  styleUrls: ['./calendar-signup.component.scss'],
-  providers: [{ provide: NgxCalI18n, useClass: NgxCalI18nSk }],
+    selector: 'app-calendar-signup',
+    templateUrl: './calendar-signup.component.html',
+    styleUrls: ['./calendar-signup.component.scss'],
+    providers: [{ provide: NgxCalI18n, useClass: NgxCalI18nSk }],
+    standalone: true,
+    imports: [
+        SvgCalendarComponent,
+        NgIf,
+        CalendarComponent_1,
+        NgxCalDayTitle,
+        NgFor,
+    ],
 })
 export class CalendarSignupComponent implements OnInit, OnDestroy {
   @Input() year: string = null;

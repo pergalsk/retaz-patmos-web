@@ -7,8 +7,7 @@ import { MainContent2024Component } from './contents/main-content2024/main-conte
 import { SvgHandsSoilComponent } from './svg/svg-hands-soil/svg-hands-soil.component';
 
 @NgModule({
-  declarations: [PageYear2024Component, MainContent2024Component, SvgHandsSoilComponent],
-  imports: [CommonModule, SharedModule, NgxCalendarModule],
-  exports: [PageYear2024Component],
+    imports: [CommonModule, SharedModule, NgxCalendarModule, PageYear2024Component, MainContent2024Component, SvgHandsSoilComponent],
+    exports: [PageYear2024Component],
 })
 export class Year2024Module {}

@@ -41,8 +41,9 @@ import {
   SelectedDate,
 } from './calendar.types';
 import { NgxCalI18n } from './i18n';
-import { HeaderCellContext, HeaderContext } from './header';
-import { DayTemplateContext } from './day';
+import { HeaderCellContext, HeaderContext, NgxCalHeader } from './header';
+import { DayTemplateContext, NgxCalDay } from './day';
+import { NgIf, NgClass, NgFor, NgTemplateOutlet } from '@angular/common';
 
 export interface MultiToolbarContext {
   $implicit: number;
@@ -53,9 +54,18 @@ export interface MultiToolbarContext {
 }
 
 @Component({
-  selector: 'app-calendar',
-  templateUrl: './calendar.component.html',
-  changeDetection: ChangeDetectionStrategy.OnPush,
+    selector: 'app-calendar',
+    templateUrl: './calendar.component.html',
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: true,
+    imports: [
+        NgIf,
+        NgClass,
+        NgxCalHeader,
+        NgFor,
+        NgxCalDay,
+        NgTemplateOutlet,
+    ],
 })
 export class CalendarComponent implements OnInit, OnChanges {
   @Input()
