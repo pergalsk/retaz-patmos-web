@@ -9,13 +9,12 @@ import { interceptorProviders } from './interceptors';
 import { AppComponent } from './app.component';
 import { ModalContentComponent } from './modal-content/modal-content.component';
 import { AppRoutingModule } from './app-routing.module';
-import { SharedModule } from '@shared/shared.module';
-import { ColorSchemeModule } from './modules/color-scheme/color-scheme.module';
-import { NgxCalendarModule } from 'projects/ngx-calendar/src/lib/calendar.module';
 
-import { Year2024Module } from './modules/year2024/year2024.module';
+import { ColorSchemeModule } from './modules/color-scheme/color-scheme.module';
+
 import { RouterModule } from '@angular/router';
 import { AppShellComponent } from './app-shell/app-shell.component';
+import { FooterComponent } from '@shared/components/footer/footer.component';
 
 @NgModule({
   declarations: [AppComponent],
@@ -26,10 +25,7 @@ import { AppShellComponent } from './app-shell/app-shell.component';
     FormsModule,
     BrowserAnimationsModule,
     AppRoutingModule,
-    SharedModule,
-    Year2024Module,
     RouterModule,
-    NgxCalendarModule,
     ColorSchemeModule.forRoot({
       lightSchemeClass: 'light-theme',
       darkSchemeClass: 'dark-theme',
@@ -37,6 +33,7 @@ import { AppShellComponent } from './app-shell/app-shell.component';
     }),
     ModalContentComponent,
     AppShellComponent,
+    FooterComponent,
   ],
   providers: [interceptorProviders],
   bootstrap: [AppComponent],

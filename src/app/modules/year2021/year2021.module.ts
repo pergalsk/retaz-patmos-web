@@ -1,8 +1,8 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-import { SharedModule } from '@shared/shared.module';
-import { NgxCalendarModule } from 'projects/ngx-calendar/src/lib/calendar.module';
+
+
 import { Year2021RoutingModule } from './year2021-routing.module';
 
 import { PageYear2021Component } from './pages/page-year2021/page-year2021.component';
@@ -30,8 +30,6 @@ import { SvgWorldComponent } from './svg/svg-world/svg-world.component';
   imports: [
     CommonModule,
     Year2021RoutingModule,
-    SharedModule,
-    NgxCalendarModule,
     PageYear2021Component,
     Content01Component,
     Content02Component,
@@ -50,6 +48,6 @@ import { SvgWorldComponent } from './svg/svg-world/svg-world.component';
     SvgWorldComponent,
     SelectiveContentComponent,
     PanelMenuComponent,
-  ],
+],
 })
 export class Year2021Module {}
