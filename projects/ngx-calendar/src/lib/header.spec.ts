@@ -37,7 +37,7 @@ describe('NgxCalHeader component', (): void => {
     fixture.detectChanges();
 
     const calendarHeaderEls: DebugElement[] = debugEl.queryAll(
-      By.css('.calendar-header > .header-cell')
+      By.css('.calendar-header > .header-cell'),
     );
     expect(calendarHeaderEls.length).withContext('cells length').toBe(testTitles.length);
 

@@ -54,18 +54,11 @@ export interface MultiToolbarContext {
 }
 
 @Component({
-    selector: 'app-calendar',
-    templateUrl: './calendar.component.html',
-    changeDetection: ChangeDetectionStrategy.OnPush,
-    standalone: true,
-    imports: [
-        NgIf,
-        NgClass,
-        NgxCalHeader,
-        NgFor,
-        NgxCalDay,
-        NgTemplateOutlet,
-    ],
+  selector: 'app-calendar',
+  templateUrl: './calendar.component.html',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: true,
+  imports: [NgIf, NgClass, NgxCalHeader, NgFor, NgxCalDay, NgTemplateOutlet],
 })
 export class CalendarComponent implements OnInit, OnChanges {
   @Input()
@@ -159,7 +152,7 @@ export class CalendarComponent implements OnInit, OnChanges {
 
     console.log(
       `Click on date ${day.date} fired! [weekIndex=${weekIndex}, dayIndex=${dayIndex}, ` +
-        `visible=${day.visible}, disabled=${day.disabled}, type="${day.type}"]`
+        `visible=${day.visible}, disabled=${day.disabled}, type="${day.type}"]`,
     );
 
     if (!this.isDayClickable(day)) {
@@ -203,7 +196,7 @@ export class CalendarComponent implements OnInit, OnChanges {
     const { day } = selectedDate;
 
     const index = this.selectedDates.findIndex(
-      (selDate: SelectedDate) => selDate.day?.date === day.date
+      (selDate: SelectedDate) => selDate.day?.date === day.date,
     );
 
     if (index === -1) {
@@ -226,7 +219,7 @@ export class CalendarComponent implements OnInit, OnChanges {
     this.sysDate = parse(
       this.calendarOptions?.sysDate,
       this.calendarOptions.rawDateFormat,
-      referenceDate
+      referenceDate,
     );
     this.sysTime = this.calendarOptions?.sysTime;
 
@@ -356,7 +349,7 @@ export class CalendarComponent implements OnInit, OnChanges {
     const title: string = /*this.monthNames[month - 1] + ' ' + monthDay;*/ format(
       day,
       this.calendarOptions.titleDateFormat,
-      { locale: sk }
+      { locale: sk },
     );
 
     const comparisonResult: number = compareAsc(day, this.sysDate);
