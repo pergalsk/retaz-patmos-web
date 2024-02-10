@@ -8,8 +8,8 @@ describe('PanelMenuComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-    imports: [PanelMenuComponent],
-}).compileComponents();
+      imports: [PanelMenuComponent],
+    }).compileComponents();
   });
 
   beforeEach(() => {

@@ -38,18 +38,12 @@ export interface CalendarOptions {
 }
 
 @Component({
-    selector: 'app-calendar-signup',
-    templateUrl: './calendar-signup.component.html',
-    styleUrls: ['./calendar-signup.component.scss'],
-    providers: [{ provide: NgxCalI18n, useClass: NgxCalI18nSk }],
-    standalone: true,
-    imports: [
-        SvgCalendarComponent,
-        NgIf,
-        CalendarComponent_1,
-        NgxCalDayTitle,
-        NgFor,
-    ],
+  selector: 'app-calendar-signup',
+  templateUrl: './calendar-signup.component.html',
+  styleUrls: ['./calendar-signup.component.scss'],
+  providers: [{ provide: NgxCalI18n, useClass: NgxCalI18nSk }],
+  standalone: true,
+  imports: [SvgCalendarComponent, NgIf, CalendarComponent_1, NgxCalDayTitle, NgFor],
 })
 export class CalendarSignupComponent implements OnInit, OnDestroy {
   @Input() year: string = null;
@@ -69,18 +63,21 @@ export class CalendarSignupComponent implements OnInit, OnDestroy {
 
   subscription$: Subscription;
 
-  constructor(private modalService: NgbModal, private commonApiService: CommonApiService) {}
+  constructor(
+    private modalService: NgbModal,
+    private commonApiService: CommonApiService,
+  ) {}
 
   ngOnInit(): void {
     this.getCalendarError = false;
 
     this.subscription$ = zip(
       this.commonApiService.getDates(this.year),
-      this.commonApiService.getSysDateTime()
+      this.commonApiService.getSysDateTime(),
     )
       .pipe(
         map(([rawDates, sysDateTime]) => ({ rawDates, sysDateTime })),
-        tap({ error: this.handleError })
+        tap({ error: this.handleError }),
       )
       .subscribe(this.handleSuccess);
   }

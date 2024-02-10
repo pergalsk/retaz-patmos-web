@@ -11,7 +11,7 @@ export const animations = [
           stagger(130, [
             animate(
               '650ms cubic-bezier(0.35, 0, 0.25, 1)',
-              style({ opacity: 1, transform: 'none' })
+              style({ opacity: 1, transform: 'none' }),
             ),
           ]),
         ]),

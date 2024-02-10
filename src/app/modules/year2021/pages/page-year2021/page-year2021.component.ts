@@ -5,15 +5,11 @@ import { SelectiveContentComponent } from '../../components/selective-content/se
 import { NgClass } from '@angular/common';
 
 @Component({
-    selector: 'app-page-year2021',
-    templateUrl: './page-year2021.component.html',
-    styleUrls: ['./page-year2021.component.scss'],
-    standalone: true,
-    imports: [
-        NgClass,
-        SelectiveContentComponent,
-        CalendarSignupComponent,
-    ],
+  selector: 'app-page-year2021',
+  templateUrl: './page-year2021.component.html',
+  styleUrls: ['./page-year2021.component.scss'],
+  standalone: true,
+  imports: [NgClass, SelectiveContentComponent, CalendarSignupComponent],
 })
 export class PageYear2021Component {
   year: string = '2021';

@@ -274,7 +274,10 @@ ul > li {
     font-size: 1em;
     padding: 0.3em 0.6em 0.2em 0.6em;
     cursor: pointer;
-    transition: 0.3s color, 0.3s border-color, 0.3s background-color;
+    transition:
+      0.3s color,
+      0.3s border-color,
+      0.3s background-color;
     white-space: nowrap;
     margin-top: 0;
     user-select: none;

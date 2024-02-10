@@ -19,17 +19,17 @@ export class AppComponent implements OnInit, OnDestroy {
     this.systemSchemeChange$ = this.colorSchemeService.systemSchemeChange.subscribe(
       (selectedScheme: Scheme) => {
         console.log('System scheme preference changed to:', selectedScheme);
-      }
+      },
     );
     this.userSchemeChange$ = this.colorSchemeService.userSchemeChange.subscribe(
       (selectedScheme: UserScheme) => {
         console.log('User scheme preference changed to:', selectedScheme);
-      }
+      },
     );
     this.schemeChange$ = this.colorSchemeService.schemeChange.subscribe(
       (selectedScheme: Scheme) => {
         console.log('Scheme preference changed to:', selectedScheme);
-      }
+      },
     );
   }
 

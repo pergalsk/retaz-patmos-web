@@ -14,16 +14,16 @@ import { DayContentPanelComponent } from '../../contents/day-content-panel/day-c
 import { MainContent2022Component } from '../../contents/main-content2022/main-content2022.component';
 
 @Component({
-    selector: 'app-page-year2022',
-    templateUrl: './page-year2022.component.html',
-    styleUrls: ['./page-year2022.component.scss'],
-    standalone: true,
-    imports: [
-        MainContent2022Component,
-        BadgeStripComponent,
-        DayContentPanelComponent,
-        UkraineContent2022Component,
-    ],
+  selector: 'app-page-year2022',
+  templateUrl: './page-year2022.component.html',
+  styleUrls: ['./page-year2022.component.scss'],
+  standalone: true,
+  imports: [
+    MainContent2022Component,
+    BadgeStripComponent,
+    DayContentPanelComponent,
+    UkraineContent2022Component,
+  ],
 })
 export class PageYear2022Component implements OnInit, OnDestroy {
   refDate = new Date();
@@ -45,7 +45,7 @@ export class PageYear2022Component implements OnInit, OnDestroy {
     private activatedRoute: ActivatedRoute,
     private router: Router,
     private location: Location,
-    private colorSchemeService: ColorSchemeService
+    private colorSchemeService: ColorSchemeService,
   ) {}
 
   ngOnInit(): void {
@@ -83,7 +83,7 @@ export class PageYear2022Component implements OnInit, OnDestroy {
         start: this.startDate,
         end: this.todayDate,
       },
-      this.refDate
+      this.refDate,
     );
 
     if (parsedDate) {

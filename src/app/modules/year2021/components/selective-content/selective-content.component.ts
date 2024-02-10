@@ -23,27 +23,27 @@ import { Content01Component } from '../../contents/content01/content01.component
 import { NgIf } from '@angular/common';
 
 @Component({
-    selector: 'app-selective-content',
-    templateUrl: './selective-content.component.html',
-    styleUrls: ['./selective-content.component.scss'],
-    animations: [
-        trigger('enterLeaveTrigger', [
-            transition(':enter', [useAnimation(contentEnterAnim)]),
-            transition(':leave', [useAnimation(contentLeaveAnim)]),
-        ]),
-    ],
-    standalone: true,
-    imports: [
-        NgIf,
-        PanelMenuComponent,
-        Content01Component,
-        Content02Component,
-        Content03Component,
-        Content04Component,
-        Content05Component,
-        Content06Component,
-        Content07Component,
-    ],
+  selector: 'app-selective-content',
+  templateUrl: './selective-content.component.html',
+  styleUrls: ['./selective-content.component.scss'],
+  animations: [
+    trigger('enterLeaveTrigger', [
+      transition(':enter', [useAnimation(contentEnterAnim)]),
+      transition(':leave', [useAnimation(contentLeaveAnim)]),
+    ]),
+  ],
+  standalone: true,
+  imports: [
+    NgIf,
+    PanelMenuComponent,
+    Content01Component,
+    Content02Component,
+    Content03Component,
+    Content04Component,
+    Content05Component,
+    Content06Component,
+    Content07Component,
+  ],
 })
 export class SelectiveContentComponent implements OnInit, AfterViewInit, OnChanges {
   @Input() content: PanelMenuItem[];

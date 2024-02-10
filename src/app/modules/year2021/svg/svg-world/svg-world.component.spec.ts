@@ -8,8 +8,8 @@ describe('SvgWorldComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-    imports: [SvgWorldComponent],
-}).compileComponents();
+      imports: [SvgWorldComponent],
+    }).compileComponents();
   });
 
   beforeEach(() => {

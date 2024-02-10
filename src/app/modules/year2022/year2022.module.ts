@@ -13,14 +13,19 @@ import { MainContent2022Component } from './contents/main-content2022/main-conte
 import { UkraineContent2022Component } from './contents/ukraine-content2022/ukraine-content2022.component';
 
 @NgModule({
-    imports: [CommonModule, SharedModule, Year2022RoutingModule, SvgManPrayComponent,
-        SvgManPrayPlaceholderComponent,
-        DayContentPanelComponent,
-        PageYear2022Component,
-        BadgeStripComponent,
-        MainContent2022Component,
-        UkraineContent2022Component],
-    providers: [SafePipe],
-    exports: [PageYear2022Component, MainContent2022Component, UkraineContent2022Component],
+  imports: [
+    CommonModule,
+    SharedModule,
+    Year2022RoutingModule,
+    SvgManPrayComponent,
+    SvgManPrayPlaceholderComponent,
+    DayContentPanelComponent,
+    PageYear2022Component,
+    BadgeStripComponent,
+    MainContent2022Component,
+    UkraineContent2022Component,
+  ],
+  providers: [SafePipe],
+  exports: [PageYear2022Component, MainContent2022Component, UkraineContent2022Component],
 })
 export class Year2022Module {}

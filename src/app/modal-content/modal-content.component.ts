@@ -16,17 +16,12 @@ const weekDayNames: string[] = [
 ];
 
 @Component({
-    selector: 'app-modal-content',
-    templateUrl: './modal-content.component.html',
-    styleUrls: ['./modal-content.component.scss'],
-    providers: [DatePipe],
-    standalone: true,
-    imports: [
-        SvgCalendarManComponent,
-        FormsModule,
-        NoWhitespaceDirective,
-        NgIf,
-    ],
+  selector: 'app-modal-content',
+  templateUrl: './modal-content.component.html',
+  styleUrls: ['./modal-content.component.scss'],
+  providers: [DatePipe],
+  standalone: true,
+  imports: [SvgCalendarManComponent, FormsModule, NoWhitespaceDirective, NgIf],
 })
 export class ModalContentComponent implements OnInit {
   @Input() public data: { dates: string[]; name: string };
@@ -34,7 +29,10 @@ export class ModalContentComponent implements OnInit {
   name: string;
   selectedDatesText: string = '';
 
-  constructor(public datePipe: DatePipe, public activeModal: NgbActiveModal) {}
+  constructor(
+    public datePipe: DatePipe,
+    public activeModal: NgbActiveModal,
+  ) {}
 
   ngOnInit(): void {
     let { name, dates } = this.data;

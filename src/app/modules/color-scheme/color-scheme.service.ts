@@ -35,7 +35,7 @@ export class ColorSchemeService {
 
   constructor(
     @Inject(DOCUMENT) private document: Document,
-    @Optional() config?: ColorSchemeConfig
+    @Optional() config?: ColorSchemeConfig,
   ) {
     if (config?.lightSchemeClass && config?.darkSchemeClass) {
       this.schemeClasses = {
@@ -48,7 +48,7 @@ export class ColorSchemeService {
     }
 
     this.systemSchemeChange = new Observable<Scheme>(this.systemSchemeObservableFn.bind(this)).pipe(
-      distinctUntilChanged()
+      distinctUntilChanged(),
     );
 
     this.userSchemeSubject = new BehaviorSubject<UserScheme>(this.loadUserScheme());
@@ -59,7 +59,7 @@ export class ColorSchemeService {
       distinctUntilChanged(this.distinctArrSchemes),
       pairwise(),
       map(this.chooseSchemeValue),
-      filter((scheme: Scheme): boolean => scheme === SCHEMES.LIGHT || scheme === SCHEMES.DARK)
+      filter((scheme: Scheme): boolean => scheme === SCHEMES.LIGHT || scheme === SCHEMES.DARK),
     );
   }
 
@@ -155,7 +155,7 @@ export class ColorSchemeService {
 
   private chooseSchemeValue([[prevSys, prevUsr], [nextSys, nextUsr]]: [
     [Scheme, UserScheme],
-    [Scheme, UserScheme]
+    [Scheme, UserScheme],
   ]): Scheme | any {
     // set 'SYSTEM' as null for better handling
     const _nextUsr = nextUsr === SCHEMES.SYSTEM ? null : nextUsr;

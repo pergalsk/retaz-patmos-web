@@ -14,11 +14,11 @@ export interface DateBadge {
 }
 
 @Component({
-    selector: 'app-badge-strip',
-    templateUrl: './badge-strip.component.html',
-    styleUrls: ['./badge-strip.component.scss'],
-    standalone: true,
-    imports: [NgFor, NgIf],
+  selector: 'app-badge-strip',
+  templateUrl: './badge-strip.component.html',
+  styleUrls: ['./badge-strip.component.scss'],
+  standalone: true,
+  imports: [NgFor, NgIf],
 })
 export class BadgeStripComponent {
   @Input() list: DateBadge[];

@@ -9,7 +9,15 @@ import { SvgPrayKneesComponent } from './svg/svg-pray-knees/svg-pray-knees.compo
 import { MainContent2023Component } from './contents/main-content2023/main-content2023.component';
 
 @NgModule({
-    imports: [CommonModule, SharedModule, Year2023RoutingModule, NgxCalendarModule, PageYear2023Component, SvgPrayKneesComponent, MainContent2023Component],
-    exports: [PageYear2023Component, MainContent2023Component],
+  imports: [
+    CommonModule,
+    SharedModule,
+    Year2023RoutingModule,
+    NgxCalendarModule,
+    PageYear2023Component,
+    SvgPrayKneesComponent,
+    MainContent2023Component,
+  ],
+  exports: [PageYear2023Component, MainContent2023Component],
 })
 export class Year2023Module {}

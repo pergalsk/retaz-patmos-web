@@ -9,17 +9,17 @@ import { ColorSchemeSwitcherComponent } from '../../../shared/components/color-s
 import { ContentBoxComponent } from '../../../shared/components/content-box/content-box.component';
 
 @Component({
-    selector: 'app-main-content2022',
-    templateUrl: './main-content2022.component.html',
-    styleUrls: ['./main-content2022.component.scss'],
-    standalone: true,
-    imports: [
-        ContentBoxComponent,
-        ColorSchemeSwitcherComponent,
-        NgIf,
-        SvgManPrayComponent,
-        SvgManPrayPlaceholderComponent,
-    ],
+  selector: 'app-main-content2022',
+  templateUrl: './main-content2022.component.html',
+  styleUrls: ['./main-content2022.component.scss'],
+  standalone: true,
+  imports: [
+    ContentBoxComponent,
+    ColorSchemeSwitcherComponent,
+    NgIf,
+    SvgManPrayComponent,
+    SvgManPrayPlaceholderComponent,
+  ],
 })
 export class MainContent2022Component implements OnInit, OnDestroy {
   @Input() placeholder = false;

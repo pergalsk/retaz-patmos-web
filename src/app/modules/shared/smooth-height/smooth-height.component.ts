@@ -3,25 +3,25 @@ import { ElementRef, HostBinding, Component, Input, OnChanges } from '@angular/c
 import { animate, style, transition, trigger } from '@angular/animations';
 
 @Component({
-    selector: 'app-smooth-height',
-    template: `<ng-content></ng-content>`,
-    styles: [
-        `
+  selector: 'app-smooth-height',
+  template: `<ng-content></ng-content>`,
+  styles: [
+    `
       :host {
         display: block;
         overflow: hidden;
       }
     `,
-    ],
-    animations: [
-        trigger('grow', [
-            transition('void <=> *', []),
-            transition('* <=> *', [style({ height: '{{startHeight}}px' }), animate('0.5s ease')], {
-                params: { startHeight: 0 },
-            }),
-        ]),
-    ],
-    standalone: true,
+  ],
+  animations: [
+    trigger('grow', [
+      transition('void <=> *', []),
+      transition('* <=> *', [style({ height: '{{startHeight}}px' }), animate('0.5s ease')], {
+        params: { startHeight: 0 },
+      }),
+    ]),
+  ],
+  standalone: true,
 })
 export class SmoothHeightComponent implements OnChanges {
   @Input() trigger: any;

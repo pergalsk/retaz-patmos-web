@@ -22,7 +22,7 @@ export class DatesService {
   parseISODateBetween(
     date: string,
     options: { start: Date; end: Date },
-    refDate?: Date
+    refDate?: Date,
   ): Date | null {
     if (!date) {
       return null;
@@ -66,7 +66,7 @@ export class DatesService {
     hours: number = 0,
     minutes: number = 0,
     seconds: number = 0,
-    ms: number = 0
+    ms: number = 0,
   ): Date {
     return setMilliseconds(setSeconds(setMinutes(setHours(dateTime, hours), minutes), seconds), ms);
   }

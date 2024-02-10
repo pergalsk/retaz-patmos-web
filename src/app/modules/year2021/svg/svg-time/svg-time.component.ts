@@ -3,10 +3,10 @@ import { Component, Input, OnInit } from '@angular/core';
 type ThemeVariant = 'dark' | 'light';
 
 @Component({
-    selector: 'app-svg-time',
-    templateUrl: './svg-time.component.svg',
-    styleUrls: ['./svg-time.component.scss'],
-    standalone: true,
+  selector: 'app-svg-time',
+  templateUrl: './svg-time.component.svg',
+  styleUrls: ['./svg-time.component.scss'],
+  standalone: true,
 })
 export class SvgTimeComponent implements OnInit {
   @Input() color = '#7A478C';

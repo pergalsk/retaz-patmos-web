@@ -8,8 +8,8 @@ describe('AppShellComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-    imports: [AppShellComponent],
-}).compileComponents();
+      imports: [AppShellComponent],
+    }).compileComponents();
   });
 
   beforeEach(() => {

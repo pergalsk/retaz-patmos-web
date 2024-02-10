@@ -9,16 +9,12 @@ export interface PanelMenuItem {
 }
 
 @Component({
-    selector: 'app-panel-menu',
-    templateUrl: './panel-menu.component.html',
-    styleUrls: ['./panel-menu.component.scss'],
-    animations,
-    standalone: true,
-    imports: [
-        NgIf,
-        NgFor,
-        NgClass,
-    ],
+  selector: 'app-panel-menu',
+  templateUrl: './panel-menu.component.html',
+  styleUrls: ['./panel-menu.component.scss'],
+  animations,
+  standalone: true,
+  imports: [NgIf, NgFor, NgClass],
 })
 export class PanelMenuComponent implements OnInit {
   @Input() items: PanelMenuItem[];

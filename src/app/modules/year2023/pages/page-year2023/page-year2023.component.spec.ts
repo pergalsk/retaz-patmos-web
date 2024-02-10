@@ -8,8 +8,8 @@ describe('PageYear2023Component', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-    imports: [PageYear2023Component],
-}).compileComponents();
+      imports: [PageYear2023Component],
+    }).compileComponents();
   });
 
   beforeEach(() => {

@@ -8,8 +8,8 @@ describe('DayContentPanelComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-    imports: [DayContentPanelComponent],
-}).compileComponents();
+      imports: [DayContentPanelComponent],
+    }).compileComponents();
   });
 
   beforeEach(() => {

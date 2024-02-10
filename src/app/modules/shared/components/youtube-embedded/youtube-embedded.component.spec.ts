@@ -8,8 +8,8 @@ describe('YoutubeEmbededComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-    imports: [YoutubeEmbeddedComponent],
-}).compileComponents();
+      imports: [YoutubeEmbeddedComponent],
+    }).compileComponents();
   });
 
   beforeEach(() => {

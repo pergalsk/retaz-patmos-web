@@ -6,17 +6,17 @@ import { SmoothHeightComponent } from '../../../shared/smooth-height/smooth-heig
 import { ContentBoxComponent } from '../../../shared/components/content-box/content-box.component';
 
 @Component({
-    selector: 'app-day-content-panel',
-    templateUrl: './day-content-panel.component.html',
-    styleUrls: ['./day-content-panel.component.scss'],
-    standalone: true,
-    imports: [
-        ContentBoxComponent,
-        SmoothHeightComponent,
-        NgIf,
-        TwoSplitComponent,
-        YoutubeEmbeddedComponent,
-    ],
+  selector: 'app-day-content-panel',
+  templateUrl: './day-content-panel.component.html',
+  styleUrls: ['./day-content-panel.component.scss'],
+  standalone: true,
+  imports: [
+    ContentBoxComponent,
+    SmoothHeightComponent,
+    NgIf,
+    TwoSplitComponent,
+    YoutubeEmbeddedComponent,
+  ],
 })
 export class DayContentPanelComponent {
   @Input() date: string;

@@ -8,8 +8,8 @@ describe('SvgPresidentComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-    imports: [SvgPresidentComponent],
-}).compileComponents();
+      imports: [SvgPresidentComponent],
+    }).compileComponents();
   });
 
   beforeEach(() => {

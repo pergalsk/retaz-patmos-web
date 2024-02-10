@@ -6,7 +6,7 @@ describe('HttpRequestInterceptor', () => {
   beforeEach(() =>
     TestBed.configureTestingModule({
       providers: [HttpRequestInterceptor],
-    })
+    }),
   );
 
   it('should be created', () => {

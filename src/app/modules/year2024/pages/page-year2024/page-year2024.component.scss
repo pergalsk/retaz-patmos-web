@@ -143,12 +143,14 @@ $inset-size: 8px;
   }
 
   .combo1-shadow {
-    box-shadow: inset $inset-size $inset-size 0 0 white,
+    box-shadow:
+      inset $inset-size $inset-size 0 0 white,
       $shadow-size $shadow-size 0 0 var(--primary-color);
   }
 
   .combo2-shadow {
-    box-shadow: inset $inset-size $inset-size 0 0 var(--secondary-color),
+    box-shadow:
+      inset $inset-size $inset-size 0 0 var(--secondary-color),
       $shadow-size $shadow-size 0 0 var(--primary-color);
   }
 

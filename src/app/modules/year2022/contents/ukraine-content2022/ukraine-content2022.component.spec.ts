@@ -8,8 +8,8 @@ describe('UkraineContent2022Component', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-    imports: [UkraineContent2022Component],
-}).compileComponents();
+      imports: [UkraineContent2022Component],
+    }).compileComponents();
   });
 
   beforeEach(() => {

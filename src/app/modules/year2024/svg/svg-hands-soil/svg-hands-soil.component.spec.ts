@@ -8,9 +8,8 @@ describe('SvgHandsSoilComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-    imports: [SvgHandsSoilComponent]
-})
-    .compileComponents();
+      imports: [SvgHandsSoilComponent],
+    }).compileComponents();
 
     fixture = TestBed.createComponent(SvgHandsSoilComponent);
     component = fixture.componentInstance;
