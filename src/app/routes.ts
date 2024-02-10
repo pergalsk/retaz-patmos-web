@@ -18,7 +18,7 @@ const import2023Component = () =>
     (mod) => mod.PageYear2023Component,
   );
 
-const routes: Routes = [
+export const routes: Routes = [
   // { path: 'app-shell--preload', component: AppShellComponent },
   { path: '2021', loadComponent: import2021Component, title: 'Pôstna reťaz 2021' },
   { path: '2022', loadComponent: import2022Component, title: 'Pôstna reťaz 2022' },
@@ -26,9 +26,3 @@ const routes: Routes = [
   { path: '', component: PageYear2024Component, title: 'Pôstna reťaz 2024' },
   { path: '**', redirectTo: '', pathMatch: 'full' },
 ];
-
-@NgModule({
-  imports: [RouterModule.forRoot(routes, { scrollPositionRestoration: 'enabled' })],
-  exports: [RouterModule],
-})
-export class AppRoutingModule {}
