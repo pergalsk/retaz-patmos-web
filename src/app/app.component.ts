@@ -1,12 +1,16 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { Observable, Unsubscribable } from 'rxjs';
+import { Unsubscribable } from 'rxjs';
 import { ColorSchemeService } from './modules/color-scheme/color-scheme.service';
 import { Scheme, UserScheme } from './modules/color-scheme/color-scheme.types';
+import { FooterComponent } from './modules/shared/components/footer/footer.component';
+import { RouterOutlet } from '@angular/router';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
+  standalone: true,
+  imports: [RouterOutlet, FooterComponent],
 })
 export class AppComponent implements OnInit, OnDestroy {
   constructor(private colorSchemeService: ColorSchemeService) {}

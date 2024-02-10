@@ -3,20 +3,26 @@ import { RouterModule, Routes } from '@angular/router';
 import { PageYear2024Component } from './modules/year2024/pages/page-year2024/page-year2024.component';
 // import { AppShellComponent } from './app-shell/app-shell.component';
 
-const import2021Module = () =>
-  import('./modules/year2021/year2021.module').then((m) => m.Year2021Module);
+const import2021Component = () =>
+  import('./modules/year2021/pages/page-year2021/page-year2021.component').then(
+    (m) => m.PageYear2021Component,
+  );
 
-const import2022Module = () =>
-  import('./modules/year2022/year2022.module').then((m) => m.Year2022Module);
+const import2022Component = () =>
+  import('./modules/year2022/pages/page-year2022/page-year2022.component').then(
+    (m) => m.PageYear2022Component,
+  );
 
-const import2023Module = () =>
-  import('./modules/year2023/year2023.module').then((m) => m.Year2023Module);
+const import2023Component = () =>
+  import('./modules/year2023/pages/page-year2023/page-year2023.component').then(
+    (mod) => mod.PageYear2023Component,
+  );
 
 const routes: Routes = [
   // { path: 'app-shell--preload', component: AppShellComponent },
-  { path: '2021', loadChildren: import2021Module, title: 'Pôstna reťaz 2021' },
-  { path: '2022', loadChildren: import2022Module, title: 'Pôstna reťaz 2022' },
-  { path: '2023', loadChildren: import2023Module, title: 'Pôstna reťaz 2023' },
+  { path: '2021', loadComponent: import2021Component, title: 'Pôstna reťaz 2021' },
+  { path: '2022', loadComponent: import2022Component, title: 'Pôstna reťaz 2022' },
+  { path: '2023', loadComponent: import2023Component, title: 'Pôstna reťaz 2023' },
   { path: '', component: PageYear2024Component, title: 'Pôstna reťaz 2024' },
   { path: '**', redirectTo: '', pathMatch: 'full' },
 ];

@@ -1,3 +1,4 @@
+/*
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 // import { ServerModule } from '@angular/platform-server';
@@ -7,14 +8,15 @@ import { AppComponent } from './app.component';
 // import { AppShellComponent } from './app-shell/app-shell.component';
 
 const routes: Routes = [
-  /*{ path: 'app-shell--preload', component: AppShellComponent }*/
+  /!*{ path: 'app-shell--preload', component: AppShellComponent }*!/
 ];
 
 @NgModule({
-  imports: [AppModule, /*ServerModule,*/ Year2023Module, RouterModule.forRoot(routes)],
+  imports: [AppModule, /!*ServerModule,*!/ Year2023Module, RouterModule.forRoot(routes)],
   bootstrap: [AppComponent],
   declarations: [
-    /*AppShellComponent*/
+    /!*AppShellComponent*!/
   ],
 })
 export class AppServerModule {}
+*/
