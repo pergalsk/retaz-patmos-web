@@ -36,6 +36,8 @@ $inset-size: 8px;
   .white-bg {
     .bible-verse {
       box-shadow: inset 0 -6px 0 0 var(--primary-color);
+      font-weight: normal;
+      font-size: var(--bs-body-font-size);
     }
   }
 
