@@ -1,35 +1,33 @@
-//$primary: #ff8f7c;
-//var(--secondary-color): black;
 $thickness: 4px;
 $shadow-size: 10px;
 $inset-size: 8px;
 
 .theme2024 {
-  //--primary-color: #ff8f7c;
   --primary-color: #fbe3b9;
-  --secondary-color: black;
+  --neutral-dark: black;
+  --neutral-light: white;
 
   .multiselect-toolbar {
-    background-color: var(--secondary-color);
+    background-color: var(--neutral-dark);
     background-image: unset;
 
     .multiselect-toolbar-buttons {
       .btn-primary {
         background-color: var(--primary-color);
         border-color: var(--primary-color);
-        color: var(--secondary-color);
+        color: var(--neutral-dark);
 
         &:hover {
-          background-color: white;
-          border-color: white;
+          background-color: var(--neutral-light);
+          border-color: var(--neutral-light);
         }
       }
     }
   }
 
   .bible-verse {
-    color: var(--secondary-color);
-    box-shadow: inset 0 -6px 0 0 white;
+    color: var(--neutral-dark);
+    box-shadow: inset 0 -6px 0 0 var(--neutral-light);
     display: inline;
   }
 
@@ -41,68 +39,94 @@ $inset-size: 8px;
     }
   }
 
-  .calendar .calendar-week .week-cell {
-    //padding: 0.25rem 0.45rem 0.25rem 0.35rem;
-    padding: 6px 10px 6px 8px;
-  }
-  .calendar .calendar-week .week-cell.selected {
-    color: white;
-    background-color: var(--secondary-color);
-  }
-  .calendar .calendar-week .week-cell.selected .title {
-    color: white;
-  }
-  .calendar .calendar-week .week-cell.selected.filled {
-    color: white;
-    background-color: var(--secondary-color);
-  }
-  .calendar .calendar-week .week-cell.selected {
-    color: white;
-    background-color: var(--secondary-color) !important;
-  }
-  .calendar .calendar-week .week-cell.highlighted {
-    background-color: #f7f8fa;
-  }
-  .calendar .calendar-header .header-cell,
-  .calendar .calendar-week .week-cell {
-    color: var(--secondary-color);
-  }
-  .calendar .calendar-week .week-cell .title {
-    color: var(--secondary-color);
-  }
-  .calendar .calendar-week .week-cell.weekend.filled .title {
-    color: var(--secondary-color);
-  }
-  .calendar .calendar-week .week-cell.highlighted.filled .title {
-    color: var(--secondary-color);
-  }
-  .calendar .calendar-week .week-cell.weekend {
-    background-color: #f7f8fa;
-  }
-  .calendar .calendar-week .week-cell.filled {
-    color: var(--secondary-color);
-    background-color: var(--primary-color);
-  }
-  .calendar .calendar-week .week-cell {
-    &:hover:not(.invisible, .disabled, .past, .today, .selected) {
-      background-color: unset;
-      border: 2px dashed var(--secondary-color);
-      padding: 4px 8px 4px 6px;
+  .calendar {
+    .calendar-week {
+      .week-cell {
+        //padding: 0.25rem 0.45rem 0.25rem 0.35rem;
+        padding: 6px 10px 6px 8px;
+      }
+
+      .week-cell.selected {
+        color: var(--neutral-light);
+        background-color: var(--neutral-dark);
+      }
+
+      .week-cell.selected .title {
+        color: var(--primary-color);
+      }
+
+      .week-cell.selected.filled {
+        color: var(--neutral-light);
+        background-color: var(--neutral-dark);
+      }
+
+      .week-cell.selected {
+        color: var(--neutral-light);
+        background-color: var(--neutral-dark) !important;
+      }
+
+      .week-cell.highlighted {
+        background-color: #f7f8fa;
+      }
+
+      .calendar .calendar-header .header-cell,
+      .week-cell {
+        color: var(--neutral-dark);
+      }
+
+      .week-cell .title {
+        color: var(--neutral-dark);
+      }
+
+      .week-cell.weekend.filled .title {
+        color: var(--neutral-dark);
+      }
+
+      .week-cell.highlighted.filled .title {
+        color: var(--neutral-dark);
+      }
+
+      .week-cell.weekend.filled.selected .title {
+        color: var(--primary-color);
+      }
+
+      .week-cell.highlighted.filled.selected .title {
+        color: var(--primary-color);
+      }
+
+      .week-cell.weekend {
+        background-color: #f7f8fa;
+      }
+
+      .week-cell.filled {
+        color: var(--neutral-dark);
+        background-color: var(--primary-color);
+      }
+
+      .week-cell {
+        &:hover:not(.invisible, .disabled, .past, .today, .selected) {
+          background-color: unset;
+          border: 2px dashed var(--neutral-dark);
+          padding: 4px 8px 4px 6px;
+        }
+      }
+
+      .week-cell.filled:hover:not(.invisible, .disabled, .past, .today, .selected) {
+        background-color: var(--primary-color);
+      }
+
+      .week-cell:hover:not(.invisible, .disabled, .past, .today, .selected) {
+        background-color: #f7f8fa;
+      }
+
+      .week-cell.today {
+        border-color: var(--neutral-dark);
+      }
+
+      .week-cell.today .title {
+        color: var(--neutral-dark) !important;
+      }
     }
-  }
-  .calendar
-    .calendar-week
-    .week-cell.filled:hover:not(.invisible, .disabled, .past, .today, .selected) {
-    background-color: var(--primary-color);
-  }
-  .calendar .calendar-week .week-cell:hover:not(.invisible, .disabled, .past, .today, .selected) {
-    background-color: #f7f8fa;
-  }
-  .calendar .calendar-week .week-cell.today {
-    border-color: var(--secondary-color);
-  }
-  .calendar .calendar-week .week-cell.today .title {
-    color: var(--secondary-color) !important;
   }
 
   // BACKGROUND
@@ -110,13 +134,13 @@ $inset-size: 8px;
     background-color: var(--primary-color);
   }
   .secondary-bg {
-    background-color: var(--secondary-color);
+    background-color: var(--neutral-dark);
   }
   .white-bg {
-    background-color: white;
+    background-color: var(--neutral-light);
   }
   .white-fg {
-    color: white;
+    color: var(--neutral-light);
   }
 
   // FOREGROUND
@@ -125,11 +149,11 @@ $inset-size: 8px;
     -webkit-text-fill-color: unset;
   }
   .secondary-fg {
-    color: var(--secondary-color);
+    color: var(--neutral-dark);
     -webkit-text-fill-color: unset;
   }
   .white-fg {
-    color: white;
+    color: var(--neutral-light);
     -webkit-text-fill-color: unset;
   }
 
@@ -144,13 +168,13 @@ $inset-size: 8px;
 
   .combo1-shadow {
     box-shadow:
-      inset $inset-size $inset-size 0 0 white,
+      inset $inset-size $inset-size 0 0 var(--neutral-light),
       $shadow-size $shadow-size 0 0 var(--primary-color);
   }
 
   .combo2-shadow {
     box-shadow:
-      inset $inset-size $inset-size 0 0 var(--secondary-color),
+      inset $inset-size $inset-size 0 0 var(--neutral-dark),
       $shadow-size $shadow-size 0 0 var(--primary-color);
   }
 
@@ -159,9 +183,9 @@ $inset-size: 8px;
     border: solid $thickness var(--primary-color);
   }
   .secondary-border {
-    border: solid $thickness var(--secondary-color);
+    border: solid $thickness var(--neutral-dark);
   }
   .white-border {
-    border: solid $thickness white;
+    border: solid $thickness var(--neutral-light);
   }
 }
