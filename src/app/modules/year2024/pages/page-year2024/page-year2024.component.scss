@@ -27,18 +27,20 @@ $inset-size: 8px;
 
   .bible-verse {
     color: var(--neutral-dark);
-    box-shadow: inset 0 -6px 0 0 var(--neutral-light);
+    //box-shadow: inset 0 -6px 0 0 var(--neutral-light);
     display: inline;
+    background-color: var(--neutral-light);
   }
 
   .white-bg {
     .bible-verse {
-      box-shadow: inset 0 -6px 0 0 var(--primary-color);
+      //box-shadow: inset 0 -6px 0 0 var(--primary-color);
       font-weight: normal;
       font-size: var(--bs-body-font-size);
+      background-color: var(--primary-color);
     }
   }
-
+  //#57732d
   .calendar {
     .calendar-week {
       .week-cell {
