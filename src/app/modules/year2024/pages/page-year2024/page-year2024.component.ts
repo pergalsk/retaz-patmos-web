@@ -7,7 +7,7 @@ import { MainContent2024Component } from '../../contents/main-content2024/main-c
   styleUrls: ['page-year2024.component.scss'],
   template: `
     <div class="theme2024">
-      <app-main-content2024></app-main-content2024>
+      <app-main-content2024 />
       <app-calendar-signup
         [year]="year"
         [overrides]="overrides"
@@ -26,7 +26,6 @@ export class PageYear2024Component {
       title: 'Veľký piatok',
       mobileTitle: 'Veľký piatok',
       highlighted: true,
-      classes: 'pergalsk',
     },
   };
 
