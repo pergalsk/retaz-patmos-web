@@ -2,7 +2,7 @@
 
 <div class="table-info">
   <div class="table-info-pct" style="filter: grayscale(100%)">
-    <app-svg-calendar></app-svg-calendar>
+    <app-svg-calendar />
   </div>
 
   <div class="small-2" style="font-size: 90%">
@@ -40,7 +40,7 @@
     [dayTemplate]="dayTpl"
     [dayTemplateData]="calendarData"
     (cellAction)="onDateClick($event)"
-  ></app-calendar>
+  />
 
   <ng-template #headerCellTpl let-dayName>
     <div class="header-cell">{{ dayName }}</div>
