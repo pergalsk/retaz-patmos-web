@@ -24,16 +24,32 @@ const import2024Component = () =>
 
 export const routes: Routes = [
   // { path: 'app-shell--preload', component: AppShellComponent },
-  { path: '2021', loadComponent: import2021Component, title: 'Pôstna reťaz 2021' },
+  {
+    path: '2021',
+    title: 'Pôstna reťaz 2021',
+    loadComponent: import2021Component,
+  },
   {
     path: '2022',
-    title: 'Pôstna reťaz 2022',
+    title: 'Pôstne modlitby 2022',
     children: [
       { path: ':date', loadComponent: import2022Component },
       { path: '', loadComponent: import2022Component },
     ],
   },
-  { path: '2023', loadComponent: import2023Component, title: 'Pôstna reťaz 2023' },
-  { path: '', component: PageYear2024Component, title: 'Pôstna reťaz 2024' },
-  { path: '**', redirectTo: '', pathMatch: 'full' },
+  {
+    path: '2023',
+    title: 'Pôstna reťaz 2023',
+    loadComponent: import2023Component,
+  },
+  {
+    path: '',
+    title: 'Pôstna reťaz 2024',
+    component: PageYear2024Component,
+  },
+  {
+    path: '**',
+    redirectTo: '',
+    pathMatch: 'full',
+  },
 ];
