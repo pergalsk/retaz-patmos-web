@@ -9,7 +9,6 @@ import {
   Output,
   SimpleChanges,
   TemplateRef,
-  ViewContainerRef,
   ViewChild,
   inject,
 } from '@angular/core';
@@ -131,6 +130,7 @@ export class CalendarComponent implements OnInit, OnChanges {
     sysTime: new Date(),
     rawDateFormat: 'yyyy-MM-dd',
     titleDateFormat: 'd. LLLL',
+    mobileTitleDateFormat: 'd. LLLL',
     separateMonths: false,
     collapsedWeeks: false,
   };
@@ -241,6 +241,10 @@ export class CalendarComponent implements OnInit, OnChanges {
     return 'označených dátumov';
   }
 
+  private formatTitleDate(day: Date, formatStr: string) {
+    return /*this.monthNames[month - 1] + ' ' + monthDay;*/ format(day, formatStr, { locale: sk });
+  }
+
   private isDayClickable(day: Day): boolean {
     return day.visible && !day.disabled;
   }
@@ -337,20 +341,19 @@ export class CalendarComponent implements OnInit, OnChanges {
   };
 
   private mapDays = (day: Date): Day => {
-    const date: string = format(day, this.calendarOptions.rawDateFormat, { locale: sk });
+    const { rawDateFormat, titleDateFormat, mobileTitleDateFormat } = this.calendarOptions;
+
+    const date: string = format(day, rawDateFormat, { locale: sk });
     const monthDay: number = getDate(day);
     const weekDay: number = getDay(day) || 7; // with sunday correction 0 -> 7
     const month: number = getMonth(day) + 1; // counting from zero correction
     const weekend: boolean = isWeekend(day);
     const week: number = getISOWeek(day);
-    const monthName: string = format(day, 'LLLL', { locale: sk }).toLowerCase(); // only month name
-    const dayName: string = format(day, 'iiii', { locale: sk }).toLowerCase(); // only day name
+    // const monthName: string = format(day, 'LLLL', { locale: sk }).toLowerCase(); // only month name
+    // const dayName: string = format(day, 'iiii', { locale: sk }).toLowerCase(); // only day name
 
-    const title: string = /*this.monthNames[month - 1] + ' ' + monthDay;*/ format(
-      day,
-      this.calendarOptions.titleDateFormat,
-      { locale: sk },
-    );
+    const title: string = this.formatTitleDate(day, titleDateFormat);
+    const mobileTitle: string = this.formatTitleDate(day, mobileTitleDateFormat);
 
     const comparisonResult: number = compareAsc(day, this.sysDate);
     const past: boolean = comparisonResult < 0;
@@ -374,6 +377,7 @@ export class CalendarComponent implements OnInit, OnChanges {
     const resultObj: Day = {
       date,
       title,
+      mobileTitle,
       visible,
       highlighted,
       selected,

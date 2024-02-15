@@ -47,7 +47,7 @@
   </ng-template>
 
   <ng-template #dayTpl let-dayData let-customData="data">
-    <ngx-cal-day-title [title]="dayData.title"></ngx-cal-day-title>
+    <ngx-cal-day-title [title]="dayData.title" [mobileTitle]="dayData.mobileTitle" />
     <div class="entries">
       <div class="entry" *ngFor="let name of customData[dayData.date]">
         <span>{{ name }}</span>

@@ -73,12 +73,20 @@ $week-cell-padding-today: subtract(0.4rem, $today-border-size) subtract(0.6rem, 
     }
 
     &:last-child {
-      @include media-breakpoint-down(lg) {
-        margin-bottom: 0;
-      }
+      margin-bottom: 0;
 
       .week-cell {
         margin-bottom: 0;
+      }
+
+      @include media-breakpoint-down(lg) {
+        .week-cell {
+          margin-bottom: 10px;
+
+          &:last-child {
+            margin-bottom: 0;
+          }
+        }
       }
     }
 

@@ -41,6 +41,7 @@ export interface Week {
 export interface Day {
   date: string;
   title: string;
+  mobileTitle: string;
   visible: boolean;
   highlighted: boolean;
   selected: boolean;
@@ -72,6 +73,7 @@ export interface SelectedDate {
   sysTime: Date | string;
   rawDateFormat: string;
   titleDateFormat: string;
+  mobileTitleDateFormat: string;
   header: boolean;
   separateMonths: boolean;
   collapsedWeeks: boolean;

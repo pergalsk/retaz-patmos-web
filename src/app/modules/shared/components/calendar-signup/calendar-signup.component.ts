@@ -1,4 +1,12 @@
-import { Component, Input, OnDestroy, OnInit, ViewChild } from '@angular/core';
+import {
+  Component,
+  EventEmitter,
+  Input,
+  OnDestroy,
+  OnInit,
+  Output,
+  ViewChild,
+} from '@angular/core';
 import { Subscription, tap, zip } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
@@ -28,7 +36,8 @@ export interface CalendarOptions {
   collapsedWeeks: boolean;
   multiselect: false;
   // rawDateFormat: string,
-  // titleDateFormat: string,
+  titleDateFormat: string;
+  mobileTitleDateFormat: string;
   overrides: {
     '2021-04-02': {
       title: string;
@@ -48,6 +57,7 @@ export interface CalendarOptions {
 export class CalendarSignupComponent implements OnInit, OnDestroy {
   @Input() year: string = null;
   @Input() overrides: any = null;
+  @Output() cellAction: EventEmitter<any> = new EventEmitter<any>();
 
   @ViewChild(CalendarComponent) calendarRef: CalendarComponent;
 
@@ -99,7 +109,8 @@ export class CalendarSignupComponent implements OnInit, OnDestroy {
       sysTime: this.sysTime,
       collapsedWeeks: true,
       // rawDateFormat: '',
-      // titleDateFormat: '',
+      titleDateFormat: 'd. LLLL',
+      mobileTitleDateFormat: 'eeeeee, d. LLLL',
       // separateMonths: false,
     };
 
@@ -198,6 +209,7 @@ export class CalendarSignupComponent implements OnInit, OnDestroy {
 
           this.submitError = false;
           this.calendarRef.clearSelections();
+          this.cellAction.emit(dates);
 
           console.log(resp);
         },

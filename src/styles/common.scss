@@ -114,6 +114,11 @@ main {
     display: block;
     font-size: 1.3rem;
     line-height: 1.6rem;
+
+    @include media-breakpoint-down(sm) {
+      font-size: inherit;
+      line-height: inherit;
+    }
   }
 }
 

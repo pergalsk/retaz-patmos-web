@@ -38,7 +38,8 @@ export interface DayTemplateContext {
     ></ng-container>
 
     <ng-template #dayDefaultTpl let-dayData let-customData="data">
-      <ngx-cal-day-title [title]="dayData.title"></ngx-cal-day-title>
+      <pre>{{ dayData }}</pre>
+      <ngx-cal-day-title [title]="dayData.title" [mobileTitle]="dayData.mobileTitle" />
       <div class="day-content-XXX">
         <span>{{ customData }}</span>
       </div>
@@ -62,7 +63,7 @@ export class NgxCalDay implements OnInit {
   classes: string = '';
 
   ngOnInit() {
-    const { type, date, week, month, weekDay, monthDay, classList } = this.day;
+    const { type, date, week, month, weekDay, monthDay, classList, names } = this.day;
 
     this.classes = [
       'week-cell',
@@ -74,6 +75,7 @@ export class NgxCalDay implements OnInit {
       'month-day-' + monthDay,
       'week-' + week,
       'week-day-' + weekDay,
+      'entries-count-' + names.length,
     ]
       .concat(classList)
       .join(' ');
