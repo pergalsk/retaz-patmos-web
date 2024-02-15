@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { SvgHandsSoilComponent } from '../../svg/svg-hands-soil/svg-hands-soil.component';
-import { ContentBoxComponent } from '../../../shared/components/content-box/content-box.component';
+import { ContentBoxComponent } from '@shared/components/content-box/content-box.component';
 import { NgbCarousel, NgbSlide } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
