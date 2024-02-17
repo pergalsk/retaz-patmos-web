@@ -24,7 +24,7 @@
 
     "paths": {
       "@assets/*": ["src/assets/*"],
-      "@modules/*": ["src/app/modules"],
+      "@modules/*": ["src/app/modules/*"],
       "@interceptors/*": ["src/app/interceptors"],
       "@animations/*": ["src/app/animations"],
       "@services/*": ["src/app/services/*"],

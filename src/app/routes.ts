@@ -8,7 +8,7 @@ const import2021Component = () =>
   );
 
 const import2022Component = () =>
-  import('./modules/year2022/pages/page-year2022/page-year2022.component').then(
+  import('./components/year2022/page-year2022/page-year2022.component').then(
     (m) => m.PageYear2022Component,
   );
 

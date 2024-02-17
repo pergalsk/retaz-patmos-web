@@ -1,19 +1,19 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { MainContent2022Component } from './main-content2022.component';
+import { PageYear2023Component } from './page-year2023.component';
 
-describe('MainContent2022Component', () => {
-  let component: MainContent2022Component;
-  let fixture: ComponentFixture<MainContent2022Component>;
+describe('PageYear2023Component', () => {
+  let component: PageYear2023Component;
+  let fixture: ComponentFixture<PageYear2023Component>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [MainContent2022Component],
+      imports: [PageYear2023Component],
     }).compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(MainContent2022Component);
+    fixture = TestBed.createComponent(PageYear2023Component);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

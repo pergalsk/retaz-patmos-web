@@ -1,19 +1,19 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { BadgeStripComponent } from './badge-strip.component';
+import { SvgPrayKneesComponent } from './svg-pray-knees.component';
 
-describe('BadgeStripComponent', () => {
-  let component: BadgeStripComponent;
-  let fixture: ComponentFixture<BadgeStripComponent>;
+describe('SvgPrayKneesComponent', () => {
+  let component: SvgPrayKneesComponent;
+  let fixture: ComponentFixture<SvgPrayKneesComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [BadgeStripComponent],
+      imports: [SvgPrayKneesComponent],
     }).compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(BadgeStripComponent);
+    fixture = TestBed.createComponent(SvgPrayKneesComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
