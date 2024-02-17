@@ -1,5 +1,5 @@
 import { Routes } from '@angular/router';
-import { PageYear2024Component } from './modules/year2024/pages/page-year2024/page-year2024.component';
+import { PageYear2024Component } from '@components/year2024/page-year2024/page-year2024.component';
 // import { AppShellComponent } from './app-shell/app-shell.component';
 
 const import2021Component = () =>
@@ -18,7 +18,7 @@ const import2023Component = () =>
   );
 
 const import2024Component = () =>
-  import('./modules/year2024/pages/page-year2024/page-year2024.component').then(
+  import('./components/year2024/page-year2024/page-year2024.component').then(
     (mod) => mod.PageYear2024Component,
   );
 
