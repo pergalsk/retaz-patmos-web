@@ -1,9 +1,9 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, OnDestroy, inject } from '@angular/core';
+import { RouterOutlet } from '@angular/router';
 import { Unsubscribable } from 'rxjs';
 import { ColorSchemeService } from './modules/color-scheme/color-scheme.service';
 import { Scheme, UserScheme } from './modules/color-scheme/color-scheme.types';
 import { FooterComponent } from '@shared/components/footer/footer.component';
-import { RouterOutlet } from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -17,7 +17,7 @@ import { RouterOutlet } from '@angular/router';
   `,
 })
 export class AppComponent implements OnInit, OnDestroy {
-  constructor(private colorSchemeService: ColorSchemeService) {}
+  colorSchemeService: ColorSchemeService = inject(ColorSchemeService);
 
   systemSchemeChange$: Unsubscribable;
   userSchemeChange$: Unsubscribable;
