@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, input, Input } from '@angular/core';
+import { ChangeDetectionStrategy, Component, input } from '@angular/core';
 
 @Component({
   selector: 'app-content-box',
@@ -8,7 +8,7 @@ import { ChangeDetectionStrategy, Component, input, Input } from '@angular/core'
     '[class.lead]': 'biggerText()',
     '[class.negative]': 'negative()',
   },
-  template: ` <ng-content></ng-content> `,
+  template: `<ng-content />`,
   standalone: true,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
