@@ -1,0 +1,21 @@
+.title-with-picture {
+  display: block;
+
+  .svg-pct {
+    float: right;
+    width: 35%;
+  }
+
+  @media (max-width: 767.98px) {
+    display: flex;
+    flex-direction: column-reverse;
+
+    .svg-pct {
+      float: none;
+      width: 80%;
+      align-self: center;
+      margin-top: -55px;
+      margin-bottom: 15px;
+    }
+  }
+}

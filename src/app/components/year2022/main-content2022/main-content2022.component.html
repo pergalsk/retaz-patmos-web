@@ -1,0 +1,64 @@
+<app-content-box>
+  <app-color-scheme-switcher></app-color-scheme-switcher>
+
+  <div class="title-with-picture">
+    <div class="svg-pct">
+      <app-svg-man-pray *ngIf="!placeholder" [scheme]="scheme"></app-svg-man-pray>
+      <app-svg-man-pray-placeholder
+        *ngIf="placeholder"
+        [scheme]="scheme"
+      ></app-svg-man-pray-placeholder>
+    </div>
+
+    <h1 class="no-gradient display-4 mb-4">Pôstne modlitby 2022</h1>
+  </div>
+
+  <p class="lead">
+    "Hľaďme na Ježiša!" Verš, ktorý vyznieva jednoducho, no ukrýva v sebe to najdôležitejšie, čo
+    môžeme urobiť a čo si potrebujeme každý deň pripomínať. Nezameriavať sa na seba, na okolnosti,
+    čo nás trápi, čoho sa bojíme, čomu čelíme, o čom snívame, ale na Ježiša - na to, kto je On, akú
+    má hĺbku, moc, slávu, krásu, čo dokáže urobiť v nás a cez nás... Utíšiť sa pred Ním a načúvať
+    Jeho hlas.
+  </p>
+
+  <hr class="my-3" />
+
+  <figure class="mb-4 mb-md-0">
+    <blockquote class="blockquote">
+      <p>
+        <em class="bible-verse text-blue">
+          "Hľaďme na Ježiša, Pôvodcu a Dokonávateľa viery, ktorý napriek radosti, čo Ho čakala,
+          pretrpel kríž; pohrdol potupou a posadil sa na pravici Božieho trónu. Myslite na Toho,
+          ktorý zniesol taký odpor hriešnikov proti sebe, aby ste neustávali a neklesali na duchu.
+        </em>
+      </p>
+    </blockquote>
+    <figcaption class="blockquote-footer">List židom 12,2-3</figcaption>
+  </figure>
+</app-content-box>
+
+<app-content-box [classList]="'gradient-d text-white'" [negative]="true">
+  <p class="lead">
+    Drahí modlitebníci, pôstne obdobie sa končí a aj naše spoločné modlitby ukončíme dnešným
+    večerom. Veríme, že to bol pre nás všetkých skvelý čas utíšenia a zahľadenia sa na Ježiša,
+    zároveň aj modlitebného zápasu. Má to veľký zmysel, keď sa Božie deti zjednotia na modlitbách a
+    volajú k svojmu nebeskému Otcovi, hľadajú Jeho tvár, bojujú na kolenách.
+  </p>
+
+  <p class="lead">
+    <strong>Ďakujeme všetkým vám, ktorí ste sa zapojili!</strong>
+  </p>
+
+  <p class="lead">
+    No aj keď sa tieto pôstne modlitby končia, nech náš modlitebný zápas neutícha.
+    <em>"V modlení vytrvajte, bdejte pri ňom a dobrorečte."</em> Kol 4,2
+  </p>
+
+  <p class="lead mb-0">Nech vás Pán Boh žehná!<br />Vlado Gál</p>
+</app-content-box>
+
+<app-content-box>
+  <p class="lead mb-0">
+    Ak by ste sa chceli inšpirovať týmito biblickými textami a podnetmi, budú tu stále k dispozícii.
+  </p>
+</app-content-box>
