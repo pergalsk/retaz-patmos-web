@@ -13,7 +13,7 @@ const import2022Component = () =>
   );
 
 const import2023Component = () =>
-  import('./modules/year2023/pages/page-year2023/page-year2023.component').then(
+  import('./components/year2023/page-year2023/page-year2023.component').then(
     (mod) => mod.PageYear2023Component,
   );
 
