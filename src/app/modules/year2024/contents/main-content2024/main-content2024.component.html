@@ -54,7 +54,14 @@
   zapíšte na konkrétny deň, v ktorom by ste si vyhradili pôst a čas pre modlitbu.
 </app-content-box>
 
-<app-content-box [classList]="'white-bg secondary-fg secondary-border combo2-shadow'">
+<app-content-box
+  [classList]="'without-bg without-shadow pt-0 pb-0 mb-3'"
+  style="display: block; max-width: 800px; margin-inline: auto"
+>
+  <app-quotes [quotes]="quotes" [interval]="30000" [indicators]="true" />
+</app-content-box>
+
+<app-content-box [classList]="'white-bg secondary-fg secondary-border combo2-shadow mb-5'">
   <h2 class="mb-4 secondary-fg">Modlitebné podnety</h2>
 
   <p>
@@ -107,60 +114,4 @@
       >
     </li>
   </ul>
-</app-content-box>
-
-<app-content-box [classList]="'secondary-border primary-bg combo1-shadow mb-5'">
-  <ngb-carousel
-    class="carousel-fade"
-    [interval]="30000"
-    [keyboard]="false"
-    [pauseOnFocus]="false"
-    [pauseOnHover]="false"
-    [showNavigationArrows]="false"
-    [showNavigationIndicators]="false"
-  >
-    <ng-template ngbSlide>
-      <figure class="slider-quotes">
-        <blockquote class="blockquote">
-          <b>Modlitba</b> je dosahovanie neviditeľného; pôst je opustenie všetkého viditeľného a
-          dočasného. Pôst pomáha vyjadriť, prehĺbiť a potvrdiť rozhodnutie, že sme pripravení
-          obetovať čokoľvek, <b>dokonca aj seba samých</b>, aby sme dosiahli to, o čo sa
-          <b>usilujeme pre Božie kráľovstvo</b>.
-        </blockquote>
-        <figcaption class="blockquote-footer">Andrew Murray</figcaption>
-      </figure>
-    </ng-template>
-
-    <ng-template ngbSlide>
-      <figure class="slider-quotes">
-        <blockquote class="blockquote"><b>Pôst ťa pripravuje na nové pomazanie.</b></blockquote>
-        <figcaption class="blockquote-footer">Jentezen Franklin</figcaption>
-      </figure>
-    </ng-template>
-
-    <ng-template ngbSlide>
-      <figure class="slider-quotes">
-        <blockquote class="blockquote">
-          Cieľom pôstu je do určitej miery
-          <b>uvoľniť väzby, ktoré nás viažu k svetu hmotných vecí</b> a k celému nášmu okoliu, aby
-          sme mohli všetky svoje duchovné sily <b>sústrediť na neviditeľné a večné veci</b>.
-        </blockquote>
-        <figcaption class="blockquote-footer">Ole Hallesby</figcaption>
-      </figure>
-    </ng-template>
-
-    <ng-template ngbSlide>
-      <figure class="slider-quotes">
-        <blockquote class="blockquote">
-          Ak neprežívame <b>silné túžby po zjavení Božej slávy</b>, nie je to preto, že sme sa už
-          poriadne napili a sme uspokojení. Je to preto, že
-          <b>sme sa veľmi dlho sýtili pri stole sveta</b>. Naša duša je preplnená
-          <b>malými vecami</b>, až nezostalo žiadne miesto na <b>tie veľké</b>. Ak sme preplnení
-          tým, čo ponúka svet, potom by pôst mohol vyjadriť alebo dokonca
-          <b>rozmnožiť náš hlad po Bohu</b>.
-        </blockquote>
-        <figcaption class="blockquote-footer">John Piper</figcaption>
-      </figure>
-    </ng-template>
-  </ngb-carousel>
 </app-content-box>

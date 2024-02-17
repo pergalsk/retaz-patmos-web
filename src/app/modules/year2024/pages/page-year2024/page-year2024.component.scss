@@ -42,29 +42,21 @@ $inset-size: 8px;
   }
 
   .slider-quotes {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    min-height: 140px;
-    margin-bottom: 0;
-    text-align: center;
-    background-color: var(--primary-color);
-    text-wrap: balance;
-
-    @media (max-width: 992px) {
-      min-height: 200px;
-    }
-    @media (max-width: 700px) {
-      min-height: 300px;
-    }
-    @media (max-width: 430px) {
-      min-height: 400px;
-    }
+    background-color: var(--neutral-light);
 
     .blockquote-footer {
-      margin-bottom: 0;
-      color: var(--neutral-dark);
-      opacity: 0.6;
+      color: #aaa;
+    }
+  }
+
+  .carousel-indicators {
+    [data-bs-target] {
+      background-color: var(--primary-color);
+      opacity: 1;
+
+      &.active {
+        background-color: var(--neutral-dark);
+      }
     }
   }
 

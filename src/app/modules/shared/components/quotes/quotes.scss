@@ -1,0 +1,37 @@
+.slider-quotes {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-height: 180px;
+  margin-bottom: 0;
+  background-color: #fff;
+  text-align: center;
+  text-wrap: balance;
+
+  @media (max-width: 992px) {
+    min-height: 200px;
+  }
+  @media (max-width: 700px) {
+    min-height: 350px;
+  }
+  @media (max-width: 430px) {
+    min-height: 480px;
+  }
+
+  .blockquote-footer {
+    margin-bottom: 0;
+    color: #000;
+  }
+}
+
+.with-indicators {
+  .slider-quotes {
+    margin-bottom: 50px;
+  }
+}
+
+.carousel-indicators {
+  [data-bs-target] {
+    background-color: #000;
+  }
+}

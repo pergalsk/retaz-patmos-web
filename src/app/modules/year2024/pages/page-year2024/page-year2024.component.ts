@@ -4,20 +4,19 @@ import { MainContent2024Component } from '../../contents/main-content2024/main-c
 
 @Component({
   selector: 'app-page-year2024',
-  styleUrls: ['page-year2024.component.scss'],
-  template: `
-    <div class="theme2024">
-      <app-main-content2024 />
-      <app-calendar-signup
-        [year]="year"
-        [overrides]="overrides"
-        (cellAction)="onCellAction($event)"
-      />
-    </div>
-  `,
-  encapsulation: ViewEncapsulation.None,
   standalone: true,
   imports: [MainContent2024Component, CalendarSignupComponent],
+  styleUrls: ['page-year2024.component.scss'],
+  host: { '[class]': "'theme2024'" },
+  template: `
+    <app-main-content2024 />
+    <app-calendar-signup
+      [year]="year"
+      [overrides]="overrides"
+      (cellAction)="onCellAction($event)"
+    />
+  `,
+  encapsulation: ViewEncapsulation.None,
 })
 export class PageYear2024Component {
   year: string = '2024';
