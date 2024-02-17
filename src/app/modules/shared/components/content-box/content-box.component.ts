@@ -1,13 +1,19 @@
-import { Component, Input } from '@angular/core';
+import { ChangeDetectionStrategy, Component, input, Input } from '@angular/core';
 
 @Component({
   selector: 'app-content-box',
-  templateUrl: './content-box.component.html',
-  styleUrls: ['./content-box.component.scss'],
+  host: {
+    class: 'jumbotron d-block',
+    '[class]': 'classList()',
+    '[class.lead]': 'biggerText()',
+    '[class.negative]': 'negative()',
+  },
+  template: ` <ng-content></ng-content> `,
   standalone: true,
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ContentBoxComponent {
-  @Input() biggerText: boolean;
-  @Input() negative: boolean;
-  @Input() classList: string;
+  biggerText = input<boolean>();
+  negative = input<boolean>();
+  classList = input<string>();
 }
