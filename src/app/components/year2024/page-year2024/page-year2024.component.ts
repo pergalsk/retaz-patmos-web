@@ -1,5 +1,5 @@
 import { Component, ViewEncapsulation } from '@angular/core';
-import { CalendarSignupComponent } from '@shared/components/calendar-signup/calendar-signup.component';
+import { CalendarSignupComponent } from '@components/calendar-signup/calendar-signup.component';
 import { MainContent2024Component } from '../main-content2024/main-content2024.component';
 
 @Component({

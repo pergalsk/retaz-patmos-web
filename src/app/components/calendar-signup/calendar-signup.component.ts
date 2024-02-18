@@ -7,6 +7,7 @@ import {
   Output,
   ViewChild,
 } from '@angular/core';
+import { NgIf, NgFor } from '@angular/common';
 import { Subscription, tap, zip } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
@@ -22,11 +23,10 @@ import { NgxCalI18n } from 'projects/ngx-calendar/src/lib/i18n';
 import { NgxCalI18nSk } from 'projects/ngx-calendar/src/lib/i18n-sk';
 import { CalendarComponent } from 'projects/ngx-calendar/src/lib/calendar.component';
 import { CalendarData, SelectedDate } from 'projects/ngx-calendar/src/lib/calendar.types';
-import { ModalContentComponent } from '../../../../modal-content/modal-content.component';
-import { NgxCalDayTitle } from '../../../../../../projects/ngx-calendar/src/lib/day-title';
-import { CalendarComponent as CalendarComponent_1 } from '../../../../../../projects/ngx-calendar/src/lib/calendar.component';
-import { NgIf, NgFor } from '@angular/common';
-import { SvgCalendarComponent } from '../../svg/svg-calendar/svg-calendar.component';
+import { ModalContentComponent } from '../modal-content/modal-content.component';
+import { NgxCalDayTitle } from 'projects/ngx-calendar/src/lib/day-title';
+import { CalendarComponent as CalendarComponent_1 } from 'projects/ngx-calendar/src/lib/calendar.component';
+import { SvgCalendarComponent } from '@shared/svg/svg-calendar/svg-calendar.component';
 
 export interface CalendarOptions {
   sysDate: string;

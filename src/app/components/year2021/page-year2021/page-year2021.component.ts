@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { PanelMenuItem } from '../panel-menu/panel-menu.component';
-import { CalendarSignupComponent } from '@shared/components/calendar-signup/calendar-signup.component';
+import { CalendarSignupComponent } from '@components/calendar-signup/calendar-signup.component';
 import { SelectiveContentComponent } from '../selective-content/selective-content.component';
 import { NgClass } from '@angular/common';
 
