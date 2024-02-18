@@ -2,7 +2,7 @@ import { Component, Input } from '@angular/core';
 import { NgIf } from '@angular/common';
 import { YoutubeEmbeddedComponent } from '@shared/components/youtube-embedded/youtube-embedded.component';
 import { TwoSplitComponent } from '@shared/components/two-split/two-split.component';
-import { SmoothHeightComponent } from '@shared/smooth-height/smooth-height.component';
+import { SmoothHeightComponent } from '@components/smooth-height/smooth-height.component';
 import { ContentBoxComponent } from '@shared/components/content-box/content-box.component';
 
 @Component({
