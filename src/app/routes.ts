@@ -3,7 +3,7 @@ import { PageYear2024Component } from '@components/year2024/page-year2024/page-y
 // import { AppShellComponent } from './app-shell/app-shell.component';
 
 const import2021Component = () =>
-  import('./modules/year2021/pages/page-year2021/page-year2021.component').then(
+  import('./components/year2021/page-year2021/page-year2021.component').then(
     (m) => m.PageYear2021Component,
   );
 
