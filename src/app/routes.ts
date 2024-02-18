@@ -1,6 +1,6 @@
 import { Routes } from '@angular/router';
 import { PageYear2024Component } from '@components/year2024/page-year2024/page-year2024.component';
-// import { AppShellComponent } from './app-shell/app-shell.component';
+// import { AppShellComponent } from "@components/app-shell/app-shell.component";
 
 const import2021Component = () =>
   import('./components/year2021/page-year2021/page-year2021.component').then(

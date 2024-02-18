@@ -1,8 +1,8 @@
 import { Component, OnInit, OnDestroy, inject } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { Unsubscribable } from 'rxjs';
-import { ColorSchemeService } from './modules/color-scheme/color-scheme.service';
-import { Scheme, UserScheme } from './modules/color-scheme/color-scheme.types';
+import { ColorSchemeService } from '@modules/color-scheme/color-scheme.service';
+import { Scheme, UserScheme } from '@modules/color-scheme/color-scheme.types';
 import { FooterComponent } from '@shared/components/footer/footer.component';
 
 @Component({
