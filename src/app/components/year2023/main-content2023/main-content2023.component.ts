@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { ContentBoxComponent } from '@shared/components/content-box/content-box.component';
+import { ContentBoxComponent } from '@components/content-box/content-box.component';
 import { SvgPrayKneesComponent } from '../svg-pray-knees/svg-pray-knees.component';
 
 @Component({

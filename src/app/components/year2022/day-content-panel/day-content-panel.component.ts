@@ -3,7 +3,7 @@ import { NgIf } from '@angular/common';
 import { YoutubeEmbeddedComponent } from '@shared/components/youtube-embedded/youtube-embedded.component';
 import { TwoSplitComponent } from '@components/two-split/two-split.component';
 import { SmoothHeightComponent } from '@components/smooth-height/smooth-height.component';
-import { ContentBoxComponent } from '@shared/components/content-box/content-box.component';
+import { ContentBoxComponent } from '@components/content-box/content-box.component';
 
 @Component({
   selector: 'app-day-content-panel',
