@@ -1,6 +1,6 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { ColorSchemeService } from '../../../color-scheme/color-scheme.service';
-import { SCHEMES, UserScheme } from '../../../color-scheme/color-scheme.types';
+import { ColorSchemeService } from '@modules/color-scheme/color-scheme.service';
+import { SCHEMES, UserScheme } from '@modules/color-scheme/color-scheme.types';
 import { Subscription } from 'rxjs';
 import {
   NgbDropdown,
@@ -13,7 +13,6 @@ import {
 @Component({
   selector: 'app-color-scheme-switcher',
   templateUrl: './color-scheme-switcher.component.html',
-  styleUrls: ['./color-scheme-switcher.component.scss'],
   standalone: true,
   imports: [
     NgbDropdown,

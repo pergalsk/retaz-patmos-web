@@ -3,7 +3,7 @@ import { NgIf } from '@angular/common';
 import { Subscription } from 'rxjs';
 import { Scheme } from '@modules/color-scheme/color-scheme.types';
 import { ColorSchemeService } from '@modules/color-scheme/color-scheme.service';
-import { ColorSchemeSwitcherComponent } from '@shared/components/color-scheme-switcher/color-scheme-switcher.component';
+import { ColorSchemeSwitcherComponent } from '@components/color-scheme-switcher/color-scheme-switcher.component';
 import { ContentBoxComponent } from '@components/content-box/content-box.component';
 import { SvgManPrayPlaceholderComponent } from '../svg-man-pray-placeholder/svg-man-pray-placeholder.component';
 import { SvgManPrayComponent } from '../svg-man-pray/svg-man-pray.component';
