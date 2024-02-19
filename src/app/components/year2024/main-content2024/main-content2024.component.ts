@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { ContentBoxComponent } from '@shared/components/content-box/content-box.component';
 import { NgbCarousel, NgbSlide } from '@ng-bootstrap/ng-bootstrap';
-import { Quote, QuotesComponent } from '@shared/components/quotes/quotes.component';
+import { Quote, QuotesComponent } from '@components/quotes/quotes.component';
 import { SvgHandsSoilComponent } from '../svg-hands-soil/svg-hands-soil.component';
 
 @Component({
