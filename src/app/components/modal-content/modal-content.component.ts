@@ -3,7 +3,7 @@ import { DatePipe, NgIf } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { NoWhitespaceDirective } from '@validators/no-whitespace.directive';
-import { SvgCalendarManComponent } from '@shared/svg/svg-calendar-man/svg-calendar-man.component';
+import { SvgCalendarManComponent } from '@components/svg-calendar-man/svg-calendar-man.component';
 
 const weekDayNames: string[] = [
   'nedeľu',

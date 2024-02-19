@@ -26,7 +26,7 @@ import { CalendarData, SelectedDate } from 'projects/ngx-calendar/src/lib/calend
 import { ModalContentComponent } from '../modal-content/modal-content.component';
 import { NgxCalDayTitle } from 'projects/ngx-calendar/src/lib/day-title';
 import { CalendarComponent as CalendarComponent_1 } from 'projects/ngx-calendar/src/lib/calendar.component';
-import { SvgCalendarComponent } from '@shared/svg/svg-calendar/svg-calendar.component';
+import { SvgCalendarComponent } from '@components/svg-calendar/svg-calendar.component';
 
 export interface CalendarOptions {
   sysDate: string;
