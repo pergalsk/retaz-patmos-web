@@ -3,7 +3,7 @@ import { RouterOutlet } from '@angular/router';
 import { Unsubscribable } from 'rxjs';
 import { ColorSchemeService } from '@modules/color-scheme/color-scheme.service';
 import { Scheme, UserScheme } from '@modules/color-scheme/color-scheme.types';
-import { FooterComponent } from '@shared/components/footer/footer.component';
+import { FooterComponent } from '@components/footer/footer.component';
 
 @Component({
   selector: 'app-root',
@@ -11,9 +11,9 @@ import { FooterComponent } from '@shared/components/footer/footer.component';
   imports: [RouterOutlet, FooterComponent],
   template: `
     <main class="container narrow">
-      <router-outlet></router-outlet>
+      <router-outlet />
     </main>
-    <app-footer></app-footer>
+    <app-footer />
   `,
 })
 export class AppComponent implements OnInit, OnDestroy {
