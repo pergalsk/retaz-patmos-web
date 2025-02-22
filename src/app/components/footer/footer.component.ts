@@ -28,12 +28,12 @@ import { RouterLink } from '@angular/router';
         </a>
       </div>
       <div class="info">
-        © <a routerLink="/">2024</a>&nbsp;<a href="https://patmos.sk"
+        © <a routerLink="/">2025</a>&nbsp;<a href="https://patmos.sk"
           >Cirkevný zbor Evanjelickej cirkvi augsburského vyznania na&nbsp;Slovensku Prešov</a
         >
         <small>
-          | <a routerLink="/2023">2023</a> | <a routerLink="/2022">2022</a> |
-          <a routerLink="/2021">2021</a></small
+          | <a routerLink="/2024">2024</a> | <a routerLink="/2023">2023</a> |
+          <a routerLink="/2022">2022</a> | <a routerLink="/2021">2021</a></small
         >
       </div>
     </footer>

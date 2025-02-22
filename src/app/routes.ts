@@ -1,5 +1,5 @@
 import { Routes } from '@angular/router';
-import { PageYear2024Component } from '@components/year2024/page-year2024/page-year2024.component';
+import { PageYear2025Component } from '@components/year2025/page-year2025/page-year2025.component';
 // import { AppShellComponent } from "@components/app-shell/app-shell.component";
 
 const import2021Component = () =>
@@ -43,9 +43,14 @@ export const routes: Routes = [
     loadComponent: import2023Component,
   },
   {
-    path: '',
+    path: '2024',
     title: 'Pôstna reťaz 2024',
-    component: PageYear2024Component,
+    loadComponent: import2024Component,
+  },
+  {
+    path: '',
+    title: 'Pôstna reťaz 2025',
+    component: PageYear2025Component,
   },
   {
     path: '**',

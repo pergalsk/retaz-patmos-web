@@ -1,0 +1,281 @@
+$inset-size: 8px;
+
+.theme2025 {
+  --primary-hue: 230;
+  --primary-sat: 60%;
+  --primary-color: hsl(var(--primary-hue), var(--primary-sat), 90%);
+
+  --neutral-dark: black; //hsl(247, 37%, 13%);
+  --neutral-light: white;
+
+  --color1: hsl(var(--primary-hue), var(--primary-sat), 96%);
+  --color2: hsl(var(--primary-hue), var(--primary-sat), 87%);
+  --color3: hsl(var(--primary-hue), var(--primary-sat), 83%);
+
+  --shadow-size: 10px;
+  --thickness: 2px;
+
+  .multiselect-toolbar {
+    background-color: var(--neutral-dark);
+    background-image: unset;
+
+    .multiselect-toolbar-buttons {
+      .btn-primary {
+        background-color: var(--primary-color);
+        border-color: var(--primary-color);
+        color: var(--neutral-dark);
+
+        &:hover {
+          background-color: var(--neutral-light);
+          border-color: var(--neutral-light);
+        }
+      }
+    }
+  }
+
+  .bible-verse {
+    color: var(--neutral-dark);
+    display: inline;
+  }
+
+  .white-bg {
+    .bible-verse {
+      //box-shadow: inset 0 -6px 0 0 var(--primary-color);
+      font-weight: normal;
+      font-size: var(--bs-body-font-size);
+      background-color: var(--primary-color);
+    }
+  }
+
+  .slider-quotes {
+    background-color: var(--neutral-light);
+
+    .blockquote-footer {
+      color: #aaa;
+    }
+  }
+
+  .carousel-indicators {
+    [data-bs-target] {
+      background-color: var(--primary-color);
+      opacity: 1;
+
+      &.active {
+        background-color: var(--neutral-dark);
+      }
+    }
+  }
+
+  .calendar {
+    .calendar-header {
+      .header-cell {
+        color: var(--neutral-dark);
+      }
+    }
+
+    .calendar-week {
+      .week-cell {
+        //padding: 0.25rem 0.45rem 0.25rem 0.35rem;
+        padding: 6px 10px 6px 8px;
+      }
+
+      .week-cell.selected {
+        color: var(--neutral-light);
+        background-color: var(--neutral-dark);
+      }
+
+      .week-cell.selected .title {
+        color: var(--primary-color);
+      }
+
+      .week-cell.selected.filled {
+        color: var(--neutral-light);
+        background-color: var(--neutral-dark);
+      }
+
+      .week-cell.selected {
+        color: var(--neutral-light);
+        background-color: var(--neutral-dark) !important;
+
+        &.entries-count-2 {
+          .title {
+            color: var(--color2) !important;
+          }
+        }
+        &.entries-count-3,
+        &.entries-count-4,
+        &.entries-count-5,
+        &.entries-count-6,
+        &.entries-count-7,
+        &.entries-count-8,
+        &.entries-count-9,
+        &.entries-count-10 {
+          .title {
+            color: var(--color3) !important;
+          }
+        }
+      }
+
+      .week-cell.highlighted {
+        background-color: var(--color1);
+      }
+
+      .calendar .calendar-header .header-cell,
+      .week-cell {
+        color: var(--neutral-dark);
+      }
+
+      .week-cell .title {
+        color: var(--neutral-dark);
+      }
+
+      .week-cell.weekend.filled .title {
+        color: var(--neutral-dark);
+      }
+
+      .week-cell.highlighted.filled .title {
+        color: var(--neutral-dark);
+      }
+
+      .week-cell.weekend.filled.selected {
+        .title {
+          color: var(--primary-color);
+        }
+      }
+
+      .week-cell.highlighted.filled.selected .title {
+        color: var(--primary-color);
+      }
+
+      .week-cell.weekend {
+        background-color: var(--color1);
+      }
+
+      .week-cell.filled {
+        color: var(--neutral-dark);
+        background-color: var(--primary-color);
+
+        &.entries-count-2 {
+          background-color: var(--color2);
+        }
+        &.entries-count-3,
+        &.entries-count-4,
+        &.entries-count-5,
+        &.entries-count-6,
+        &.entries-count-7,
+        &.entries-count-8,
+        &.entries-count-9,
+        &.entries-count-10 {
+          background-color: var(--color3);
+        }
+      }
+
+      .week-cell {
+        &:hover:not(.invisible, .disabled, .past, .today, .selected) {
+          background-color: inherit;
+          border: 2px dashed var(--neutral-dark);
+          padding: 4px 8px 4px 6px;
+
+          // disable long tap hover effect
+          @media (max-width: 922px) {
+            border: 2px solid transparent;
+          }
+        }
+      }
+
+      .week-cell.filled:hover:not(.invisible, .disabled, .past, .today, .selected) {
+        background-color: var(--primary-color);
+
+        &.entries-count-2 {
+          background-color: var(--color2);
+        }
+        &.entries-count-3,
+        &.entries-count-4,
+        &.entries-count-5,
+        &.entries-count-6,
+        &.entries-count-7,
+        &.entries-count-8,
+        &.entries-count-9,
+        &.entries-count-10 {
+          background-color: var(--color3);
+        }
+      }
+
+      .week-cell:hover:not(.invisible, .disabled, .past, .today, .selected) {
+        background-color: var(--color1);
+      }
+
+      .week-cell.today {
+        border-color: var(--neutral-dark);
+      }
+
+      .week-cell.today .title {
+        color: var(--neutral-dark) !important;
+      }
+    }
+  }
+
+  // BACKGROUND
+  .without-bg {
+    background: transparent;
+  }
+  .primary-bg {
+    background-color: var(--primary-color);
+  }
+  .secondary-bg {
+    background-color: var(--neutral-dark);
+  }
+  .white-bg {
+    background-color: var(--neutral-light);
+  }
+  .white-fg {
+    color: var(--neutral-light);
+  }
+
+  // FOREGROUND
+  .primary-fg {
+    color: var(--primary-color);
+    -webkit-text-fill-color: unset;
+  }
+  .secondary-fg {
+    color: var(--neutral-dark);
+    -webkit-text-fill-color: unset;
+  }
+  .white-fg {
+    color: var(--neutral-light);
+    -webkit-text-fill-color: unset;
+  }
+
+  // SHADOWS
+  .without-shadow {
+    box-shadow: none;
+  }
+  .primary-shadow {
+    box-shadow: none; //var(--shadow-size) var(--shadow-size) 0 0 var(--primary-color);
+  }
+
+  /*  .secondary-shadow {
+    box-shadow: var(--shadow-size) var(--shadow-size) 0 0 var(--neutral-dark);
+  }
+  .combo1-shadow {
+    box-shadow:
+      inset $inset-size $inset-size 0 0 var(--neutral-light),
+      var(--shadow-size) var(--shadow-size) 0 0 var(--primary-color);
+  }
+  .combo2-shadow {
+    box-shadow:
+      inset $inset-size $inset-size 0 0 var(--neutral-dark),
+      var(--shadow-size) var(--shadow-size) 0 0 var(--primary-color);
+  }*/
+
+  // BORDERS
+  .primary-border {
+    border: solid var(--thickness) var(--primary-color);
+  }
+  .secondary-border {
+    border: solid var(--thickness) var(--neutral-dark);
+  }
+  .white-border {
+    border: solid var(--thickness) var(--neutral-light);
+  }
+}
