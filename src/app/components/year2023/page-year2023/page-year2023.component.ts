@@ -5,8 +5,10 @@ import { MainContent2023Component } from '../main-content2023/main-content2023.c
 @Component({
   selector: 'app-page-year2023',
   template: `
-    <app-main-content2023></app-main-content2023>
-    <app-calendar-signup [year]="year" [overrides]="overrides" />
+    <main class="container narrow">
+      <app-main-content2023></app-main-content2023>
+      <app-calendar-signup [year]="year" [overrides]="overrides" />
+    </main>
   `,
   standalone: true,
   imports: [MainContent2023Component, CalendarSignupComponent],

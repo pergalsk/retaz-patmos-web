@@ -9,12 +9,14 @@ import { MainContent2024Component } from '../main-content2024/main-content2024.c
   styleUrls: ['page-year2024.component.scss'],
   host: { '[class]': "'theme2024'" },
   template: `
-    <app-main-content2024 />
-    <app-calendar-signup
-      [year]="year"
-      [overrides]="overrides"
-      (cellAction)="onCellAction($event)"
-    />
+    <main class="container narrow">
+      <app-main-content2024 />
+      <app-calendar-signup
+        [year]="year"
+        [overrides]="overrides"
+        (cellAction)="onCellAction($event)"
+      />
+    </main>
   `,
   encapsulation: ViewEncapsulation.None,
 })

@@ -1,8 +1,8 @@
 $inset-size: 8px;
 
 .theme2025 {
-  --primary-hue: 230;
-  --primary-sat: 60%;
+  --primary-hue: 38;
+  --primary-sat: 89%;
   --primary-color: hsl(var(--primary-hue), var(--primary-sat), 90%);
 
   --neutral-dark: black; //hsl(247, 37%, 13%);
@@ -14,6 +14,55 @@ $inset-size: 8px;
 
   --shadow-size: 10px;
   --thickness: 2px;
+
+  .main-full {
+    .main-full-title {
+      text-align: center;
+      margin-bottom: 100px;
+      margin-inline: 50px;
+
+      @media (max-width: 1200px) {
+        font-size: 50px;
+        margin-bottom: 0;
+      }
+
+      h1 {
+        font-size: 100px;
+
+        @media (max-width: 1200px) {
+          font-size: 50px;
+          margin-bottom: 50px !important;
+        }
+      }
+
+      h2 {
+        font-size: 50px;
+        font-style: italic;
+
+        @media (max-width: 1200px) {
+          font-size: 25px;
+        }
+      }
+    }
+  }
+
+  .info-panel {
+    // 1140px - narrow screen size
+    // 12px - margins
+    width: calc(1140px - 2 * 12px);
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin-inline: auto;
+    background-color: rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(13px);
+
+    @media (max-width: 1200px) {
+      margin-inline: 10px;
+      width: auto;
+    }
+  }
 
   .multiselect-toolbar {
     background-color: var(--neutral-dark);
@@ -43,7 +92,7 @@ $inset-size: 8px;
       //box-shadow: inset 0 -6px 0 0 var(--primary-color);
       font-weight: normal;
       font-size: var(--bs-body-font-size);
-      background-color: var(--primary-color);
+      //background-color: var(--primary-color);
     }
   }
 

@@ -10,9 +10,7 @@ import { FooterComponent } from '@components/footer/footer.component';
   standalone: true,
   imports: [RouterOutlet, FooterComponent],
   template: `
-    <main class="container narrow">
-      <router-outlet />
-    </main>
+    <router-outlet />
     <app-footer />
   `,
 })

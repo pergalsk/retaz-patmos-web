@@ -23,21 +23,23 @@ import { MainContent2022Component } from '../main-content2022/main-content2022.c
     UkraineContent2022Component,
   ],
   template: `
-    <!-- Title content - prolog -->
-    <app-main-content2022></app-main-content2022>
+    <main class="container narrow">
+      <!-- Title content - prolog -->
+      <app-main-content2022></app-main-content2022>
 
-    <!-- Buttons for each day -->
-    <app-badge-strip
-      [list]="datesList"
-      [actual]="selectedDateISO"
-      (itemClick)="dateClickHandler($event)"
-    ></app-badge-strip>
+      <!-- Buttons for each day -->
+      <app-badge-strip
+        [list]="datesList"
+        [actual]="selectedDateISO"
+        (itemClick)="dateClickHandler($event)"
+      ></app-badge-strip>
 
-    <!-- Dynamic content for each day -->
-    <app-day-content-panel [date]="selectedDateISO"></app-day-content-panel>
+      <!-- Dynamic content for each day -->
+      <app-day-content-panel [date]="selectedDateISO"></app-day-content-panel>
 
-    <!-- Prayers for Ukraine -->
-    <app-ukraine-content2022></app-ukraine-content2022>
+      <!-- Prayers for Ukraine -->
+      <app-ukraine-content2022></app-ukraine-content2022>
+    </main>
   `,
 })
 export class PageYear2022Component implements OnInit, OnDestroy {
