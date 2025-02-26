@@ -16,6 +16,16 @@ $inset-size: 8px;
   --thickness: 2px;
 
   .main-full {
+    /*background-image: linear-gradient(35deg, #2afcbc11, #e9cb4733),
+      url('../../../../assets/2025-bg.jpg');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-color: black;
+    background-size: cover;
+    //background-size: 300% 300%;
+    animation: gradient-animation 15s ease infinite;
+    mix-blend-mode: multiply;*/
+
     .main-full-title {
       text-align: center;
       margin-bottom: 100px;
@@ -326,5 +336,17 @@ $inset-size: 8px;
   }
   .white-border {
     border: solid var(--thickness) var(--neutral-light);
+  }
+}
+
+@keyframes gradient-animation {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
   }
 }
