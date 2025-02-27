@@ -20,8 +20,8 @@ import { RouterLink } from '@angular/router';
           <img
             class="footer-logo hide-light"
             alt="CZ ECAV Prešov"
-            width="200"
-            height="75"
+            width="150"
+            height="56"
             src="./assets/logo-ecavpo-wired-1x.webp"
             srcset="./assets/logo-ecavpo-wired-2x.webp 2x"
           />
@@ -31,10 +31,10 @@ import { RouterLink } from '@angular/router';
         © <a routerLink="/">2025</a>&nbsp;<a href="https://patmos.sk"
           >Cirkevný zbor Evanjelickej cirkvi augsburského vyznania na&nbsp;Slovensku Prešov</a
         >
-        <small>
+        <!-- <small>
           | <a routerLink="/2024">2024</a> | <a routerLink="/2023">2023</a> |
           <a routerLink="/2022">2022</a> | <a routerLink="/2021">2021</a></small
-        >
+        >-->
       </div>
     </footer>
   `,
