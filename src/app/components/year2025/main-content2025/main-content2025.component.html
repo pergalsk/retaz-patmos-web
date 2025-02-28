@@ -14,8 +14,21 @@
   </app-content-box>
 </div>
 
+<div class="unsplash-attribute text-end">
+  Photo by
+  <a
+    href="https://unsplash.com/@szmigieldesign?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash"
+    >Lukasz Szmigiel</a
+  >
+  on
+  <a
+    href="https://unsplash.com/photos/low-light-photo-of-forest-2ShvY8Lf6l0?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash"
+    >Unsplash</a
+  >
+</div>
+
 <main class="container narrow">
-  <app-content-box [classList]="'black-fg primary-shadow d-lg-none primary-bg'">
+  <app-content-box [classList]="'black-fg primary-shadow d-lg-none primary-bg mb-1 mb-lg-3'">
     Vytvorme spolu počas týchto 40 dní, ktoré máme pred sebou, pôstnu reťaz, ktorá by začala v
     stredu 5.3. a končila Veľkým piatkom 18.4.2025. Ak sa rozhodnete zapojiť do reťaze, v kalendári
     sa zapíšte na konkrétny deň, v ktorom by ste si vyhradili pôst a čas pre modlitbu.
@@ -58,7 +71,9 @@
 
     <div style="flex: 1">
       <app-content-box
-        [classList]="'black-fg primary-bg primary-shadow flex-grow-1 fst-italic pb-3 mb-0'"
+        [classList]="
+          'white-fg primary-bg primary-shadow flex-grow-1 fst-italic pb-3 mb-0 blurred-bg-pct'
+        "
       >
         <p>Či nás Ty znova neoživíš, aby Tvoj ľud mal v Tebe radosť?</p>
         <p>Ukáž nám, Hospodine, svoju milosť, udeľ nám svoju spásu!</p>

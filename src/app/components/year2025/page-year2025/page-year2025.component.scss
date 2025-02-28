@@ -337,6 +337,13 @@ $inset-size: 8px;
   .white-border {
     border: solid var(--thickness) var(--neutral-light);
   }
+
+  .blurred-bg-pct {
+    background-image: url('../../../../assets/blurred-fg-2025.jpg');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
 }
 
 @keyframes gradient-animation {
