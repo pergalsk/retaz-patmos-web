@@ -1,8 +1,8 @@
 import { Routes } from '@angular/router';
 import { PageYear2026Component } from '@components/year2026/page-year2026/page-year2026.component';
-import { MaintenanceScreenComponent } from '@components/maintenance-screen/maintenance-screen.component';
 import { FooterLayoutComponent } from '@components/layouts/footer-layout/footer-layout.component';
 import { EmptyLayoutComponent } from '@components/layouts/empty-layout/empty-layout.component';
+// import { MaintenanceScreenComponent } from '@components/maintenance-screen/maintenance-screen.component';
 // import { AppShellComponent } from "@components/app-shell/app-shell.component";
 
 const import2021Component = () =>
@@ -31,22 +31,27 @@ const import2025Component = () =>
   );
 
 export const routes: Routes = [
-  {
-    path: '',
-    component: EmptyLayoutComponent,
-    children: [
-      {
-        path: '',
-        title: 'Pôst 2026',
-        component: MaintenanceScreenComponent,
-      },
-    ],
-  },
+  // {
+  //   path: '',
+  //   component: EmptyLayoutComponent,
+  //   children: [
+  //     {
+  //       path: '',
+  //       title: 'Pôst 2026',
+  //       component: MaintenanceScreenComponent,
+  //     },
+  //   ],
+  // },
   {
     path: '',
     component: FooterLayoutComponent,
     children: [
       // { path: 'app-shell--preload', component: AppShellComponent },
+      {
+        path: '',
+        title: 'Pôst 2026',
+        component: PageYear2026Component,
+      },
       {
         path: '2021',
         title: 'Pôstna reťaz 2021',
@@ -74,11 +79,6 @@ export const routes: Routes = [
         path: '2025',
         title: 'Pôstna reťaz 2025',
         loadComponent: import2025Component,
-      },
-      {
-        path: '2026',
-        title: 'Pôst 2026',
-        component: PageYear2026Component,
       },
     ],
   },
