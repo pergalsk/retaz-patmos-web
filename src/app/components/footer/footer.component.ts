@@ -28,7 +28,8 @@ import { RouterLink } from '@angular/router';
         </a>
       </div>
       <div class="info">
-        © <a routerLink="/">2025</a>&nbsp;<a href="https://patmos.sk"
+        © <a routerLink="/">{{ currentYear }}</a
+        >&nbsp;<a href="https://patmos.sk"
           >Cirkevný zbor Evanjelickej cirkvi augsburského vyznania na&nbsp;Slovensku Prešov</a
         >
         <!-- <small>
@@ -39,4 +40,6 @@ import { RouterLink } from '@angular/router';
     </footer>
   `,
 })
-export class FooterComponent {}
+export class FooterComponent {
+  currentYear = new Date().getFullYear();
+}

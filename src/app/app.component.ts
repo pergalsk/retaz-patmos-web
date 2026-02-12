@@ -3,16 +3,12 @@ import { RouterOutlet } from '@angular/router';
 import { Unsubscribable } from 'rxjs';
 import { ColorSchemeService } from '@modules/color-scheme/color-scheme.service';
 import { Scheme, UserScheme } from '@modules/color-scheme/color-scheme.types';
-import { FooterComponent } from '@components/footer/footer.component';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, FooterComponent],
-  template: `
-    <router-outlet />
-    <app-footer />
-  `,
+  imports: [RouterOutlet],
+  template: ` <router-outlet /> `,
 })
 export class AppComponent implements OnInit, OnDestroy {
   colorSchemeService: ColorSchemeService = inject(ColorSchemeService);
