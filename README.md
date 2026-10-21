@@ -1,3 +1,5 @@
+> **Moved:** this repo is archived. Development continues in https://github.com/pergalsk/retaz-patmos
+
 # RetazPatmosSk
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 15.2.0.
